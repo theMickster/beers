@@ -42,12 +42,12 @@ internal static class SetupMiddlewarePipeline
 
         app.UseSwaggerUI(options =>
         {
-            options.DocumentTitle = "Adventure Works API";
-            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Adventure Works API 1.0");
+            options.DocumentTitle = "Beers API";
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "Beers API 1.0");
             RewriteSwaggerIndexHtml(options, _swaggerNonceString);
         });
 
-        app.UseHealthChecks("/health");
+        //app.UseHealthChecks("/health");
         
         return app;
     }

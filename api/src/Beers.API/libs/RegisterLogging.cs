@@ -17,12 +17,12 @@ internal static class SetupLogging
             throw new ArgumentNullException(nameof(configuration));
         }
 
-        if (!ValidateRegisteredServices(services))
-        {
-            throw new InvalidOperationException(
-                "IHttpContextAccessor was not added to the IServiceCollection in the correct order. " +
-                "The concrete implementation of IHttpContextAccessor must be registered before logging.");
-        }
+        //if (!ValidateRegisteredServices(services))
+        //{
+        //    throw new InvalidOperationException(
+        //        "IHttpContextAccessor was not added to the IServiceCollection in the correct order. " +
+        //        "The concrete implementation of IHttpContextAccessor must be registered before logging.");
+        //}
 
         var appInsightsInstrumentationKey = configuration[ConfigurationConstants.AppInsightsInstrumentationKey] ?? string.Empty;
         var appInsightsConnectionString = configuration[ConfigurationConstants.AppInsightsConnectionString] ?? string.Empty;

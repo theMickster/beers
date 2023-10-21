@@ -2,6 +2,10 @@
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Asp.Versioning;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Beers.Common.Settings;
+using Beers.Common.Constants;
+using Microsoft.Azure.Cosmos;
 
 namespace Beers.API.libs;
 
@@ -88,6 +92,28 @@ internal static class RegisterServices
             });
 
             options.DocInclusionPredicate((name, api) => true);
+        });
+
+        return builder;
+    }
+
+    internal static WebApplicationBuilder RegisterDataServices(this WebApplicationBuilder builder)
+    {
+
+        builder.Services.TryAddSingleton(factory =>
+        {
+            var cosmosSettings = factory.GetRequiredService<CosmosDbConnectionSettings>();
+            var cosmosContainers = new List<(string, string)>
+            {
+                (cosmosSettings.DatabaseName!, CosmosContainerConstants.MainContainer),
+                (cosmosSettings.DatabaseName!, CosmosContainerConstants.MetadataContainer)
+            };
+
+            var cosmosClient = CosmosClient.CreateAndInitializeAsync(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosContainers)
+                                    .GetAwaiter()
+                                    .GetResult();
+            
+            return cosmosClient;
         });
 
         return builder;
