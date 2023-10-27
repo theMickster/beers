@@ -45,6 +45,8 @@ builder.Services.AddCors(options =>
 
 builder.RegisterAspDotNetServices();
 
+builder.RegisterServicesViaReflection();
+
 builder.RegisterDataServices();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>

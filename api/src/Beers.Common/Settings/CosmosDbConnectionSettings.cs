@@ -4,10 +4,10 @@ public sealed class CosmosDbConnectionSettings
 {
     public const string SettingsRootName = "AzureCosmosDb";
 
-    public string? Account { get; set; }
+    public string Account { get; set; } = string.Empty;
 
-    public string? SecurityKey { get; set; }
+    public string SecurityKey { get; set; } = string.Empty;
 
-    public string? DatabaseName { get; set; }
+    public string DatabaseName { get; set; } = string.Empty;
 
 }

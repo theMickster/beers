@@ -1,6 +1,8 @@
-﻿using Azure.Security.KeyVault.Secrets;
+﻿using Azure;
+using Azure.Security.KeyVault.Secrets;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Beers.API.Helpers;
+namespace Beers.Common.Helpers;
 
 [ExcludeFromCodeCoverage]
 public static class SecretHelper

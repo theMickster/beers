@@ -7,16 +7,42 @@ namespace Beers.Application.Data;
 
 public class BeersDbContext : DbContext, IBeersDbContext
 {
-    public BeersDbContext( DbContextOptions<BeersDbContext> options ) : base( options )
+    public BeersDbContext(DbContextOptions<BeersDbContext> options) : base( options )
     {
     }
 
     public DbSet<BeerTypeEntity> BeerTypes { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder builder)
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        builder.HasDefaultContainer(CosmosContainerConstants.MainContainer);
+        modelBuilder.HasDefaultContainer(CosmosContainerConstants.MainContainer);
 
-        builder.Entity<BeerTypeEntity>().ToContainer(CosmosContainerConstants.MetadataContainer);
+        modelBuilder.Entity<BeerTypeEntity>()
+            .ToContainer(CosmosContainerConstants.MetadataContainer);
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .HasNoDiscriminator();
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .HasPartitionKey(x => x.TypeId);
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .HasKey(x => new {x.Id, x.TypeId});
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .Property(x => x.Id)
+            .ToJsonProperty("id");
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .Property(x => x.Name)
+            .ToJsonProperty("name");
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .Property(x => x.TypeName)
+            .ToJsonProperty("typeName");
+
+        modelBuilder.Entity<BeerTypeEntity>()
+            .Property(x => x.TypeId)
+            .ToJsonProperty("typeId");
     }
 }

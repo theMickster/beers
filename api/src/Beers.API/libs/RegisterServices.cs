@@ -1,11 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using Asp.Versioning;
+using Beers.Application.Data;
+using Beers.Application.Exceptions;
+using Beers.Application.Interfaces.Data;
+using Beers.Common.Attributes;
+using Beers.Common.Constants;
+using Beers.Common.Settings;
+using Beers.Domain.Profiles;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.Azure.Cosmos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using Asp.Versioning;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Beers.Common.Settings;
-using Beers.Common.Constants;
-using Microsoft.Azure.Cosmos;
 
 namespace Beers.API.libs;
 
@@ -29,6 +35,7 @@ internal static class RegisterServices
             options.DefaultApiVersion = new ApiVersion(1, 0);
             options.AssumeDefaultVersionWhenUnspecified = true;
             options.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
+                new QueryStringApiVersionReader("api-version"),
                 new HeaderApiVersionReader("x-api-version"),
                 new MediaTypeApiVersionReader("x-api-version"));
         });
@@ -37,10 +44,24 @@ internal static class RegisterServices
         {
             options.SwaggerDoc(
                 "v1",
-                MakeOpenApiInfo("Beers API",
-                    "v1",
-                    "API",
-                    new Uri("http://hello-world.info")));
+                new OpenApiInfo
+                {
+                    Title = "Beers API",
+                    Version = "v1",
+                    Description = "A web api for managing all things beer",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Bug Bashing Anonymous",
+                        Url = new Uri("https://example.com/contact"),
+                        Email = "bug.bashing.anonymous@example.com"
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Bug Bashing Anonymous",
+                        Url = new Uri("https://example.com/license")
+                    }
+                });
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
@@ -94,15 +115,18 @@ internal static class RegisterServices
             options.DocInclusionPredicate((name, api) => true);
         });
 
+        builder.Services.AddAutoMapper(typeof(BeerTypeEntityToModelProfile).GetTypeInfo().Assembly);
+
         return builder;
     }
 
     internal static WebApplicationBuilder RegisterDataServices(this WebApplicationBuilder builder)
     {
-
+        var cosmosSettings = builder.Configuration.GetSection(CosmosDbConnectionSettings.SettingsRootName).Get<CosmosDbConnectionSettings>() ??
+                             throw new ConfigurationException("The required Configuration settings keys for the Azure Cosmos Db Settings are missing. Please verify configuration.");
+        
         builder.Services.TryAddSingleton(factory =>
         {
-            var cosmosSettings = factory.GetRequiredService<CosmosDbConnectionSettings>();
             var cosmosContainers = new List<(string, string)>
             {
                 (cosmosSettings.DatabaseName!, CosmosContainerConstants.MainContainer),
@@ -116,28 +140,56 @@ internal static class RegisterServices
             return cosmosClient;
         });
 
+        builder.Services.AddDbContext<BeersDbContext>(
+            options =>
+            {
+                options.UseCosmos(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosSettings.DatabaseName );
+#if DEBUG
+                options.EnableSensitiveDataLogging();
+#endif
+            });
+
+        builder.Services.AddScoped<IBeersDbContext>(
+            provider => provider.GetService<BeersDbContext>() ??
+                        throw new ConfigurationException("The BeersDbContext is not properly registered in the correct order."));
+
         return builder;
     }
 
-    #region Private Methods
-    private static OpenApiInfo MakeOpenApiInfo(string title, string version, string description, Uri releaseNotes)
+    internal static WebApplicationBuilder RegisterServicesViaReflection(this WebApplicationBuilder builder)
     {
-        var oai = new OpenApiInfo
-        {
-            Title = title,
-            Version = version,
-            Contact = new OpenApiContact
-                { Email = "bug.bashing.anonymous@outlook.com", Name = "Bug Bashing Anonymous" },
-            Description = description
-        };
+        var scoped = typeof(ServiceLifetimeScopedAttribute);
+        var transient = typeof(ServiceLifetimeTransientAttribute);
+        var singleton = typeof(ServiceLifetimeSingletonAttribute);
 
-        if (releaseNotes != null)
-        {
-            oai.Contact.Url = releaseNotes;
-        }
+        var appServices = AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a => a.ManifestModule.Name.StartsWith("Beers."))
 
-        return oai;
+            .SelectMany(t => t.GetTypes())
+            .Where(x => (x.IsDefined(scoped, false) ||
+                         x.IsDefined(transient, false) ||
+                         x.IsDefined(singleton, false)) && !x.IsInterface)
+            .Select(y => new { InterfaceName = y.GetInterface($"I{y.Name}"), Service = y })
+            .Where(z => z.InterfaceName != null)
+            .ToList();
+
+        appServices.ForEach(t =>
+        {
+            if (t.Service.IsDefined(scoped, false))
+            {
+                builder.Services.AddScoped(t.InterfaceName!, t.Service);
+            }
+
+            if (t.Service.IsDefined(transient, false))
+            {
+                builder.Services.AddTransient(t.InterfaceName!, t.Service);
+            }
+
+            if (t.Service.IsDefined(singleton, false))
+            {
+                builder.Services.AddSingleton(t.InterfaceName!, t.Service);
+            }
+        });
+        return builder;
     }
-
-    #endregion
-}
+    }
