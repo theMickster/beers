@@ -9,32 +9,32 @@ using Microsoft.Extensions.Caching.Memory;
 namespace Beers.Application.Services;
 
 [ServiceLifetimeScoped]
-public sealed class ReadBeerTypeService : IReadBeerTypeService
+public sealed class ReadBeerStyleService : IReadBeerStyleService
 {
     private readonly IBeersDbContext _dbContext;
     private readonly IMemoryCache _memoryCache;
     private readonly IMapper _mapper;
 
-    public ReadBeerTypeService(IMapper mapper, IBeersDbContext dbContext, IMemoryCache memoryCache)
+    public ReadBeerStyleService(IMapper mapper, IBeersDbContext dbContext, IMemoryCache memoryCache)
     {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         _memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
     }
 
-    public IReadOnlyList<BeerTypeModel> GetList()
+    public IReadOnlyList<BeerStyleModel> GetList()
     {
-        const string cacheKey = "GetBeerTypeList";
+        const string cacheKey = "GetBeerStyleList";
 
-        _memoryCache.TryGetValue(cacheKey, out IReadOnlyList<BeerTypeModel>? cachedData);
+        _memoryCache.TryGetValue(cacheKey, out IReadOnlyList<BeerStyleModel>? cachedData);
 
         if (cachedData != null)
         {
             return cachedData;
         }
 
-        var entities = _dbContext.BeerTypes.ToList().AsReadOnly();
-        cachedData = _mapper.Map<List<BeerTypeModel>>(entities);
+        var entities = _dbContext.BeerStyles.ToList().AsReadOnly();
+        cachedData = _mapper.Map<List<BeerStyleModel>>(entities);
         _memoryCache.Set(cacheKey, cachedData, TimeSpan.FromMinutes(5));
 
         return cachedData;

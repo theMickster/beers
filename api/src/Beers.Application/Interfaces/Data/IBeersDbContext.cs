@@ -5,5 +5,10 @@ namespace Beers.Application.Interfaces.Data;
 
 public interface IBeersDbContext
 {
+    DbSet<BeerCategoryEntity> BeerCategories { get; set; }
+
+    DbSet<BeerStyleEntity> BeerStyles { get; set; }
+
     DbSet<BeerTypeEntity> BeerTypes { get; set; }
+
 }

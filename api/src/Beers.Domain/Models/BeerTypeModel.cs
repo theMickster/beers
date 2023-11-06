@@ -1,8 +1,5 @@
 ﻿namespace Beers.Domain.Models;
 
-public sealed class BeerTypeModel
+public sealed class BeerTypeModel : BaseMetaDataModel
 {
-    public Guid Id { get; set; }
-
-    public string Name { get; set; } = string.Empty;
 }
