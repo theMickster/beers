@@ -28,7 +28,7 @@ public sealed class ReadBeerStyleService : IReadBeerStyleService
 
         _memoryCache.TryGetValue(cacheKey, out IReadOnlyList<BeerStyleModel>? cachedData);
 
-        if (cachedData != null)
+        if (cachedData is { Count: > 0 })
         {
             return cachedData;
         }

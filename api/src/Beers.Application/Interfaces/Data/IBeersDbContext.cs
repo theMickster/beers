@@ -11,4 +11,6 @@ public interface IBeersDbContext
 
     DbSet<BeerTypeEntity> BeerTypes { get; set; }
 
+    DbSet<BreweryTypeEntity> BreweryTypes { get; set; }
+
 }

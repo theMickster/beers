@@ -28,12 +28,12 @@ public sealed class ReadBeerCategoryService : IReadBeerCategoryService
 
         _memoryCache.TryGetValue(cacheKey, out IReadOnlyList<BeerCategoryModel>? cachedData);
 
-        if (cachedData != null)
+        if (cachedData is { Count: > 0 })
         {
             return cachedData;
         }
 
-        var entities = _dbContext.BeerCategories.Where(x => x.TypeId == BeerMetadataPartitionKeyConstants.BeerCategoryGuid).ToList().AsReadOnly();
+        var entities = _dbContext.BeerCategories.ToList().AsReadOnly();
         cachedData = _mapper.Map<List<BeerCategoryModel>>(entities);
         _memoryCache.Set(cacheKey, cachedData, TimeSpan.FromMinutes(5));
 

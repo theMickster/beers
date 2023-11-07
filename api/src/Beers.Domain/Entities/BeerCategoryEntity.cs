@@ -4,7 +4,7 @@ namespace Beers.Domain.Entities;
 
 public sealed class BeerCategoryEntity : BaseMetaDataEntity
 {
-    public override string TypeName { get; set; } = BeerMetadataPartitionKeyConstants.BeerCategory;
+    public string TypeName = BeerMetadataPartitionKeyConstants.BeerCategory;
 
     public override Guid TypeId { get; set; } = BeerMetadataPartitionKeyConstants.BeerCategoryGuid;
 }

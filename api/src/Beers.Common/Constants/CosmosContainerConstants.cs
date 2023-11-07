@@ -10,5 +10,5 @@ public static class CosmosContainerConstants
     /// <summary>
     /// CosmosDb container used for storing supporting beer metadata.
     /// </summary>
-    public const string MetadataContainer = "beersMetadata";
+    public const string MetadataContainer = "Metadata";
 }

@@ -28,25 +28,25 @@ public sealed class ReadBeerCategoryController : ControllerBase
         _readBeerCategoryService = readBeerCategoryService ?? throw new ArgumentNullException(nameof(readBeerCategoryService));
     }
 
-    ///// <summary>
-    ///// Retrieve the list of beer categories
-    ///// </summary>
-    ///// <returns>A list of beer categories</returns>
-    ///// <response code="200">Returns the list of beer categories</response>
-    ///// <response code="404">If the list of beer categories cannot be found</response>
-    //[HttpGet]
-    //[Produces(typeof(List<BeerCategoryModel>))]
-    //[ProducesResponseType(StatusCodes.Status404NotFound)]
-    //[ProducesResponseType(StatusCodes.Status200OK)]
-    //public IActionResult GetList()
-    //{
-    //    var model = _readBeerCategoryService.GetList();
+    /// <summary>
+    /// Retrieve the list of beer categories
+    /// </summary>
+    /// <returns>A list of beer categories</returns>
+    /// <response code="200">Returns the list of beer categories</response>
+    /// <response code="404">If the list of beer categories cannot be found</response>
+    [HttpGet]
+    [Produces(typeof(List<BeerCategoryModel>))]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult GetList()
+    {
+        var model = _readBeerCategoryService.GetList();
 
-    //    if (!model.Any())
-    //    {
-    //        return NotFound("Unable to locate records the beer category list.");
-    //    }
+        if (!model.Any())
+        {
+            return NotFound("Unable to locate records the beer category list.");
+        }
 
-    //    return Ok(model);
-    //}
+        return Ok(model);
+    }
 }

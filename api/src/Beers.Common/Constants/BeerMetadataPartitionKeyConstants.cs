@@ -18,5 +18,12 @@ public static class BeerMetadataPartitionKeyConstants
 
     public static readonly string BeerCategoryId = BeerCategoryGuid.ToString();
 
-    public static readonly string BeerCategory = "BeerStyle";
+    public static readonly string BeerCategory = "BeerCategory";
+
+    public static readonly Guid BreweryTypeGuid = new("eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f");
+
+    public static readonly string BreweryTypeId = BreweryTypeGuid.ToString();
+
+    public static readonly string BreweryType = "BreweryType";
+
 }

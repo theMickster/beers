@@ -2,6 +2,7 @@
 using Beers.Common.Constants;
 using Beers.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Beers.Application.Data;
 
@@ -16,57 +17,36 @@ public class BeersDbContext : DbContext, IBeersDbContext
     public DbSet<BeerStyleEntity> BeerStyles { get; set; }
 
     public DbSet<BeerTypeEntity> BeerTypes { get; set; }
-    
+
+    public DbSet<BreweryTypeEntity> BreweryTypes { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultContainer(CosmosContainerConstants.MainContainer);
 
-        BuildMetaDataEntity<BeerTypeEntity>(modelBuilder);
+        var beerType = modelBuilder.Entity<BeerTypeEntity>();
+        BeerMetadataConfiguring(beerType);
+        beerType.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BeerType);
 
-        BuildMetaDataEntity<BeerStyleEntity>(modelBuilder);
+        var beerStyle = modelBuilder.Entity<BeerStyleEntity>();
+        BeerMetadataConfiguring(beerStyle);
+        beerStyle.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BeerStyle);
+        
+        var beerCategory = modelBuilder.Entity<BeerCategoryEntity>();
+        BeerMetadataConfiguring(beerCategory);
+        beerCategory.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BeerCategory);
 
-        BuildMetaDataEntity<BeerCategoryEntity>(modelBuilder);
-
-        modelBuilder.Entity<BeerCategoryEntity>()
-            .HasDiscriminator<string>(BeerMetadataPartitionKeyConstants.BeerCategory);
-
-        modelBuilder.Entity<BeerCategoryEntity>()
-            .HasPartitionKey(x => x.TypeName);
-
-        modelBuilder.Entity<BeerStyleEntity>()
-            .HasDiscriminator<string>(BeerMetadataPartitionKeyConstants.BeerStyle);
-
-        modelBuilder.Entity<BeerStyleEntity>()
-            .HasPartitionKey(x => x.TypeName);
-
-        modelBuilder.Entity<BeerTypeEntity>()
-            .HasDiscriminator<string>(BeerMetadataPartitionKeyConstants.BeerType);
-
-        modelBuilder.Entity<BeerTypeEntity>()
-            .HasPartitionKey(x => x.TypeName);
-
-
+        var breweryTypes = modelBuilder.Entity<BreweryTypeEntity>();
+        BeerMetadataConfiguring(breweryTypes);
+        breweryTypes.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BreweryType);
     }
 
-    private static void BuildMetaDataEntity<T>(ModelBuilder modelBuilder) where T : BaseMetaDataEntity
+    private static void BeerMetadataConfiguring<T>(EntityTypeBuilder<T> entityTypeBuilder) where T : BaseMetaDataEntity
     {
-        modelBuilder.Entity<T>()
-            .ToContainer(CosmosContainerConstants.MetadataContainer);
-
-        modelBuilder.Entity<T>()
-            .HasKey(x => new { x.Id });
-
-        modelBuilder.Entity<T>()
-            .Property(x => x.Id)
-            .ToJsonProperty("id");
-
-        modelBuilder.Entity<T>()
-            .Property(x => x.TypeId);
-
-        modelBuilder.Entity<T>()
-            .Property(x => x.Name);
-
-        modelBuilder.Entity<T>()
-            .Property(x => x.TypeName);
+        entityTypeBuilder.Property(x => x.Id).ToJsonProperty("id");
+        entityTypeBuilder.ToContainer(CosmosContainerConstants.MetadataContainer);
+        entityTypeBuilder.HasPartitionKey(x => x.TypeId);
+        entityTypeBuilder.HasKey(x => x.Id);
     }
+
 }
