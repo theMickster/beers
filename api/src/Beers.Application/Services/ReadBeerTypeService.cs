@@ -2,7 +2,6 @@
 using Beers.Application.Interfaces.Data;
 using Beers.Application.Interfaces.Services;
 using Beers.Common.Attributes;
-using Beers.Common.Constants;
 using Beers.Domain.Models;
 using Microsoft.Extensions.Caching.Memory;
 

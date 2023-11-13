@@ -3,7 +3,7 @@
 namespace Beers.Domain.Entities;
 public sealed class BeerStyleEntity : BaseMetaDataEntity
 {
-    public string TypeName = BeerMetadataPartitionKeyConstants.BeerStyle;
+    public string TypeName = BeerPartitionKeyConstants.BeerStyle;
 
-    public override Guid TypeId { get; set; } = BeerMetadataPartitionKeyConstants.BeerStyleGuid;
+    public override Guid TypeId { get; set; } = BeerPartitionKeyConstants.BeerStyleGuid;
 }
