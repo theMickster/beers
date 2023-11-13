@@ -26,19 +26,19 @@ public class BeersDbContext : DbContext, IBeersDbContext
 
         var beerType = modelBuilder.Entity<BeerTypeEntity>();
         BeerMetadataConfiguring(beerType);
-        beerType.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BeerType);
+        beerType.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BeerType);
 
         var beerStyle = modelBuilder.Entity<BeerStyleEntity>();
         BeerMetadataConfiguring(beerStyle);
-        beerStyle.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BeerStyle);
+        beerStyle.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BeerStyle);
         
         var beerCategory = modelBuilder.Entity<BeerCategoryEntity>();
         BeerMetadataConfiguring(beerCategory);
-        beerCategory.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BeerCategory);
+        beerCategory.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BeerCategory);
 
         var breweryTypes = modelBuilder.Entity<BreweryTypeEntity>();
         BeerMetadataConfiguring(breweryTypes);
-        breweryTypes.HasDiscriminator(x => x.TypeName).HasValue(BeerMetadataPartitionKeyConstants.BreweryType);
+        breweryTypes.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BreweryType);
     }
 
     private static void BeerMetadataConfiguring<T>(EntityTypeBuilder<T> entityTypeBuilder) where T : BaseMetaDataEntity
