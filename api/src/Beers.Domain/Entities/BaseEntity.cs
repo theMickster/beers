@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace Beers.Domain.Entities;
+﻿namespace Beers.Domain.Entities;
 
 public abstract class BaseEntity
 {
