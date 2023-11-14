@@ -11,14 +11,14 @@ namespace Beers.Application.Services;
 [ServiceLifetimeScoped]
 public sealed class ReadBeerStyleService : IReadBeerStyleService
 {
-    private readonly IBeersDbContext _dbContext;
+    private readonly IBeersMetadataDbContext _metadataDbContext;
     private readonly IMemoryCache _memoryCache;
     private readonly IMapper _mapper;
 
-    public ReadBeerStyleService(IMapper mapper, IBeersDbContext dbContext, IMemoryCache memoryCache)
+    public ReadBeerStyleService(IMapper mapper, IBeersMetadataDbContext metadataDbContext, IMemoryCache memoryCache)
     {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _metadataDbContext = metadataDbContext ?? throw new ArgumentNullException(nameof(metadataDbContext));
         _memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
     }
 
@@ -33,7 +33,7 @@ public sealed class ReadBeerStyleService : IReadBeerStyleService
             return cachedData;
         }
 
-        var entities = _dbContext.BeerStyles.ToList().AsReadOnly();
+        var entities = _metadataDbContext.BeerStyles.ToList().AsReadOnly();
         cachedData = _mapper.Map<List<BeerStyleModel>>(entities);
         _memoryCache.Set(cacheKey, cachedData, TimeSpan.FromMinutes(5));
 

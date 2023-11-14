@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Beers.Application.Interfaces.Data;
 
-public interface IBeersDbContext
+public interface IBeersMetadataDbContext
 {
     DbSet<BeerCategoryEntity> BeerCategories { get; set; }
 

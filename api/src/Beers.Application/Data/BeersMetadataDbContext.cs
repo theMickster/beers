@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Beers.Application.Data;
 
-public class BeersDbContext : DbContext, IBeersDbContext
+public class BeersMetadataDbContext : DbContext, IBeersMetadataDbContext
 {
-    public BeersDbContext(DbContextOptions<BeersDbContext> options) : base( options )
+    public BeersMetadataDbContext(DbContextOptions<BeersMetadataDbContext> options) : base( options )
     {
     }
 

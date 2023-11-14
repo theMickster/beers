@@ -10,14 +10,14 @@ namespace Beers.Application.Services;
 [ServiceLifetimeScoped]
 public sealed class ReadBeerTypeService : IReadBeerTypeService
 {
-    private readonly IBeersDbContext _dbContext;
+    private readonly IBeersMetadataDbContext _metadataDbContext;
     private readonly IMemoryCache _memoryCache;
     private readonly IMapper _mapper;
 
-    public ReadBeerTypeService(IMapper mapper, IBeersDbContext dbContext, IMemoryCache memoryCache)
+    public ReadBeerTypeService(IMapper mapper, IBeersMetadataDbContext metadataDbContext, IMemoryCache memoryCache)
     {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        _metadataDbContext = metadataDbContext ?? throw new ArgumentNullException(nameof(metadataDbContext));
         _memoryCache = memoryCache ?? throw new ArgumentNullException(nameof(memoryCache));
     }
 
@@ -32,7 +32,7 @@ public sealed class ReadBeerTypeService : IReadBeerTypeService
             return cachedData;
         }
 
-        var entities = _dbContext.BeerTypes.ToList().AsReadOnly();
+        var entities = _metadataDbContext.BeerTypes.ToList().AsReadOnly();
         cachedData = _mapper.Map<List<BeerTypeModel>>(entities);
         _memoryCache.Set(cacheKey, cachedData, TimeSpan.FromMinutes(5));
 
