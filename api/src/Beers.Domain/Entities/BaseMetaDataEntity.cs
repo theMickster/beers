@@ -7,4 +7,6 @@ public abstract class BaseMetaDataEntity : BaseEntity
     public string Name { get; set; } = string.Empty;
 
     public Guid MetadataId { get; set; } = Guid.NewGuid();
+
+    public string ApplicationName { get; set; } = "Beers";
 }

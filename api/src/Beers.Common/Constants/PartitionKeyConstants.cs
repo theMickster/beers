@@ -1,6 +1,6 @@
 ﻿namespace Beers.Common.Constants;
 
-public static class BeerPartitionKeyConstants
+public static class PartitionKeyConstants
 {
     public static readonly Guid BeerTypeGuid = new("752d4d23-548e-4d1a-9a41-badccbbd7dd9");
 

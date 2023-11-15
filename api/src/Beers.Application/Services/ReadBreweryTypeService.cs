@@ -12,17 +12,17 @@ using Microsoft.Extensions.Options;
 namespace Beers.Application.Services;
 
 [ServiceLifetimeScoped]
-public sealed class ReadBeerStyleService : ReadBeerMetadataServiceBase<BeerStyleModel, BeerStyleEntity>, IReadBeerStyleService
+public sealed class ReadBreweryTypeService : ReadBeerMetadataServiceBase<BreweryTypeModel, BreweryTypeEntity>, IReadBreweryTypeService
 {
-    public ReadBeerStyleService(
-        IMapper mapper,
-        IBeersMetadataDbContext metadataDbContext,
+    public ReadBreweryTypeService(
+        IMapper mapper, 
+        IBeersMetadataDbContext metadataDbContext, 
         IMemoryCache memoryCache,
         IOptionsSnapshot<CacheSettings> cacheSettings)
-        : base(CacheKeyConstants.BeerStyleList, mapper, metadataDbContext, memoryCache, cacheSettings) { }
+        : base(CacheKeyConstants.BreweryTypeList, mapper, metadataDbContext, memoryCache, cacheSettings) { }
 
-    protected override IReadOnlyCollection<BeerStyleEntity> GetEntities()
+    protected override IReadOnlyCollection<BreweryTypeEntity> GetEntities()
     {
-        return MetadataDbContext.BeerStyles.ToList().AsReadOnly();
+        return MetadataDbContext.BreweryTypes.ToList().AsReadOnly();
     }
 }

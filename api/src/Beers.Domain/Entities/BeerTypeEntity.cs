@@ -4,7 +4,7 @@ namespace Beers.Domain.Entities;
 
 public class BeerTypeEntity : BaseMetaDataEntity
 {
-    public string TypeName = BeerPartitionKeyConstants.BeerType;
+    public string TypeName = PartitionKeyConstants.BeerType;
     
-    public override Guid TypeId { get; set; } = BeerPartitionKeyConstants.BeerTypeGuid;
+    public override Guid TypeId { get; set; } = PartitionKeyConstants.BeerTypeGuid;
 }
