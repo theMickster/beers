@@ -1,4 +1,4 @@
-﻿namespace Beers.Domain.Entities;
+﻿namespace Beers.Domain.Entities.Base;
 
 public abstract class BaseMetaDataEntity : BaseEntity
 {

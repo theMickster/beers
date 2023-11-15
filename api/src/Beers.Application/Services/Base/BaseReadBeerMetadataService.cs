@@ -1,22 +1,22 @@
 ﻿using AutoMapper;
 using Beers.Application.Interfaces.Data;
-using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Base;
 using Beers.Common.Settings;
-using Beers.Domain.Entities;
+using Beers.Domain.Entities.Base;
 using Beers.Domain.Models;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 
-namespace Beers.Application.Services;
+namespace Beers.Application.Services.Base;
 
-public abstract class ReadBeerMetadataServiceBase<TModel, TEntity>: IReadBeerMetadataServiceBase<TModel> where TModel : BaseMetaDataModel where TEntity : BaseMetaDataEntity
+public abstract class BaseReadBeerMetadataService<TModel, TEntity>: IBaseReadBeerMetadataService<TModel> where TModel : BaseMetaDataModel where TEntity : BaseMetaDataEntity
 {
     protected readonly IBeersMetadataDbContext MetadataDbContext;
     protected readonly IMemoryCache MemoryCache;
     protected readonly IMapper Mapper;
     protected readonly IOptionsSnapshot<CacheSettings> CacheSettings;
 
-    protected ReadBeerMetadataServiceBase(
+    protected BaseReadBeerMetadataService(
         string cacheKey, 
         IMapper mapper, 
         IBeersMetadataDbContext metadataDbContext, 

@@ -1,5 +1,9 @@
-﻿namespace Beers.Application.Interfaces.Data;
+﻿using Beers.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+
+namespace Beers.Application.Interfaces.Data;
+
 public interface IBeersDbContext
 {
-
+    DbSet<BrewerEntity> BrewerEntities { get; set; }
 }

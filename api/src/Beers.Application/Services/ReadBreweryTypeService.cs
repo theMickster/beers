@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Beers.Application.Interfaces.Data;
 using Beers.Application.Interfaces.Services;
+using Beers.Application.Services.Base;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;
 using Beers.Common.Settings;
@@ -12,7 +13,7 @@ using Microsoft.Extensions.Options;
 namespace Beers.Application.Services;
 
 [ServiceLifetimeScoped]
-public sealed class ReadBreweryTypeService : ReadBeerMetadataServiceBase<BreweryTypeModel, BreweryTypeEntity>, IReadBreweryTypeService
+public sealed class ReadBreweryTypeService : BaseReadBeerMetadataService<BreweryTypeModel, BreweryTypeEntity>, IReadBreweryTypeService
 {
     public ReadBreweryTypeService(
         IMapper mapper, 

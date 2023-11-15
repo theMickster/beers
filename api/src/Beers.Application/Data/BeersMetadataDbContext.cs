@@ -1,6 +1,7 @@
 ﻿using Beers.Application.Interfaces.Data;
 using Beers.Common.Constants;
 using Beers.Domain.Entities;
+using Beers.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

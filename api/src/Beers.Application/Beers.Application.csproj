@@ -23,4 +23,8 @@
 		<ProjectReference Include="..\Beers.Domain\Beers.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Services\Base\" />
+	</ItemGroup>
+
 </Project>
