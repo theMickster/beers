@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 
-[assembly: InternalsVisibleTo("Beers.UnitTests")]
 namespace Beers.API.libs;
 
 [ExcludeFromCodeCoverage]

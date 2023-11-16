@@ -10,7 +10,7 @@ internal static class SetupHttpHeaders
     /// <param name="isDevelopment">Turn off CSP in Develop Mode as it blocks Swagger</param>
     /// <param name="nonce">guid string param</param>
     /// <returns>IApplicationBuilder</returns>
-    public static IApplicationBuilder ConfigureApplicatonHeaders(
+    public static IApplicationBuilder ConfigureApplicationHeaders(
         this IApplicationBuilder app, bool isDevelopment,
         string nonce)
     {
