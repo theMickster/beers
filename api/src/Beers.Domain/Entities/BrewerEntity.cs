@@ -1,5 +1,6 @@
 ﻿using Beers.Common.Constants;
 using Beers.Domain.Entities.Base;
+using Beers.Domain.Entities.Slims;
 
 namespace Beers.Domain.Entities;
 
@@ -18,4 +19,6 @@ public class BrewerEntity : BaseBeerEntity
     public DateTime CreatedDate { get; set; }
 
     public DateTime ModifiedDate { get; set; }
+
+    public SlimBreweryTypeEntity BreweryType { get; set; }
 }

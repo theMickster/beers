@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Beers.Domain.Entities;
+using Beers.Domain.Entities.Slims;
 using Beers.Domain.Models;
 using Beers.Domain.Models.Brewer;
 
@@ -9,6 +10,12 @@ public class BrewerEntityToModelProfile : Profile
 {
     public BrewerEntityToModelProfile()
     {
+        CreateMap<SlimBreweryTypeEntity, BreweryTypeModel>()
+            .ForPath(x => x.Id,
+                o => o.MapFrom(y => y.MetadataId))
+            .ForPath(x => x.Name,
+                o => o.MapFrom(y => y.Name));
+
         CreateMap<BrewerEntity, ReadBrewerModel>()
             .ForPath(x => x.BrewerId,
                 o => o.MapFrom(y => y.BrewerId))

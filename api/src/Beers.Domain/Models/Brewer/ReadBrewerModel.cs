@@ -15,4 +15,6 @@ public sealed class ReadBrewerModel
     public DateTime CreatedDate { get; set; }
 
     public DateTime ModifiedDate { get; set; }
+
+    public BreweryTypeModel BreweryType { get; set; }
 }

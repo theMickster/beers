@@ -22,6 +22,7 @@ public class BeersDbContext : DbContext, IBeersDbContext
         var brewerEntity = modelBuilder.Entity<BrewerEntity>();
         BeerConfiguring(brewerEntity);
         brewerEntity.HasDiscriminator(x => x.EntityType).HasValue(PartitionKeyConstants.Brewer);
+        brewerEntity.OwnsOne(x => x.BreweryType);
     }
     
     private static void BeerConfiguring<T>(EntityTypeBuilder<T> entityTypeBuilder) where T : BaseBeerEntity
