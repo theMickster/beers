@@ -1,20 +1,12 @@
-﻿namespace Beers.Domain.Models.Brewer;
+﻿using Beers.Domain.Models.Base;
 
-public sealed class ReadBrewerModel
+namespace Beers.Domain.Models.Brewer;
+
+public sealed class ReadBrewerModel : BaseBrewerModel
 {
     public Guid BrewerId { get; set; }
-
-    public string Name { get; set; }
-    
-    public int FoundedIn { get; set; }
-
-    public string Headquarters { get; set; }
-
-    public string Website { get; set;  }
 
     public DateTime CreatedDate { get; set; }
 
     public DateTime ModifiedDate { get; set; }
-
-    public BreweryTypeModel BreweryType { get; set; }
 }

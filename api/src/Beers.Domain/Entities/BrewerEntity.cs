@@ -6,6 +6,8 @@ namespace Beers.Domain.Entities;
 
 public class BrewerEntity : BaseBeerEntity
 {
+//    public Guid id { get; set; }
+
     public string EntityType = PartitionKeyConstants.Brewer;
 
     public string Name { get; set; }

@@ -7,5 +7,5 @@ public interface IReadBrewerService
 {
     Task<IReadOnlyList<ReadBrewerModel>> GetListAsync();
 
-    Task<ReadBrewerModel> GetByIdAsync();
+    Task<ReadBrewerModel?> GetByIdAsync(Guid brewerId);
 }

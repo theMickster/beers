@@ -1,6 +1,5 @@
 ﻿using Asp.Versioning;
 using Beers.Application.Interfaces.Services;
-using Beers.Domain.Models;
 using Beers.Domain.Models.Brewer;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,8 +35,8 @@ public sealed class ReadBrewerController : ControllerBase
     /// <response code="404">If the list of brewers cannot be found</response>
     [HttpGet]
     [Produces(typeof(List<ReadBrewerModel>))]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetListAsync()
     {
         var model = await _readBrewerService.GetListAsync();
@@ -48,5 +47,26 @@ public sealed class ReadBrewerController : ControllerBase
         }
 
         return Ok(model);
+    }
+
+    /// <summary>
+    /// Retrieve an brewer using its unique identifier
+    /// </summary>
+    /// <param name="brewerId">the unique identifier</param>
+    /// <returns>A single brewer</returns>
+    [HttpGet("{brewerId:guid}", Name = "GetBrewerById")]
+    [Produces(typeof(ReadBrewerModel))]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetByIdAsync(Guid brewerId)
+    {
+        var brewer = await _readBrewerService.GetByIdAsync(brewerId);
+
+        if (brewer == null)
+        {
+            return NotFound("Unable to locate model.");
+        }
+
+        return Ok(brewer);
     }
 }

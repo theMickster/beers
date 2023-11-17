@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using Beers.Application.Interfaces.Data;
+using Beers.Application.Data;
 using Beers.Application.Interfaces.Services;
 using Beers.Common.Attributes;
-using Beers.Domain.Models;
 using Beers.Domain.Models.Brewer;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,22 +11,25 @@ namespace Beers.Application.Services;
 public sealed class ReadBrewerService : IReadBrewerService
 {
     private readonly IMapper _mapper;
-    private readonly IBeersDbContext _beerDbContext;
+    private readonly IDbContextFactory<BeersDbContext> _dbContextFactory;
 
-    public ReadBrewerService(IMapper mapper, IBeersDbContext beersDbContext)
+    public ReadBrewerService(IMapper mapper, IDbContextFactory<BeersDbContext> dbContextFactory)
     {
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _beerDbContext = beersDbContext ?? throw new ArgumentNullException(nameof(beersDbContext));
+        _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
     }
 
     public async Task<IReadOnlyList<ReadBrewerModel>> GetListAsync()
     {
-        var entities = await _beerDbContext.BrewerEntities.ToListAsync();
+        await using var context = await _dbContextFactory.CreateDbContextAsync();
+        var entities = await context.BrewerEntities.ToListAsync();
         return _mapper.Map<List<ReadBrewerModel>>(entities).AsReadOnly();
     }
 
-    public Task<ReadBrewerModel> GetByIdAsync()
+    public async Task<ReadBrewerModel?> GetByIdAsync(Guid brewerId)
     {
-        throw new NotImplementedException();
+        await using var context = await _dbContextFactory.CreateDbContextAsync();
+        var entity = await context.BrewerEntities.FirstOrDefaultAsync(x => x.Id == brewerId);
+        return entity == null ? null : _mapper.Map<ReadBrewerModel>(entity);
     }
 }

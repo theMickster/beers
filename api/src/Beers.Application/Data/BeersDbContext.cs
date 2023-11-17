@@ -1,9 +1,13 @@
 ﻿using Beers.Application.Interfaces.Data;
 using Beers.Common.Constants;
+using Beers.Common.Settings;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Base;
+using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Diagnostics;
+using System.Net;
 
 namespace Beers.Application.Data;
 
@@ -14,6 +18,22 @@ public class BeersDbContext : DbContext, IBeersDbContext
     }
 
     public DbSet<BrewerEntity> BrewerEntities { get; set; }
+
+    public async Task<HttpStatusCode> AddBreweryEntityAsync(CosmosClient cosmosDbClient, CosmosDbConnectionSettings cosmosDbSettings, BrewerEntity brewerEntity)
+    {
+        var container = cosmosDbClient.GetDatabase(cosmosDbSettings.DatabaseName).GetContainer(CosmosContainerConstants.MainContainer);
+
+        var createResponse = await container.CreateItemAsync(brewerEntity);
+        if (createResponse.StatusCode != HttpStatusCode.Created)
+        {
+            // Log a special message here....
+            
+        }
+        return createResponse.StatusCode;
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder.LogTo(message => Debug.WriteLine(message)).EnableSensitiveDataLogging().EnableDetailedErrors();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

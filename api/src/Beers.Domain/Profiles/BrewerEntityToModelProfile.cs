@@ -30,6 +30,7 @@ public class BrewerEntityToModelProfile : Profile
             .ForPath(x => x.CreatedDate,
                 o => o.MapFrom(y => y.CreatedDate))
             .ForPath(x => x.ModifiedDate,
-                o => o.MapFrom(y => y.ModifiedDate));
+                o => o.MapFrom(y => y.ModifiedDate))
+            .ReverseMap();
     }
 }

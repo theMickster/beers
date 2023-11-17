@@ -2,14 +2,17 @@
 using Beers.Application.Data;
 using Beers.Application.Exceptions;
 using Beers.Application.Interfaces.Data;
+using Beers.Application.Validators.Brewer;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;
 using Beers.Common.Settings;
 using Beers.Domain.Profiles;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -116,7 +119,7 @@ internal static class RegisterServices
         });
 
         builder.Services.AddAutoMapper(typeof(BeerTypeEntityToModelProfile).GetTypeInfo().Assembly);
-
+        builder.Services.AddValidatorsFromAssemblyContaining<CreateBrewerValidator>();
         return builder;
     }
 
@@ -149,22 +152,17 @@ internal static class RegisterServices
 #endif
             });
         
-        builder.Services.AddDbContext<BeersDbContext>(
-            options =>
-            {
-                options.UseCosmos(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosSettings.DatabaseName);
+        builder.Services.AddDbContextFactory<BeersDbContext>((serviceProvider, options) =>
+        {
+            options.UseCosmos(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosSettings.DatabaseName);
 #if DEBUG
-                options.EnableSensitiveDataLogging();
+            options.EnableSensitiveDataLogging();
 #endif
-            });
+        });
 
         builder.Services.AddScoped<IBeersMetadataDbContext>(
             provider => provider.GetService<BeersMetadataDbContext>() ??
                         throw new ConfigurationException("The BeersMetadataDbContext is not properly registered in the correct order."));
-
-        builder.Services.AddScoped<IBeersDbContext>(
-            provider => provider.GetService<BeersDbContext>() ??
-                        throw new ConfigurationException("The BeersDbContext is not properly registered in the correct order."));
 
         return builder;
     }

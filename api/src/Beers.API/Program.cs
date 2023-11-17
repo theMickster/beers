@@ -67,3 +67,4 @@ app.SetupMiddleware()
 /// </remarks>
 [ExcludeFromCodeCoverage]
 public partial class Program { }
+
