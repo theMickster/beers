@@ -13,7 +13,7 @@ using Microsoft.Extensions.Options;
 namespace Beers.Application.Services;
 
 [ServiceLifetimeScoped]
-public sealed class ReadBeerTypeService : BaseReadBeerMetadataService<BeerTypeModel, BeerTypeEntity>, IReadBeerTypeService
+public sealed class ReadBeerTypeService : ReadMetadataBaseService<BeerTypeModel, BeerTypeEntity>, IReadBeerTypeService
 {
     public ReadBeerTypeService(
         IMapper mapper,

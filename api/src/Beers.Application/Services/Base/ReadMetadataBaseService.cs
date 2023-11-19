@@ -9,14 +9,14 @@ using Microsoft.Extensions.Options;
 
 namespace Beers.Application.Services.Base;
 
-public abstract class BaseReadBeerMetadataService<TModel, TEntity>: IBaseReadBeerMetadataService<TModel> where TModel : BaseMetaDataModel where TEntity : BaseMetaDataEntity
+public abstract class ReadMetadataBaseService<TModel, TEntity>: IReadMetadataBaseService<TModel> where TModel : MetadataBaseModel where TEntity : BaseMetaDataEntity
 {
     protected readonly IBeersMetadataDbContext MetadataDbContext;
     protected readonly IMemoryCache MemoryCache;
     protected readonly IMapper Mapper;
     protected readonly IOptionsSnapshot<CacheSettings> CacheSettings;
 
-    protected BaseReadBeerMetadataService(
+    protected ReadMetadataBaseService(
         string cacheKey, 
         IMapper mapper, 
         IBeersMetadataDbContext metadataDbContext, 

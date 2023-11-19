@@ -3,6 +3,6 @@ using Beers.Domain.Models;
 
 namespace Beers.Application.Interfaces.Services;
 
-public interface IReadBreweryTypeService : IBaseReadBeerMetadataService<BreweryTypeModel>
+public interface IReadBreweryTypeService : IReadMetadataBaseService<BreweryTypeModel>
 {
 }

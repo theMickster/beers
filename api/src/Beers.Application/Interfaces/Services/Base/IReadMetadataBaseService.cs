@@ -2,7 +2,7 @@
 
 namespace Beers.Application.Interfaces.Services.Base;
 
-public interface IBaseReadBeerMetadataService<out T> where T : BaseMetaDataModel
+public interface IReadMetadataBaseService<out T> where T : MetadataBaseModel
 {
     IReadOnlyList<T> GetList();
 }
