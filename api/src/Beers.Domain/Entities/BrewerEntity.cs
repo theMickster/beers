@@ -22,5 +22,5 @@ public class BrewerEntity : BaseBeerEntity
 
     public DateTime ModifiedDate { get; set; }
 
-    public SlimBreweryTypeEntity BreweryType { get; set; }
+    public BreweryTypeSlimEntity BreweryType { get; set; }
 }

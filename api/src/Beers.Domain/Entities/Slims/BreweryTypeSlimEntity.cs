@@ -2,6 +2,6 @@
 
 namespace Beers.Domain.Entities.Slims;
 
-public sealed class SlimBreweryTypeEntity : BaseSlimEntity
+public sealed class BreweryTypeSlimEntity : BaseSlimEntity
 {
 }

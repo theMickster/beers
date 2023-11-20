@@ -10,7 +10,7 @@ public class BrewerEntityToModelProfile : Profile
 {
     public BrewerEntityToModelProfile()
     {
-        CreateMap<SlimBreweryTypeEntity, BreweryTypeModel>()
+        CreateMap<BreweryTypeSlimEntity, BreweryTypeModel>()
             .ForPath(x => x.Id,
                 o => o.MapFrom(y => y.MetadataId))
             .ForPath(x => x.Name,
