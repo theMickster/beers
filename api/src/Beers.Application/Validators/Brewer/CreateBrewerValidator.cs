@@ -53,9 +53,9 @@ public class CreateBrewerValidator : AbstractValidator<CreateBrewerModel>
 
     public static string MessageHeadquartersLength => "Headquarters cannot be longer than 256 characters";
 
-    public static string MessageWebsiteEmpty => "Headquarters cannot be null, empty, or whitespace";
+    public static string MessageWebsiteEmpty => "Website cannot be null, empty, or whitespace";
 
-    public static string MessageWebsiteLength => "Headquarters cannot be longer than 500 characters";
+    public static string MessageWebsiteLength => "Website cannot be longer than 500 characters";
 
     public static string MessageFoundedInBoundary => "Founded In year cannot before 1500 and after the current year.";
 

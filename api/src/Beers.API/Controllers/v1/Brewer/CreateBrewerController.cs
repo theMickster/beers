@@ -2,6 +2,7 @@
 using Beers.Application.Interfaces.Services;
 using Beers.Domain.Models.Brewer;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Beers.API.Controllers.v1.Brewer;
 
@@ -35,11 +36,16 @@ public class CreateBrewerController : ControllerBase
     [HttpPost]
     [Produces(typeof(ReadBrewerModel))]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> PostAsync([FromBody] CreateBrewerModel? inputModel)
+    public async Task<IActionResult> PostAsync([FromBody][Required] CreateBrewerModel? inputModel)
     {
         if (inputModel == null)
         {
             return BadRequest("The input model cannot be null.");
+        }
+
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
         }
 
         var (model, errors) = await _createBrewerService.CreateAsync(inputModel).ConfigureAwait(false);
