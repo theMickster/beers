@@ -27,9 +27,20 @@ public class BeersDbContext : DbContext, IBeersDbContext
         if (createResponse.StatusCode != HttpStatusCode.Created)
         {
             // Log a special message here....
-            
         }
         return createResponse.StatusCode;
+    }
+
+    public async Task<HttpStatusCode> UpdateBreweryEntityAsync(
+        CosmosClient cosmosDbClient,
+        CosmosDbConnectionSettings cosmosDbSettings, 
+        BrewerEntity brewerEntity)
+    {
+        var container = cosmosDbClient.GetDatabase(cosmosDbSettings.DatabaseName).GetContainer(CosmosContainerConstants.MainContainer);
+        var partitionKey = new PartitionKeyBuilder().Add(brewerEntity.Id.ToString()).Add(PartitionKeyConstants.Brewer).Build();
+        var upsertResponse = await container.ReplaceItemAsync(brewerEntity, brewerEntity.Id.ToString(), partitionKey);
+
+        return upsertResponse.StatusCode;
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

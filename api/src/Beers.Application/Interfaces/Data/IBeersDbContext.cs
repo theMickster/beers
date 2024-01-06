@@ -11,4 +11,6 @@ public interface IBeersDbContext
     DbSet<BrewerEntity> BrewerEntities { get; set; }
 
     Task<HttpStatusCode> AddBreweryEntityAsync(CosmosClient cosmosDbClient, CosmosDbConnectionSettings cosmosDbSettings, BrewerEntity brewerEntity);
+
+    Task<HttpStatusCode> UpdateBreweryEntityAsync(CosmosClient cosmosDbClient, CosmosDbConnectionSettings cosmosDbSettings, BrewerEntity brewerEntity);
 }

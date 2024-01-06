@@ -36,20 +36,8 @@ public class ConfigurationException : Exception
         Exception innerException) : base(message, innerException)
         => _errorMessages = errorMessages;
 
-    protected ConfigurationException(SerializationInfo info, StreamingContext context) : base(info, context)
-    {
-        _errorMessages = info.GetValue(nameof(_errorMessages), typeof(IEnumerable<string>)) as IEnumerable<string> ?? Array.Empty<string>();
-    }
-
     #endregion Constructors
 
-
-    public override void GetObjectData(SerializationInfo info, StreamingContext context)
-    {
-        base.GetObjectData(info, context);
-
-        info.AddValue(nameof(_errorMessages), _errorMessages);
-    }
 
     public override string ToString()
     {
