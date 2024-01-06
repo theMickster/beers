@@ -1,6 +1,4 @@
-﻿using Beers.Common.Settings;
-using Beers.Domain.Entities;
-using Microsoft.Azure.Cosmos;
+﻿using Beers.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 
@@ -10,7 +8,9 @@ public interface IBeersDbContext
 {
     DbSet<BrewerEntity> BrewerEntities { get; set; }
 
-    Task<HttpStatusCode> AddBreweryEntityAsync(CosmosClient cosmosDbClient, CosmosDbConnectionSettings cosmosDbSettings, BrewerEntity brewerEntity);
+    Task<HttpStatusCode> AddBreweryEntityAsync(BrewerEntity brewerEntity);
 
-    Task<HttpStatusCode> UpdateBreweryEntityAsync(CosmosClient cosmosDbClient, CosmosDbConnectionSettings cosmosDbSettings, BrewerEntity brewerEntity);
+    Task<HttpStatusCode> UpdateBreweryEntityAsync(BrewerEntity brewerEntity);
+
+    Task<HttpStatusCode> DeleteBreweryEntityAsync(Guid brewerId);
 }

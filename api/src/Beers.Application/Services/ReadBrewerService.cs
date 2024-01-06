@@ -8,16 +8,11 @@ using Microsoft.EntityFrameworkCore;
 namespace Beers.Application.Services;
 
 [ServiceLifetimeScoped]
-public sealed class ReadBrewerService : IReadBrewerService
+public sealed class ReadBrewerService(IMapper mapper, IDbContextFactory<BeersDbContext> dbContextFactory)
+    : IReadBrewerService
 {
-    private readonly IMapper _mapper;
-    private readonly IDbContextFactory<BeersDbContext> _dbContextFactory;
-
-    public ReadBrewerService(IMapper mapper, IDbContextFactory<BeersDbContext> dbContextFactory)
-    {
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
-    }
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+    private readonly IDbContextFactory<BeersDbContext> _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
 
     public async Task<IReadOnlyList<ReadBrewerModel>> GetListAsync()
     {

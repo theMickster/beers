@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -158,7 +157,7 @@ internal static class RegisterServices
 #if DEBUG
             options.EnableSensitiveDataLogging();
 #endif
-        });
+        }, ServiceLifetime.Scoped);
 
         builder.Services.AddScoped<IBeersMetadataDbContext>(
             provider => provider.GetService<BeersMetadataDbContext>() ??

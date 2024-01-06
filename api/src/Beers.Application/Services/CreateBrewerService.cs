@@ -3,36 +3,25 @@ using Beers.Application.Data;
 using Beers.Application.Interfaces.Services;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;
-using Beers.Common.Settings;
 using Beers.Domain.Entities;
 using Beers.Domain.Models.Brewer;
 using FluentValidation;
 using FluentValidation.Results;
-using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using System.Net;
 
 namespace Beers.Application.Services;
 
 [ServiceLifetimeScoped]
-public sealed class CreateBrewerService : ICreateBrewerService
+public sealed class CreateBrewerService(
+    IMapper mapper,
+    IDbContextFactory<BeersDbContext> dbContextFactory,
+    IValidator<CreateBrewerModel> validator)
+    : ICreateBrewerService
 {
-    private readonly IMapper _mapper;
-    private readonly IDbContextFactory<BeersDbContext> _dbContextFactory;
-    private readonly IValidator<CreateBrewerModel> _validator;
-    private readonly CosmosClient _cosmosClient;
-    private readonly IOptionsSnapshot<CosmosDbConnectionSettings> _cosmosDbSettings;
-
-    public CreateBrewerService( IMapper mapper, IDbContextFactory<BeersDbContext> dbContextFactory, CosmosClient cosmosClient, IValidator<CreateBrewerModel> validator,
-        IOptionsSnapshot<CosmosDbConnectionSettings> cosmosDbSettings)
-    {
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
-        _cosmosClient = cosmosClient ?? throw new ArgumentNullException(nameof(cosmosClient));
-        _validator = validator ?? throw new ArgumentNullException(nameof(validator));
-        _cosmosDbSettings = cosmosDbSettings ?? throw new ArgumentNullException(nameof(cosmosDbSettings));
-    }
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+    private readonly IDbContextFactory<BeersDbContext> _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
+    private readonly IValidator<CreateBrewerModel> _validator = validator ?? throw new ArgumentNullException(nameof(validator));
 
     /// <summary>
     /// Performs process of creating a new brewer.
@@ -62,7 +51,7 @@ public sealed class CreateBrewerService : ICreateBrewerService
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
 
-        var result = await context.AddBreweryEntityAsync(_cosmosClient, _cosmosDbSettings.Value, inputEntity);
+        var result = await context.AddBreweryEntityAsync(inputEntity);
 
         if (result != HttpStatusCode.Created)
         {
