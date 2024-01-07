@@ -6,7 +6,7 @@ namespace Beers.Application.Interfaces.Services;
 public interface IUpdateBrewerService
 {
     /// <summary>
-    /// Performs process of updating a new brewer.
+    /// Performs process of updating a brewer.
     /// </summary>
     /// <param name="inputModel">the brewer to update</param>
     /// <returns></returns>
