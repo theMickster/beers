@@ -8,10 +8,13 @@ using Beers.Common.Constants;
 using Beers.Common.Settings;
 using Beers.Domain.Profiles;
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -26,6 +29,7 @@ internal static class RegisterServices
         builder.Services.AddControllers(options =>
             {
                 options.ReturnHttpNotAcceptable = true;
+                options.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
             })
             .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
             .AddXmlSerializerFormatters()
@@ -202,4 +206,20 @@ internal static class RegisterServices
         });
         return builder;
     }
+
+    internal static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
+    {
+        var builder = new ServiceCollection()
+            .AddLogging()
+            .AddMvc()
+            .AddNewtonsoftJson()
+            .Services.BuildServiceProvider();
+
+        return builder
+            .GetRequiredService<IOptions<MvcOptions>>()
+            .Value
+            .InputFormatters
+            .OfType<NewtonsoftJsonPatchInputFormatter>()
+            .First();
     }
+}

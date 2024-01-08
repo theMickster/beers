@@ -21,7 +21,7 @@ public sealed class UpdateBrewerService(
     private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     private readonly IDbContextFactory<BeersDbContext> _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
     private readonly IValidator<UpdateBrewerModel> _validator = validator ?? throw new ArgumentNullException(nameof(validator));
-
+    
     /// <summary>
     /// Performs process of updating a brewer.
     /// </summary>
@@ -29,10 +29,7 @@ public sealed class UpdateBrewerService(
     /// <returns></returns>
     public async Task<(ReadBrewerModel, List<ValidationFailure>)> UpdateAsync(UpdateBrewerModel inputModel)
     {
-        if (inputModel == null)
-        {
-            throw new ArgumentNullException(nameof(inputModel));
-        }
+        ArgumentNullException.ThrowIfNull(inputModel);
 
         var validationResult = await _validator.ValidateAsync(inputModel);
 
