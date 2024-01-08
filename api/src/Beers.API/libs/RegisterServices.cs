@@ -2,14 +2,19 @@
 using Beers.Application.Data;
 using Beers.Application.Exceptions;
 using Beers.Application.Interfaces.Data;
+using Beers.Application.Validators.Brewer;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;
 using Beers.Common.Settings;
 using Beers.Domain.Profiles;
+using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -24,6 +29,7 @@ internal static class RegisterServices
         builder.Services.AddControllers(options =>
             {
                 options.ReturnHttpNotAcceptable = true;
+                options.InputFormatters.Insert(0, GetJsonPatchInputFormatter());
             })
             .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
             .AddXmlSerializerFormatters()
@@ -116,7 +122,7 @@ internal static class RegisterServices
         });
 
         builder.Services.AddAutoMapper(typeof(BeerTypeEntityToModelProfile).GetTypeInfo().Assembly);
-
+        builder.Services.AddValidatorsFromAssemblyContaining<CreateBrewerValidator>();
         return builder;
     }
 
@@ -148,6 +154,14 @@ internal static class RegisterServices
                 options.EnableSensitiveDataLogging();
 #endif
             });
+        
+        builder.Services.AddDbContextFactory<BeersDbContext>((serviceProvider, options) =>
+        {
+            options.UseCosmos(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosSettings.DatabaseName);
+#if DEBUG
+            options.EnableSensitiveDataLogging();
+#endif
+        }, ServiceLifetime.Scoped);
 
         builder.Services.AddScoped<IBeersMetadataDbContext>(
             provider => provider.GetService<BeersMetadataDbContext>() ??
@@ -192,4 +206,20 @@ internal static class RegisterServices
         });
         return builder;
     }
+
+    internal static NewtonsoftJsonPatchInputFormatter GetJsonPatchInputFormatter()
+    {
+        var builder = new ServiceCollection()
+            .AddLogging()
+            .AddMvc()
+            .AddNewtonsoftJson()
+            .Services.BuildServiceProvider();
+
+        return builder
+            .GetRequiredService<IOptions<MvcOptions>>()
+            .Value
+            .InputFormatters
+            .OfType<NewtonsoftJsonPatchInputFormatter>()
+            .First();
     }
+}

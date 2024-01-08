@@ -1,8 +1,8 @@
-﻿using Beers.Domain.Models;
+﻿using Beers.Application.Interfaces.Services.Base;
+using Beers.Domain.Models;
 
 namespace Beers.Application.Interfaces.Services;
 
-public interface IReadBeerCategoryService
+public interface IReadBeerCategoryService : IReadMetadataBaseService<BeerCategoryModel>
 {
-    IReadOnlyList<BeerCategoryModel> GetList();
 }

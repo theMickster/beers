@@ -1,6 +1,6 @@
 ﻿namespace Beers.Domain.Models;
 
-public abstract class BaseMetaDataModel
+public abstract class MetadataBaseModel
 {
     public Guid Id { get; set; }
 

@@ -1,5 +1,5 @@
 ﻿namespace Beers.Domain.Models;
 
-public sealed class BeerStyleModel : BaseMetaDataModel
+public sealed class BeerStyleModel : MetadataBaseModel
 {
 }

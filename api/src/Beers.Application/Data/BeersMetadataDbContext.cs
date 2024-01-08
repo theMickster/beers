@@ -1,6 +1,7 @@
 ﻿using Beers.Application.Interfaces.Data;
 using Beers.Common.Constants;
 using Beers.Domain.Entities;
+using Beers.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -26,25 +27,26 @@ public class BeersMetadataDbContext : DbContext, IBeersMetadataDbContext
 
         var beerType = modelBuilder.Entity<BeerTypeEntity>();
         BeerMetadataConfiguring(beerType);
-        beerType.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BeerType);
+        beerType.HasDiscriminator(x => x.TypeName).HasValue(PartitionKeyConstants.BeerType);
 
         var beerStyle = modelBuilder.Entity<BeerStyleEntity>();
         BeerMetadataConfiguring(beerStyle);
-        beerStyle.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BeerStyle);
+        beerStyle.HasDiscriminator(x => x.TypeName).HasValue(PartitionKeyConstants.BeerStyle);
         
         var beerCategory = modelBuilder.Entity<BeerCategoryEntity>();
         BeerMetadataConfiguring(beerCategory);
-        beerCategory.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BeerCategory);
+        beerCategory.HasDiscriminator(x => x.TypeName).HasValue(PartitionKeyConstants.BeerCategory);
 
         var breweryTypes = modelBuilder.Entity<BreweryTypeEntity>();
         BeerMetadataConfiguring(breweryTypes);
-        breweryTypes.HasDiscriminator(x => x.TypeName).HasValue(BeerPartitionKeyConstants.BreweryType);
+        breweryTypes.HasDiscriminator(x => x.TypeName).HasValue(PartitionKeyConstants.BreweryType);
     }
 
     private static void BeerMetadataConfiguring<T>(EntityTypeBuilder<T> entityTypeBuilder) where T : BaseMetaDataEntity
     {
         entityTypeBuilder.Property(x => x.Id).ToJsonProperty("id");
         entityTypeBuilder.ToContainer(CosmosContainerConstants.MetadataContainer);
+        entityTypeBuilder.HasPartitionKey(x => x.ApplicationName);
         entityTypeBuilder.HasPartitionKey(x => x.TypeId);
         entityTypeBuilder.HasKey(x => x.Id);
     }

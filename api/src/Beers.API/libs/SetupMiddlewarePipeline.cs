@@ -20,7 +20,7 @@ internal static class SetupMiddlewarePipeline
             app.UseDeveloperExceptionPage();
         }
 
-        app.ConfigureApplicatonHeaders(isDevelopment, _swaggerNonceString);
+        app.ConfigureApplicationHeaders(isDevelopment, _swaggerNonceString);
 
         app.UseCors();
 

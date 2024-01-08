@@ -34,7 +34,7 @@ builder.RegisterCommonSettings();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("BeersApiCorsPolicy",
+    options.AddPolicy("FeatureFlagApiCorsPolicy",
         builder => builder
             .SetIsOriginAllowed((host) => true)
             .AllowAnyMethod()
@@ -67,3 +67,4 @@ app.SetupMiddleware()
 /// </remarks>
 [ExcludeFromCodeCoverage]
 public partial class Program { }
+

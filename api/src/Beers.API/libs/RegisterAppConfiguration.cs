@@ -2,7 +2,6 @@
 using Beers.Application.Exceptions;
 using Beers.Common.Helpers;
 
-[assembly: InternalsVisibleTo("Beers.UnitTests")]
 namespace Beers.API.libs;
 
 [ExcludeFromCodeCoverage]
