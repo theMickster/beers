@@ -26,6 +26,8 @@ public class BeersDbContext(
 
     public DbSet<BrewerEntity> BrewerEntities { get; set; } = null!;
 
+    public DbSet<BeerEntity> BeerEntities { get; set; } = null;
+
     #region Pubic Methods
 
     public async Task<HttpStatusCode> AddBreweryEntityAsync(BrewerEntity brewerEntity)
@@ -66,6 +68,10 @@ public class BeersDbContext(
         BeerConfiguring(brewerEntity);
         brewerEntity.HasDiscriminator(x => x.EntityType).HasValue(PartitionKeyConstants.Brewer);
         brewerEntity.OwnsOne(x => x.BreweryType);
+
+        var beerEntity = modelBuilder.Entity<BeerEntity>();
+        BeerConfiguring(beerEntity);
+        beerEntity.HasDiscriminator(x => x.EntityType).HasValue(PartitionKeyConstants.Beer);
     }
 
     #endregion Protected Methods
