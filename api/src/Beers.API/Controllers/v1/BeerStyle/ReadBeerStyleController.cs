@@ -1,6 +1,7 @@
 ﻿using Asp.Versioning;
 using Beers.Application.Interfaces.Services;
 using Beers.Domain.Models;
+using Beers.Domain.Models.Metadata;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Beers.API.Controllers.v1.BeerStyle;

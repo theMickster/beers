@@ -1,4 +1,4 @@
-﻿namespace Beers.Domain.Models;
+﻿namespace Beers.Domain.Models.Base;
 
 public abstract class MetadataBaseModel
 {

@@ -14,7 +14,10 @@ public sealed class ReadBeerService(IMapper mapper, IDbContextFactory<BeersDbCon
     private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     private readonly IDbContextFactory<BeersDbContext> _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
 
-
+    /// <summary>
+    /// Retrieve a list of beers
+    /// </summary>
+    /// <returns>A <see cref="List{T}"/> where T is a <see cref="ReadBeerModel"/></returns>
     public async Task<IReadOnlyList<ReadBeerModel>> GetListAsync()
     {
         await using var context = await _dbContextFactory.CreateDbContextAsync();
@@ -22,6 +25,11 @@ public sealed class ReadBeerService(IMapper mapper, IDbContextFactory<BeersDbCon
         return _mapper.Map<List<ReadBeerModel>>(entities).AsReadOnly();
     }
 
+    /// <summary>
+    /// Retrieve a single beer by its unique identifier
+    /// </summary>
+    /// <param name="beerId">the unique identifier for a given record</param>
+    /// <returns>A <see cref="ReadBeerModel"/> when the id matches, otherwise null</returns>
     public async Task<ReadBeerModel?> GetByIdAsync(Guid beerId)
     {
         await using var context = await _dbContextFactory.CreateDbContextAsync();

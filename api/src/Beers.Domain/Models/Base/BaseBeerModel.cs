@@ -1,4 +1,6 @@
-﻿namespace Beers.Domain.Models.Base;
+﻿using Beers.Domain.Models.Beer;
+
+namespace Beers.Domain.Models.Base;
 
 public abstract class BaseBeerModel
 {
@@ -11,4 +13,6 @@ public abstract class BaseBeerModel
     public string Image { get; set; } = string.Empty;
 
     public string Sku { get; set; } = string.Empty;
+
+    public List<PriceModel>? Pricing { get; set; }
 }

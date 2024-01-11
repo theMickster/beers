@@ -1,4 +1,6 @@
-﻿namespace Beers.Domain.Models.Base;
+﻿using Beers.Domain.Models.Metadata;
+
+namespace Beers.Domain.Models.Base;
 
 public abstract class BaseBrewerModel
 {

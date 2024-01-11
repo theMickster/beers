@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Beers.Domain.Entities;
 using Beers.Domain.Models;
+using Beers.Domain.Models.Metadata;
 
 namespace Beers.Domain.Profiles;
 

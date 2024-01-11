@@ -72,6 +72,7 @@ public class BeersDbContext(
         var beerEntity = modelBuilder.Entity<BeerEntity>();
         BeerConfiguring(beerEntity);
         beerEntity.HasDiscriminator(x => x.EntityType).HasValue(PartitionKeyConstants.Beer);
+        beerEntity.OwnsMany(x => x.Pricing);
     }
 
     #endregion Protected Methods

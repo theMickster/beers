@@ -25,7 +25,11 @@ public class BeerEntityToModelProfile : Profile
                 o => o.MapFrom(y => y.CreatedDate))
             .ForPath(x => x.ModifiedDate,
                 o => o.MapFrom(y => y.ModifiedDate))
+            .ForMember(x => x.Pricing, 
+                o => o.MapFrom(y => y.Pricing))
             .ReverseMap();
+
+        CreateMap<PriceEntity, PriceModel>();
 
     }
 }
