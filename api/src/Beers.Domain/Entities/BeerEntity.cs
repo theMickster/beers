@@ -1,6 +1,6 @@
 ﻿using Beers.Common.Constants;
 using Beers.Domain.Entities.Base;
-using Newtonsoft.Json;
+using Beers.Domain.Entities.Slims;
 
 namespace Beers.Domain.Entities;
 
@@ -16,9 +16,22 @@ public class BeerEntity : BaseBeerEntity
 
     public string Sku { get; set; } = string.Empty;
 
+    public BrewerSlimEntity Brewer { get; set; }
     
+    public RatingEntity Rating { get; set; }
+    
+    public BeerTypeSlimEntity BeerType { get; set; }
+
+    public List<BeerStyleSlimEntity> BeerStyles { get; set; }
+
+    public List<BeerCategorySlimEntity> BeerCategories { get; set; }
+
     public List<PriceEntity> Pricing { get; set; }
     
+    public string CreatedBy { get; set; }
+
+    public string ModifiedBy { get; set; }
+
     public DateTime CreatedDate { get; set; }
 
     public DateTime ModifiedDate { get; set; }
