@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Beers.Domain.Entities;
+using Beers.Domain.Entities.Base;
 using Beers.Domain.Models.Beer;
+using Beers.Domain.Models.Metadata;
 
 namespace Beers.Domain.Profiles;
 
@@ -27,9 +29,12 @@ public class BeerEntityToModelProfile : Profile
                 o => o.MapFrom(y => y.ModifiedDate))
             .ForMember(x => x.Pricing, 
                 o => o.MapFrom(y => y.Pricing))
+            .ForMember(x => x.Brewer,
+                o => o.MapFrom(y => y.Brewer))
             .ReverseMap();
 
         CreateMap<PriceEntity, PriceModel>();
+        CreateMap<BrewerSlimEntity, BrewerModel>();
 
     }
 }

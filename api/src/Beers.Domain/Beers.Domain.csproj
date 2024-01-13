@@ -21,8 +21,4 @@
 	  <ProjectReference Include="..\Beers.Common\Beers.Common.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Models\Metadata\" />
-	</ItemGroup>
-
 </Project>
