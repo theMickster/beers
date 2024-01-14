@@ -28,10 +28,32 @@ internal class BeerEntityConfiguration : BaseEntityConfiguration, IEntityTypeCon
             buildAction.Property(x => x.Website).ToJsonProperty("website");
         });
 
+        builder.OwnsOne(x => x.Rating, buildAction =>
+        {
+            buildAction.ToJsonProperty("Rating");
+            buildAction.Property(x => x.Average).ToJsonProperty("average");
+            buildAction.Property(x => x.ReviewCount).ToJsonProperty("reviews");
+        });
 
-        //beerEntity.OwnsOne(x => x.Rating);
-        //beerEntity.OwnsOne(x => x.BeerType);
-        //beerEntity.OwnsMany(x => x.BeerStyles);
-        //beerEntity.OwnsMany(x => x.BeerCategories);
+        builder.OwnsOne(x => x.BeerType, buildAction =>
+        {
+            buildAction.ToJsonProperty("BeerType");
+            buildAction.Property(x => x.MetadataId).ToJsonProperty("metadataId");
+            buildAction.Property(x => x.Name).ToJsonProperty("name");
+        });
+
+        builder.OwnsMany(x => x.BeerStyles, buildAction =>
+        {
+            buildAction.ToJsonProperty("BeerStyles");
+            buildAction.Property(x => x.MetadataId).ToJsonProperty("metadataId");
+            buildAction.Property(x => x.Name).ToJsonProperty("name");
+        });
+
+        builder.OwnsMany(x => x.BeerCategories, buildAction =>
+        {
+            buildAction.ToJsonProperty("BeerCategories");
+            buildAction.Property(x => x.MetadataId).ToJsonProperty("metadataId");
+            buildAction.Property(x => x.Name).ToJsonProperty("name");
+        });
     }
 }

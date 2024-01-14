@@ -24,7 +24,7 @@ public class BeersDbContext(
 
     public DbSet<BrewerEntity> BrewerEntities { get; set; } = null!;
 
-    public DbSet<BeerEntity> BeerEntities { get; set; } = null;
+    public DbSet<BeerEntity> BeerEntities { get; set; } = null!;
 
     #region Pubic Methods
 

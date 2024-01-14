@@ -18,13 +18,13 @@ public class BeerEntity : BaseBeerEntity
 
     public BrewerSlimEntity Brewer { get; set; }
     
-    //public RatingEntity Rating { get; set; }
+    public RatingEntity Rating { get; set; }
     
-    //public BeerTypeSlimEntity BeerType { get; set; }
+    public BeerTypeSlimEntity BeerType { get; set; }
 
-    //public List<BeerStyleSlimEntity> BeerStyles { get; set; }
+    public List<BeerStyleSlimEntity> BeerStyles { get; set; }
 
-    //public List<BeerCategorySlimEntity> BeerCategories { get; set; }
+    public List<BeerCategorySlimEntity> BeerCategories { get; set; }
 
     public List<PriceEntity> Pricing { get; set; }
     

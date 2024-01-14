@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Base;
+using Beers.Domain.Entities.Slims;
 using Beers.Domain.Models.Beer;
 using Beers.Domain.Models.Metadata;
 
@@ -27,14 +28,27 @@ public class BeerEntityToModelProfile : Profile
                 o => o.MapFrom(y => y.CreatedDate))
             .ForPath(x => x.ModifiedDate,
                 o => o.MapFrom(y => y.ModifiedDate))
-            .ForMember(x => x.Pricing, 
-                o => o.MapFrom(y => y.Pricing))
-            .ForMember(x => x.Brewer,
-                o => o.MapFrom(y => y.Brewer))
             .ReverseMap();
 
         CreateMap<PriceEntity, PriceModel>();
-        CreateMap<BrewerSlimEntity, BrewerModel>();
+        
+        CreateMap<BrewerSlimEntity, BrewerModel>()
+            .ForMember(x => x.Id, 
+                o => o.MapFrom(y => y.BrewerId));
+        
+        CreateMap<RatingEntity, RatingModel>();
+
+        CreateMap<BeerTypeSlimEntity, BeerTypeModel>()
+            .ForMember(x => x.Id,
+                o => o.MapFrom(y => y.MetadataId));
+
+        CreateMap<BeerStyleSlimEntity, BeerStyleModel>()
+            .ForMember(x => x.Id,
+                o => o.MapFrom(y => y.MetadataId));
+
+        CreateMap<BeerCategorySlimEntity, BeerCategoryModel>()
+            .ForMember(x => x.Id,
+                o => o.MapFrom(y => y.MetadataId));
 
     }
 }

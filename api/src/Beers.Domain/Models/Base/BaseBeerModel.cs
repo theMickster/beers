@@ -17,6 +17,14 @@ public abstract class BaseBeerModel
 
     public BrewerModel Brewer { get; set; }
 
+    public RatingModel Rating { get; set; }
+
     public List<PriceModel>? Pricing { get; set; }
     
+    public BeerTypeModel BeerType { get; set; }
+
+    public List<BeerCategoryModel> BeerCategories { get; set; }
+
+    public List<BeerStyleModel> BeerStyles { get; set; }
+
 }

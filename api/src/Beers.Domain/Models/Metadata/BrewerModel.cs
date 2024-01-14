@@ -2,7 +2,7 @@
 
 public sealed class BrewerModel
 {
-    public Guid BrewerId { get; set; } = Guid.NewGuid();
+    public Guid Id { get; set; } = Guid.NewGuid();
 
     public string Name { get; set; } = string.Empty;
 

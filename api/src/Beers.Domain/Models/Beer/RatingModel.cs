@@ -1,5 +1,5 @@
-﻿namespace Beers.Domain.Entities;
-public sealed class RatingEntity
+﻿namespace Beers.Domain.Models.Beer;
+public sealed class RatingModel
 {
     public decimal Average { get; set; }
 
