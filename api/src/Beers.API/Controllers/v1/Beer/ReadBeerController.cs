@@ -1,7 +1,9 @@
 ﻿using Asp.Versioning;
 using Beers.Application.Interfaces.Services.Beer;
+using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Beers.API.Controllers.v1.Beer;
 
@@ -30,7 +32,7 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     [Produces(typeof(List<ReadBeerModel>))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IReadOnlyList<ReadBeerModel>>> GetBeers()
+    public async Task<ActionResult<IReadOnlyList<ReadBeerModel>>> GetBeersAsync()
     {
         var model = await readBeerService.GetListAsync();
         
@@ -43,11 +45,37 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     }
 
     /// <summary>
+    /// Retrieve a paged list of beers
+    /// </summary>
+    /// <returns>A list of beers</returns>
+    /// <response code="200">Returns the list of beers</response>
+    /// <response code="404">If the list of beers cannot be found</response>
+    [HttpPost]
+    [Route("search", Name = "SearchBeersAsync")]
+    [Produces(typeof(SearchResultBeerModel))]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<SearchResultBeerModel>> SearchBeersAsync(
+        [FromQuery] SearchBeerParameter parameters,
+        [FromBody][Required] SearchInputBeerModel searchModel )
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        
+        var result = await readBeerService.SearchAsync(parameters, searchModel);
+        
+        return Ok(result);
+    }
+
+
+    /// <summary>
     /// Retrieve a beer using its unique identifier
     /// </summary>
     /// <param name="beerId">the unique identifier</param>
     /// <returns>A single beer</returns>
-    [HttpGet("{beerId:guid}", Name = "GetBeerById")]
+    [HttpGet("{beerId:guid}", Name = "GetByIdAsync")]
     [Produces(typeof(ReadBeerModel))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

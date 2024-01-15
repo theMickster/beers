@@ -1,4 +1,5 @@
-﻿using Beers.Domain.Models.Beer;
+﻿using Beers.Common.Filtering.Beer;
+using Beers.Domain.Models.Beer;
 
 namespace Beers.Application.Interfaces.Services.Beer;
 
@@ -16,4 +17,11 @@ public interface IReadBeerService
     /// <param name="beerId">the unique identifier for a given record</param>
     /// <returns>A <see cref="ReadBeerModel"/> when the id matches, otherwise null</returns>
     Task<ReadBeerModel?> GetByIdAsync(Guid beerId);
+
+    /// <summary>
+    /// Search through the list of beers for desired results
+    /// </summary>
+    /// <param name="parameters">The search parameters</param>
+    /// <returns>A detailed result model of type <see cref="ReadBeerModel"/></returns>
+    Task<SearchResultBeerModel> SearchAsync(SearchBeerParameter parameters, SearchInputBeerModel searchModel);
 }
