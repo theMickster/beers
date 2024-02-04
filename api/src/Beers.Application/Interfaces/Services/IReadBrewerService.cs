@@ -1,5 +1,4 @@
-﻿using Beers.Domain.Models;
-using Beers.Domain.Models.Brewer;
+﻿using Beers.Domain.Models.Brewer;
 
 namespace Beers.Application.Interfaces.Services;
 

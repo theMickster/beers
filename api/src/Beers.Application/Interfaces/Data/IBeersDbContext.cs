@@ -8,6 +8,8 @@ public interface IBeersDbContext
 {
     DbSet<BrewerEntity> BrewerEntities { get; set; }
 
+    DbSet<BeerEntity> BeerEntities { get; set; }
+
     Task<HttpStatusCode> AddBreweryEntityAsync(BrewerEntity brewerEntity);
 
     Task<HttpStatusCode> UpdateBreweryEntityAsync(BrewerEntity brewerEntity);

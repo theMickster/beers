@@ -6,17 +6,15 @@ namespace Beers.Domain.Entities;
 
 public class BrewerEntity : BaseBeerEntity
 {
-//    public Guid id { get; set; }
-
     public string EntityType = PartitionKeyConstants.Brewer;
 
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
-    public int FoundedIn { get; set; }
+    public int FoundedIn { get; set; } = 2000;
 
-    public string Headquarters { get; set; }
+    public string Headquarters { get; set; } = string.Empty;
 
-    public string Website { get; set; }
+    public string Website { get; set; } = string.Empty;
 
     public DateTime CreatedDate { get; set; }
 

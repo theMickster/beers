@@ -28,4 +28,6 @@ public static class PartitionKeyConstants
 
     public static readonly string Brewer = "Brewer";
 
+    public static readonly string Beer = "Beer";
+
 }

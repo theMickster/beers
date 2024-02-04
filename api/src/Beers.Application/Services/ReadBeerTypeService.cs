@@ -7,6 +7,7 @@ using Beers.Common.Constants;
 using Beers.Common.Settings;
 using Beers.Domain.Entities;
 using Beers.Domain.Models;
+using Beers.Domain.Models.Metadata;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 

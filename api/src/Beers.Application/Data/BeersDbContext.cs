@@ -2,10 +2,8 @@
 using Beers.Common.Constants;
 using Beers.Common.Settings;
 using Beers.Domain.Entities;
-using Beers.Domain.Entities.Base;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
@@ -25,6 +23,8 @@ public class BeersDbContext(
     private readonly IOptionsSnapshot<CosmosDbConnectionSettings> _cosmosDbSettings = cosmosDbSettings ?? throw new ArgumentNullException(nameof(cosmosDbSettings));
 
     public DbSet<BrewerEntity> BrewerEntities { get; set; } = null!;
+
+    public DbSet<BeerEntity> BeerEntities { get; set; } = null!;
 
     #region Pubic Methods
 
@@ -60,25 +60,10 @@ public class BeersDbContext(
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        var assemblyWithConfigurations = GetType().Assembly;
         modelBuilder.HasDefaultContainer(CosmosContainerConstants.MainContainer);
-
-        var brewerEntity = modelBuilder.Entity<BrewerEntity>();
-        BeerConfiguring(brewerEntity);
-        brewerEntity.HasDiscriminator(x => x.EntityType).HasValue(PartitionKeyConstants.Brewer);
-        brewerEntity.OwnsOne(x => x.BreweryType);
+        modelBuilder.ApplyConfigurationsFromAssembly(assemblyWithConfigurations);
     }
 
     #endregion Protected Methods
-    
-    #region Private Methods
-
-    private static void BeerConfiguring<T>(EntityTypeBuilder<T> entityTypeBuilder) where T : BaseBeerEntity
-    {
-        entityTypeBuilder.Property(x => x.Id).ToJsonProperty("id");
-        entityTypeBuilder.ToContainer(CosmosContainerConstants.MainContainer);
-        entityTypeBuilder.HasPartitionKey(x => x.BrewerId);
-        entityTypeBuilder.HasKey(x => x.Id);
-    }
-
-    #endregion Private Methods
 }

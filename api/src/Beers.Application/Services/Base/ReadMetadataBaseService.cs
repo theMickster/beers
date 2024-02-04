@@ -4,6 +4,7 @@ using Beers.Application.Interfaces.Services.Base;
 using Beers.Common.Settings;
 using Beers.Domain.Entities.Base;
 using Beers.Domain.Models;
+using Beers.Domain.Models.Base;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 
