@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Beers.Common.Helpers;
 
 namespace Beers.API.libs;
 
@@ -128,8 +129,12 @@ internal static class RegisterServices
 
     internal static WebApplicationBuilder RegisterDataServices(this WebApplicationBuilder builder)
     {
-        var cosmosSettings = builder.Configuration.GetSection(CosmosDbConnectionSettings.SettingsRootName).Get<CosmosDbConnectionSettings>() ??
-                             throw new ConfigurationException("The required Configuration settings keys for the Azure Cosmos Db Settings are missing. Please verify configuration.");
+        var cosmosSettings = new CosmosDbConnectionSettings
+        {
+            Account = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbAccountUri),
+            DatabaseName = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbDatabaseName),
+            SecurityKey = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbSecurityKey)
+        };
         
         builder.Services.TryAddSingleton(factory =>
         {

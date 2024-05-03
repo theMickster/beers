@@ -1,5 +1,6 @@
 ﻿using Beers.Application.Exceptions;
 using Beers.Common.Constants;
+using Beers.Common.Helpers;
 using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using System.Diagnostics;
 
@@ -17,22 +18,14 @@ internal static class SetupLogging
             throw new ArgumentNullException(nameof(configuration));
         }
         
-        var appInsightsInstrumentationKey = configuration[ConfigurationConstants.AppInsightsInstrumentationKey] ?? string.Empty;
-        var appInsightsConnectionString = configuration[ConfigurationConstants.AppInsightsConnectionString] ?? string.Empty;
+        var appInsightsConnectionString = SecretHelper.GetSecret(AkvConstants.AzureApplicationInsightsConnectionString);
         var aspNetEnvironment = configuration.RetrieveEnvironment();
-
-        if (string.IsNullOrWhiteSpace(appInsightsInstrumentationKey))
-        {
-            throw new ConfigurationException(
-                $"The required Configuration value for {ConfigurationConstants.AppInsightsInstrumentationKey} is missing." +
-                "Please verify local or Azure resource configuration.");
-        }
-
+        
         if (string.IsNullOrWhiteSpace(appInsightsConnectionString))
         {
             throw new ConfigurationException(
                 $"The required Configuration value for {ConfigurationConstants.AppInsightsConnectionString} is missing." +
-                "Please verify local or Azure resource configuration.");
+                "Please verify local or Azure resource configuration. Please verify that Azure Key Vault is configured properly.");
         }
 
         if (string.IsNullOrWhiteSpace(aspNetEnvironment))
@@ -68,13 +61,13 @@ internal static class SetupLogging
             if (configuration.GetValue(LogSettingsConstants.UseDebugLog, false))
             {
                 logBuilder.AddDebug();
-                Trace.TraceInformation("Add Authenticator Logging:: Debug logging enabled");
+                Trace.TraceInformation("Add Beers API Logging:: Debug logging enabled");
             }
 
             if (configuration.GetValue(LogSettingsConstants.UseConsoleLog, false))
             {
                 logBuilder.AddConsole();
-                Trace.TraceInformation("Add Authenticator Logging:: Console logging enabled");
+                Trace.TraceInformation("Add Beers API Logging:: Console logging enabled");
             }
 
             var options = new ApplicationInsightsServiceOptions
