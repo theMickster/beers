@@ -11,6 +11,10 @@ builder.Configuration
     .AddEnvironmentVariables()
     .AddInMemoryCollection();
 
+builder.Configuration.RegisterApplicationConfiguration();
+
+builder.Services.AddLogging(builder.Configuration);
+
 builder.Services.AddOptions();
 
 builder.Services.AddMemoryCache();
@@ -25,10 +29,6 @@ builder.Services.AddHsts(options =>
 builder.Configuration
     .AddUserSecrets<Program>()
     .Build();
-
-builder.Configuration.RegisterApplicationConfiguration();
-
-builder.Services.AddLogging(builder.Configuration);
 
 builder.RegisterCommonSettings();
 
