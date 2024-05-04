@@ -155,9 +155,9 @@ internal static class RegisterServices
             options =>
             {
                 options.UseCosmos(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosSettings.DatabaseName );
-#if DEBUG
-                options.EnableSensitiveDataLogging();
-#endif
+//#if DEBUG
+//                options.EnableSensitiveDataLogging();
+//#endif
             });
         
         builder.Services.AddDbContextFactory<BeersDbContext>((serviceProvider, options) =>

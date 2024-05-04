@@ -26,5 +26,7 @@ public static class ValidatorConstants
 
     public static string BrewerMustExist => "Brewer does not exist for the supplied BrewerId";
 
-    public static string BeerTypeMustExist => "Beer Type is required";
+    public static string BeerTypeIsNull => "Beer Type is required";
+    
+    public static string BeerTypeMustExist => "Beer Type is invalid";
 }

@@ -23,12 +23,18 @@ public sealed class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
         _readBeerCategoryService = readBeerCategoryService;
         _readBeerStyleService = readBeerStyleService;
 
+        RuleFor(beer => beer.BeerTypeId)
+            .NotEmpty()
+            .WithMessage(ValidatorConstants.BeerTypeIsNull)
+            .WithErrorCode("Rule-01");
+
         RuleFor(beer => beer)
             .Must( (beer) => BeerTypeExistsAsync(beer.BeerTypeId))
             .When(x => x?.BeerTypeId != null)
             .WithMessage(ValidatorConstants.BeerTypeMustExist)
-            .WithErrorCode("Rule-01")
+            .WithErrorCode("Rule-02")
             .OverridePropertyName("BeerTypeId");
+        
 
     }
 
