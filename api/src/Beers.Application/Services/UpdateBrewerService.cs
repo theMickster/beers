@@ -33,7 +33,7 @@ public sealed class UpdateBrewerService(
 
         var validationResult = await _validator.ValidateAsync(inputModel);
 
-        if (validationResult.Errors.Any())
+        if (validationResult.Errors.Count != 0)
         {
             return (new ReadBrewerModel(), validationResult.Errors);
         }

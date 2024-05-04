@@ -30,14 +30,11 @@ public sealed class CreateBrewerService(
     /// <returns></returns>
     public async Task<(ReadBrewerModel, List<ValidationFailure>)> CreateAsync(CreateBrewerModel inputModel)
     {
-        if (inputModel == null)
-        {
-            throw new ArgumentNullException(nameof(inputModel));
-        }
+        ArgumentNullException.ThrowIfNull(inputModel);
 
         var validationResult = await _validator.ValidateAsync(inputModel);
 
-        if (validationResult.Errors.Any())
+        if (validationResult.Errors.Count != 0)
         {
             return (new ReadBrewerModel(), validationResult.Errors);
         }

@@ -28,6 +28,13 @@ public class BeersDbContext(
 
     #region Pubic Methods
 
+    public async Task<HttpStatusCode> AddBeerEntityAsync(BeerEntity entity)
+    {
+        var container = _cosmosClient.GetDatabase(_cosmosDbSettings.Value.DatabaseName).GetContainer(CosmosContainerConstants.MainContainer);
+        var result = await container.CreateItemAsync(entity);
+        return result.StatusCode;
+    }
+    
     public async Task<HttpStatusCode> AddBreweryEntityAsync(BrewerEntity brewerEntity)
     {
         var container = _cosmosClient.GetDatabase(_cosmosDbSettings.Value.DatabaseName).GetContainer(CosmosContainerConstants.MainContainer);
