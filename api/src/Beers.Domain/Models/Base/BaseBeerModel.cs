@@ -14,7 +14,7 @@ public abstract class BaseBeerModel
 
     public string Sku { get; set; } = string.Empty;
 
-    public RatingModel Rating { get; set; }
+    public RatingModel? Rating { get; set; }
 
     public List<PriceModel>? Pricing { get; set; }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Beers.Application.Data;
 using Beers.Application.Interfaces.Services.Beer;
+using Beers.Application.Interfaces.Services.Hydration;
 using Beers.Common.Attributes;
 using Beers.Domain.Models.Beer;
 using FluentValidation;
@@ -13,12 +14,14 @@ namespace Beers.Application.Services.Beer;
 public sealed class CreateBeerService(
     IMapper mapper,
     IDbContextFactory<BeersDbContext> dbContextFactory,
-    IValidator<CreateBeerModel> validator)
+    IValidator<CreateBeerModel> validator,
+    IBeerHydrationService beerHydrationService)
     : ICreateBeerService
 {
     private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     private readonly IDbContextFactory<BeersDbContext> _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
     private readonly IValidator<CreateBeerModel> _validator = validator ?? throw new ArgumentNullException(nameof(validator));
+    private readonly IBeerHydrationService _beerHydrationService = beerHydrationService ?? throw new ArgumentNullException(nameof(beerHydrationService));
 
     /// <summary>
     /// Performs process of creating a new beer.
@@ -37,6 +40,8 @@ public sealed class CreateBeerService(
         }
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
+
+        var entity = await _beerHydrationService.HydrateEntity(inputModel);
 
 
         return (new ReadBeerModel(), new List<ValidationFailure>());
