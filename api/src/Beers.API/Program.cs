@@ -23,7 +23,7 @@ builder.Services.AddHsts(options =>
 {
     options.Preload = true;
     options.IncludeSubDomains = true;
-    options.MaxAge = TimeSpan.FromMilliseconds(31536000);
+    options.MaxAge = TimeSpan.FromDays(365);
 });
 
 builder.Configuration
@@ -34,8 +34,8 @@ builder.RegisterCommonSettings();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("FeatureFlagApiCorsPolicy",
-        builder => builder
+    options.AddPolicy("BeersApiCorsPolicy",
+        b => b
             .SetIsOriginAllowed((host) => true)
             .AllowAnyMethod()
             .AllowAnyHeader()
@@ -54,10 +54,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     options.SuppressModelStateInvalidFilter = true;
 });
 
-var app = builder.Build();
-
-app.SetupMiddleware()
-    .Run();
+await builder.Build().SetupMiddleware().RunAsync();
 
 /// <summary>
 /// The entry point for the API.
