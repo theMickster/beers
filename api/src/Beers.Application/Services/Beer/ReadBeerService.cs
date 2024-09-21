@@ -43,7 +43,7 @@ public sealed class ReadBeerService(IMapper mapper, IDbContextFactory<BeersDbCon
             PageNumber = parameters.PageNumber,
             PageSize = parameters.PageSize,
             TotalRecords = 0,
-            Results = new List<ReadBeerModel>().AsReadOnly()
+            Results = []
         };
         
         if (parameters == null)
@@ -89,7 +89,7 @@ public sealed class ReadBeerService(IMapper mapper, IDbContextFactory<BeersDbCon
         query = query.Skip(parameters.GetRecordsToSkip()).Take(parameters.PageSize);
         var entities = await query.ToListAsync();
         result.TotalRecords = totalRecords;
-        result.Results = _mapper.Map<List<ReadBeerModel>>(entities).AsReadOnly();
+        result.Results = _mapper.Map<List<ReadBeerModel>>(entities);
         
         return result;
     }

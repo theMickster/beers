@@ -1,4 +1,6 @@
-﻿namespace Beers.Domain.Models.Base;
+﻿using System.Collections.ObjectModel;
+
+namespace Beers.Domain.Models.Base;
 
 public abstract class SearchResultBaseModel<T>
 {
@@ -14,5 +16,5 @@ public abstract class SearchResultBaseModel<T>
 
     public int TotalRecords { get; set; } = 0;
 
-    public required IReadOnlyList<T> Results { get; set; }
+    public required List<T> Results { get; set; }
 }
