@@ -30,8 +30,19 @@ public class BeersDbContext(
 
     public async Task<HttpStatusCode> AddBeerEntityAsync(BeerEntity entity)
     {
-        var container = _cosmosClient.GetDatabase(_cosmosDbSettings.Value.DatabaseName).GetContainer(CosmosContainerConstants.MainContainer);
-        var result = await container.CreateItemAsync(entity);
+        var database = _cosmosClient.GetDatabase(_cosmosDbSettings.Value.DatabaseName);
+        if (database == null)
+        {
+            throw new InvalidOperationException("Unable to retrieve the necessary container configuration");
+        }
+
+        var container  = database.GetContainer(CosmosContainerConstants.MainContainer);
+        if (container == null)
+        {
+            throw new InvalidOperationException("Unable to retrieve the necessary container configuration");
+        }
+
+        var result = await container.CreateItemAsync(entity, GetPartitionKey(entity.BrewerId.ToString().ToLower(), PartitionKeyConstants.Beer));
         return result.StatusCode;
     }
     
@@ -73,4 +84,21 @@ public class BeersDbContext(
     }
 
     #endregion Protected Methods
+
+    private static PartitionKey GetPartitionKey(string brewerId, string entityType)
+    {
+        if (string.IsNullOrWhiteSpace(brewerId) || string.IsNullOrWhiteSpace(entityType))
+        {
+            throw new InvalidOperationException(
+                "Cannot generate a valid partition key without a brewer and entity type");
+        }
+
+        var partitionKey = new PartitionKeyBuilder()
+            .Add(brewerId)
+            .Add(entityType)
+            .Build();
+
+        return partitionKey;
+
+    }
 }

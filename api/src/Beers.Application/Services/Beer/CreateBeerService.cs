@@ -3,10 +3,12 @@ using Beers.Application.Data;
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Application.Interfaces.Services.Hydration;
 using Beers.Common.Attributes;
+using Beers.Common.Constants;
 using Beers.Domain.Models.Beer;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace Beers.Application.Services.Beer;
 
@@ -41,9 +43,22 @@ public sealed class CreateBeerService(
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
 
-        var entity = await _beerHydrationService.HydrateEntity(inputModel);
+        var inputEntity = await _beerHydrationService.HydrateEntity(inputModel);
+        inputEntity.EntityType = PartitionKeyConstants.Beer;
 
+        var result = await context.AddBeerEntityAsync(inputEntity);
 
-        return (new ReadBeerModel(), new List<ValidationFailure>());
+        if (result != HttpStatusCode.Created)
+        {
+            return (new ReadBeerModel(), new List<ValidationFailure> { new("Model", "Unable to create a beer entity.") });
+        }
+
+        var outputEntity = await context.BeerEntities.SingleOrDefaultAsync(x => x.Id == inputEntity.Id);
+        var outputModel = _mapper.Map<ReadBeerModel>(outputEntity);
+
+        return outputModel != null ?
+            (outputModel, new List<ValidationFailure>()) :
+            (new ReadBeerModel(), new List<ValidationFailure> { new("Model", "Unable to retrieve the newly created beer model.") });
+
     }
 }
