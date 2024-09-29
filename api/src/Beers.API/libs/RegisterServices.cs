@@ -135,29 +135,18 @@ internal static class RegisterServices
             DatabaseName = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbDatabaseName),
             SecurityKey = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbSecurityKey)
         };
-        
-        builder.Services.TryAddSingleton(factory =>
-        {
-            var cosmosContainers = new List<(string, string)>
-            {
-                (cosmosSettings.DatabaseName!, CosmosContainerConstants.MainContainer),
-                (cosmosSettings.DatabaseName!, CosmosContainerConstants.MetadataContainer)
-            };
 
-            var cosmosClient = CosmosClient.CreateAndInitializeAsync(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosContainers)
-                                    .GetAwaiter()
-                                    .GetResult();
-            
-            return cosmosClient;
-        });
+        builder.Services.AddSingleton(cosmosSettings);
+        
+        builder.Services.AddSingleton(new CosmosClient(cosmosSettings.Account, cosmosSettings.SecurityKey));
 
         builder.Services.AddDbContext<BeersMetadataDbContext>(
             options =>
             {
                 options.UseCosmos(cosmosSettings.Account, cosmosSettings.SecurityKey, cosmosSettings.DatabaseName );
-//#if DEBUG
-//                options.EnableSensitiveDataLogging();
-//#endif
+#if DEBUG
+                options.EnableSensitiveDataLogging();
+#endif
             });
         
         builder.Services.AddDbContextFactory<BeersDbContext>((serviceProvider, options) =>

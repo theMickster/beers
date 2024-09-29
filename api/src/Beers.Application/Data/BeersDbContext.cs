@@ -42,7 +42,7 @@ public class BeersDbContext(
             throw new InvalidOperationException("Unable to retrieve the necessary container configuration");
         }
 
-        var result = await container.CreateItemAsync(entity, GetPartitionKey(entity.BrewerId.ToString().ToLower(), PartitionKeyConstants.Beer));
+        var result = await container.UpsertItemAsync(entity, GetPartitionKey(entity.BrewerId.ToString().ToLowerInvariant(), "Beer"));
         return result.StatusCode;
     }
     
