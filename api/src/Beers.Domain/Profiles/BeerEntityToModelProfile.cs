@@ -34,7 +34,7 @@ public class BeerEntityToModelProfile : Profile
         
         CreateMap<BrewerSlimEntity, BrewerModel>()
             .ForMember(x => x.Id, 
-                o => o.MapFrom(y => y.BrewerId));
+                o => o.MapFrom(y => y.Id));
         
         CreateMap<RatingEntity, RatingModel>();
 

@@ -3,14 +3,13 @@ using Beers.Application.Interfaces.Data;
 using Beers.Application.Interfaces.Services.Base;
 using Beers.Common.Settings;
 using Beers.Domain.Entities.Base;
-using Beers.Domain.Models;
 using Beers.Domain.Models.Base;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 
 namespace Beers.Application.Services.Base;
 
-public abstract class ReadMetadataBaseService<TModel, TEntity>: IReadMetadataBaseService<TModel> where TModel : MetadataBaseModel where TEntity : BaseMetaDataEntity
+public abstract class ReadMetadataBaseService<TModel, TEntity>: IReadMetadataBaseService where TModel : MetadataBaseModel where TEntity : BaseMetaDataEntity
 {
     protected readonly IBeersMetadataDbContext MetadataDbContext;
     protected readonly IMemoryCache MemoryCache;
@@ -33,21 +32,22 @@ public abstract class ReadMetadataBaseService<TModel, TEntity>: IReadMetadataBas
 
     public string CacheKey { get; }
 
-    public IReadOnlyList<TModel> GetList()
+    public async Task<List<T>> GetListAsync<T>()
     {
-        MemoryCache.TryGetValue(CacheKey, out IReadOnlyList<TModel>? cachedData);
+        MemoryCache.TryGetValue(CacheKey, out List<T>? cachedData);
 
         if (cachedData is { Count: > 0 })
         {
             return cachedData;
         }
 
-        var entities = GetEntities();
-        cachedData = Mapper.Map<List<TModel>>(entities);
+        var entities = await GetEntitiesAsync();
+        cachedData = Mapper.Map<List<T>>(entities);
         MemoryCache.Set(CacheKey, cachedData, TimeSpan.FromSeconds(CacheSettings.Value.TimeoutInSeconds));
 
         return cachedData;
     }
 
-    protected abstract IReadOnlyCollection<TEntity> GetEntities();
+
+    protected abstract Task<List<TEntity>> GetEntitiesAsync();
 }

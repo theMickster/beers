@@ -1,10 +1,8 @@
 ﻿using Beers.Application.Data;
 using Beers.Application.Interfaces.Services;
 using Beers.Common.Attributes;
-using Beers.Domain.Models.Brewer;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace Beers.Application.Services;
 
@@ -23,9 +21,9 @@ public sealed class DeleteBrewerService (
     public async Task<(bool, List<ValidationFailure>)> DeleteAsync(Guid id)
     {
         await using var context = await _dbContextFactory.CreateDbContextAsync();
-        var entityToUpdate = await context.BrewerEntities.FirstOrDefaultAsync(x => x.BrewerId == id);
+        var entityToDelete = await context.BrewerEntities.FirstOrDefaultAsync(x => x.BrewerId == id);
 
-        if (entityToUpdate == null)
+        if (entityToDelete == null)
         {
             return (false,
             [
@@ -38,9 +36,10 @@ public sealed class DeleteBrewerService (
             ]);
         }
 
-        var result = await context.DeleteBreweryEntityAsync(id);
+        context.Remove(entityToDelete);
+        var result = await context.SaveChangesAsync();
 
-        if (result != HttpStatusCode.NoContent)
+        if (result != 1)
         {
             return (false, [ new ValidationFailure("BrewerId", "Unable to delete the brewery entity.") ]);
         }

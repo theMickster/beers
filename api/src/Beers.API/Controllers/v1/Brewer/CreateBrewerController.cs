@@ -15,7 +15,7 @@ namespace Beers.API.Controllers.v1.Brewer;
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Brewer")]
-[Route("api/v1/brewers", Name = "Read Brewer Controller v1")]
+[Route("api/v1/brewers", Name = "Create Brewer Controller v1")]
 [Produces("application/json")]
 public class CreateBrewerController(ILogger<CreateBrewerController> logger, ICreateBrewerService createBrewerService) 
     : ControllerBase
@@ -33,21 +33,24 @@ public class CreateBrewerController(ILogger<CreateBrewerController> logger, ICre
     [HttpPost]
     [Produces(typeof(ReadBrewerModel))]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> PostAsync([FromBody][Required] CreateBrewerModel? inputModel)
     {
         if (inputModel == null)
         {
+            _logger.LogInformation("Create Brewer failed due to null input model.");
             return BadRequest("The input model cannot be null.");
         }
 
         if (!ModelState.IsValid)
         {
+            _logger.LogInformation("Create Brewer failed due to invalid input model state.");
             return BadRequest(ModelState);
         }
 
         var (model, errors) = await _createBrewerService.CreateAsync(inputModel).ConfigureAwait(false);
 
-        if (errors.Any())
+        if (errors.Count != 0)
         {
             return BadRequest(errors.Select(x => x.ErrorMessage));
         }

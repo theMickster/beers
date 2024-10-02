@@ -39,11 +39,11 @@ public sealed class ReadBeerCategoryController : ControllerBase
     [Produces(typeof(List<BeerCategoryModel>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetList()
+    public async Task<IActionResult> GetListAsync()
     {
-        var model = _readBeerCategoryService.GetList();
+        var model = await _readBeerCategoryService.GetListAsync<BeerCategoryModel>();
 
-        if (!model.Any())
+        if (model.Count == 0)
         {
             return NotFound("Unable to locate records the beer category list.");
         }
