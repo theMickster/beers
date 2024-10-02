@@ -1,11 +1,11 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using Beers.Application.Interfaces.Services;
+﻿using Beers.Application.Interfaces.Services;
 using Beers.Application.Interfaces.Services.Hydration;
 using Beers.Common.Attributes;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Base;
 using Beers.Domain.Entities.Slims;
 using Beers.Domain.Models.Beer;
+using Beers.Domain.Models.Metadata;
 
 namespace Beers.Application.Services.Hydration;
 
@@ -26,9 +26,9 @@ public sealed class BeerHydrationService(
         ArgumentNullException.ThrowIfNull(model);
         
         var brewer = await _readBrewerService.GetByIdAsync(model.BrewerId);
-        var beerType = _readBeerTypeService.GetList().SingleOrDefault(x => x.Id == model.BeerTypeId);
-        var beerStyles = _readBeerStyleService.GetList();
-        var beerCategories = _readBeerCategoryService.GetList();
+        var beerType = (await _readBeerTypeService.GetListAsync<BeerTypeModel>()).SingleOrDefault(x => x.Id == model.BeerTypeId);
+        var beerStyles = await _readBeerStyleService.GetListAsync<BeerStyleModel>();
+        var beerCategories = await _readBeerCategoryService.GetListAsync<BeerCategoryModel>();
 
         ArgumentNullException.ThrowIfNull(brewer);
         ArgumentNullException.ThrowIfNull(beerType);
@@ -44,7 +44,7 @@ public sealed class BeerHydrationService(
             Sku = model.Sku,
             Brewer = new BrewerSlimEntity
             {
-                BrewerId = model.BrewerId,
+                Id = model.BrewerId,
                 Name = brewer.Name,
                 Website = brewer.Website
             },
@@ -52,11 +52,7 @@ public sealed class BeerHydrationService(
             {
                 MetadataId = model.BeerTypeId,
                 Name = beerType.Name
-            },
-            CreatedBy = "the.system",
-            ModifiedBy = "the.system",
-            CreatedDate = DateTime.UtcNow,
-            ModifiedDate = DateTime.UtcNow
+            }
         };
 
         if (model.Rating != null)

@@ -23,7 +23,7 @@ internal class BeerEntityConfiguration : BaseEntityConfiguration, IEntityTypeCon
         builder.OwnsOne(x => x.Brewer, buildAction =>
         {
             buildAction.ToJsonProperty("Brewer");
-            buildAction.Property(x => x.BrewerId).ToJsonProperty("id");
+            buildAction.Property(x => x.Id).ToJsonProperty("id");
             buildAction.Property(x => x.Name).ToJsonProperty("name");
             buildAction.Property(x => x.Website).ToJsonProperty("website");
         });

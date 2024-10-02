@@ -6,7 +6,7 @@ namespace Beers.Domain.Entities;
 
 public class BrewerEntity : BaseBeerEntity
 {
-    public string EntityType = PartitionKeyConstants.Brewer;
+    public override string EntityType => PartitionKeyConstants.Brewer;
 
     public string Name { get; set; } = string.Empty;
 
@@ -20,5 +20,5 @@ public class BrewerEntity : BaseBeerEntity
 
     public DateTime ModifiedDate { get; set; }
 
-    public BreweryTypeSlimEntity BreweryType { get; set; }
+    public BreweryTypeSlimEntity BreweryType { get; set; } = new();
 }

@@ -63,18 +63,14 @@ public sealed class UpdateBrewerService(
             Name = inputModel.BreweryType.Name
         };
 
-        var result = await context.UpdateBreweryEntityAsync(entityToUpdate);
-        
-        if (result != HttpStatusCode.OK)
-        {
-            return (new ReadBrewerModel(), new List<ValidationFailure> { new("Model", "Unable to update the brewery entity.") });
-        }
+        context.Update(entityToUpdate);
+        await context.SaveChangesAsync();
 
         var outputEntity = await context.BrewerEntities.SingleOrDefaultAsync(x => x.Id == inputModel.BrewerId);
         var outputModel = _mapper.Map<ReadBrewerModel>(outputEntity);
 
         return outputModel != null ?
-            (outputModel, new List<ValidationFailure>()) :
-            (new ReadBrewerModel(), new List<ValidationFailure> { new("Model", "Unable to retrieve the newly created model.") });
+            (outputModel, []) :
+            (new ReadBrewerModel(), [new ValidationFailure("Model", "Unable to retrieve the newly created model.")]);
     }
 }

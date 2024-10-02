@@ -6,8 +6,8 @@ using Beers.Common.Attributes;
 using Beers.Common.Constants;
 using Beers.Common.Settings;
 using Beers.Domain.Entities;
-using Beers.Domain.Models;
 using Beers.Domain.Models.Metadata;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 
@@ -23,8 +23,8 @@ public sealed class ReadBeerCategoryService : ReadMetadataBaseService<BeerCatego
         IOptionsSnapshot<CacheSettings> cacheSettings)
         : base(CacheKeyConstants.BeerCategoryList, mapper, metadataDbContext, memoryCache, cacheSettings) { }
 
-    protected override IReadOnlyCollection<BeerCategoryEntity> GetEntities()
+    protected override async Task<List<BeerCategoryEntity>> GetEntitiesAsync()
     {
-        return MetadataDbContext.BeerCategories.ToList().AsReadOnly();
+        return await MetadataDbContext.BeerCategories.ToListAsync();
     }
 }

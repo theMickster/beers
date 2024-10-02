@@ -12,5 +12,5 @@ public abstract class BaseBrewerModel
 
     public string Website { get; set; } = string.Empty;
 
-    public BreweryTypeModel BreweryType { get; set; }
+    public BreweryTypeModel BreweryType { get; set; } = new();
 }

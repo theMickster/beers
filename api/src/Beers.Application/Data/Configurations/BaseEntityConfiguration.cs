@@ -10,8 +10,8 @@ internal class BaseEntityConfiguration
     protected static void BeerConfiguring<T>(EntityTypeBuilder<T> entityTypeBuilder) where T : BaseBeerEntity
     {
         entityTypeBuilder.Property(x => x.Id).ToJsonProperty("id");
+        entityTypeBuilder.HasPartitionKey(x => new { x.BrewerId, x.EntityType });
         entityTypeBuilder.ToContainer(CosmosContainerConstants.MainContainer);
-        entityTypeBuilder.HasPartitionKey(x => x.BrewerId);
         entityTypeBuilder.HasKey(x => x.Id);
     }
 }

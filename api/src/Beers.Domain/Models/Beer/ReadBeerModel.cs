@@ -11,11 +11,11 @@ public class ReadBeerModel: BaseBeerModel
 
     public DateTime ModifiedDate { get; set; }
 
-    public BrewerModel Brewer { get; set; }
+    public BrewerModel Brewer { get; set; } = new();
 
-    public BeerTypeModel BeerType { get; set; }
+    public BeerTypeModel BeerType { get; set; } = new();
 
-    public List<BeerCategoryModel> BeerCategories { get; set; }
+    public List<BeerCategoryModel> BeerCategories { get; set; } = [];
 
-    public List<BeerStyleModel> BeerStyles { get; set; }
+    public List<BeerStyleModel> BeerStyles { get; set; } = [];
 }

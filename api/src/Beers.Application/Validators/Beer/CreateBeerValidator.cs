@@ -2,6 +2,7 @@
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Common.Constants;
 using Beers.Domain.Models.Beer;
+using Beers.Domain.Models.Metadata;
 using FluentValidation;
 
 namespace Beers.Application.Validators.Beer;
@@ -29,7 +30,7 @@ public sealed class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
             .WithErrorCode("Rule-01");
 
         RuleFor(beer => beer)
-            .Must( (beer) => BeerTypeExistsAsync(beer.BeerTypeId))
+            .MustAsync( async (beer, cancellation) => await BeerTypeExistsAsync(beer.BeerTypeId).ConfigureAwait(false))
             .When(x => x?.BeerTypeId != null)
             .WithMessage(ValidatorConstants.BeerTypeMustExist)
             .WithErrorCode("Rule-02")
@@ -38,8 +39,9 @@ public sealed class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
 
     }
 
-    private bool BeerTypeExistsAsync(Guid id)
+    private async Task<bool> BeerTypeExistsAsync(Guid id)
     {
-        return _readBeerTypeService.GetList().Any(x => x.Id == id);
+        var result = await _readBeerTypeService.GetListAsync<BeerTypeModel>();
+        return result.Any(x => x.Id == id);
     }
 }

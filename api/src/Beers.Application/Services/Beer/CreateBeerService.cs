@@ -4,16 +4,10 @@ using Beers.Application.Interfaces.Services.Beer;
 using Beers.Application.Interfaces.Services.Hydration;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;
-using Beers.Common.Settings;
-using Beers.Domain.Entities;
 using Beers.Domain.Models.Beer;
 using FluentValidation;
 using FluentValidation.Results;
-using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Options;
-using System.Net;
 
 namespace Beers.Application.Services.Beer;
 
@@ -22,16 +16,12 @@ public sealed class CreateBeerService (
     IMapper mapper,
     IValidator<CreateBeerModel> validator,
     IBeerHydrationService beerHydrationService,
-    CosmosClient cosmosClient,
-    CosmosDbConnectionSettings cosmosDbSettings,
     IDbContextFactory<BeersDbContext> dbContextFactory)
     : ICreateBeerService
 {
     private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     private readonly IValidator<CreateBeerModel> _validator = validator ?? throw new ArgumentNullException(nameof(validator));
     private readonly IBeerHydrationService _beerHydrationService = beerHydrationService ?? throw new ArgumentNullException(nameof(beerHydrationService));
-    private readonly CosmosDbConnectionSettings _cosmosDbSettings = cosmosDbSettings ?? throw new ArgumentNullException(nameof(cosmosDbSettings));
-    private readonly CosmosClient _cosmosClient = cosmosClient ?? throw new ArgumentNullException(nameof(cosmosClient));
     private readonly IDbContextFactory<BeersDbContext> _dbContextFactory = dbContextFactory ?? throw new ArgumentNullException(nameof(dbContextFactory));
 
     /// <summary>
@@ -53,23 +43,15 @@ public sealed class CreateBeerService (
         var inputEntity = await _beerHydrationService.HydrateEntity(inputModel);
         inputEntity.EntityType = PartitionKeyConstants.Beer;
         inputEntity.Id = Guid.NewGuid();
-
-        var container = _cosmosClient.GetDatabase(_cosmosDbSettings.DatabaseName).GetContainer(CosmosContainerConstants.MainContainer);
-        if (container == null)
-        {
-            throw new InvalidOperationException("Unable to retrieve the necessary container configuration");
-        }
-
-        var partitionKey = new PartitionKeyBuilder().Add(inputEntity.BrewerId.ToString().ToLowerInvariant()).Add(PartitionKeyConstants.Beer).Build();
-
-        var result = await container.UpsertItemAsync(inputEntity, partitionKey);
-
-        if (result.StatusCode != HttpStatusCode.Created)
-        {
-            return (new ReadBeerModel(), [new ValidationFailure("Model", "Unable to create a beer entity.")]);
-        }
+        inputEntity.CreatedBy = "the.system";
+        inputEntity.ModifiedBy = "the.system";
+        inputEntity.CreatedDate = DateTime.UtcNow;
+        inputEntity.ModifiedDate = DateTime.UtcNow;
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
+
+        context.BeerEntities.Add(inputEntity);
+        await context.SaveChangesAsync();
 
         var outputEntity = await context.BeerEntities.SingleOrDefaultAsync(x => x.Id == inputEntity.Id);
         var outputModel = _mapper.Map<ReadBeerModel>(outputEntity);
