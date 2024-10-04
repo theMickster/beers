@@ -3,7 +3,7 @@
 
 namespace Beers.Domain.Models.Beer;
 
-public sealed class CreateBeerModel : BaseBeerModel
+public class CreateBeerModel : BaseBeerModel
 {
     public Guid BeerTypeId { get; set; }
 
