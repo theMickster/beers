@@ -36,8 +36,9 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     {
         var model = await readBeerService.GetListAsync();
         
-        if (!model.Any())
+        if (model.Count == 0)
         {
+            logger.LogInformation("Unable to retrieve beer list");
             return NotFound("Unable to locate records for the beers list.");
         }
         

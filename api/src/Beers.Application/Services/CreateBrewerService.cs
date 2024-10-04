@@ -8,7 +8,6 @@ using Beers.Domain.Models.Brewer;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace Beers.Application.Services;
 
@@ -30,14 +29,11 @@ public sealed class CreateBrewerService(
     /// <returns></returns>
     public async Task<(ReadBrewerModel, List<ValidationFailure>)> CreateAsync(CreateBrewerModel inputModel)
     {
-        if (inputModel == null)
-        {
-            throw new ArgumentNullException(nameof(inputModel));
-        }
+        ArgumentNullException.ThrowIfNull(inputModel);
 
         var validationResult = await _validator.ValidateAsync(inputModel);
 
-        if (validationResult.Errors.Any())
+        if (validationResult.Errors.Count != 0)
         {
             return (new ReadBrewerModel(), validationResult.Errors);
         }
@@ -50,13 +46,8 @@ public sealed class CreateBrewerService(
         inputEntity.EntityType = PartitionKeyConstants.Brewer;
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
-
-        var result = await context.AddBreweryEntityAsync(inputEntity);
-
-        if (result != HttpStatusCode.Created)
-        {
-            return (new ReadBrewerModel(), new List<ValidationFailure> { new("Model", "Unable to create a brewery entity.") });
-        }
+        context.BrewerEntities.Add(inputEntity);
+        await context.SaveChangesAsync();
 
         var outputEntity = await context.BrewerEntities.SingleOrDefaultAsync(x => x.Id == inputEntity.Id);
         var outputModel = _mapper.Map<ReadBrewerModel>(outputEntity);

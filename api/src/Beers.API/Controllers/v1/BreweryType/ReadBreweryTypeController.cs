@@ -39,11 +39,11 @@ public class ReadBreweryTypeController : ControllerBase
     [Produces(typeof(List<BreweryTypeModel>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetList()
+    public async Task<IActionResult> GetList()
     {
-        var model = _readBreweryTypeService.GetList();
+        var model = await _readBreweryTypeService.GetListAsync<BreweryTypeModel>();
 
-        if (!model.Any())
+        if (model.Count == 0)
         {
             return NotFound("Unable to locate records the brewery type list.");
         }
