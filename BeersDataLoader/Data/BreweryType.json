@@ -1,0 +1,58 @@
+[
+  {
+    "ApplicationName": "Beers",
+    "id": "b03fcb6a-0722-4158-a494-524149dc2349",
+    "MetadataId": "b03fcb6a-0722-4158-a494-524149dc2349",
+    "Name": "Brewery In Planning",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "c8720a14-9c23-4f46-9c2b-128351ccbff9",
+    "MetadataId": "c8720a14-9c23-4f46-9c2b-128351ccbff9",
+    "Name": "Brewpub",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "abaf83e7-9ed0-4e3c-a92c-c142ba425104",
+    "MetadataId": "abaf83e7-9ed0-4e3c-a92c-c142ba425104",
+    "Name": "Contract",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "1636e63e-990c-4585-8495-b02719162b47",
+    "MetadataId": "1636e63e-990c-4585-8495-b02719162b47",
+    "Name": "Large",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "3ac7980d-0385-40e0-bc74-4fe796c0da19",
+    "MetadataId": "3ac7980d-0385-40e0-bc74-4fe796c0da19",
+    "Name": "Microbrewery",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "9d77afda-0d2e-4982-a7ea-c31567c5b486",
+    "MetadataId": "9d77afda-0d2e-4982-a7ea-c31567c5b486",
+    "Name": "Regional",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "d7b73d58-e913-40b8-9e06-f47d3b5f7bb3",
+    "MetadataId": "d7b73d58-e913-40b8-9e06-f47d3b5f7bb3",
+    "Name": "Taproom",
+    "TypeName": "BreweryType",
+    "TypeId": "eaffbb38-ea95-44e9-bea2-3c9c5a04cc0f"
+  }
+]

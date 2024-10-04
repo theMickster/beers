@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeersDataLoader", "BeersDataLoader.csproj", "{5A3378B2-FE2C-4C78-B1C9-990A27C36B47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A3378B2-FE2C-4C78-B1C9-990A27C36B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A3378B2-FE2C-4C78-B1C9-990A27C36B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A3378B2-FE2C-4C78-B1C9-990A27C36B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A3378B2-FE2C-4C78-B1C9-990A27C36B47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {842F971D-A610-4EB6-9EC5-5E7F2BD11ABE}
+	EndGlobalSection
+EndGlobal
