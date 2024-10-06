@@ -3,6 +3,7 @@ using System.Net;
 using Newtonsoft.Json;
 using BeersDataLoader.Entities;
 using System.Reflection;
+using System.Reflection.Metadata;
 
 Console.ForegroundColor = ConsoleColor.White;
 
@@ -11,9 +12,9 @@ Console.WriteLine($"Loader is executing in: {Environment.CurrentDirectory} ");
 
 Console.ForegroundColor = ConsoleColor.Magenta;
 Console.WriteLine("Please ensure that the following checklist is complete before continuing...");
-Console.WriteLine("[ ] Configured an Environment Variables named 'BeersCosmosEndpoint' with a valid URL to a Cosmos Db account");
-Console.WriteLine("[ ] Configured an Environment Variables named 'BeersCosmosKey' with a valid Cosmos Db account key");
-Console.WriteLine("[ ] If using the local Cosmos Db Emulator, then you have started it with the /EnablePreview switch `.\\CosmosDB.Emulator.exe /EnablePreview` ");
+Console.WriteLine("[✅] Configured an Environment Variables named 'BeersCosmosEndpoint' with a valid URL to a Cosmos Db account");
+Console.WriteLine("[✅] Configured an Environment Variables named 'BeersCosmosKey' with a valid Cosmos Db account key");
+Console.WriteLine("[✅] If using the local Cosmos Db Emulator, then you have started it with the /EnablePreview switch `.\\CosmosDB.Emulator.exe /EnablePreview` ");
 
 Console.ForegroundColor = ConsoleColor.Cyan;
 Console.WriteLine("Enter 'Y' to proceed or any other key to quit");
@@ -46,20 +47,19 @@ var beersContainer = await BuildBeersContainer(database);
 
 var result = await ImportBeerCategoryMetadata(metadataContainer, beerCategoryMetadataFile);
 Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine($"Beer Category Metadata Import Total == {result}");
+Console.WriteLine($"Beer Category Metadata Import Total = {result.totalItems} Created Total = {result.createdItems} Skipped Total {result.skippedItems}");
 
 result = await ImportBeerStyleMetadata(metadataContainer, beerStyleMetadataFile);
 Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine($"Beer Style Metadata Import Total == {result}");
+Console.WriteLine($"Beer Style Metadata Import Total = {result.totalItems} Created Total = {result.createdItems} Skipped Total {result.skippedItems}");
 
 result = await ImportBeerTypeMetadata(metadataContainer, beerTypeMetadataFile);
 Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine($"Beer Type Metadata Import Total == {result}");
+Console.WriteLine($"Beer Type Metadata Import Total = {result.totalItems} Created Total = {result.createdItems} Skipped Total {result.skippedItems}");
 
 result = await ImportBreweryTypeMetadata(metadataContainer, breweryTypeMetadataFile);
 Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine($"Brewery Type Metadata Import Total == {result}");
-
+Console.WriteLine($"Brewery Type Metadata Import Total = {result.totalItems} Created Total = {result.createdItems} Skipped Total {result.skippedItems}");
 
 Console.ReadLine();
 
@@ -125,61 +125,245 @@ async Task<Container> BuildBeersContainer(Database db)
     return beerContainer;
 }
 
-async Task<int> ImportBeerCategoryMetadata(Container container, string metadataFilePath)
+//async Task<(int totalItems, int createdItems, int skippedItems)> ImportBeerMetadata<T> (Container container, string metadataFilePath) where T : BaseMetadataEntity
+//{
+//    if (!File.Exists(metadataFilePath))
+//    {
+//        Console.WriteLine($"Invalid path to beer category metadata: {metadataFilePath}");
+//        return (-1, 0, 0);
+//    }
+
+//    var json = await File.ReadAllTextAsync(metadataFilePath);
+//    var items = JsonConvert.DeserializeObject<List<T>>(json) ?? [];
+//    var createdItems = 0;
+//    var skippedItems = 0;
+
+//    foreach (var item in items)
+//    {
+//        var partitionKey = new PartitionKeyBuilder()
+//            .Add(item.ApplicationName)
+//            .Add(item.TypeId.ToString().ToLowerInvariant())
+//            .Build();
+
+//        var getResponse = await container.ReadItemAsync<T>(id: item.Id.ToString().ToLowerInvariant(),
+//            partitionKey: partitionKey);
+
+//        if (getResponse.StatusCode != HttpStatusCode.NotFound)
+//        {
+//            skippedItems++;
+//            continue;
+//        }
+
+//        var createResponse = await container.CreateItemAsync(item, partitionKey);
+//        if (createResponse.StatusCode != HttpStatusCode.Created)
+//        {
+//            Console.WriteLine($"Failed to create {typeof(T)} : {item.Name}");
+//        }
+//        else
+//        {
+//            createdItems++;
+//        }
+//    }
+
+//    return (items.Count, createdItems, skippedItems);
+//}
+
+async Task<(int totalItems, int createdItems, int skippedItems)> ImportBeerCategoryMetadata(Container container, string metadataFilePath)
 {
     if (!File.Exists(metadataFilePath))
     {
-        Console.WriteLine($"Invalid path to beer category metadata: {metadataFilePath}");
-        return -1;
+        Console.WriteLine($"Invalid path to {typeof(BeerCategory)} metadata: {metadataFilePath}");
+        return (-1, 0, 0);
     }
 
     var json = await File.ReadAllTextAsync(metadataFilePath);
     var items = JsonConvert.DeserializeObject<List<BeerCategory>>(json) ?? [];
+    var createdItems = 0;
+    var skippedItems = 0;
 
-    return items.Count;
-}
-
-async Task<int> ImportBeerTypeMetadata(Container container, string metadataFilePath)
-{
-    if (!File.Exists(metadataFilePath))
+    foreach (var item in items)
     {
-        Console.WriteLine($"Invalid path to beer type metadata: {metadataFilePath}");
-        return -1;
+        var createItem = false;
+        var partitionKey = new PartitionKeyBuilder()
+            .Add(item.ApplicationName)
+            .Add(item.TypeId.ToString().ToLowerInvariant())
+            .Build();
+        try
+        {
+            await container.ReadItemAsync<BeerCategory>(item.Id.ToString().ToLowerInvariant(), partitionKey);
+        }
+        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            createItem = true;
+        }
+
+        if (!createItem)
+        {
+            skippedItems++;
+            continue;
+        }
+
+        var createResponse = await container.CreateItemAsync(item, partitionKey);
+        if (createResponse.StatusCode != HttpStatusCode.Created)
+        {
+            Console.WriteLine($"Failed to create {typeof(BeerCategory)} : {item.Name}");
+        }
+        else
+        {
+            createdItems++;
+        }
     }
 
-    var json = await File.ReadAllTextAsync(metadataFilePath);
-    var items = JsonConvert.DeserializeObject<List<BeerType>>(json) ?? [];
-
-    return items.Count;
+    return (items.Count, createdItems, skippedItems);
 }
 
-async Task<int> ImportBeerStyleMetadata(Container container, string metadataFilePath)
+
+async Task<(int totalItems, int createdItems, int skippedItems)> ImportBeerStyleMetadata(Container container, string metadataFilePath) 
 {
     if (!File.Exists(metadataFilePath))
     {
-        Console.WriteLine($"Invalid path to beer style metadata: {metadataFilePath}");
-        return -1;
+        Console.WriteLine($"Invalid path to {typeof(BeerStyle)} metadata: {metadataFilePath}");
+        return (-1, 0, 0);
     }
 
     var json = await File.ReadAllTextAsync(metadataFilePath);
     var items = JsonConvert.DeserializeObject<List<BeerStyle>>(json) ?? [];
+    var createdItems = 0;
+    var skippedItems = 0;
 
-    return items.Count;
+    foreach (var item in items)
+    {
+        var createItem = false;
+        var partitionKey = new PartitionKeyBuilder()
+            .Add(item.ApplicationName)
+            .Add(item.TypeId.ToString().ToLowerInvariant())
+            .Build();
+        try
+        {
+            await container.ReadItemAsync<BeerStyle>(item.Id.ToString().ToLowerInvariant(), partitionKey);
+        }
+        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            createItem = true;
+        }
+
+        if (!createItem)
+        {
+            skippedItems++;
+            continue;
+        }
+
+        var createResponse = await container.CreateItemAsync(item, partitionKey);
+        if (createResponse.StatusCode != HttpStatusCode.Created)
+        {
+            Console.WriteLine($"Failed to create {typeof(BeerStyle)} : {item.Name}");
+        }
+        else
+        {
+            createdItems++;
+        }
+    }
+
+    return (items.Count, createdItems, skippedItems);
 }
 
-async Task<int> ImportBreweryTypeMetadata(Container container, string metadataFilePath)
+
+async Task<(int totalItems, int createdItems, int skippedItems)> ImportBeerTypeMetadata(Container container, string metadataFilePath) 
 {
     if (!File.Exists(metadataFilePath))
     {
-        Console.WriteLine($"Invalid path to brewery type metadata: {metadataFilePath}");
-        return -1;
+        Console.WriteLine($"Invalid path to {typeof(BeerType)} metadata: {metadataFilePath}");
+        return (-1, 0, 0);
+    }
+
+    var json = await File.ReadAllTextAsync(metadataFilePath);
+    var items = JsonConvert.DeserializeObject<List<BeerType>>(json) ?? [];
+    var createdItems = 0;
+    var skippedItems = 0;
+
+    foreach (var item in items)
+    {
+        var createItem = false;
+        var partitionKey = new PartitionKeyBuilder()
+            .Add(item.ApplicationName)
+            .Add(item.TypeId.ToString().ToLowerInvariant())
+            .Build();
+
+        try
+        {
+           await container.ReadItemAsync<BeerType>(item.Id.ToString().ToLowerInvariant(), partitionKey);
+        }
+        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            createItem = true;
+        }
+
+        if (!createItem)
+        {
+            skippedItems++;
+            continue;
+        }
+
+        var createResponse = await container.CreateItemAsync(item, partitionKey);
+        if (createResponse.StatusCode != HttpStatusCode.Created)
+        {
+            Console.WriteLine($"Failed to create {typeof(BeerType)} : {item.Name}");
+        }
+        else
+        {
+            createdItems++;
+        }
+    }
+
+    return (items.Count, createdItems, skippedItems);
+}
+
+
+async Task<(int totalItems, int createdItems, int skippedItems)> ImportBreweryTypeMetadata(Container container, string metadataFilePath) 
+{
+    if (!File.Exists(metadataFilePath))
+    {
+        Console.WriteLine($"Invalid path to {typeof(BreweryType)} metadata: {metadataFilePath}");
+        return (-1, 0, 0);
     }
 
     var json = await File.ReadAllTextAsync(metadataFilePath);
     var items = JsonConvert.DeserializeObject<List<BreweryType>>(json) ?? [];
+    var createdItems = 0;
+    var skippedItems = 0;
 
-    return items.Count;
+    foreach (var item in items)
+    {
+        var createItem = false;
+        var partitionKey = new PartitionKeyBuilder()
+            .Add(item.ApplicationName)
+            .Add(item.TypeId.ToString().ToLowerInvariant())
+            .Build();
+        try
+        {
+            await container.ReadItemAsync<BreweryType>(item.Id.ToString().ToLowerInvariant(), partitionKey);
+        }
+        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            createItem = true;
+        }
+
+        if (!createItem)
+        {
+            skippedItems++;
+            continue;
+        }
+
+        var createResponse = await container.CreateItemAsync(item, partitionKey);
+        if (createResponse.StatusCode != HttpStatusCode.Created)
+        {
+            Console.WriteLine($"Failed to create {typeof(BreweryType)} : {item.Name}");
+        }
+        else
+        {
+            createdItems++;
+        }
+    }
+
+    return (items.Count, createdItems, skippedItems);
 }
-
-
-
