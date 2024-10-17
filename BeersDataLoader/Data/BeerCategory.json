@@ -1,0 +1,58 @@
+[
+  {
+    "ApplicationName": "Beers",
+    "id": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+    "MetadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+    "Name": "Craft",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c",
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "750bddce-3abc-4585-9000-e045c8aba866",
+    "MetadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+    "Name": "Domestic",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "c8798e3d-6fa4-4e4c-9214-fe44cb70cb97",
+    "MetadataId": "c8798e3d-6fa4-4e4c-9214-fe44cb70cb97",
+    "Name": "Flavoured or Specialty",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "5d915ecf-ad8c-4874-82d8-38bd04e0a526",
+    "MetadataId": "5d915ecf-ad8c-4874-82d8-38bd04e0a526",
+    "Name": "Import",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "033b2989-8c3d-4262-9f83-ba54985eb274",
+    "MetadataId": "033b2989-8c3d-4262-9f83-ba54985eb274",
+    "Name": "International",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "8381fbee-5972-40dc-adb9-642bf2e1f337",
+    "MetadataId": "8381fbee-5972-40dc-adb9-642bf2e1f337",
+    "Name": "Premium",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "9981ab01-960c-4fb0-8ace-cd47573d23c4",
+    "MetadataId": "9981ab01-960c-4fb0-8ace-cd47573d23c4",
+    "Name": "Value",
+    "TypeName": "BeerCategory",
+    "TypeId": "29d52320-4a29-4181-856e-562501e3f49c"
+  }
+]

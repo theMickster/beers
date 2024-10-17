@@ -1,0 +1,26 @@
+[
+  {
+    "ApplicationName": "Beers",
+    "id": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+    "MetadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+    "Name": "Ale",
+    "TypeName": "BeerType",
+    "TypeId": "752d4d23-548e-4d1a-9a41-badccbbd7dd9"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "757e6b21-8556-4252-a38a-308f99400ddf",
+    "MetadataId": "757e6b21-8556-4252-a38a-308f99400ddf",
+    "Name": "Lager",
+    "TypeName": "BeerType",
+    "TypeId": "752d4d23-548e-4d1a-9a41-badccbbd7dd9"
+  },
+  {
+    "ApplicationName": "Beers",
+    "id": "65617065-7b4a-4467-a412-9227449fcd60",
+    "MetadataId": "65617065-7b4a-4467-a412-9227449fcd60",
+    "Name": "Specialty or Hybrid",
+    "TypeName": "BeerType",
+    "TypeId": "752d4d23-548e-4d1a-9a41-badccbbd7dd9"
+  }
+]
