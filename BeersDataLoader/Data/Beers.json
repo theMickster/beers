@@ -1,0 +1,3442 @@
+[
+    {
+        "Pricing": [
+            {
+                "price": 17.99,
+                "quantity": 15,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Founders All Day IPA",
+        "Description": "Michigan- American IPA- 4.7% ABV. An all-day IPA naturally brewed with a complex array of malts, grains and hops. Balanced for optimal aromatics and a clean finish. The perfect reward for an honest day’s work and the ultimate companion to celebrate life’s simple pleasures.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "118334161-2",
+        "Rating": {
+            "average": 4.411243509154233,
+            "reviews": 453
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h00/h94/11891416367134.png",
+        "id": "7febed3c-38ed-4096-a95e-e7aa3458f8ec",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 17.99,
+                "quantity": 15,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "All Day Haze",
+        "Description": "Michigan- Hazy/New England-Style IPA- 4.9% ABV. Fruit cocktail aromas of orange, pineapple & peach with subtle pine & floral notes. Light bodied with low bitterness & a glowing haze. Founders Brewing Company's first ever Hazy IPA!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            },
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "242666131-2",
+        "Rating": {
+            "average": 4.411243509154233,
+            "reviews": 453
+        },
+        "Image": "https://foundersbrewing.com/wp-content/uploads/2021/11/2021_all_day_haze_featured.jpg",
+        "id": "4bac9b71-3c66-450f-9d40-761196bb6b07",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 16.99,
+                "quantity": 15,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "All Day Chill Day",
+        "Description": "Michigan- Session IPA- 4.8% ABV. Everybody chill. All Day Chill Day is a refreshingly crisp Cold IPA brewed with an assemblage of hops for a subtle yet flavorful punch of pineapple, floral and lemon notes.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "347154131-2",
+        "Rating": {
+            "average": 4.3194,
+            "reviews": 54
+        },
+        "Image": "https://foundersbrewing.com/wp-content/uploads/2022/07/All_Day_Chill_Day_Featured_Image.png",
+        "id": "612b9d2d-ec24-463c-a22e-38789300dc8d",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 4,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Founders Breakfast Stout",
+        "Description": "Michigan- American Double/Imperial Stout- 8.3% ABV. Silver Medal GABF 2018. Brewed with an abundance of flaked oats, bitter and sweetened imported chocolates, Sumatra and Kona coffee. An intense fresh roasted coffee nose topped with a cinnamon hued frothy head that seems to never fade.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "ceb40eb9-02b8-4cc5-a1dc-e5182d6184be",
+                "name": "Stout"
+            },
+            {
+                "metadataId": "1c9ce74c-235e-4d7b-be55-ead9bf859841",
+                "name": "Double/Imperial Stout"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "105182134-2",
+        "Rating": {
+            "average": 2.536098631569753,
+            "reviews": 105
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/ha2/he2/8796687728670.png",
+        "id": "5f5a7887-94b0-46cf-b574-bbd558b3c504",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 15.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Founders Underground Mountain Brown",
+        "Description": "Underground Mountain Brown is the harmonious drinking experience only achieved when our imperial brown ale, earthy Sumatra coffee and a year aging in caves below Grand Rapids come together. A team of malts complement the bold Sumatra coffee perfectly, while time spent immersed in oak creates layers of depth and complexity. A celebration of the barrel, the bean and everything in between. ",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "3874cea5-90cc-43e3-be69-5fab5ba02dc1",
+                "name": "Imperial"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "105184158-3",
+        "Rating": {
+            "average": 2.1446471059009395,
+            "reviews": 319
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "4c44cd1b-3e47-4745-ae7c-50c3cc585c43",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Founders Porter",
+        "Description": "Pours silky black with a creamy tan head. The nose is sweet with strong chocolate and caramel malt presence. No absence of hops gives Founders’ robust porter the full flavor you deserve and expect. Cozy like velvet. It’s a lover, not a fighter.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "e1a56a43-e31b-4d7d-9293-7b911b9e7a23",
+                "name": "Porter"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "816465651-1",
+        "Rating": {
+            "average": 3.7036191902784807,
+            "reviews": 247
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h37/h9f/8796760277022.png",
+        "id": "d39f7179-dce5-4850-a607-ad967233ce53",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 15.99,
+                "quantity": 4,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Founders Backwoods Bastard",
+        "Description": "Michigan- Scotch Ale / Wee Heavy- 10.2% ABV. The cloudy, dark mahogany liquid elicits aromas of berries, toffee, fig, caramel, and peaty, smoky bourbon barrels. Sweet flavors mirror the aroma, with vanilla, oak, dark fruit and peat having a strong presence. A warming bourbon beer.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "8c445387-36ad-49d6-a911-d3b89253d8fd",
+                "name": "Scotch Ale"
+            }
+        ],
+        "Sku": "107257134-2",
+        "Rating": {
+            "average": 3.0187543429516914,
+            "reviews": 226
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h8f/h35/11536035217438.png",
+        "id": "de629955-a242-4902-b05e-33d97c44f01c",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 19.99,
+                "quantity": 15,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Founders Mosaic Promise",
+        "Description": "This clean, rich, golden beer showcases Mosaic hops and Golden Promise malts proving there truly is beauty in simplicity.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "bded7789-fde2-4e7c-a8f3-ca0a80fd1c7c",
+                "name": "Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "06561654325-4",
+        "Rating": {
+            "average": 4.052128197668433,
+            "reviews": 378
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h32/hca/10698194583582.png",
+        "id": "c097c829-566d-486d-95df-87f9482b0bca",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Founders Dirty Bastard Ale",
+        "Description": "Michigan- Scotch Ale / Wee Heavy- 8.5% ABV. World Beer Cup Silver medal 2010. Dark ruby color. Brewed with ten varieties of imported malts, this beer is bold and powerful. It's complex in the finish with hints of smoke and peat paired with a malty richness, with a dose of hop attitude.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "8c445387-36ad-49d6-a911-d3b89253d8fd",
+                "name": "Scotch Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "105183126-2",
+        "Rating": {
+            "average": 3.970086617125669,
+            "reviews": 72
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h6b/ha2/8806269812766.png",
+        "id": "4be6c71e-939c-4313-8792-3bf493cdacd5",
+        "EntityType": "Beer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+            "name": "Founders Brewing Company",
+            "website": "https://foundersbrewing.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 20.99,
+                "quantity": 24,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 20.99,
+                "quantity": 24,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            },
+            {
+                "price": 21.99,
+                "quantity": 18,
+                "unitVolume": 16,
+                "packaging": "Cans"
+            },
+            {
+                "price": 13.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Coors Light",
+        "Description": "Colorado- Light Lager- 4.2% ABV. Coors Light is a natural light lager beer that delivers Rocky Mountain cold refreshment with 4.2% ABV. Light calorie beer at 102 calories and 5g of carbs per 12 fluid ounces.",
+        "BeerType": {
+            "metadataId": "757e6b21-8556-4252-a38a-308f99400ddf",
+            "name": "Lager"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "e9335dd3-2802-406a-a884-3da086d84460",
+                "name": "American Style Light Lager"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            },
+            {
+                "metadataId": "9981ab01-960c-4fb0-8ace-cd47573d23c4",
+                "name": "Value"
+            }
+        ],
+        "Sku": "3283163-2",
+        "Rating": {
+            "average": 4.651852,
+            "reviews": 837
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h35/h04/15408419373086.png",
+        "id": "53d2191b-6759-4e81-8d90-cce4a0f1de40",
+        "EntityType": "Beer",
+        "BrewerId": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "Brewer": {
+            "id": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+            "name": "Molson Coors Beverage Company",
+            "website": "https://www.molsoncoors.com"
+        },
+        "isDeletable": "false"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 18.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Sierra Nevada Pale Ale",
+        "Description": "Hop heavy pale ale brewed with cascade hops with intense aromas of pine and citrus. Enjoy this American style IPA. Brewed by Sierra Nevada.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "17272690-a85b-4581-b126-d0a4f17c324f",
+                "name": "American Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "8155126-2",
+        "Rating": {
+            "average": 4.266364643483868,
+            "reviews": 414
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h19/h43/11735160193054.png",
+        "id": "b052b019-1586-4048-8653-14f0e30460b6",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 18.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Sierra Nevada Torpedo Extra IPA",
+        "Description": "American IPA. Bold, assertive and full of flavor and aromas highlighting the complex citrus, pine and herbal character of whole-cone American hops.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "105911122-2",
+        "Rating": {
+            "average": 1.1092369711087207,
+            "reviews": 345
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/ha5/h01/8799883329566.png",
+        "id": "4b89a360-03ff-4cdf-af64-97d7a8b83e04",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 19.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Sierra Nevada Hazy Little Thing IPA",
+        "Description": "Juicy hops and silky malt meet in this fruit forward IPA with modest bitterness and a smooth finish. Our unfiltered, unprocessed IPA, straight from the tanks and into the can",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            },
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "204509121-2",
+        "Rating": {
+            "average": 3.9890785544340925,
+            "reviews": 170
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "35caa37b-3409-435d-b857-275363173e49",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Sierra Nevada Hop Bullet",
+        "Description": "Hops are the name of the game with a Double IPA, but we knew we had to take it one step further. With Hop Bullet, we’re using a new technique, hitting the beer with a one-two punch of Magnum hops and lupulin dust—pure, concentrated hop flavor—directly into the tank to emphasize the intense pine and citrus flavors of classic West Coast hops.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "9815105-2",
+        "Rating": {
+            "average": 4.606551938913049,
+            "reviews": 409
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "d9a26d6b-89ad-4839-9b88-dbd259153b2e",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 18.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Sierra Nevada Atomic Torpedo",
+        "Description": "East Coast meets West Coast in this juicy and dank double IPA. Lush fruit, sticky pine, and floral tones. Soft yet assertive. Approachable yet atomic. California- American Double/Imperial IPA- 8.2% ABV. ",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            },
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "342151562-3",
+        "Rating": {
+            "average": 4.32541,
+            "reviews": 326
+        },
+        "Image": "https://sierranevada.com/wp-content/uploads/2023/01/AtomicTorpedo_6packCans_2023-600x444.png",
+        "id": "f017a642-e708-4b14-8520-a10b7b1eb2bd",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 12.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Big Foot Barleywine Style Ale",
+        "Description": "Pouring a lovely, deep, reddish-brown, this brew boasts a dense, fruity bouquet of aromas, and an extremely rich, intense, bittersweet palate. Sweet malts and bitter-sweet hops balance superbly in this brew. Enjoy! California & NC- American Barley Wine- 9.6% ABV. ",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "07a879e0-1c8b-49a3-a268-46e000059e49",
+                "name": "American Barley Wine"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "19202126-2",
+        "Rating": {
+            "average": 4.651,
+            "reviews": 376
+        },
+        "Image": "https://cdn.shopify.com/s/files/1/0227/0581/products/Sierra-Nevada-Bigfoot-Barley-Wine-12OZ-BTL_375x.jpg?v=1610032835",
+        "id": "ad2170f6-be23-484a-9e42-844fb95ee484",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Juicy Little Thing Hazy IPA",
+        "Description": "Juicy Little Thing supercharges the hop squeeze, serving up fresh-picked flavor on pillowy malt. Get your juicy fill now, before the next hazy IPA rotator hits in May.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "65165124-1",
+        "Rating": {
+            "average": 4.984,
+            "reviews": 156
+        },
+        "Image": "https://sierranevada.com/wp-content/uploads/2022/12/JuicyLittleThing_12ozCan-grid-173x345.png",
+        "id": "ffe047dc-ee7d-476c-a601-5c284031a5b3",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Celebration Fresh Hop IPA",
+        "Description": "Celebration Ale follows a time honored tradition of brewing a special beer for the holiday season. Generous portions of barley malts and fine whole hops of several varieties create a brew with a full, rich, hearty, hoppy spirit.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "102383121-2",
+        "Rating": {
+            "average": 4.123,
+            "reviews": 691
+        },
+        "Image": "https://sierranevada.com/wp-content/uploads/2018/10/Celebration12ozCan_2021-date-grid-173x345.png",
+        "id": "4013ca21-c00c-4a73-94fe-f7c00fe3d175",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 16.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Old Chico Crystal Wheat",
+        "Description": "Old Chico Crystal Wheat is our lightest offering. This filtered beer is brewed with malted wheat and barley, and perfectly balanced by unique Crystal hops. Old Chico is a great choice for those new to craft brew and longtime beer aficionados alike—light-bodied, refreshing and wonderfully drinkable.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "a0d9e984-fa17-4161-a039-064f57caffa3",
+                "name": "Wheat"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "651571-4",
+        "Rating": {
+            "average": 4.458,
+            "reviews": 12
+        },
+        "Image": "https://sierranevada.com/wp-content/uploads/2021/09/Old-Chico-1-1-173x345.png",
+        "id": "5d328b8f-afc4-43a1-b4f7-9602d0549d05",
+        "EntityType": "Beer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Brewer": {
+            "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+            "name": "Sierra Nevada Brewing Company",
+            "website": "https://sierranevada.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 4,
+                "unitVolume": 12,
+                "oackaging": "Bottles"
+            }
+        ],
+        "Name": "Dogfish Head 120-Minute IPA",
+        "Rating": {
+            "average": 4.940531620956185,
+            "reviews": 647
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hf7/h2e/8814407614494.png",
+        "id": "44ad8ac1-76ba-4e04-9603-d720abf2c9b2",
+        "Description": "Boiled for a full 2 hours while being continually hopped, dry-hopped, and aged for a month on whole leaf hops, 120 Minute IPA is by far the strongest IPA ever brewed. This is the Holy Grail for Hopheads.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "97756128-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "oackaging": "Bottles"
+            }
+        ],
+        "Name": "Dogfish Head 90-Minute IPA",
+        "Rating": {
+            "average": 3.8590704317769315,
+            "reviews": 120
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "7b333424-6285-4a45-a4ce-42aaf80fbd12",
+        "beerId": 56,
+        "Description": "What you have here is the only Imperial IPA inspired by a bowl of soup and a thrift store football game. Continual hopping provides a beautiful balance to our IPA, allowing us to add a foolhardy amount of hops throughout the boil.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "95674126-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Dogfish Head SeaQuenchAle",
+        "Rating": {
+            "average": 2.604050274543601,
+            "reviews": 62
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h60/h11/10124017303582.png",
+        "id": "bf1cf0d4-476e-4a9d-b4e6-0c1633374a9b",
+        "Description": "We begin by brewing a Kolsch with wheat & Munich Malt, then a salty Gose with black limes, coriander & sea salt, followed up with a citrusy-tart Berlinerweiss made with lime juice & lime peel. All three beers are then blended together = SeaQuench!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "19dd803c-2c50-4f18-abe3-c67355f2f5ea",
+                "name": "Wheat Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "161877121-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 34.99,
+                "quantity": 4,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Dogfish Head World Wide Stout",
+        "Rating": {
+            "average": 1.1643783197497646,
+            "reviews": 119
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h8c/h4e/10657395245086.png",
+        "id": "2a940fb3-9c80-46b6-aa14-1e744041be12",
+        "Description": "Dark,rich, roasty and complex, balancing notes of coffee and licorice with the carmely, smooth finish of borbon. Aged in charred oak bourbon barrels acquired directly from Heaven Hill Distillery. A great candidate for cellaring/aging.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1c9ce74c-235e-4d7b-be55-ead9bf859841",
+                "name": "Double/Imperial Stout"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "217953134-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Dogfish Head Slightly Mighty IPA",
+        "Rating": {
+            "average": 3.518525930659723,
+            "reviews": 312
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hcd/ha2/11845581078558.png",
+        "id": "5fab01e8-e783-474e-ab5c-0f59be799015",
+        "Description": "Sessionable and low calorie, using monk fruit for fermentable sugars (vs. lots of malt)! Packing aromatic hop notes with only 95 calories and 3.6g carbs, 1g protein and 0g fat (12oz serving). Hazy golden, evoking pineapple, coconut and mango.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "227713121-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Dogfish Head Hazy O",
+        "Rating": {
+            "average": 4.15221,
+            "reviews": 191
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/he0/ha8/13918646698014.png",
+        "id": "9051dccc-34a0-4c5b-9384-d2d6f55342ff",
+        "Description": "It's Oh, so Juicy! This beer starts with literally truckloads of oats, wheat for a full body, then it's liberally dry-hopped to deliver juicy tropical notes of citrus, mango and pineapple. But the real star is our secret ingredient: oat milk!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            },
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "273275121-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 13.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Dogfish Head Punkin Ale",
+        "Rating": {
+            "average": 4.419007323574467,
+            "reviews": 498
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/hda/he9/14966422437918.png",
+        "id": "04eea916-8923-45b1-b3b4-d7800b86d0a0",
+        "Description": "Punkin Ale is named after the seriously off-centered southern Delaware extravaganza Punkin Chunkin. A full-bodied brown ale with smooth hints of pumpkin and brown sugar.",
+        "BeerType": {
+            "metadataId": "65617065-7b4a-4467-a412-9227449fcd60",
+            "name": "Specialty or Hybrid"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "75faa801-5e83-47e6-bd32-9995c01d3807",
+                "name": "Pumpkin Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "103558126-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 16.29,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Dogfish Head Head Crimson Cru",
+        "Rating": {
+            "average": 3.250643535696838,
+            "reviews": 385
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/h66/h6d/17517514752030.png",
+        "id": "6e113939-b606-41b4-a3c8-90ab4f8b1473",
+        "Description": "This style of beer generally offers flavors unique from any one standard style of beer, and may combine elements of multiple styles. Please see packaging for more information.",
+        "BeerType": {
+            "metadataId": "65617065-7b4a-4467-a412-9227449fcd60",
+            "name": "Specialty or Hybrid"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "7396d562-5ae3-490c-b843-25878a9a1d52",
+                "name": "Specialty Beer"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "347135126-2",
+        "EntityType": "Beer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Brewer": {
+            "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+            "name": "Dogfish Head Brewery",
+            "website": "https://www.dogfish.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Lush Puppy",
+        "Rating": {
+            "average": 4.9,
+            "reviews": 10
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h62/hba/13128169553950.png",
+        "id": "ebdd5eba-8030-47b1-a8df-34e26c2a5f81",
+        "Description": "Lush Puppy is made with massive amounts of hops to give this beer a great tropical, citrusy flavor and aroma. Gluten reduced. Enjoy!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            }
+        ],
+        "Sku": "229468121-2",
+        "EntityType": "Beer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Brewer": {
+            "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+            "name": "Bootstrap Brewing",
+            "website": "https://bootstrapbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 19.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Insane Rush",
+        "Rating": {
+            "average": 5,
+            "reviews": 2
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h3d/h72/13128164147230.png",
+        "id": "20a0bb32-9172-4bcf-80c3-c60ae1e7b03e",
+        "Description": "A perfect balance of malts and five different hops give this India Pale Ale its edge. The unique blend of citrus and pine aroma and flavor makes it a very drinkable IPA.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "Sku": "208493121-2",
+        "EntityType": "Beer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Brewer": {
+            "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+            "name": "Bootstrap Brewing",
+            "website": "https://bootstrapbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 6.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "oackaging": "Cans"
+            }
+        ],
+        "Name": "Medal AF Mosaic IPA",
+        "Rating": {
+            "average": 5,
+            "reviews": 6
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/had/hac/26565068226590.png",
+        "id": "b52b7dc4-5ac5-4e6b-8b4b-f229b8e01ca2",
+        "Description": "We combined the best ingredients and attributes of our 2 most medaled beers -- Stick’s Pale Ale & Wreak Havoc which have 42 combined medals including 3 GABFs & 3 World Beer Cups to create this delicious new Mosaic IPA. Gluten reduced.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "Sku": "2126218810-2",
+        "EntityType": "Beer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Brewer": {
+            "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+            "name": "Bootstrap Brewing",
+            "website": "https://bootstrapbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.79,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Chillax",
+        "Rating": {
+            "average": 4.5,
+            "reviews": 2
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hd8/h4c/14196436271134.png",
+        "id": "42b4de03-5661-4e53-a27e-4641fa5403ca",
+        "Description": "Aroma is moderately light pineapple with a hint of sweetness. No hops or malt are evident. Light pineapple flavor with a hint of bitterness at the end.",
+        "BeerType": {
+            "metadataId": "65617065-7b4a-4467-a412-9227449fcd60",
+            "name": "Specialty or Hybrid"
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "7396d562-5ae3-490c-b843-25878a9a1d52",
+                "name": "Specialty Beer"
+            }
+        ],
+        "Sku": "208492121-2",
+        "EntityType": "Beer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Brewer": {
+            "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+            "name": "Bootstrap Brewing",
+            "website": "https://bootstrapbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Sticks",
+        "Rating": {
+            "average": 4.89,
+            "reviews": 10
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h9e/he4/14196472905758.png",
+        "id": "1d92cc94-91b7-4bad-86f2-2c5096275133",
+        "Description": "Pours clear golden in color. Aromas of mango and citrus hop with light nutty malts. Flavors of resiny, herbal, citrus hops and balancing nutty malt character. Piney, resiny hops on the finish with hints of nutty malt. Nicely balanced.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "17272690-a85b-4581-b126-d0a4f17c324f",
+                "name": "American Pale Ale"
+            }
+        ],
+        "Sku": "208494121-2",
+        "EntityType": "Beer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Brewer": {
+            "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+            "name": "Bootstrap Brewing",
+            "website": "https://bootstrapbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Boat Snack Hazy IPA",
+        "Rating": {
+            "average": 5,
+            "reviews": 25
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hcd/h96/26970509574174.png",
+        "id": "39ae14d9-4d0d-47c1-98bc-ce75d160c2d3",
+        "Description": "Smooth delicious New England style Hazy IPA. Gluten Reduced, 6.2% ABV, 35 IBUs. Perfect for a day of skiing or snowboarding or any outdoor adventure!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            }
+        ],
+        "Sku": "347546121-2",
+        "EntityType": "Beer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Brewer": {
+            "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+            "name": "Bootstrap Brewing",
+            "website": "https://bootstrapbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Lagunitas Daytime IPA",
+        "Rating": {
+            "average": 3.7896243815044306,
+            "reviews": 477
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hd1/h89/11657040003102.png",
+        "id": "88e2bee7-90b3-4bd8-9adf-6d183b38237c",
+        "Description": "DayTime IPA represents everything we know about making hop-forward beer, expressed in a sotto voice. Enjoy!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "225347121-2",
+        "EntityType": "Beer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Brewer": {
+            "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+            "name": "Lagunitas Brewing Company.",
+            "website": "https://lagunitas.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 17.98,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            },
+            {
+                "price": 24.98,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Lagunitas IPA",
+        "Rating": {
+            "average": 1.7610665871324303,
+            "reviews": 358
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hd2/hfd/11348869382174.png",
+        "id": "2989295a-1c19-43fe-bf03-28e264056871",
+        "Description": "This is Lagunitas' unique version of an ancient style. It is made with 43 different hops and 65 various malts. This IPA is full of flavor with notes of spice, roasted malts, caramel, and citrus fruit.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "35358122-2",
+        "EntityType": "Beer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Brewer": {
+            "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+            "name": "Lagunitas Brewing Company.",
+            "website": "https://lagunitas.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Lagunitas Maximus Colossal IPA",
+        "Rating": {
+            "average": 3.641323719494787,
+            "reviews": 493
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h45/h8f/9418350657566.png",
+        "id": "3b21c08d-28b4-45b9-b356-fef353828a71",
+        "Description": "Balance is everything. We believe Maximus to be exactly that. Et tu? Brimming with pine, grapefruit, and berries on top of floral, spicy, dank notes, the exotic hop character leads to an assertive hoppy burst.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "351417122-2",
+        "EntityType": "Beer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Brewer": {
+            "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+            "name": "Lagunitas Brewing Company.",
+            "website": "https://lagunitas.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "oackaging": "Cans"
+            }
+        ],
+        "Name": "Lagunitas SuperCluster",
+        "Rating": {
+            "average": 4.969725976340016,
+            "reviews": 59
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "1457ea98-c635-4f3f-a2e1-42a1951b6c7a",
+        "Description": "This out-of-this-world Mega IPA is a galactic blast from the glass, a Citra supernova in the sky, jettisoning lupulin lusciousness through the cosmos and across the universe of your palate. Enter its bitter orbit and we’ll all float on, okay? Cheers!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "6187115-5",
+        "EntityType": "Beer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Brewer": {
+            "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+            "name": "Lagunitas Brewing Company.",
+            "website": "https://lagunitas.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "Lagunitas A Little Sumpin Sumpin",
+        "Rating": {
+            "average": 1.3485746897254929,
+            "reviews": 334
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/h28/h9a/14272041484318.png",
+        "id": "01d4140e-ab58-49cc-89eb-bbb2f00237f7",
+        "Description": "Way smooth and silky with a nice wheatly-esque-ish-ness. A truly unique style featuring a strong hop finish on a silky body. A hoppy Wheat IPA that is great for hop fans but so smooth that the hefeweizen fans dig it too.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "a0d9e984-fa17-4161-a039-064f57caffa3",
+                "name": "Wheat"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "107936121-2",
+        "EntityType": "Beer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Brewer": {
+            "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+            "name": "Lagunitas Brewing Company.",
+            "website": "https://lagunitas.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "oackaging": "Bottles"
+            }
+        ],
+        "Name": "Lagunitas Hop Stoopid Ale",
+        "Rating": {
+            "average": 2.0824476203303357,
+            "reviews": 468
+        },
+        "Image": "https://cdn.beeradvocate.com/im/c_beer_image.gif",
+        "id": "f10686be-6789-4b65-81e5-86c624715d06",
+        "Description": "The sensuous honey-like amber ooze was administered intravenously to the wort kettle and the sacrament was complete. Another kettle of Hop Stoopid is once again raised up and fermented on high.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "9816011-1",
+        "brewerId": 5,
+        "EntityType": "Beer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Brewer": {
+            "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+            "name": "Lagunitas Brewing Company.",
+            "website": "https://lagunitas.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Rupture",
+        "Description": "By grinding the whole hop we 'rupture' the lupulin inside, releasing the oils that give the beer its flavor. And what we grind that day we use that day. Leaving you a beer that's fresh, aromatic, with a bright hoppy character.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "17272690-a85b-4581-b126-d0a4f17c324f",
+                "name": "American Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "194775121-2",
+        "Rating": {
+            "average": 4.1231,
+            "reviews": 289
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/05/Rupture-Product-Crops.png",
+        "id": "d1f59172-f548-4ad1-8e45-2e2a81b5acff",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Easy Street Wheat",
+        "Description": "Living in Colorado, “Easy Street” is more of a state of mind than an actual place. Light in color with refreshing citrus undertones, Easy Street is an unfiltered American-style wheat beer. The yeast gives the beer a nice smooth finish, a slight fruit flavor, and it’s distinct cloudy appearance.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "19dd803c-2c50-4f18-abe3-c67355f2f5ea",
+                "name": "Wheat Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "319811-2",
+        "Rating": {
+            "average": 1.768500733899927,
+            "reviews": 63
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/05/Easy-Hero.png",
+        "id": "656c86cf-c27c-4670-b0e5-12e98c20fc35",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Drumroll Hazy Pale Ale",
+        "Description": "Drumroll fills you with anticipation-much like the notes in this Hazy Pale Ale. Each year we select the rock-star hops of the harvest to craft this bold, juicy, tropically hop-forward brew, drumming up a citrus-inspired rhythm for what's to come",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "bded7789-fde2-4e7c-a8f3-ca0a80fd1c7c",
+                "name": "Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "169418121-2",
+        "Rating": {
+            "average": 4.232889876608931,
+            "reviews": 477
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/05/Drumroll-Hero.png",
+        "id": "12c409fb-bda9-47e9-9385-76628b5a117c",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 18.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Mountain Standard",
+        "Description": "Hand selected, Modern American hop varieties Cashmere, Sabro, and Strata build layers of complex hop flavors with juicy, tropical aromas of pineapple, orange, and mango and bold, vibrant aromas. Triple dry-hopped. Low bitterness and slight haze.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            },
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "225337121-2",
+        "Rating": {
+            "average": 2.857913327526303,
+            "reviews": 440
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/04/Mtn-Std-ProductCrops-e1588041298413.png",
+        "id": "493602de-1b1f-490b-8311-6e5454df6fee",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 17.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Sippin' Pretty",
+        "Description": "Loaded with our unique blend of acai, guava, and elderberry, and balanced with a delicate addition of Himalayan pink sea salt, Enjoy!",
+        "BeerType": {
+            "metadataId": "65617065-7b4a-4467-a412-9227449fcd60",
+            "name": "Specialty or Hybrid"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "7396d562-5ae3-490c-b843-25878a9a1d52",
+                "name": "Specialty Beer"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "223878121-2",
+        "Rating": {
+            "average": 4.3651,
+            "reviews": 203
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/h89/h31/13025491386398.png",
+        "id": "75609f0b-6b34-4769-962d-60588398d5f0",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Hazer Tag IPA",
+        "Description": "Game-changing haziness awaits in the galactic arena of hoppiness. Passion fruit and citrus notes engulf the palate in a dynamo of hazy hop goodness. Draw your phaser and see how you measure up in our latest game of Hazer Tag.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            },
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "337764121-2",
+        "Rating": {
+            "average": 4.5572486237237335,
+            "reviews": 184
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/07/Group-2.png",
+        "id": "01fb091c-9e7d-4c16-9034-aff89ad19276",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "St. Lupulin Extra Pale Ale",
+        "Description": "This dry-hopped Extra Pale Ale is our tribute to the resin within the revered hop flower, tended with devotion by the mythical St. Lupulin. One sip of this seasonal ale and you too will believe.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "bded7789-fde2-4e7c-a8f3-ca0a80fd1c7c",
+                "name": "Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "9156165-1",
+        "Rating": {
+            "average": 3.98451,
+            "reviews": 64
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/07/Group-2.png",
+        "id": "59a1323b-f8a0-4313-b591-61c68decde29",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [],
+        "Name": "Tangerine Tree Shaker",
+        "Description": "It's time to shake the senses with Tree Shaker Imperial Tangerine IPA. Bright tangerine fruit mixes with massive amounts of juicy, citrusy hops to create a mammoth-sized IP A with intense hop notes of ripe orange and stone fruit. Available April through July.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "41874165-1",
+        "Rating": {
+            "average": 3.98451,
+            "reviews": 144
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2022/03/TreeShaker_Tangerine-Hero-1.png",
+        "id": "1a72ec3f-23fa-4cff-be15-c497dfa97eab",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Pulp Theory",
+        "Description": "Pulp Theory is our mad journey into both with a hyper-hopped hazy IPA crafted to accentuate bold hop flavors of ripe orange, pineapple juice, and fruit punch. Join us at the collision of imagination and possibility.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "1e65b3a8-6049-4d96-9f54-46a24e367182",
+                "name": "Hazy IPA"
+            },
+            {
+                "metadataId": "a65742a0-787b-43f2-8351-77221d08a965",
+                "name": "New England-Style IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "238119121-2",
+        "Rating": {
+            "average": 4.912345,
+            "reviews": 987
+        },
+        "Image": "https://www.odellbrewing.com/wp-content/uploads/2020/04/Pulp-Theory-ProductCrops-e1588041072751.png",
+        "id": "790bb581-4f20-4d10-9423-bac4a2c1aa6c",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Odell Lagerado Crispy Lager",
+        "Description": "We’ve heard the lore of Lagerado. That place just past the horizon where the mountain air is crisp, and each sunset is the perfect shade of gold. Take it easy and linger longer, because here every story has the chance to be a tall tale.",
+        "BeerType": {
+            "metadataId": "757e6b21-8556-4252-a38a-308f99400ddf",
+            "name": "Lager"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "bee49524-ba50-4859-8d9f-c8dd0bc5e00e",
+                "name": "American-Style Lager"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "342781122-2",
+        "Rating": {
+            "average": 4.1487,
+            "reviews": 987
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,12pk/media/sys_master/twmmedia/hb8/h14/16238819967006.png",
+        "id": "3fda098d-9e0c-40f3-9cda-4d5d75cbc4d7",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Odell Solarized Yuzu Double IPA",
+        "Description": "This style of beer generally offers hop-forward flavors and aromas (much like American IPAs), but with a higher alcohol content and often more hop bitterness. Use of different hops offer different flavors and aromas.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "272293121-2",
+        "Rating": {
+            "average": 4.2487,
+            "reviews": 147
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/he1/hfe/13918646009886.png",
+        "id": "9de667d4-f43b-4ce5-b09e-39f4407c9efd",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Odell Wolfpicker",
+        "Description": "This style of beer generally offers hop-forward flavors and aromas with less hop bitterness than an American IPA. Use of different hops offer different flavors and aromas.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "17272690-a85b-4581-b126-d0a4f17c324f",
+                "name": "American Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "200603121-2",
+        "Rating": {
+            "average": 4.1394,
+            "reviews": 15
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/h35/hde/15843099770910.png",
+        "id": "f8a849a7-0ee9-4a5f-ab68-ae9b4c0ae6ac",
+        "EntityType": "Beer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Brewer": {
+            "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+            "name": "Odell Brewing Company",
+            "website": "https://www.odellbrewing.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 13.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "New Belgium Honey Orange Tripel",
+        "rating": {
+            "average": 4.180322318620529,
+            "reviews": 408
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h03/h93/11375132606494.png",
+        "id": "0064a566-a3fb-44ab-8dec-36eef07b9c9e",
+        "Description": "The Seville orange peel is freshly ground 24 hours prior to the day we brew by the Old Town Spice Shop, less than one mile from the Fort Collins, Colorado brewery.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "4bf67cfd-b74d-45d6-8abf-88ad01afc7b3",
+                "name": "Belgian-Style Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "202712121-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 12.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "New Belgium Fat Tire Belgian White",
+        "Rating": {
+            "average": 3.079965625452034,
+            "reviews": 160
+        },
+        "Image": "https://www.newbelgium.com/siteassets/beer/fat-tire-belgian-white/beer-fat-tire-belgian-white-desktop.png",
+        "id": "d90efa60-aff0-48cb-98f7-37e4462a1e2b",
+        "Description": "Unfiltered wheat beer brewed with juicy Seville orange peel and freshly ground coriander. A great balance of refreshment and drinkability with just a hint of sweetness.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "19dd803c-2c50-4f18-abe3-c67355f2f5ea",
+                "name": "Wheat Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "201949126-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 22.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "New Belgium Voodoo Ranger Juice Force Hazy Imperial IPA",
+        "Rating": {
+            "average": 4.107273030523367,
+            "reviews": 939
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,sq/media/sys_master/twmmedia/h32/h37/26417755979806.png",
+        "id": "4353bffe-519a-4a9f-b62d-8ed0baf70f58",
+        "Description": "Juice Force IPA is fruit-forward, highly-drinkable, and a 9.5% ABV blast. Buckle up; with this hazy IPA, you'll be buzzing the tower in no time.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "342423562-1",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "New Belgium Voodoo Ranger Juicifer IPA",
+        "Rating": {
+            "average": 3.9492021918949725,
+            "reviews": 236
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "1c57cd75-e4a7-4717-b51c-adaf93542792",
+        "Description": "Let's just say Voodoo Ranger doesn't take himself too seriously, and neither should you. The bottom line: if you're looking for innovative IPAs that are hop forward, bold, and occasionally hazy, the Voodoo Ranger fam has your back.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "154681-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "New Belgium Voodoo Ranger Juicy Haze IPA",
+        "Rating": {
+            "average": 4.800191829796816,
+            "reviews": 255
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/cmsmedia/hff/h0e/8979036078110.png",
+        "id": "b024b7df-48a2-486c-a241-9b0483e2e096",
+        "Description": "Voodoo Ranger Juicy Haze IPA is packed with bright tropical aromas and brilliant citrusy flavors. It's a perfect Voodoo Ranger option that satisfies that Juicy, Hazy craving with a pleasantly smooth finish!",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "204744121-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "New Belgium Voodoo Ranger IPA",
+        "Rating": {
+            "average": 1.3981363388800485,
+            "reviews": 441
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h5d/h93/10675772489758.png",
+        "id": "a7f66a1f-3b5f-42e3-8308-27ab7b40cc05",
+        "Description": "Bursting with tropical aromas and juicy fruit flavors from Mosaic and Amarillo hops, this golden IPA is perfectly bitter with a refreshing finish.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "178157127-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "New Belgium Trippel Belgian Style Ale",
+        "Rating": {
+            "average": 2.6576216939051998,
+            "reviews": 389
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hc7/h44/11464107982878.png",
+        "id": "bad38793-b91e-4c2a-9043-1b3833de4d48",
+        "Description": "This is a Colorado version of a Belgian Trippel. It has a hazy deep golden color, is bottle-fermented, and has a delightfully floral Saaz hop bouquet and herbal, spicy Hallertau Mittelfruh Noble hop nose, balanced by creamy, juicy malt.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "4bf67cfd-b74d-45d6-8abf-88ad01afc7b3",
+                "name": "Belgian-Style Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "101825126-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 10.98,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            },
+            {
+                "price": 26.98,
+                "quantity": 24,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "New Belgium Fat Tire",
+        "Rating": {
+            "average": 4.36964965425013,
+            "reviews": 440
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hfa/hc0/11805929209886.png",
+        "id": "06d0a6bf-8acc-4ef1-b45a-f0d3c955a3c2",
+        "Description": "This flavorful, iconic Amber Ale features a Belgian-style balance of malt and hops; bready but with a lighter Yank twist. It's a tasty cult beer in which a light flash of hops tames the malt.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "8b0c0ce2-5438-4481-92ae-4500a7b7f657",
+                "name": "Amber"
+            },
+            {
+                "metadataId": "65e81ec4-529c-49de-a2bb-91845bebb02f",
+                "name": "Red"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "101731126-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 17.99,
+                "quantity": 12,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            },
+            {
+                "price": 10.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            },
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "New Belgium Voodoo Ranger Imperial IPA",
+        "Rating": {
+            "average": 1.030031658964159,
+            "reviews": 412
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h06/h57/10672758161438.png",
+        "id": "ba7b80a7-84f5-4388-9b8f-196ca90ede08",
+        "Description": "A bold imperial IPA with a rare blend of Mosaic, Calypso, Bravo, and Delta hops creating an explosion of fresh cut pine and citrus flavors.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "178155128-2",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 14.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Bottles"
+            }
+        ],
+        "Name": "New Belgium Oakspire Bourbon Barrel Ale",
+        "Rating": {
+            "average": 2.0996330805016186,
+            "reviews": 342
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h8b/h8f/11475320012830.png",
+        "id": "b2b6d03a-16b1-4f8d-9fe8-78e5f399826c",
+        "Description": "Oakspire features a custom-built, proprietary infusion method to pull the flavors from the bourbon-steeped charred oak and marries it with a malty-sweet, deep amber ale.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "a505262f-f0ab-4958-865e-6b914887eccb",
+                "name": "Bourbon Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "61645154-1",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Beer",
+        "Brewer": {
+            "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+            "name": "New Belgium",
+            "website": "https://www.newbelgium.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 12.49,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Death By Coconut",
+        "Rating": {
+            "average": 2.499562698383815,
+            "reviews": 130
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/ha6/h87/9664767787038.png",
+        "id": "36d6b5e3-7e7d-45fd-83d8-1f0d5bd65348",
+        "Description": "A semi-sweet porter made from loads of dark chocolate and extra dark caramel malt. It pours a rich velvet black with a frothy head and exudes intense fresh cacao flavors swirled with popping coconut aromas.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "e1a56a43-e31b-4d7d-9293-7b911b9e7a23",
+                "name": "Porter"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "158981121-2",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Dale's Pale Ale",
+        "Rating": {
+            "average": 1.0189692403493238,
+            "reviews": 280
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h2f/h10/8804817240094.png",
+        "id": "0a9ffc66-9506-4210-8d04-cacd29fe6511",
+        "Description": "Brewed with European malts and four kinds of American hops, Dale's Pale Ale delivers a blast of hop aromas redolent of citrus and spice, complimented by toasty and sweet malts. This brew has a silky mouthfeel with a lingering bitterness.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "bded7789-fde2-4e7c-a8f3-ca0a80fd1c7c",
+                "name": "Pale Ale"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "112049131-2",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 18.99,
+                "quantity": 4,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Ten FIDY",
+        "Rating": {
+            "average": 2.9788154999137637,
+            "reviews": 436
+        },
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/hc1/h8e/11465945481246.png",
+        "id": "a8f0b9d2-5e10-40e7-b4bf-a6cef906f53f",
+        "Description": "This is immensely viscous and loaded with neck-deep flavors of chocolate, malt, coffee, cocoa and oats. It's the beer equivalent of a decadently rich milkshake made with Whoppers malted-milk balls and Heaven's best chocolate ice cream.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "ceb40eb9-02b8-4cc5-a1dc-e5182d6184be",
+                "name": "Stout"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            },
+            {
+                "metadataId": "8381fbee-5972-40dc-adb9-642bf2e1f337",
+                "name": "Premium"
+            }
+        ],
+        "Sku": "104830118-2",
+        "brewerId": 7,
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [],
+        "Name": "Oskar Blues Deviant Dale's IPA",
+        "Rating": {
+            "average": 5,
+            "reviews": 911
+        },
+        "Image": "https://cdn.beeradvocate.com/im/c_beer_image.gif",
+        "id": "bec1ef66-5d68-4980-b376-6a02faee0afb",
+        "Description": "This beer is intended to be a sensory assault for hop lovers. With four hop additions during the brew process and a final wallop of excessive Columbus dry-hopping, this beer is meant to say one thing: MORE HOPS! It was was born at the crossroads, in a juke joint, as if Dale’s Pale Ale sold its soul to balance Deviant’s foreboding aromas of citrus, grapefruit rind and piney resins with a copper ball-of-fire color and inscrutable finish",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "8381fbee-5972-40dc-adb9-642bf2e1f337",
+                "name": "Premium"
+            }
+        ],
+        "Sku": "UNKNOWN",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Dale's Double IPA",
+        "Rating": {
+            "average": 4.52659,
+            "reviews": 426
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/hf5/h4b/26556770287646.png",
+        "id": "6ab234bf-511e-46e9-8d2a-3c892ae5edc4",
+        "Description": "Double Dale's Imperial IPA picks up the torch, the welder, and the hacksaw to turn the industry upside down again, doubling down on hops with a newly formulated, massive IPA worthy of the legendary original-craft-beer-in-a-can.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "89dff73f-9cd6-4d3d-88b9-48a2205b82f2",
+                "name": "Double/Imperial IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "342725121-2",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 9.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Mama's Little Yella PILS",
+        "Rating": {
+            "average": 4.2512,
+            "reviews": 128
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,15pk/media/sys_master/twmmedia/h3c/ha3/12780135645214.png",
+        "id": "c1904900-97a9-4482-88b4-6a63dea15faa",
+        "Description": "Pours a clear golden color with a frothy white head. Aromas of clean Pilsner malts & spicy floral hops. Crisp, dry mouth feel. Flavors start with a sweet, grassy malt body & are balanced with a good dose of spicy hop bitterness.",
+        "BeerType": {
+            "metadataId": "757e6b21-8556-4252-a38a-308f99400ddf",
+            "name": "Lager"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "a5e0829a-4c01-4974-ae07-749b627a1b88",
+                "name": "Czech Pilsner"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            }
+        ],
+        "Sku": "106734131-2",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Mutant X IPA",
+        "Rating": {
+            "average": 4.1529,
+            "reviews": 159
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/h70/hcd/16863417761822.png",
+        "id": "b860dc62-abf4-4bdc-a328-34ffc5f667ed",
+        "Description": "We're deploying revolutionary IPA technology to extract new dimensions of flavor from hops creating a futuristic exBEERience with every gulp.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "350307121-2",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "Pricing": [
+            {
+                "price": 11.99,
+                "quantity": 6,
+                "unitVolume": 12,
+                "packaging": "Cans"
+            }
+        ],
+        "Name": "Oskar Blues Western Mutant",
+        "Rating": {
+            "average": 3.9489,
+            "reviews": 74
+        },
+        "Image": "https://www.totalwine.com/dynamic/x490,6pk/media/sys_master/twmmedia/h20/h9c/16271080128542.png",
+        "id": "733126c0-5742-459d-b8ee-605e804c1c7c",
+        "Description": "Western Mutant West Coast IPA is our very first entry in the Hop Forward Series. Western Mutant West Coast IPA, featuring Akoya, Saphir, Simcoe and Nelson Sauvin hops, digs deep to find IPA’s roots and reach new heights of hopped-up weirdness.",
+        "BeerType": {
+            "metadataId": "9d6969cf-5873-43f1-9c49-f32ab6b586f5",
+            "name": "Ale"
+        },
+        "BeerStyles": [
+            {
+                "metadataId": "46c48c77-b143-4dc9-ad57-a797e0dc8997",
+                "name": "American IPA"
+            }
+        ],
+        "BeerCategories": [
+            {
+                "metadataId": "7d82eca0-bc69-4d5c-bbdd-9b3799461264",
+                "name": "Craft"
+            }
+        ],
+        "Sku": "342727121-2",
+        "EntityType": "Beer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Brewer": {
+            "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+            "name": "Oskar Blues",
+            "website": "https://www.oskarblues.com/"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2022-11-11T11:11:11Z",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "ModifiedDate": "2023-01-04T08:08:08Z"
+    },
+    {
+        "id": "547a6375-b9eb-48b7-929b-1965654eaab9",
+        "BrewerId": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+        "CreatedBy": "the.system",
+        "CreatedDate": "2024-10-02T20:29:54.0879509Z",
+        "Description": "Colorado- American-Style Lager- 5.0% ABV. Banquet is a sessionable, golden lager with an inviting aroma of freshly baked bread and understated hints of banana and pear that's complemented by an effervescent mouthfeel and a crisp finish.",
+        "EntityType": "Beer",
+        "Image": "https://www.totalwine.com/media/sys_master/twmmedia/h21/h93/29287246528542.png",
+        "ModifiedBy": "the.system",
+        "ModifiedDate": "2024-10-02T20:29:54.0880287Z",
+        "Name": "Coors Banquet",
+        "Sku": "3280123-3",
+        "BeerCategories": [
+            {
+                "metadataId": "750bddce-3abc-4585-9000-e045c8aba866",
+                "name": "Domestic"
+            },
+            {
+                "metadataId": "9981ab01-960c-4fb0-8ace-cd47573d23c4",
+                "name": "Value"
+            }
+        ],
+        "BeerStyles": [
+            {
+                "metadataId": "bee49524-ba50-4859-8d9f-c8dd0bc5e00e",
+                "name": "American-Style Lager"
+            }
+        ],
+        "BeerType": {
+            "metadataId": "757e6b21-8556-4252-a38a-308f99400ddf",
+            "name": "Lager"
+        },
+        "Brewer": {
+            "id": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+            "name": "Molson Coors Beverage Company",
+            "website": "https://www.molsoncoors.com"
+        },
+        "Pricing": [
+            {
+                "packaging": "Cans",
+                "price": 19.99,
+                "quantity": 24,
+                "unitVolume": 12
+            },
+            {
+                "packaging": "Cans",
+                "price": 15.99,
+                "quantity": 18,
+                "unitVolume": 12
+            },
+            {
+                "packaging": "Cans",
+                "price": 21.99,
+                "quantity": 18,
+                "unitVolume": 16
+            },
+            {
+                "packaging": "Cans",
+                "price": 11.99,
+                "quantity": 12,
+                "unitVolume": 12
+            },
+            {
+                "packaging": "Cans",
+                "price": 8.99,
+                "quantity": 6,
+                "unitVolume": 16
+            },
+            {
+                "packaging": "Bottles",
+                "price": 20.99,
+                "quantity": 24,
+                "unitVolume": 12
+            },
+            {
+                "packaging": "Bottles",
+                "price": 16.99,
+                "quantity": 18,
+                "unitVolume": 12
+            },
+            {
+                "packaging": "Bottles",
+                "price": 8.49,
+                "quantity": 6,
+                "unitVolume": 12
+            }
+        ],
+        "Rating": {
+            "average": 4.7,
+            "reviews": 167
+        }
+    }
+]

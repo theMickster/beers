@@ -1,0 +1,182 @@
+[
+    {
+        "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "EntityType": "Brewer",
+        "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+        "Name": "Founders Brewing Company",
+        "FoundedIn": 1997,
+        "Headquarters": "Grand Rapids, MI",
+        "Website": "https://foundersbrewing.com",
+        "BreweryType": {
+            "MetadataId": "9d77afda-0d2e-4982-a7ea-c31567c5b486",
+            "Name": "Regional"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+        "EntityType": "Brewer",
+        "BrewerId": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+        "Name": "Molson Coors Beverage Company",
+        "FoundedIn": 1873,
+        "Headquarters": "Golden, Co",
+        "Website": "https://www.molsoncoors.com",
+        "BreweryType": {
+            "MetadataId": "1636e63e-990c-4585-8495-b02719162b47",
+            "Name": "Large"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "EntityType": "Brewer",
+        "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+        "Name": "Sierra Nevada Brewing Company",
+        "FoundedIn": 1979,
+        "Headquarters": "Chico, CA",
+        "Website": "https://sierranevada.com/",
+        "BreweryType": {
+            "MetadataId": "9d77afda-0d2e-4982-a7ea-c31567c5b486",
+            "Name": "Regional"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "EntityType": "Brewer",
+        "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+        "Name": "Dogfish Head Brewery",
+        "FoundedIn": 2002,
+        "Headquarters": "Milton, DE",
+        "Website": "https://www.dogfish.com/",
+        "BreweryType": {
+            "MetadataId": "3ac7980d-0385-40e0-bc74-4fe796c0da19",
+            "Name": "Microbrewery"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "EntityType": "Brewer",
+        "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+        "Name": "Bootstrap Brewing",
+        "FoundedIn": 2011,
+        "Headquarters": "Longmont, CO",
+        "Website": "https://bootstrapbrewing.com/",
+        "BreweryType": {
+            "MetadataId": "3ac7980d-0385-40e0-bc74-4fe796c0da19",
+            "Name": "Microbrewery"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "EntityType": "Brewer",
+        "BrewerId": "a37fbd3e-9e84-45f4-8f08-12f0f4d309d8",
+        "Name": "Lagunitas Brewing Company.",
+        "FoundedIn": 1993,
+        "Headquarters": "Petaluma, California",
+        "Website": "https://lagunitas.com/",
+        "BreweryType": {
+            "MetadataId": "9d77afda-0d2e-4982-a7ea-c31567c5b486",
+            "Name": "Regional"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "EntityType": "Brewer",
+        "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+        "Name": "Odell Brewing Company",
+        "FoundedIn": 1989,
+        "Headquarters": "Fort Collins, CO",
+        "Website": "https://www.odellbrewing.com/",
+        "BreweryType": {
+            "MetadataId": "3ac7980d-0385-40e0-bc74-4fe796c0da19",
+            "Name": "Microbrewery"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "EntityType": "Brewer",
+        "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+        "Name": "Oskar Blues",
+        "FoundedIn": 2002,
+        "Headquarters": "Lyons, Colorado",
+        "Website": "https://www.oskarblues.com/",
+        "BreweryType": {
+            "MetadataId": "9d77afda-0d2e-4982-a7ea-c31567c5b486",
+            "Name": "Regional"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "EntityType": "Brewer",
+        "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+        "Name": "New Belgium",
+        "FoundedIn": 1988,
+        "Headquarters": "Ft. Collins, Colorado",
+        "Website": "https://www.newbelgium.com/",
+        "BreweryType": {
+            "MetadataId": "1636e63e-990c-4585-8495-b02719162b47",
+            "Name": "Large"
+        },
+        "isDeletable": "false",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "CreatedDate": "2023-11-12T11:11:11Z",
+        "ModifiedDate": "2023-11-12T11:11:11Z"
+    },
+    {
+        "EntityType": "Brewer",
+        "Name": "A Mick Fake Brewing Company #4",
+        "FoundedIn": 2008,
+        "Headquarters": "Aurora, CO",
+        "Website": "https://a-fake-aurora-beer.com",
+        "CreatedDate": "2024-01-03T13:27:48.4040123Z",
+        "ModifiedDate": "2024-01-03T13:27:48.4040123Z",
+        "BreweryType": {
+            "MetadataId": "b03fcb6a-0722-4158-a494-524149dc2349",
+            "Name": "Brewery In Planning"
+        },
+        "isDeletable": "true",
+        "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+        "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+        "BrewerId": "f16f7b78-b984-4b11-b29c-694c451bc32a",
+        "id": "f16f7b78-b984-4b11-b29c-694c451bc32a"
+    }
+]
