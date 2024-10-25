@@ -20,10 +20,4 @@ public abstract class BaseBeerModel
     public List<PriceModel>? Pricing { get; set; } = [];
 
     public BrewerModel Brewer { get; set; } = new();
-    
-    public BeerTypeModel BeerType { get; set; } = new();
-    
-    public List<BeerCategoryModel> BeerCategories { get; set; } = [];
-    
-    public List<BeerStyleModel> BeerStyles { get; set; } = [];
 }

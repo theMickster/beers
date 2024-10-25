@@ -29,4 +29,6 @@ public static class ValidatorConstants
     public static string BeerTypeIsNull => "Beer Type is required";
     
     public static string BeerTypeMustExist => "Beer Type is invalid";
+
+    public static string BeerIdIsNull => "Beer Id is required";
 }

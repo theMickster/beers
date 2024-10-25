@@ -2,27 +2,20 @@
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Common.Constants;
 using Beers.Domain.Models.Beer;
-using Beers.Domain.Models.Metadata;
 using FluentValidation;
 
 namespace Beers.Application.Validators.Beer;
 
-public sealed class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
+public class CreateBeerValidator<T> : BaseBeerValidator<T> where T : CreateBeerModel
 {
-    private readonly IReadBeerTypeService _readBeerTypeService;
-    private readonly IReadBeerCategoryService _readBeerCategoryService;
-    private readonly IReadBeerStyleService _readBeerStyleService;
-
     public CreateBeerValidator(
         IReadBeerService readBeerService,
         IReadBrewerService readBrewerService,
         IReadBeerCategoryService readBeerCategoryService,
         IReadBeerStyleService readBeerStyleService,
-        IReadBeerTypeService readBeerTypeService) : base(readBeerService, readBrewerService)
+        IReadBeerTypeService readBeerTypeService) 
+        : base(readBeerService, readBrewerService, readBeerCategoryService, readBeerStyleService, readBeerTypeService)
     {
-        _readBeerTypeService = readBeerTypeService;
-        _readBeerCategoryService = readBeerCategoryService;
-        _readBeerStyleService = readBeerStyleService;
 
         RuleFor(beer => beer.BeerTypeId)
             .NotEmpty()
@@ -39,9 +32,5 @@ public sealed class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
 
     }
 
-    private async Task<bool> BeerTypeExistsAsync(Guid id)
-    {
-        var result = await _readBeerTypeService.GetListAsync<BeerTypeModel>();
-        return result.Any(x => x.Id == id);
-    }
+
 }
