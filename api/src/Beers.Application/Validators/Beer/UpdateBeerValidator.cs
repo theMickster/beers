@@ -6,7 +6,7 @@ using FluentValidation;
 
 namespace Beers.Application.Validators.Beer;
 
-public sealed class UpdateBeerValidator : CreateBeerValidator<UpdateBeerModel>
+public sealed class UpdateBeerValidator : AbstractValidator<UpdateBeerModel>
 {
     public UpdateBeerValidator(
         IReadBeerService readBeerService,
@@ -14,8 +14,11 @@ public sealed class UpdateBeerValidator : CreateBeerValidator<UpdateBeerModel>
         IReadBeerCategoryService readBeerCategoryService,
         IReadBeerStyleService readBeerStyleService,
         IReadBeerTypeService readBeerTypeService)
-        : base(readBeerService, readBrewerService, readBeerCategoryService, readBeerStyleService, readBeerTypeService)
     {
+        RuleFor(x => x).SetInheritanceValidator(v => 
+            v.Add<UpdateBeerModel>(new CreateBeerValidator(readBeerService, readBrewerService, readBeerCategoryService, readBeerStyleService, readBeerTypeService ))
+        );
+
         RuleFor(beer => beer.BeerId)
             .NotEmpty()
             .WithMessage(ValidatorConstants.BeerIdIsNull)
