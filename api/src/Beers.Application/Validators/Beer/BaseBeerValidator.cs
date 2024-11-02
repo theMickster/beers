@@ -40,6 +40,7 @@ public class BaseBeerValidator<T>(
 
         RuleFor(x => x.Name)
             .MustAsync(async (name, cancellation) => await BeerExistsAsync(name))
+            .When(x => !string.IsNullOrWhiteSpace( x.Name ))
             .WithMessage(ValidatorConstants.BeerNameIsUnique)
             .WithErrorCode("Rule-04")
             .OverridePropertyName("Name");

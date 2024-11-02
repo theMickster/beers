@@ -40,5 +40,5 @@ public static class ValidatorConstants
 
     public static string BeerStylesIsNullOrEmpty => "Beer Styles list cannot be null nor empty";
 
-    public static string BeerNameIsUnique => "Beer name cannot already exist in the database";
+    public static string BeerNameIsUnique => "Beer name cannot already exist in the database for a different record";
 }

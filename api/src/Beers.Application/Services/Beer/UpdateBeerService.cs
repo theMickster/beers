@@ -50,6 +50,7 @@ public sealed class UpdateBeerService(
 
         var inputEntity = await _beerHydrationService.HydrateEntity(inputModel);
 
+        entityToUpdate.ModifiedDate = DateTime.UtcNow;
         entityToUpdate.Name = inputEntity.Name;
         entityToUpdate.Description = inputEntity.Description;
         entityToUpdate.Sku = inputEntity.Sku;
