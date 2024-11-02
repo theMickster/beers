@@ -25,25 +25,18 @@ public class BaseBeerValidator<T>(
     {
         RuleFor(x => x.Description)
             .NotEmpty()
-            .WithErrorCode("Rule-04").WithMessage(ValidatorConstants.MessageDescriptionEmpty)
+            .WithMessage(ValidatorConstants.MessageDescriptionEmpty)
             .MaximumLength(256)
-            .WithErrorCode("Rule-05").WithMessage(ValidatorConstants.MessageDescriptionLength);
+            .WithMessage(ValidatorConstants.MessageDescriptionLength);
     }
 
     protected void ValidateBeerName()
     {
         RuleFor(x => x.Name)
             .NotEmpty()
-            .WithErrorCode("Rule-02").WithMessage(ValidatorConstants.MessageNameEmpty)
+            .WithMessage(ValidatorConstants.MessageNameEmpty)
             .MaximumLength(256)
-            .WithErrorCode("Rule-03").WithMessage(ValidatorConstants.MessageNameLength);
-
-        RuleFor(x => x.Name)
-            .MustAsync(async (name, cancellation) => await BeerExistsAsync(name))
-            .When(x => !string.IsNullOrWhiteSpace( x.Name ))
-            .WithMessage(ValidatorConstants.BeerNameIsUnique)
-            .WithErrorCode("Rule-04")
-            .OverridePropertyName("Name");
+            .WithMessage(ValidatorConstants.MessageNameLength);
     }
 
     protected void ValidateBrewer()
@@ -53,19 +46,12 @@ public class BaseBeerValidator<T>(
                 => await BrewerExistsAsync(beer.BrewerId).ConfigureAwait(false))
             .When(x => x?.BrewerId != null)
             .WithMessage(ValidatorConstants.BrewerMustExist)
-            .WithErrorCode("Rule-01")
             .OverridePropertyName("BrewerId");
     }
 
-    private async Task<bool> BrewerExistsAsync(Guid brewerId)
+    protected async Task<bool> BeerNameExistsAsync(string name)
     {
-        var result = await ReadBrewerService.GetByIdAsync(brewerId);
-        return result != null && result.BrewerId != Guid.Empty;
-    }
-
-    private async Task<bool> BeerExistsAsync(string name)
-    {
-        var param = new SearchBeerParameter()
+        var param = new SearchBeerParameter
         {
             OrderBy = SortedResultConstants.Ascending,
             PageNumber = 1,
@@ -73,9 +59,9 @@ public class BaseBeerValidator<T>(
             SortOrder = SortedResultConstants.Ascending
         };
 
-        var searchModel = new SearchInputBeerModel()
+        var searchModel = new SearchInputBeerModel
         {
-            Name = name
+            Name = name.Trim()
         };
 
         var result = await ReadBeerService.SearchAsync(param, searchModel);
@@ -101,4 +87,10 @@ public class BaseBeerValidator<T>(
         var result = ids.Count(x => models.All(y => y.Id != x));
         return result == 0;
     }
+    private async Task<bool> BrewerExistsAsync(Guid brewerId)
+    {
+        var result = await ReadBrewerService.GetByIdAsync(brewerId);
+        return result != null && result.BrewerId != Guid.Empty;
+    }
+
 }

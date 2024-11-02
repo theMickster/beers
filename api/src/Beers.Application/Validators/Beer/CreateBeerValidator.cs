@@ -18,6 +18,7 @@ public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
     {
         ValidateBrewer();
         ValidateBeerName();
+        ValidateBeerNameIsUnique();
         ValidateDescription();
         ValidateBeerType();
         ValidateBeerCategories();
@@ -30,14 +31,12 @@ public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
             .NotNull()
             .NotEmpty()
             .WithMessage(ValidatorConstants.BeerStylesIsNullOrEmpty)
-            .WithErrorCode("Rule-01")
             .OverridePropertyName("BeerStyles");
 
         RuleFor(beer => beer)
             .MustAsync(async (beer, cancellation) => await BeerStylesExistsAsync(beer.BeerStyles))
             .When(x => x?.BeerStyles is { Count: > 0 })
             .WithMessage(ValidatorConstants.BeerStylesMustExist)
-            .WithErrorCode("Rule-04")
             .OverridePropertyName("BeerStyles");
     }
 
@@ -47,14 +46,12 @@ public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
             .NotNull()
             .NotEmpty()
             .WithMessage(ValidatorConstants.BeerCategoriesIsNullOrEmpty)
-            .WithErrorCode("Rule-01")
             .OverridePropertyName("BeerCategories");
 
         RuleFor(beer => beer)
             .MustAsync(async (beer, cancellation)  => await BeerCategoriesExistsAsync(beer.BeerCategories) )
             .When(x => x?.BeerCategories is { Count: > 0 })
             .WithMessage(ValidatorConstants.BeerCategoriesMustExist)
-            .WithErrorCode("Rule-02")
             .OverridePropertyName("BeerCategories");
     }
 
@@ -62,14 +59,21 @@ public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
     {
         RuleFor(beer => beer.BeerTypeId)
             .NotEmpty()
-            .WithMessage(ValidatorConstants.BeerTypeIsNull)
-            .WithErrorCode("Rule-01");
+            .WithMessage(ValidatorConstants.BeerTypeIsNull);
 
         RuleFor(beer => beer)
             .MustAsync( async (beer, cancellation) => await BeerTypeExistsAsync(beer.BeerTypeId))
             .When(x => x?.BeerTypeId != null)
             .WithMessage(ValidatorConstants.BeerTypeMustExist)
-            .WithErrorCode("Rule-02")
             .OverridePropertyName("BeerTypeId");
+    }
+
+    private void ValidateBeerNameIsUnique()
+    {
+        RuleFor(x => x)
+            .MustAsync(async (x, cancellation) => await BeerNameExistsAsync(x.Name))
+            .When(x => !string.IsNullOrWhiteSpace(x.Name))
+            .WithMessage(ValidatorConstants.BeerNameIsUnique)
+            .OverridePropertyName("Name");
     }
 }
