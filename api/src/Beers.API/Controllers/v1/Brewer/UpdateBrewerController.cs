@@ -27,12 +27,9 @@ public sealed class UpdateBrewerController(
     IMapper mapper) 
     : ControllerBase
 {
-    private readonly ILogger<UpdateBrewerController> _logger = 
-        logger ?? throw new ArgumentNullException(nameof(logger));
-    private readonly IUpdateBrewerService _updateBrewerService = 
-        updateBrewerService ?? throw new ArgumentNullException(nameof(updateBrewerService));
-    private readonly IReadBrewerService _readBrewerService =
-        readBrewerService ?? throw new ArgumentNullException(nameof(readBrewerService));
+    private readonly ILogger<UpdateBrewerController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly IUpdateBrewerService _updateBrewerService = updateBrewerService ?? throw new ArgumentNullException(nameof(updateBrewerService));
+    private readonly IReadBrewerService _readBrewerService = readBrewerService ?? throw new ArgumentNullException(nameof(readBrewerService));
     private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
     /// <summary>
@@ -58,6 +55,7 @@ public sealed class UpdateBrewerController(
 
         if (brewerId != inputModel.BrewerId)
         {
+            _logger.LogInformation("Mismatch detected between the brewer id route parameter and the brewer id in the request payload.");
             return BadRequest("The brewer id parameter must match the id of the brewer update request payload.");
         }
 

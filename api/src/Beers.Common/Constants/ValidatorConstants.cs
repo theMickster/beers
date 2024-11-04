@@ -29,4 +29,16 @@ public static class ValidatorConstants
     public static string BeerTypeIsNull => "Beer Type is required";
     
     public static string BeerTypeMustExist => "Beer Type is invalid";
+
+    public static string BeerIdIsNull => "Beer Id is required";
+
+    public static string BeerCategoriesMustExist => "Beer Categories list contains invalid item(s)";
+
+    public static string BeerCategoriesIsNullOrEmpty => "Beer Categories list cannot be null nor empty";
+
+    public static string BeerStylesMustExist => "Beer Styles list contains invalid item(s)";
+
+    public static string BeerStylesIsNullOrEmpty => "Beer Styles list cannot be null nor empty";
+
+    public static string BeerNameIsUnique => "Beer name cannot already exist in the database for a different record";
 }

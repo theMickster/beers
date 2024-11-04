@@ -1,31 +1,49 @@
 ﻿using Beers.Application.Interfaces.Services;
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Common.Constants;
+using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;
 using FluentValidation;
 
 namespace Beers.Application.Validators.Beer;
 
-public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
+public sealed class UpdateBeerValidator : BaseBeerValidator<UpdateBeerModel>
 {
-    public CreateBeerValidator(
+    public UpdateBeerValidator(
         IReadBeerService readBeerService,
         IReadBrewerService readBrewerService,
         IReadBeerCategoryService readBeerCategoryService,
         IReadBeerStyleService readBeerStyleService,
-        IReadBeerTypeService readBeerTypeService) 
+        IReadBeerTypeService readBeerTypeService)
         : base(readBeerService, readBrewerService, readBeerCategoryService, readBeerStyleService, readBeerTypeService)
     {
         ValidateBrewer();
+        ValidateBeerId();
         ValidateBeerName();
-        ValidateBeerNameIsUnique();
         ValidateDescription();
         ValidateBeerType();
         ValidateBeerCategories();
         ValidateBeerStyles();
+        ValidateBeerNameChangeDoesNotCreateDuplicate();
     }
 
-    protected void ValidateBeerStyles()
+    private void ValidateBeerId()
+    {
+        RuleFor(beer => beer.BeerId)
+            .NotEmpty()
+            .WithMessage(ValidatorConstants.BeerIdIsNull);
+    }
+
+    private void ValidateBeerNameChangeDoesNotCreateDuplicate()
+    {
+        RuleFor(x => x)
+            .MustAsync(async (x, cancellation) => await BeerNameUpdateIsUnique(x.BeerId, x.Name))
+            .When(x => !string.IsNullOrWhiteSpace(x.Name))
+            .WithMessage(ValidatorConstants.BeerNameIsUnique)
+            .OverridePropertyName("Name");
+    }
+
+    private void ValidateBeerStyles()
     {
         RuleFor(x => x.BeerStyles)
             .NotNull()
@@ -40,7 +58,7 @@ public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
             .OverridePropertyName("BeerStyles");
     }
 
-    protected void ValidateBeerCategories()
+    private void ValidateBeerCategories()
     {
         RuleFor(x => x.BeerCategories)
             .NotNull()
@@ -49,31 +67,49 @@ public class CreateBeerValidator : BaseBeerValidator<CreateBeerModel>
             .OverridePropertyName("BeerCategories");
 
         RuleFor(beer => beer)
-            .MustAsync(async (beer, cancellation)  => await BeerCategoriesExistsAsync(beer.BeerCategories) )
+            .MustAsync(async (beer, cancellation) => await BeerCategoriesExistsAsync(beer.BeerCategories))
             .When(x => x?.BeerCategories is { Count: > 0 })
             .WithMessage(ValidatorConstants.BeerCategoriesMustExist)
             .OverridePropertyName("BeerCategories");
     }
 
-    protected void ValidateBeerType()
+    private void ValidateBeerType()
     {
         RuleFor(beer => beer.BeerTypeId)
             .NotEmpty()
             .WithMessage(ValidatorConstants.BeerTypeIsNull);
 
         RuleFor(beer => beer)
-            .MustAsync( async (beer, cancellation) => await BeerTypeExistsAsync(beer.BeerTypeId))
+            .MustAsync(async (beer, cancellation) => await BeerTypeExistsAsync(beer.BeerTypeId))
             .When(x => x?.BeerTypeId != null)
             .WithMessage(ValidatorConstants.BeerTypeMustExist)
             .OverridePropertyName("BeerTypeId");
     }
 
-    private void ValidateBeerNameIsUnique()
+    private async Task<bool> BeerNameUpdateIsUnique(Guid beerId, string name)
     {
-        RuleFor(x => x)
-            .MustAsync(async (x, cancellation) => await BeerNameExistsAsync(x.Name))
-            .When(x => !string.IsNullOrWhiteSpace(x.Name))
-            .WithMessage(ValidatorConstants.BeerNameIsUnique)
-            .OverridePropertyName("Name");
+        var param = new SearchBeerParameter
+        {
+            OrderBy = SortedResultConstants.Ascending,
+            PageNumber = 1,
+            PageSize = 50,
+            SortOrder = SortedResultConstants.Ascending
+        };
+
+        var searchModel = new SearchInputBeerModel
+        {
+            Name = name
+        };
+
+        var beers = (await ReadBeerService.SearchAsync(param, searchModel)).Results;
+
+        switch (beers.Count)
+        {
+            case 0:
+            case 1 when beers[0].BeerId == beerId:
+                return true;
+            default:
+                return false;
+        }
     }
 }

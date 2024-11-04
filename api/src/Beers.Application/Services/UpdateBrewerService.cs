@@ -7,7 +7,6 @@ using Beers.Domain.Models.Brewer;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace Beers.Application.Services;
 
