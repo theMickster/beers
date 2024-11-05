@@ -2,6 +2,12 @@
 
 public static class ValidatorConstants
 {
+    public const string ForbiddenErrorCode = "403";
+
+    public const string NotFoundErrorCode = "404";
+
+    public const string DeleteEntityNotAllowed = "405";
+
     public static string MessageNameEmpty => "Name cannot be null, empty, or whitespace";
 
     public static string MessageNameLength => "Name cannot be longer than 256 characters";
