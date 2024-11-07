@@ -6,4 +6,6 @@ public abstract class BaseEntity
 {
     [JsonProperty("id")]
     public Guid Id { get; set; } = Guid.NewGuid();
+
+
 }

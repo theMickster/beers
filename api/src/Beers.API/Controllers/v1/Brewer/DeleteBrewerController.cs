@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using Beers.Application.Interfaces.Services;
-using Beers.Domain.Models.Brewer;
+using Beers.Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,7 +31,6 @@ public class DeleteBrewerController(ILogger<DeleteBrewerController> logger, IDel
     /// <param name="brewerId">unique id of a brewer</param>
     /// <returns></returns>
     [HttpDelete("{brewerId:guid}")]
-    [Produces(typeof(ReadBrewerModel))]
     public async Task<IActionResult> DeleteAsync([Required] Guid brewerId)
     {
         if (!ModelState.IsValid)
@@ -39,14 +38,16 @@ public class DeleteBrewerController(ILogger<DeleteBrewerController> logger, IDel
             return BadRequest("The model state is invalid. Unable to delete the brewer");
         }
 
-        var (model, errors) = await _deleteBrewerService.DeleteAsync(brewerId);
+        var (result, errors) = await _deleteBrewerService.DeleteAsync(brewerId);
+
+        _logger.LogInformation("Result of deleting brewer with id {BrewerId} was {Model}", brewerId, result);
 
         if (errors.Count == 0)
         {
             return NoContent();
         }
 
-        if (errors.Any(x => x.ErrorCode == "DeleteRule001"))
+        if (errors.Exists(x => x.ErrorCode == ValidatorConstants.NotFoundErrorCode))
         {
             return NotFound();
         }
