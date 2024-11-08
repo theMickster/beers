@@ -20,10 +20,8 @@ namespace Beers.API.Controllers.v1.Beer;
 public class CreateBeerController(ILogger<CreateBeerController> logger, 
     ICreateBeerService createBeerService) : ControllerBase
 {
-    private readonly ILogger<CreateBeerController> _logger =
-        logger ?? throw new ArgumentNullException(nameof(logger));
-    private readonly ICreateBeerService _createBeerService =
-        createBeerService ?? throw new ArgumentNullException(nameof(createBeerService));
+    private readonly ILogger<CreateBeerController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly ICreateBeerService _createBeerService = createBeerService ?? throw new ArgumentNullException(nameof(createBeerService));
 
     /// <summary>
     /// Creates a new beer

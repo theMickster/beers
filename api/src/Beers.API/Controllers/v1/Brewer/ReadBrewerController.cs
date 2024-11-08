@@ -38,7 +38,9 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
 
         if (!model.Any())
         {
-            return NotFound("Unable to locate records for the brewers list.");
+            const string message = "Unable to locate records for the brewers list.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
 
         return Ok(model);
@@ -59,7 +61,9 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
 
         if (brewer == null)
         {
-            return NotFound("Unable to locate model.");
+            const string message = "Unable to locate model.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
 
         return Ok(brewer);

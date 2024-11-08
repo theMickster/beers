@@ -8,25 +8,16 @@ namespace Beers.API.Controllers.v1.BeerType;
 /// <summary>
 /// The controller that coordinates retrieving Beer Type information.
 /// </summary>
-/// <remarks></remarks>
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Beer Type")]
 [Route("api/v1/beerTypes", Name = "Read Beer Type Controller v1")]
 [Produces("application/json")]
-public sealed class ReadBeerTypeController : ControllerBase
+public sealed class ReadBeerTypeController(ILogger<ReadBeerTypeController> logger,
+    IReadBeerTypeService readBeerTypeService) : ControllerBase
 {
-    private readonly IReadBeerTypeService _readBeerTypeService;
-    private readonly ILogger<ReadBeerTypeController> _logger;
-
-    /// <summary>
-    /// The controller that coordinates retrieving Beer Type information.
-    /// </summary>
-    public ReadBeerTypeController(ILogger<ReadBeerTypeController> logger, IReadBeerTypeService readBeerTypeService)
-    {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _readBeerTypeService = readBeerTypeService ?? throw new ArgumentNullException(nameof(readBeerTypeService));
-    }
+    private readonly IReadBeerTypeService _readBeerTypeService = readBeerTypeService ?? throw new ArgumentNullException(nameof(readBeerTypeService));
+    private readonly ILogger<ReadBeerTypeController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
     /// <summary>
     /// Retrieve the list of beer types
@@ -44,7 +35,9 @@ public sealed class ReadBeerTypeController : ControllerBase
 
         if (model.Count == 0)
         {
-            return NotFound("Unable to locate records the beer type list.");
+            const string message = "Unable to locate records the beer type list.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
 
         return Ok(model);

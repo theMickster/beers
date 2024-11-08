@@ -21,6 +21,8 @@ namespace Beers.API.Controllers.v1.Beer;
 public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IReadBeerService readBeerService)
     : ControllerBase
 {
+    private readonly ILogger<ReadBeerController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    private readonly IReadBeerService _readBeerService = readBeerService ?? throw new ArgumentNullException(nameof(readBeerService));
 
     /// <summary>
     /// Retrieve the list of beers
@@ -34,12 +36,13 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IReadOnlyList<ReadBeerModel>>> GetBeersAsync()
     {
-        var model = await readBeerService.GetListAsync();
+        var model = await _readBeerService.GetListAsync();
         
         if (model.Count == 0)
         {
-            logger.LogInformation("Unable to retrieve beer list");
-            return NotFound("Unable to locate records for the beers list.");
+            const string message = "Unable to locate records for the beers list.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
         
         return Ok(model);
@@ -65,7 +68,7 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
             return BadRequest(ModelState);
         }
         
-        var result = await readBeerService.SearchAsync(parameters, searchModel);
+        var result = await _readBeerService.SearchAsync(parameters, searchModel);
         
         return Ok(result);
     }
@@ -82,10 +85,12 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<ReadBeerModel>> GetByIdAsync(Guid beerId)
     {
-        var model = await readBeerService.GetByIdAsync(beerId);
+        var model = await _readBeerService.GetByIdAsync(beerId);
         if (model == null)
         {
-            return NotFound("Unable to locate beer model.");
+            const string message = "Unable to locate beer model.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
         return Ok(model);
     }

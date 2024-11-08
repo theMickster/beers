@@ -13,20 +13,11 @@ namespace Beers.API.Controllers.v1.BreweryType;
 [ApiExplorerSettings(GroupName = "Brewery Type")]
 [Route("api/v1/breweryTypes", Name = "Read Brewery Type Controller v1")]
 [Produces("application/json")]
-
-public class ReadBreweryTypeController : ControllerBase
+public class ReadBreweryTypeController(ILogger<ReadBreweryTypeController> logger,
+    IReadBreweryTypeService readBreweryTypeService) : ControllerBase
 {
-    private readonly IReadBreweryTypeService _readBreweryTypeService;
-    private readonly ILogger<ReadBreweryTypeController> _logger;
-
-    /// <summary>
-    /// The controller that coordinates retrieving Brewery Type information.
-    /// </summary>
-    public ReadBreweryTypeController(ILogger<ReadBreweryTypeController> logger, IReadBreweryTypeService readBreweryTypeService)
-    {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _readBreweryTypeService = readBreweryTypeService ?? throw new ArgumentNullException(nameof(readBreweryTypeService));
-    }
+    private readonly IReadBreweryTypeService _readBreweryTypeService = readBreweryTypeService ?? throw new ArgumentNullException(nameof(readBreweryTypeService));
+    private readonly ILogger<ReadBreweryTypeController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
     /// <summary>
     /// Retrieve the list of brewery types
@@ -38,13 +29,15 @@ public class ReadBreweryTypeController : ControllerBase
     [Produces(typeof(List<BreweryTypeModel>))]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetList()
+    public async Task<IActionResult> GetListAsync()
     {
         var model = await _readBreweryTypeService.GetListAsync<BreweryTypeModel>();
 
         if (model.Count == 0)
         {
-            return NotFound("Unable to locate records the brewery type list.");
+            const string message = "Unable to locate records the brewery type list.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
 
         return Ok(model);
