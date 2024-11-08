@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace Beers.Application.Interfaces.Services;
+namespace Beers.Application.Interfaces.Services.Brewer;
 
 public interface IDeleteBrewerService
 {

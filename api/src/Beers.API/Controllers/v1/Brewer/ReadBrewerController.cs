@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Domain.Models.Brewer;
 using Microsoft.AspNetCore.Mvc;
 

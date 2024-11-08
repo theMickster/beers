@@ -1,6 +1,5 @@
 ﻿using Asp.Versioning;
-using Beers.Application.Interfaces.Services;
-using Beers.Domain.Models;
+using Beers.Application.Interfaces.Services.Metadata;
 using Beers.Domain.Models.Metadata;
 using Microsoft.AspNetCore.Mvc;
 

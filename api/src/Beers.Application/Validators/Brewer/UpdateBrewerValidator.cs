@@ -1,4 +1,5 @@
 ﻿using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Common.Constants;
 using Beers.Domain.Models.Brewer;
 using FluentValidation;

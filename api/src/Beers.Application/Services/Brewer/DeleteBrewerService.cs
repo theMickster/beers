@@ -1,11 +1,12 @@
 ﻿using Beers.Application.Data;
 using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 
-namespace Beers.Application.Services;
+namespace Beers.Application.Services.Brewer;
 
 [ServiceLifetimeScoped]
 public sealed class DeleteBrewerService (
