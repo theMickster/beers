@@ -5,6 +5,7 @@ using Beers.Common.Constants;
 
 namespace Beers.API.Helpers;
 
+[ExcludeFromCodeCoverage]
 internal static class AzureKeyVaultDataHelper
 {
     internal static SecretClient GetAzureKeyVaultClient(IConfiguration configuration)

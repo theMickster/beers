@@ -10,7 +10,7 @@ namespace Beers.API.Controllers.v1.Beer;
 /// The controller that coordinates creating Beer information.
 /// </summary>
 /// <remarks>
-/// The controller that coordinates retrieving Beer information.
+/// The controller that coordinates creating Beer information.
 /// </remarks>
 [ApiController]
 [ApiVersion("1.0")]
@@ -34,16 +34,11 @@ public class CreateBeerController(ILogger<CreateBeerController> logger,
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> PostAsync([FromBody][Required] CreateBeerModel? inputModel)
     {
-        if (inputModel == null)
+        if (inputModel == null || !ModelState.IsValid)
         {
-            _logger.LogInformation("Create Beer failed due to null input model.");
-            return BadRequest("The input model cannot be null.");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            _logger.LogInformation("Create Beer failed due to invalid input model state.");
-            return BadRequest(ModelState);
+            const string message = "Unable to create beer because of an invalid input model.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
 
         var (model, errors) = await _createBeerService.CreateAsync(inputModel).ConfigureAwait(false);
@@ -53,7 +48,7 @@ public class CreateBeerController(ILogger<CreateBeerController> logger,
             return BadRequest(errors.Select(x => x.ErrorMessage));
         }
 
-        return CreatedAtRoute("GetBrewerById", new { model.BrewerId }, model);
+        return CreatedAtRoute("GetByIdAsync", new { model.BrewerId }, model);
 
     }
 }

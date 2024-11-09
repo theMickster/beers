@@ -73,7 +73,6 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
         return Ok(result);
     }
 
-
     /// <summary>
     /// Retrieve a beer using its unique identifier
     /// </summary>
