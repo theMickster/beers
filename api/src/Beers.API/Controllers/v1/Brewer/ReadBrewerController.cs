@@ -32,7 +32,7 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
     [Produces(typeof(List<ReadBrewerModel>))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetListAsync()
+    public async Task<ActionResult<IReadOnlyList<ReadBrewerModel>>> GetListAsync()
     {
         var model = await _readBrewerService.GetListAsync();
 
@@ -40,7 +40,7 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
         {
             const string message = "Unable to locate records for the brewers list.";
             _logger.LogInformation(message);
-            return NotFound(message);
+            return NotFound();
         }
 
         return Ok(model);
@@ -55,7 +55,7 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
     [Produces(typeof(ReadBrewerModel))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetByIdAsync(Guid brewerId)
+    public async Task<ActionResult<ReadBrewerModel>> GetByIdAsync(Guid brewerId)
     {
         var brewer = await _readBrewerService.GetByIdAsync(brewerId);
 
@@ -63,7 +63,7 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
         {
             const string message = "Unable to locate model.";
             _logger.LogInformation(message);
-            return NotFound(message);
+            return NotFound();
         }
 
         return Ok(brewer);

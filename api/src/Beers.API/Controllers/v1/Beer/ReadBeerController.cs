@@ -34,7 +34,7 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     [Produces(typeof(List<ReadBeerModel>))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<IReadOnlyList<ReadBeerModel>>> GetBeersAsync()
+    public async Task<ActionResult<IReadOnlyList<ReadBeerModel>>> GetListAsync()
     {
         var model = await _readBeerService.GetListAsync();
         
@@ -42,7 +42,7 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
         {
             const string message = "Unable to locate records for the beers list.";
             _logger.LogInformation(message);
-            return NotFound(message);
+            return NotFound();
         }
         
         return Ok(model);
@@ -59,13 +59,15 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     [Produces(typeof(SearchResultBeerModel))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<SearchResultBeerModel>> SearchBeersAsync(
+    public async Task<ActionResult<SearchResultBeerModel>> SearchAsync(
         [FromQuery] SearchBeerParameter parameters,
         [FromBody][Required] SearchInputBeerModel searchModel )
     {
         if (!ModelState.IsValid)
         {
-            return BadRequest(ModelState);
+            const string message = "Unable to search for beers because of an invalid input model.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
         
         var result = await _readBeerService.SearchAsync(parameters, searchModel);
@@ -89,7 +91,7 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
         {
             const string message = "Unable to locate beer model.";
             _logger.LogInformation(message);
-            return NotFound(message);
+            return NotFound();
         }
         return Ok(model);
     }
