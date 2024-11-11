@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using Beers.Application.Data;
-using Beers.Application.Interfaces.Services;
 using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Common.Attributes;
 using Beers.Domain.Models.Brewer;
 using Microsoft.EntityFrameworkCore;
 
-namespace Beers.Application.Services.Metadata;
+namespace Beers.Application.Services.Brewer;
 
 [ServiceLifetimeScoped]
 public sealed class ReadBrewerService(IMapper mapper, IDbContextFactory<BeersDbContext> dbContextFactory)

@@ -1,5 +1,4 @@
-﻿using Beers.Application.Interfaces.Services;
-using Beers.Application.Interfaces.Services.Brewer;
+﻿using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Domain.Models.Brewer;
 
 namespace Beers.Application.Validators.Brewer;

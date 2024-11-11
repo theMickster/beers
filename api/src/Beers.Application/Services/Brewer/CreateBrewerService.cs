@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Beers.Application.Data;
-using Beers.Application.Interfaces.Services;
 using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Common.Attributes;
 using Beers.Common.Constants;

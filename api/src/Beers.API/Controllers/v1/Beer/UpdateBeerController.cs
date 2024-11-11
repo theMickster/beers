@@ -18,7 +18,8 @@ namespace Beers.API.Controllers.v1.Beer;
 [ApiExplorerSettings(GroupName = "Beer")]
 [Route("api/v1/beers/{beerId:guid}", Name = "Update Beer Controller v1")]
 [Produces(MediaTypeNames.Application.Json)]
-public sealed class UpdateBeerController (ILogger<UpdateBeerController> logger, IUpdateBeerService updateBeerService) : ControllerBase
+public sealed class UpdateBeerController (ILogger<UpdateBeerController> logger, IUpdateBeerService updateBeerService) 
+    : ControllerBase
 {
     private readonly ILogger<UpdateBeerController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     private readonly IUpdateBeerService _updateBeerService = updateBeerService ?? throw new ArgumentNullException(nameof(updateBeerService));
