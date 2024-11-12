@@ -80,11 +80,11 @@ public sealed class ReadBeerController(ILogger<ReadBeerController> logger, IRead
     /// </summary>
     /// <param name="beerId">the unique identifier</param>
     /// <returns>A single beer</returns>
-    [HttpGet("{beerId:guid}", Name = "GetByIdAsync")]
+    [HttpGet("{beerId:guid}", Name = "GetBeerByIdAsync")]
     [Produces(typeof(ReadBeerModel))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<ReadBeerModel>> GetByIdAsync(Guid beerId)
+    public async Task<ActionResult<ReadBeerModel>> GetBeerByIdAsync(Guid beerId)
     {
         var model = await _readBeerService.GetByIdAsync(beerId);
         if (model == null)

@@ -8,5 +8,5 @@ public abstract class BaseBeerEntity : BaseEntity
 
     public virtual string EntityType { get; set; } = string.Empty;
 
-    public bool IsDeletable { get; set; }
+    public bool IsDeletable { get; set; } = true;
 }

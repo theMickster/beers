@@ -48,7 +48,7 @@ public class CreateBeerController(ILogger<CreateBeerController> logger,
             return BadRequest(errors.Select(x => x.ErrorMessage));
         }
 
-        return CreatedAtRoute("GetByIdAsync", new { model.BrewerId }, model);
-
+        
+        return CreatedAtRoute(nameof(ReadBeerController.GetBeerByIdAsync), new { model.BeerId }, model);
     }
 }

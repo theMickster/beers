@@ -51,11 +51,11 @@ public sealed class ReadBrewerController(ILogger<ReadBrewerController> logger, I
     /// </summary>
     /// <param name="brewerId">the unique identifier</param>
     /// <returns>A single brewer</returns>
-    [HttpGet("{brewerId:guid}", Name = "GetBrewerById")]
+    [HttpGet("{brewerId:guid}", Name = "GetBrewerByIdAsync")]
     [Produces(typeof(ReadBrewerModel))]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<ReadBrewerModel>> GetByIdAsync(Guid brewerId)
+    public async Task<ActionResult<ReadBrewerModel>> GetBrewerByIdAsync(Guid brewerId)
     {
         var brewer = await _readBrewerService.GetByIdAsync(brewerId);
 

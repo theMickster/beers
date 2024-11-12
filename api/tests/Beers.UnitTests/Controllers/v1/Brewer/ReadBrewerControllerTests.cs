@@ -56,7 +56,7 @@ public sealed class ReadBrewerControllerTests
     {
         _mockReadBrewerService.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync((ReadBrewerModel)null!);
 
-        var result = await _sut.GetByIdAsync(Guid.NewGuid());
+        var result = await _sut.GetBrewerByIdAsync(Guid.NewGuid());
         var objectResult = result.Result as NotFoundResult;
 
         using (new AssertionScope())
@@ -72,7 +72,7 @@ public sealed class ReadBrewerControllerTests
     {
         _mockReadBrewerService.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync(new ReadBrewerModel() { BrewerId = Guid.NewGuid() });
 
-        var result = await _sut.GetByIdAsync(Guid.NewGuid());
+        var result = await _sut.GetBrewerByIdAsync(Guid.NewGuid());
         var objectResult = result.Result as OkObjectResult;
 
         using (new AssertionScope())

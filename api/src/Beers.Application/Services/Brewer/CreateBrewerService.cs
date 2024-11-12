@@ -44,6 +44,7 @@ public sealed class CreateBrewerService(
         inputEntity.CreatedDate = DateTime.UtcNow;
         inputEntity.ModifiedDate = inputEntity.CreatedDate;
         inputEntity.EntityType = PartitionKeyConstants.Brewer;
+        inputEntity.IsDeletable = true;
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
         context.BrewerEntities.Add(inputEntity);

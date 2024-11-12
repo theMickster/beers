@@ -50,7 +50,6 @@ public class CreateBrewerController(ILogger<CreateBrewerController> logger, ICre
             return BadRequest(errors.Select(x => x.ErrorMessage));
         }
 
-        return CreatedAtRoute("GetByIdAsync", new { model.BrewerId }, model);
-
+        return CreatedAtRoute( nameof(ReadBrewerController.GetBrewerByIdAsync), new { model.BrewerId }, model);
     }
 }

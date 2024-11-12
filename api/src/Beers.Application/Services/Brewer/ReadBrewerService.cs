@@ -27,4 +27,11 @@ public sealed class ReadBrewerService(IMapper mapper, IDbContextFactory<BeersDbC
         var entity = await context.BrewerEntities.FirstOrDefaultAsync(x => x.Id == brewerId);
         return entity == null ? null : _mapper.Map<ReadBrewerModel>(entity);
     }
+
+    public async Task<ReadBrewerModel?> GetByNameAsync(string name)
+    {
+        await using var context = await _dbContextFactory.CreateDbContextAsync();
+        var entity = await context.BrewerEntities.FirstOrDefaultAsync(x => x.Name.Trim().ToLower() == name.Trim().ToLowerInvariant());
+        return entity == null ? null : _mapper.Map<ReadBrewerModel>(entity);
+    }
 }

@@ -15,7 +15,7 @@ public abstract class BaseBeerModel
 
     public string Sku { get; set; } = string.Empty;
 
-    public bool IsDeletable { get; set; }
+    public bool IsDeletable { get; set; } = true;
 
     public RatingModel? Rating { get; set; } = new ();
 
