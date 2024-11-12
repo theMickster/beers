@@ -1,6 +1,5 @@
 ﻿using Asp.Versioning;
-using Beers.Application.Interfaces.Services;
-using Beers.Domain.Models;
+using Beers.Application.Interfaces.Services.Metadata;
 using Beers.Domain.Models.Metadata;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,25 +8,16 @@ namespace Beers.API.Controllers.v1.BeerStyle;
 /// <summary>
 /// The controller that coordinates retrieving Beer Style information.
 /// </summary>
-/// <remarks></remarks>
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Beer Style")]
 [Route("api/v1/beerStyles", Name = "Read Beer Style Controller v1")]
 [Produces("application/json")]
-public sealed class ReadBeerStyleController : ControllerBase
+public sealed class ReadBeerStyleController( ILogger<ReadBeerStyleController> logger,
+    IReadBeerStyleService readBeerStyleService): ControllerBase
 {
-    private readonly IReadBeerStyleService _readBeerStyleService;
-    private readonly ILogger<ReadBeerStyleController> _logger;
-
-    /// <summary>
-    /// The controller that coordinates retrieving Beer Style information.
-    /// </summary>
-    public ReadBeerStyleController(ILogger<ReadBeerStyleController> logger, IReadBeerStyleService readBeerStyleService)
-    {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _readBeerStyleService = readBeerStyleService ?? throw new ArgumentNullException(nameof(readBeerStyleService));
-    }
+    private readonly IReadBeerStyleService _readBeerStyleService = readBeerStyleService ?? throw new ArgumentNullException(nameof(readBeerStyleService));
+    private readonly ILogger<ReadBeerStyleController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
     /// <summary>
     /// Retrieve the list of beer styles
@@ -45,7 +35,9 @@ public sealed class ReadBeerStyleController : ControllerBase
 
         if (model.Count == 0)
         {
-            return NotFound("Unable to locate records the beer style list.");
+            const string message = "Unable to locate records the beer style list.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
 
         return Ok(model);

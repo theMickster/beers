@@ -1,5 +1,7 @@
 ﻿using Beers.Application.Interfaces.Services;
 using Beers.Application.Interfaces.Services.Beer;
+using Beers.Application.Interfaces.Services.Brewer;
+using Beers.Application.Interfaces.Services.Metadata;
 using Beers.Common.Constants;
 using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;

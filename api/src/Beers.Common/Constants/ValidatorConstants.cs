@@ -24,13 +24,17 @@ public static class ValidatorConstants
 
     public static string MessageWebsiteLength => "Website cannot be longer than 500 characters";
 
+    public static string MessageWebsiteHttps => "Website url must start with https://";
+
     public static string MessageFoundedInBoundary => "Founded In year cannot before 1500 and after the current year.";
 
-    public static string MessageTypeIsNull => "Brewery type is required";
+    public static string MessageBreweryTypeIsNull => "Brewery type is required";
 
     public static string BrewerIdIsNull => "Brewer Id is required";
 
     public static string BrewerMustExist => "Brewer does not exist for the supplied BrewerId";
+
+    public static string BrewerMustBeUnique => "Brewer name must be unique.";
 
     public static string BeerTypeIsNull => "Beer Type is required";
     

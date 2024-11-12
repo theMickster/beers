@@ -1,6 +1,5 @@
 ﻿using Asp.Versioning;
-using Beers.Application.Interfaces.Services;
-using Beers.Domain.Models;
+using Beers.Application.Interfaces.Services.Metadata;
 using Beers.Domain.Models.Metadata;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,25 +8,18 @@ namespace Beers.API.Controllers.v1.BeerCategory;
 /// <summary>
 /// The controller that coordinates retrieving Beer Category information.
 /// </summary>
-/// <remarks></remarks>
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "Beer Category")]
 [Route("api/v1/beerCategories", Name = "Read Beer Category Controller v1")]
 [Produces("application/json")]
-public sealed class ReadBeerCategoryController : ControllerBase
+public sealed class ReadBeerCategoryController(ILogger<ReadBeerCategoryController> logger, 
+    IReadBeerCategoryService readBeerCategoryService) : ControllerBase
 {
-    private readonly IReadBeerCategoryService _readBeerCategoryService;
-    private readonly ILogger<ReadBeerCategoryController> _logger;
-
-    /// <summary>
-    /// The controller that coordinates retrieving Beer Category information.
-    /// </summary>
-    public ReadBeerCategoryController(ILogger<ReadBeerCategoryController> logger, IReadBeerCategoryService readBeerCategoryService)
-    {
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        _readBeerCategoryService = readBeerCategoryService ?? throw new ArgumentNullException(nameof(readBeerCategoryService));
-    }
+    private readonly IReadBeerCategoryService _readBeerCategoryService =
+        readBeerCategoryService ?? throw new ArgumentNullException(nameof(readBeerCategoryService));
+    private readonly ILogger<ReadBeerCategoryController> _logger = 
+        logger ?? throw new ArgumentNullException(nameof(logger));
 
     /// <summary>
     /// Retrieve the list of beer categories
@@ -45,7 +37,9 @@ public sealed class ReadBeerCategoryController : ControllerBase
 
         if (model.Count == 0)
         {
-            return NotFound("Unable to locate records the beer category list.");
+            const string message = "Unable to locate records the beer category list.";
+            _logger.LogInformation(message);
+            return NotFound(message);
         }
 
         return Ok(model);

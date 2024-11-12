@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Domain.Models.Brewer;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -41,22 +41,20 @@ public sealed class UpdateBrewerController(
     [HttpPut]
     [Produces(typeof(ReadBrewerModel))]
     [Consumes(MediaTypeNames.Application.Json)]
-    public async Task<IActionResult> PutAsync([Required]Guid brewerId, [FromBody][Required] UpdateBrewerModel? inputModel)
+    public async Task<ActionResult<ReadBrewerModel>> PutAsync([Required]Guid brewerId, [FromBody][Required] UpdateBrewerModel? inputModel)
     {
-        if (inputModel == null)
+        if (inputModel == null || !ModelState.IsValid)
         {
-            return BadRequest("The input model cannot be null.");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
+            const string message = "Unable to update brewer because of an invalid input model.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
 
         if (brewerId != inputModel.BrewerId)
         {
-            _logger.LogInformation("Mismatch detected between the brewer id route parameter and the brewer id in the request payload.");
-            return BadRequest("The brewer id parameter must match the id of the brewer update request payload.");
+            const string message = "The brewer id parameter must match the id of the brewer update request payload.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
 
         var (model, errors) = await _updateBrewerService.UpdateAsync(inputModel);
@@ -78,17 +76,21 @@ public sealed class UpdateBrewerController(
     [HttpPatch]
     [Produces(typeof(ReadBrewerModel))]
     [Consumes(MediaTypeNames.Application.JsonPatch)]
-    public async Task<IActionResult> PatchAsync([Required] Guid brewerId,
+    public async Task<ActionResult<ReadBrewerModel>> PatchAsync([Required] Guid brewerId,
         [FromBody] JsonPatchDocument<UpdateBrewerModel> inputModel)
     {
         if (inputModel == null)
         {
-            return BadRequest("Invalid patch document");
+            const string message = "Invalid patch document";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
         
         var existingBrewer = await _readBrewerService.GetByIdAsync(brewerId);
         if (existingBrewer == null)
         {
+            const string message = "Unable to locate model.";
+            _logger.LogInformation(message);
             return NotFound();
         }
 

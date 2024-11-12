@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Domain.Models.Brewer;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +10,7 @@ namespace Beers.API.Controllers.v1.Brewer;
 /// The controller that coordinates creating Brewer information.
 /// </summary>
 /// <remarks>
-/// The controller that coordinates retrieving Brewer information.
+/// The controller that coordinates creating Brewer information.
 /// </remarks>
 [ApiController]
 [ApiVersion("1.0")]
@@ -36,16 +36,11 @@ public class CreateBrewerController(ILogger<CreateBrewerController> logger, ICre
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> PostAsync([FromBody][Required] CreateBrewerModel? inputModel)
     {
-        if (inputModel == null)
+        if (inputModel == null || !ModelState.IsValid)
         {
-            _logger.LogInformation("Create Brewer failed due to null input model.");
-            return BadRequest("The input model cannot be null.");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            _logger.LogInformation("Create Brewer failed due to invalid input model state.");
-            return BadRequest(ModelState);
+            const string message = "Unable to create brewer because of an invalid input model.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
 
         var (model, errors) = await _createBrewerService.CreateAsync(inputModel).ConfigureAwait(false);
@@ -55,7 +50,6 @@ public class CreateBrewerController(ILogger<CreateBrewerController> logger, ICre
             return BadRequest(errors.Select(x => x.ErrorMessage));
         }
 
-        return CreatedAtRoute("GetBrewerById", new { model.BrewerId }, model);
-
+        return CreatedAtRoute( nameof(ReadBrewerController.GetBrewerByIdAsync), new { model.BrewerId }, model);
     }
 }

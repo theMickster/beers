@@ -32,7 +32,7 @@ public class DeleteBeerController(ILogger<DeleteBeerController> logger, IDeleteB
     {
         if (!ModelState.IsValid)
         {
-            return BadRequest("The model state is invalid. Unable to delete the beer");
+            return BadRequest("Unable to delete beer because of an invalid input model.");
         }
 
         var (result, errors) = await _deleteBeerService.DeleteAsync(beerId);

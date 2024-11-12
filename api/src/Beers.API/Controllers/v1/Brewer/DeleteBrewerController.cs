@@ -1,5 +1,5 @@
 ﻿using Asp.Versioning;
-using Beers.Application.Interfaces.Services;
+using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Common.Constants;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -35,7 +35,7 @@ public class DeleteBrewerController(ILogger<DeleteBrewerController> logger, IDel
     {
         if (!ModelState.IsValid)
         {
-            return BadRequest("The model state is invalid. Unable to delete the brewer");
+            return BadRequest("Unable to delete brewer because of an invalid input model.");
         }
 
         var (result, errors) = await _deleteBrewerService.DeleteAsync(brewerId);

@@ -47,6 +47,7 @@ public sealed class CreateBeerService (
         inputEntity.ModifiedBy = "the.system";
         inputEntity.CreatedDate = DateTime.UtcNow;
         inputEntity.ModifiedDate = DateTime.UtcNow;
+        inputEntity.IsDeletable = true;
 
         await using var context = await _dbContextFactory.CreateDbContextAsync();
 

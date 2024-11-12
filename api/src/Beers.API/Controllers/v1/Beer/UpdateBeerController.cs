@@ -18,7 +18,8 @@ namespace Beers.API.Controllers.v1.Beer;
 [ApiExplorerSettings(GroupName = "Beer")]
 [Route("api/v1/beers/{beerId:guid}", Name = "Update Beer Controller v1")]
 [Produces(MediaTypeNames.Application.Json)]
-public sealed class UpdateBeerController (ILogger<UpdateBeerController> logger, IUpdateBeerService updateBeerService) : ControllerBase
+public sealed class UpdateBeerController (ILogger<UpdateBeerController> logger, IUpdateBeerService updateBeerService) 
+    : ControllerBase
 {
     private readonly ILogger<UpdateBeerController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     private readonly IUpdateBeerService _updateBeerService = updateBeerService ?? throw new ArgumentNullException(nameof(updateBeerService));
@@ -32,22 +33,20 @@ public sealed class UpdateBeerController (ILogger<UpdateBeerController> logger, 
     [HttpPut]
     [Produces(typeof(ReadBeerModel))]
     [Consumes(MediaTypeNames.Application.Json)]
-    public async Task<IActionResult> PutAsync([Required] Guid beerId, [FromBody][Required] UpdateBeerModel? inputModel)
+    public async Task<ActionResult<ReadBeerModel>> PutAsync([Required] Guid beerId, [FromBody][Required] UpdateBeerModel? inputModel)
     {
-        if (inputModel == null)
+        if (inputModel == null || !ModelState.IsValid)
         {
-            return BadRequest("The input model cannot be null.");
-        }
-
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
+            const string message = "Unable to update beer because of an invalid input model.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
 
         if (beerId != inputModel.BeerId)
         {
-            _logger.LogInformation("Mismatch detected between the beer id route parameter and the beer id in the request payload.");
-            return BadRequest("The beer id parameter must match the id of the beer update request payload.");
+            const string message = "The beer id parameter must match the id of the beer update request payload.";
+            _logger.LogInformation(message);
+            return BadRequest(message);
         }
 
         var (model, errors) = await _updateBeerService.UpdateAsync(inputModel);

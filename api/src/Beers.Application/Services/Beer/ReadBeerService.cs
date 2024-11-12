@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using AutoMapper;
+﻿using AutoMapper;
 using Beers.Application.Data;
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Common.Attributes;
@@ -7,6 +6,7 @@ using Beers.Common.Constants;
 using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Beers.Application.Services.Beer;
 

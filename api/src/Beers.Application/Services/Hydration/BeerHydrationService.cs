@@ -1,5 +1,6 @@
-﻿using Beers.Application.Interfaces.Services;
+﻿using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Application.Interfaces.Services.Hydration;
+using Beers.Application.Interfaces.Services.Metadata;
 using Beers.Common.Attributes;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Base;
@@ -52,7 +53,8 @@ public sealed class BeerHydrationService(
             {
                 MetadataId = model.BeerTypeId,
                 Name = beerType.Name
-            }
+            },
+            IsDeletable = model.IsDeletable
         };
 
         if (model.Rating != null)

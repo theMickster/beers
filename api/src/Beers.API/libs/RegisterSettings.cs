@@ -3,6 +3,7 @@ using Beers.Common.Settings;
 
 namespace Beers.API.libs;
 
+[ExcludeFromCodeCoverage]
 internal static class RegisterSettings
 {
     internal static WebApplicationBuilder RegisterCommonSettings(this WebApplicationBuilder builder)
