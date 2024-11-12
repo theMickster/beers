@@ -130,7 +130,7 @@ public sealed class UpdateBeerControllerTests
 
         var result = await _sut.PutAsync(beerId, new UpdateBeerModel { BeerId = beerId });
         var objectResult = result.Result as OkObjectResult;
-        var output = objectResult.Value as ReadBeerModel;
+        var output = objectResult!.Value as ReadBeerModel;
 
         using (new AssertionScope())
         {

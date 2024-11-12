@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Slims;
-using Beers.Domain.Models;
 using Beers.Domain.Models.Brewer;
 using Beers.Domain.Models.Metadata;
 
@@ -28,6 +27,8 @@ public class BrewerEntityToModelProfile : Profile
                 o => o.MapFrom(y => y.Website))
             .ForPath(x => x.FoundedIn,
                 o => o.MapFrom(y => y.FoundedIn))
+            .ForPath(x => x.IsDeletable,
+                o => o.MapFrom(y => y.IsDeletable))
             .ForPath(x => x.CreatedDate,
                 o => o.MapFrom(y => y.CreatedDate))
             .ForPath(x => x.ModifiedDate,

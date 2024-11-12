@@ -53,7 +53,7 @@ public sealed class ReadBeerControllerTests
     [Fact]
     public async Task GetByIdAsync_not_found()
     {
-        _mockReadBeerService.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync( (ReadBeerModel)null);
+        _mockReadBeerService.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync( (ReadBeerModel)null!);
 
         var result = await _sut.GetByIdAsync(Guid.NewGuid());
         var objectResult = result.Result as NotFoundResult;

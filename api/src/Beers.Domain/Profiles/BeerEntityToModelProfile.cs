@@ -18,6 +18,8 @@ public class BeerEntityToModelProfile : Profile
                 o => o.MapFrom(y => y.BrewerId))
             .ForPath(x => x.Name,
                 o => o.MapFrom(y => y.Name))
+            .ForPath(x => x.IsDeletable,
+                o => o.MapFrom(y => y.IsDeletable))
             .ForPath(x => x.Description,
                 o => o.MapFrom(y => y.Description))
             .ForPath(x => x.Image,

@@ -12,5 +12,7 @@ public abstract class BaseBrewerModel
 
     public string Website { get; set; } = string.Empty;
 
+    public bool IsDeletable { get; set; }
+
     public BreweryTypeModel BreweryType { get; set; } = new();
 }

@@ -36,7 +36,7 @@ public sealed class UpdateBrewerControllerTests
     {
         var brewerId = Guid.NewGuid();
 
-        var result = await _sut.PatchAsync(brewerId, null);
+        var result = await _sut.PatchAsync(brewerId, null!);
         var objectResult = result.Result as BadRequestObjectResult;
         var output = objectResult?.Value as string;
 
@@ -56,7 +56,7 @@ public sealed class UpdateBrewerControllerTests
     {
         var brewerId = Guid.NewGuid();
 
-        _mockReadBrewerService.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync((ReadBrewerModel)null);
+        _mockReadBrewerService.Setup(x => x.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync((ReadBrewerModel)null!);
 
         var result = await _sut.PatchAsync(brewerId, new JsonPatchDocument<UpdateBrewerModel>());
         var objectResult = result.Result as NotFoundResult;
@@ -106,7 +106,7 @@ public sealed class UpdateBrewerControllerTests
 
         var result = await _sut.PatchAsync(brewerId, new JsonPatchDocument<UpdateBrewerModel>());
         var objectResult = result.Result as OkObjectResult;
-        var output = objectResult.Value as ReadBrewerModel;
+        var output = objectResult!.Value as ReadBrewerModel;
 
         using (new AssertionScope())
         {
@@ -213,7 +213,7 @@ public sealed class UpdateBrewerControllerTests
 
         var result = await _sut.PutAsync(brewerId, new UpdateBrewerModel{ BrewerId = brewerId });
         var objectResult = result.Result as OkObjectResult;
-        var output = objectResult.Value as ReadBrewerModel;
+        var output = objectResult!.Value as ReadBrewerModel;
 
         using (new AssertionScope())
         {
