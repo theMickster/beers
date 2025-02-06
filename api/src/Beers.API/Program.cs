@@ -8,8 +8,10 @@ var environment = builder.Environment;
 builder.Configuration
     .AddJsonFile("appsettings.json", false, true)
     .AddJsonFile($"appsettings.{environment.EnvironmentName}.json", false, true)
+    .AddUserSecrets<Program>()
     .AddEnvironmentVariables()
-    .AddInMemoryCollection();
+    .AddInMemoryCollection()
+    .Build();
 
 builder.Configuration.RegisterApplicationConfiguration();
 
@@ -25,10 +27,6 @@ builder.Services.AddHsts(options =>
     options.IncludeSubDomains = true;
     options.MaxAge = TimeSpan.FromDays(365);
 });
-
-builder.Configuration
-    .AddUserSecrets<Program>()
-    .Build();
 
 builder.RegisterCommonSettings();
 
