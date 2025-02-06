@@ -59,7 +59,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Name").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Name").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -80,7 +80,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Name").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Name").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -101,7 +101,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Name").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Name").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -127,7 +127,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Headquarters").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Headquarters").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -148,7 +148,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Headquarters").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Headquarters").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -174,7 +174,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Website").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Website").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -195,7 +195,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Website").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Website").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -216,7 +216,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "Website").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "Website").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -239,7 +239,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "FoundedIn").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "FoundedIn").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -260,7 +260,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "BreweryType").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "BreweryType").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -283,7 +283,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "BreweryType").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "BreweryType").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 
@@ -306,7 +306,7 @@ public sealed class CreateBrewerValidatorTests
         using (new AssertionScope())
         {
             result.IsValid.Should().BeFalse();
-            result.Errors.Count(x => x.PropertyName == "BreweryType").Should().BeGreaterOrEqualTo(1);
+            result.Errors.Count(x => x.PropertyName == "BreweryType").Should().BeGreaterThanOrEqualTo(1);
         }
     }
 }
