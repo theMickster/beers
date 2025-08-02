@@ -3,7 +3,6 @@ using Beers.API.Controllers.v1.Brewer;
 using Beers.Application.Interfaces.Services.Brewer;
 using Beers.Domain.Models.Brewer;
 using Beers.Domain.Models.Metadata;
-using Beers.Domain.Profiles;
 using Beers.UnitTests.Common;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.JsonPatch;
@@ -18,17 +17,16 @@ public sealed class UpdateBrewerControllerTests
     private readonly Mock<ILogger<UpdateBrewerController>> _logger = new();
     private readonly Mock<IUpdateBrewerService> _mockUpdateBrewerService = new();
     private readonly Mock<IReadBrewerService> _mockReadBrewerService = new();
+    private readonly Mock<IMapper> _mockMapper = new();
 
     public UpdateBrewerControllerTests()
     {
-        var mappingConfig = new MapperConfiguration(config =>
-            config.AddMaps(typeof(BeerCategoryEntityToModelProfile).Assembly)
-        );
-
-        var mapper = mappingConfig.CreateMapper();
+        _mockMapper
+            .Setup(x => x.Map<UpdateBrewerModel>(It.IsAny<ReadBrewerModel>()))
+            .Returns(new UpdateBrewerModel());
 
         _sut = new UpdateBrewerController(_logger.Object, _mockUpdateBrewerService.Object,
-            _mockReadBrewerService.Object, mapper);
+            _mockReadBrewerService.Object, _mockMapper.Object);
     }
 
     [Fact]

@@ -15,7 +15,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi;
 using System.Reflection;
 using Beers.Common.Helpers;
 
@@ -80,18 +80,11 @@ internal static class RegisterServices
                 Scheme = "Bearer"
             });
 
-            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            options.AddSecurityRequirement(document => new OpenApiSecurityRequirement
             {
                 {
-                    new OpenApiSecurityScheme
-                    {
-                        Reference = new OpenApiReference
-                        {
-                            Type=ReferenceType.SecurityScheme,
-                            Id="Bearer"
-                        }
-                    },
-                    Array.Empty<string>()
+                    new OpenApiSecuritySchemeReference("Bearer", document, null),
+                    []
                 }
             });
 
@@ -122,7 +115,18 @@ internal static class RegisterServices
             options.DocInclusionPredicate((name, api) => true);
         });
 
-        builder.Services.AddAutoMapper(typeof(BeerTypeEntityToModelProfile).GetTypeInfo().Assembly);
+        var autoMapperLicenseKey = builder.Configuration[ConfigurationConstants.AutoMapperLicenseKey];
+
+        if (string.IsNullOrWhiteSpace(autoMapperLicenseKey))
+        {
+            throw new ConfigurationException(
+                $"The required Configuration value for {ConfigurationConstants.AutoMapperLicenseKey} is missing." +
+                "Please verify local or Azure resource configuration.");
+        }
+
+        builder.Services.AddAutoMapper(
+            cfg => cfg.LicenseKey = autoMapperLicenseKey,
+            typeof(BeerTypeEntityToModelProfile).GetTypeInfo().Assembly);
         builder.Services.AddValidatorsFromAssemblyContaining<CreateBrewerValidator>();
         return builder;
     }

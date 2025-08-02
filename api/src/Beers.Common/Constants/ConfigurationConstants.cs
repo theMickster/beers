@@ -46,4 +46,9 @@ public static class ConfigurationConstants
     /// The configuration key used for setting the default Sql connection string
     /// </summary>
     public const string CurrentConnectionStringNameKey = "CurrentConnectionStringName";
+
+    /// <summary>
+    /// AutoMapper license key value name
+    /// </summary>
+    public const string AutoMapperLicenseKey = "AutoMapperLicenseKey";
 }

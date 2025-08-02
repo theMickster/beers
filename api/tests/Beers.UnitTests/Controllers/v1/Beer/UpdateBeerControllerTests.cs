@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using Beers.API.Controllers.v1.Beer;
+﻿using Beers.API.Controllers.v1.Beer;
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Domain.Models.Beer;
-using Beers.Domain.Profiles;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -19,12 +17,6 @@ public sealed class UpdateBeerControllerTests
 
     public UpdateBeerControllerTests()
     {
-        var mappingConfig = new MapperConfiguration(config =>
-            config.AddMaps(typeof(BeerCategoryEntityToModelProfile).Assembly)
-        );
-
-        var mapper = mappingConfig.CreateMapper();
-
         _sut = new UpdateBeerController(_logger.Object, _mockUpdateBeerService.Object);
     }
 
