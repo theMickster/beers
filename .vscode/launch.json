@@ -1,0 +1,50 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Beers.API: Launch",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build Beers.API",
+      "program": "${workspaceFolder}/api/src/Beers.API/bin/Debug/net10.0/Beers.API.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/api/src/Beers.API",
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+        "uriFormat": "%s/swagger"
+      }
+    },
+    {
+      "name": "Beers.API: Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    },
+    {
+      "name": "Beers.API: Watch",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "restore Beers.API",
+      "program": "dotnet",
+      "args": [
+        "watch",
+        "--project",
+        "${workspaceFolder}/api/src/Beers.API/Beers.API.csproj",
+        "run"
+      ],
+      "cwd": "${workspaceFolder}/api/src/Beers.API",
+      "console": "integratedTerminal",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_WATCH_SUPPRESS_BROWSER_REFRESH": "1"
+      }
+    }
+  ]
+}

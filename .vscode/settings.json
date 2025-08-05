@@ -1,0 +1,70 @@
+{
+  "editor.formatOnSave": true,
+  "explorer.autoReveal": true,
+  "explorer.compactFolders": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "angular",
+  "material-icon-theme.hidesExplorerArrows": false,
+  "material-icon-theme.folders.associations": {
+    "api": "api",
+    "src": "src",
+    "tests": "test",
+    "test": "test",
+    "tools": "tools",
+    "dataLoader": "tools",
+    "domain": "class",
+    "application": "app",
+    "common": "shared",
+    "controllers": "controller",
+    "services": "service",
+    "validators": "rules",
+    "profiles": "mappings",
+    "entities": "class",
+    "models": "models",
+    ".github": "github",
+    ".vscode": "vscode",
+    "Properties": "config"
+  },
+  "material-icon-theme.files.associations": {
+    "README.md": "readme",
+    "*.sln": "sln",
+    "*.csproj": "csproj",
+    "launchSettings.json": "settings",
+    "appsettings.json": "settings",
+    "appsettings.Development.json": "settings",
+    "tasks.json": "tools",
+    "launch.json": "debug",
+    "extensions.json": "plugins",
+    "copilot-instructions.md": "github",
+    ".dockerignore": "docker",
+    "Dockerfile": "docker",
+    "*.http": "http",
+    "*.rest": "http"
+  },
+  "material-icon-theme.folders.customClones": [
+    {
+      "name": "beers-api",
+      "base": "api",
+      "color": "blue"
+    },
+    {
+      "name": "beers-domain",
+      "base": "class",
+      "color": "green"
+    },
+    {
+      "name": "beers-tests",
+      "base": "test",
+      "color": "purple"
+    },
+    {
+      "name": "beers-tools",
+      "base": "tools",
+      "color": "orange"
+    }
+  ]
+}

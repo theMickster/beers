@@ -1,6 +1,6 @@
 # Beers Project
 
-A capstone learning project: beer discovery platform built with .NET 9 API + Azure Cosmos DB + Angular 21.
+A capstone learning project: beer discovery platform built with .NET 10 API + Azure Cosmos DB + Angular 21.
 
 ## Repository Layout
 
@@ -8,13 +8,13 @@ A capstone learning project: beer discovery platform built with .NET 9 API + Azu
 beers/
 ├── api/                          # Main API solution (Beers.API.sln)
 │   ├── src/
-│   │   ├── Beers.API/            # ASP.NET Core Web API host (.NET 9)
+│   │   ├── Beers.API/            # ASP.NET Core Web API host (.NET 10)
 │   │   ├── Beers.Application/    # Business logic, services, validators, data access
 │   │   ├── Beers.Common/         # Shared constants, attributes, helpers, settings
 │   │   └── Beers.Domain/         # Entities, view models, AutoMapper profiles
 │   └── tests/
 │       └── Beers.UnitTests/      # xUnit tests
-├── BeersDataLoader/              # Standalone .NET 8 console app for Cosmos DB seeding
+├── tools/dataLoader/             # .NET 10 console app for Cosmos DB seeding
 └── web/                          # (Planned) Angular 21 frontend
 ```
 
@@ -50,7 +50,8 @@ beers/
 
 - **API URL:** https://localhost:44379 (HTTP: 44378)
 - **Swagger:** Available at `/swagger` in Development environment
-- **Secrets:** Azure Key Vault integration. Required secrets: `AzureCosmosDbAccountUri`, `AzureCosmosDbDatabaseName`, `AzureCosmosDbSecurityKey`
+- **Secrets:** AKV-only for Cosmos and telemetry. Required AKV secrets: `AzureCosmosDbAccountUri`, `AzureCosmosDbDatabaseName`, `AzureCosmosDbSecurityKey`, `beers-aplication-insights-connection-string`
+- **Local user-secrets:** `KeyVault:VaultUri`, `AutoMapperLicenseKey`
 - **Docker profile** available (ports 8080/8081)
 
 ## Azure DevOps

@@ -29,10 +29,30 @@ public static class SecretHelper
 
             return result?.Value?.Value!;
         }
-        catch (RequestFailedException)
+        catch (RequestFailedException ex)
         {
-            return null!;
+            throw new InvalidOperationException(
+                $"Failed to retrieve Azure Key Vault secret '{secretName}'. Status: {ex.Status}, ErrorCode: {ex.ErrorCode}.",
+                ex);
         }
+    }
+
+    /// <summary>
+    /// Retrieves a required secret by name and fails fast when empty.
+    /// </summary>
+    /// <param name="secretName"></param>
+    /// <returns></returns>
+    public static string GetRequiredSecret(string secretName)
+    {
+        var value = GetSecret(secretName);
+
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            return value;
+        }
+
+        throw new InvalidOperationException(
+            $"Missing required Azure Key Vault secret '{secretName}'. Please verify your Key Vault values.");
     }
 
     /// <summary>
@@ -56,9 +76,11 @@ public static class SecretHelper
 
             return result?.Value?.Value!;
         }
-        catch (RequestFailedException)
+        catch (RequestFailedException ex)
         {
-            return null!;
+            throw new InvalidOperationException(
+                $"Failed to retrieve Azure Key Vault secret '{secretName}'. Status: {ex.Status}, ErrorCode: {ex.ErrorCode}.",
+                ex);
         }
     }
 

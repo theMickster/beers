@@ -23,11 +23,6 @@ public static class ConfigurationConstants
     public const string KeyVaultMaxRetryAttempts = "KeyVault:MaxRetryAttempts";
 
     /// <summary>
-    /// AppInsightsInstrumentationKey3 value name
-    /// </summary>
-    public const string AppInsightsConnectionString = "ApplicationInsights:ConnectionString";
-
-    /// <summary>
     /// ASPNetCore Environment1 value name
     /// </summary>
     public const string ApplicationEnvironment01 = "ASPNETCORE_ENVIRONMENT";

@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "restore Beers.API",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "restore",
+        "${workspaceFolder}/api/src/Beers.API/Beers.API.csproj"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build Beers.API",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/api/src/Beers.API/Beers.API.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile",
+      "group": "build",
+      "dependsOn": "restore Beers.API"
+    },
+    {
+      "label": "watch Beers.API",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "watch",
+        "--project",
+        "${workspaceFolder}/api/src/Beers.API/Beers.API.csproj",
+        "run"
+      ],
+      "isBackground": true,
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

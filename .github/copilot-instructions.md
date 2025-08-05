@@ -6,7 +6,7 @@ This project is a capstone learning platform that demonstrates modern Azure Cosm
 
 ## Scope
 
-- Applies to `api/`, `BeersDataLoader/`, and planned frontend code.
+- Applies to `api/`, `tools/dataLoader/`, and planned frontend code.
 - Prefer focused diffs that preserve existing layering and naming conventions.
 - Implement requested behavior end-to-end (API/contracts/tests/docs), not partial stubs.
 
@@ -35,6 +35,9 @@ This project is a capstone learning platform that demonstrates modern Azure Cosm
 - Implement optimistic concurrency with ETags on mutable user-generated content.
 - For aggregate updates (such as rolling ratings), use change feed-driven processing patterns.
 - Keep query projections lean and paginated; avoid loading full documents when not required.
+- Cosmos configuration is **AKV-only** for `Beers.API`: use Key Vault secrets `AzureCosmosDbAccountUri`, `AzureCosmosDbDatabaseName`, and `AzureCosmosDbSecurityKey`.
+- Do not add or reintroduce local Cosmos fallback config keys (for example `AzureCosmosDb:*`) in runtime code paths.
+- If Cosmos keys rotate, update AKV and restart app instances; do not solve rotation issues by adding alternate config paths.
 
 ## Feature-Specific Guidance (Epic 553)
 
