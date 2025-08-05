@@ -135,9 +135,9 @@ internal static class RegisterServices
     {
         var cosmosSettings = new CosmosDbConnectionSettings
         {
-            Account = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbAccountUri),
-            DatabaseName = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbDatabaseName),
-            SecurityKey = SecretHelper.GetSecret(AkvConstants.AzureCosmosDbSecurityKey)
+            Account = SecretHelper.GetRequiredSecret(AkvConstants.AzureCosmosDbAccountUri),
+            DatabaseName = SecretHelper.GetRequiredSecret(AkvConstants.AzureCosmosDbDatabaseName),
+            SecurityKey = SecretHelper.GetRequiredSecret(AkvConstants.AzureCosmosDbSecurityKey)
         };
 
         builder.Services.AddSingleton(cosmosSettings);

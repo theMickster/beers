@@ -18,15 +18,8 @@ internal static class SetupLogging
             throw new ArgumentNullException(nameof(configuration));
         }
         
-        var appInsightsConnectionString = SecretHelper.GetSecret(AkvConstants.AzureApplicationInsightsConnectionString);
+        var appInsightsConnectionString = SecretHelper.GetRequiredSecret(AkvConstants.AzureApplicationInsightsConnectionString);
         var aspNetEnvironment = configuration.RetrieveEnvironment();
-        
-        if (string.IsNullOrWhiteSpace(appInsightsConnectionString))
-        {
-            throw new ConfigurationException(
-                $"The required Configuration value for {ConfigurationConstants.AppInsightsConnectionString} is missing." +
-                "Please verify local or Azure resource configuration. Please verify that Azure Key Vault is configured properly.");
-        }
 
         if (string.IsNullOrWhiteSpace(aspNetEnvironment))
         {
