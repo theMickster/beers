@@ -30,4 +30,6 @@ internal static class PartitionKeyConstants
 
     public static readonly string Beer = "Beer";
 
+    public static readonly string BrewerReview = "BrewerReview";
+
 }

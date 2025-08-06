@@ -1,4 +1,5 @@
 using Beers.API.libs;
+using Beers.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,6 +47,7 @@ builder.RegisterAspDotNetServices();
 builder.RegisterServicesViaReflection();
 
 builder.RegisterDataServices();
+builder.Services.AddHostedService<BrewerReviewChangeFeedService>();
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -62,4 +64,3 @@ await builder.Build().SetupMiddleware().RunAsync();
 /// </remarks>
 [ExcludeFromCodeCoverage]
 public partial class Program { }
-

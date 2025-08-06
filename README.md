@@ -60,6 +60,10 @@ dotnet restore
 dotnet run
 ```
 
+The loader now also seeds rich Brewer Review demo data into `Beers` using
+`tools/dataLoader/Data/BrewerReviews.json` (generated from `Brewers.json` with
+deterministic shape and random review IDs).
+
 ## API Surface (v1)
 
 - `GET /api/v1/beers`
@@ -74,6 +78,11 @@ dotnet run
 - `PUT /api/v1/brewers/{brewerId}`
 - `PATCH /api/v1/brewers/{brewerId}`
 - `DELETE /api/v1/brewers/{brewerId}`
+- `POST /api/v1/brewers/{brewerId}/reviews`
+- `GET /api/v1/brewers/{brewerId}/reviews`
+- `GET /api/v1/brewers/{brewerId}/reviews/{reviewId}`
+- `DELETE /api/v1/brewers/{brewerId}/reviews/{reviewId}`
+- `POST /api/v1/brewers/{brewerId}/reviews/search`
 - `GET /api/v1/beerTypes`
 - `GET /api/v1/beerStyles`
 - `GET /api/v1/beerCategories`

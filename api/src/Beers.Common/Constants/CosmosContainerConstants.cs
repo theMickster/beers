@@ -11,4 +11,9 @@ public static class CosmosContainerConstants
     /// CosmosDb container used for storing supporting beer metadata.
     /// </summary>
     public const string MetadataContainer = "Metadata";
+
+    /// <summary>
+    /// CosmosDb container used for storing change feed processor leases.
+    /// </summary>
+    public const string ChangeFeedLeaseContainer = "ChangeFeedLeases";
 }

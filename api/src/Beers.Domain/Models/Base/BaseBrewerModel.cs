@@ -1,4 +1,5 @@
-﻿using Beers.Domain.Models.Metadata;
+using Beers.Domain.Models.Metadata;
+using Beers.Domain.Models.Beer;
 
 namespace Beers.Domain.Models.Base;
 
@@ -15,4 +16,6 @@ public abstract class BaseBrewerModel
     public bool IsDeletable { get; set; }
 
     public BreweryTypeModel BreweryType { get; set; } = new();
+
+    public RatingModel? Rating { get; set; } = new();
 }

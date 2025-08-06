@@ -1,6 +1,7 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Slims;
+using Beers.Domain.Models.Beer;
 using Beers.Domain.Models.Brewer;
 using Beers.Domain.Models.Metadata;
 
@@ -34,5 +35,7 @@ public class BrewerEntityToModelProfile : Profile
             .ForPath(x => x.ModifiedDate,
                 o => o.MapFrom(y => y.ModifiedDate))
             .ReverseMap();
+
+        CreateMap<RatingEntity, RatingModel>();
     }
 }

@@ -27,7 +27,10 @@
     "models": "models",
     ".github": "github",
     ".vscode": "vscode",
-    "Properties": "config"
+    "Properties": "config",
+    "Entities": "element",
+    "obj": "trash",
+    ".vs": "vscode"
   },
   "material-icon-theme.files.associations": {
     "README.md": "readme",

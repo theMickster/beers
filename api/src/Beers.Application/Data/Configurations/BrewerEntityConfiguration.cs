@@ -12,5 +12,11 @@ internal class BrewerEntityConfiguration : BaseEntityConfiguration, IEntityTypeC
         BeerConfiguring(builder);
         builder.HasDiscriminator(x => x.EntityType).HasValue(PartitionKeyConstants.Brewer);
         builder.OwnsOne(x => x.BreweryType);
+        builder.OwnsOne(x => x.Rating, buildAction =>
+        {
+            buildAction.ToJsonProperty("Rating");
+            buildAction.Property(x => x.Average).ToJsonProperty("average");
+            buildAction.Property(x => x.ReviewCount).ToJsonProperty("reviews");
+        });
     }
 }

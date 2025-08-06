@@ -51,4 +51,20 @@ public static class ValidatorConstants
     public static string BeerStylesIsNullOrEmpty => "Beer Styles list cannot be null nor empty";
 
     public static string BeerNameIsUnique => "Beer name cannot already exist in the database for a different record";
+
+    public static string BrewerReviewIdIsNull => "Brewer Review Id is required";
+
+    public static string BrewerReviewRatingOutOfRange => "Brewer Review rating must be between 1 and 5";
+
+    public static string BrewerReviewReviewerNameEmpty => "Reviewer name cannot be null, empty, or whitespace";
+
+    public static string BrewerReviewReviewerNameLength => "Reviewer name cannot be longer than 128 characters";
+
+    public static string BrewerReviewTitleEmpty => "Review title cannot be null, empty, or whitespace";
+
+    public static string BrewerReviewTitleLength => "Review title cannot be longer than 256 characters";
+
+    public static string BrewerReviewCommentsEmpty => "Review comments cannot be null, empty, or whitespace";
+
+    public static string BrewerReviewCommentsLength => "Review comments cannot be longer than 4000 characters";
 }
