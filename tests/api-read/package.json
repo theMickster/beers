@@ -1,0 +1,21 @@
+{
+  "name": "beers-api-read-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "API read tests for Beers",
+  "scripts": {
+    "api-read:playwright": "playwright test -c playwright/playwright.config.ts",
+    "api-read:playwright:ci": "playwright test -c playwright/playwright.config.ts --reporter=line",
+    "api-read:k6:typecheck": "tsc -p k6/tsconfig.json --noEmit",
+    "api-read:k6:build": "esbuild k6/src/api-read.ts --bundle --format=esm --platform=neutral --target=es2017 --external:k6 --external:k6/* --outfile=k6/dist/api-read.js",
+    "api-read:k6:smoke": "./scripts/run-k6-api-read.sh smoke",
+    "api-read:k6:load": "./scripts/run-k6-api-read.sh load",
+    "api-read:k6:stress": "./scripts/run-k6-api-read.sh stress"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/k6": "^0.57.0",
+    "esbuild": "^0.25.10",
+    "typescript": "^5.9.2"
+  }
+}

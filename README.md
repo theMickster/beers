@@ -64,6 +64,129 @@ The loader now also seeds rich Brewer Review demo data into `Beers` using
 `tools/dataLoader/Data/BrewerReviews.json` (generated from `Brewers.json` with
 deterministic shape and random review IDs).
 
+## Cosmos Bicep Deployments (Container-Only Safety)
+
+Container IaC operations now live under `infra/bicep/cosmos/` and are **safety-constrained**.
+
+- Deployment mode is **Incremental only**
+- **No Cosmos account mutation**
+- **No Cosmos database mutation**
+- Scope is **container-only** for:
+  - `Beers-Dev`
+  - `Beers-QA`
+
+Quick commands:
+
+```bash
+# Validate
+infra/bicep/cosmos/scripts/validate.sh dev
+infra/bicep/cosmos/scripts/validate.sh qa
+
+# What-if preview
+infra/bicep/cosmos/scripts/what-if.sh dev
+infra/bicep/cosmos/scripts/what-if.sh qa
+
+# Deploy (incremental)
+infra/bicep/cosmos/scripts/deploy.sh dev
+infra/bicep/cosmos/scripts/deploy.sh qa
+```
+
+See `infra/bicep/cosmos/README.md` for operator details and raw `az` examples.
+
+## Read-Only Crawl Testing (Containerized)
+
+This repository now includes a read-only crawl test stack that runs the API in Docker and validates read/search endpoints with:
+
+- Playwright API tests for functional API read behavior
+- k6 for smoke/load/stress read-only performance runs
+
+The API read scope is intentionally read endpoints only in this phase (no create/update/delete workflow assertions).
+
+### Test Assets
+
+- Docker compose files: `.docker/compose/quality-gates.yml`
+- Docker env template: `.docker/env/.env.api-read.example`
+- Optional docker wrappers: `.docker/scripts/`
+- Local test scripts: `tests/api-read/scripts/`
+- Playwright tests: `tests/api-read/playwright/tests/api-read.spec.ts`
+- k6 TypeScript source: `tests/api-read/k6/src/api-read.ts`
+- k6 compiled runtime artifact: `tests/api-read/k6/dist/api-read.js`
+- GitHub Actions workflow: `.github/workflows/quality-gates.yml`
+- Azure DevOps pipeline: `.pipelines/quality-gates.yml`
+
+### Required Environment Variables
+
+These are required to start the containerized API (AKV-backed runtime):
+
+- `KeyVault__VaultUri`
+- `AutoMapperLicenseKey`
+- `AZURE_TENANT_ID`
+- `AZURE_CLIENT_ID`
+- `AZURE_CLIENT_SECRET`
+
+Optional:
+
+- `API_PORT` (default `8080`)
+- `BASE_URL` (default `http://localhost:8080`)
+- `TEST_MODE` (`smoke`, `load`, `stress`; default `smoke`)
+- `VUS`, `DURATION`, `THRESHOLD_P95`, `THRESHOLD_ERRORS`
+
+See `.docker/env/.env.api-read.example` for a template.
+
+### Local Run
+
+```bash
+cp .docker/env/.env.api-read.example .docker/env/.env.api-read
+# fill in real secret values
+chmod +x tests/api-read/scripts/*.sh
+tests/api-read/scripts/run-api-read-suite.sh
+```
+
+Run only Playwright:
+
+```bash
+tests/api-read/scripts/start-api-container.sh
+tests/api-read/scripts/run-playwright-api-read.sh
+tests/api-read/scripts/stop-api-container.sh
+```
+
+Run only k6:
+
+```bash
+# script auto-installs test dependencies when missing
+TEST_MODE=smoke tests/api-read/scripts/run-k6-api-read.sh
+```
+
+Optional local k6 checks:
+
+```bash
+cd tests/api-read
+npm run api-read:k6:typecheck
+npm run api-read:k6:build
+```
+
+## CI/CD API Read Test Entry Points
+
+- GitHub Actions: `.github/workflows/quality-gates.yml`
+  - Uses repository secrets:
+    - `KEYVAULT_VAULTURI`
+    - `AUTOMAPPER_LICENSE_KEY`
+    - `AZURE_TENANT_ID`
+    - `AZURE_CLIENT_ID`
+    - `AZURE_CLIENT_SECRET`
+  - Supports `workflow_dispatch` input `test_mode`.
+  - Workflow writes a temporary compose env file and runs `.docker/compose/quality-gates.yml`.
+
+- Azure DevOps: `.pipelines/quality-gates.yml`
+  - Expects secure variables:
+    - `KeyVault__VaultUri`
+    - `AutoMapperLicenseKey`
+    - `AZURE_TENANT_ID`
+    - `AZURE_CLIENT_ID`
+    - `AZURE_CLIENT_SECRET`
+  - Uses `TEST_MODE` variable to switch k6 mode without code changes.
+  - Pipeline writes a temporary compose env file and runs `.docker/compose/quality-gates.yml`.
+
 ## API Surface (v1)
 
 - `GET /api/v1/beers`

@@ -1,0 +1,55 @@
+name: Beers Quality Gates
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_mode:
+        description: 'k6 mode (smoke/load/stress)'
+        required: false
+        default: 'smoke'
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    env:
+      TEST_MODE: ${{ github.event.inputs.test_mode || vars.API_READ_TEST_MODE || 'smoke' }}
+      DOCKER_COMPOSE_FILE: ${{ github.workspace }}/.docker/compose/quality-gates.yml
+      DOCKER_ENV_FILE: /tmp/.env.api-read
+      KeyVault__VaultUri: ${{ secrets.KEYVAULT_VAULTURI }}
+      AutoMapperLicenseKey: ${{ secrets.AUTOMAPPER_LICENSE_KEY }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Unit baseline
+        run: dotnet test api/Beers.API.sln --nologo
+
+      - name: Run API read test suite
+        run: |
+          chmod +x tests/api-read/scripts/*.sh
+          cat > "$DOCKER_ENV_FILE" <<EOF
+          KeyVault__VaultUri=${KeyVault__VaultUri}
+          AutoMapperLicenseKey=${AutoMapperLicenseKey}
+          AZURE_TENANT_ID=${AZURE_TENANT_ID}
+          AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+          AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+          TEST_MODE=${TEST_MODE}
+          EOF
+          tests/api-read/scripts/run-api-read-suite.sh

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.41.2.15936",
+      "templateHash": "6505427130751429851"
+    }
+  },
+  "parameters": {
+    "cosmosAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing Azure Cosmos DB account name."
+      }
+    },
+    "cosmosDatabaseName": {
+      "type": "string",
+      "metadata": {
+        "description": "Existing SQL database name to host the containers."
+      }
+    },
+    "containers": {
+      "type": "array",
+      "metadata": {
+        "description": "Container definitions. Supports id and optional indexingPolicy."
+      }
+    }
+  },
+  "resources": [
+    {
+      "copy": {
+        "name": "sqlContainers",
+        "count": "[length(parameters('containers'))]"
+      },
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+      "apiVersion": "2024-05-15",
+      "name": "[format('{0}/{1}/{2}', parameters('cosmosAccountName'), parameters('cosmosDatabaseName'), parameters('containers')[copyIndex()].id)]",
+      "properties": {
+        "resource": "[union(createObject('id', parameters('containers')[copyIndex()].id, 'partitionKey', createObject('paths', createArray('/BrewerId', '/EntityType'), 'kind', 'MultiHash', 'version', 2)), if(contains(parameters('containers')[copyIndex()], 'indexingPolicy'), createObject('indexingPolicy', parameters('containers')[copyIndex()].indexingPolicy), createObject()))]",
+        "options": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+services:
+  beers-api:
+    container_name: ${API_CONTAINER_NAME:-beers-api-quality-gates}
+    build:
+      context: ../../api
+      dockerfile: src/Beers.API/Dockerfile
+    image: ${API_IMAGE_NAME:-beers-api:quality-gates}
+    ports:
+      - "${API_PORT:-8080}:8080"
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
+      KeyVault__VaultUri: ${KeyVault__VaultUri}
+      AutoMapperLicenseKey: ${AutoMapperLicenseKey}
+      AZURE_TENANT_ID: ${AZURE_TENANT_ID}
+      AZURE_CLIENT_ID: ${AZURE_CLIENT_ID}
+      AZURE_CLIENT_SECRET: ${AZURE_CLIENT_SECRET}

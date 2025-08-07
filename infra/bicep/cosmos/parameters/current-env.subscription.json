@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroupName": {
+      "value": "Mick-West-US-3-CosmosDb"
+    },
+    "location": {
+      "value": "westus3"
+    },
+    "cosmosAccountName": {
+      "value": "mickcosmos"
+    },
+    "cosmosDatabaseName": {
+      "value": "PlatformDatabases"
+    },
+    "containers": {
+      "value": [
+        {
+          "id": "Beers-Dev"
+        },
+        {
+          "id": "Beers-QA"
+        }
+      ]
+    }
+  }
+}

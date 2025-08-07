@@ -287,6 +287,11 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+tests/api-read/node_modules/
+tests/api-read/test-results/
+tests/api-read/playwright-report/
+.docker/env/.env.api-read
+tests/api-read/k6/dist/
 
 # Visual Studio 6 build log
 *.plg
