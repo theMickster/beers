@@ -14,6 +14,8 @@ public class BeersDbContext(DbContextOptions<BeersDbContext> options): DbContext
 
     public DbSet<BrewerReviewEntity> BrewerReviewEntities { get; set; } = null!;
 
+    public DbSet<NewsBlogPostEntity> NewsBlogPostEntities { get; set; } = null!;
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.LogTo(message => Debug.WriteLine(message)).EnableSensitiveDataLogging().EnableDetailedErrors();
 

@@ -67,4 +67,16 @@ public static class ValidatorConstants
     public static string BrewerReviewCommentsEmpty => "Review comments cannot be null, empty, or whitespace";
 
     public static string BrewerReviewCommentsLength => "Review comments cannot be longer than 4000 characters";
+
+    public static string NewsBlogPostTitleEmpty => "Title cannot be null, empty, or whitespace";
+
+    public static string NewsBlogPostTitleLength => "Title cannot be longer than 256 characters";
+
+    public static string NewsBlogPostBodyEmpty => "Body cannot be null, empty, or whitespace";
+
+    public static string NewsBlogPostBodyLength => "Body cannot be longer than 4000 characters";
+
+    public static string NewsBlogPostPostTypeEmpty => "Post type cannot be null, empty, or whitespace";
+
+    public static string NewsBlogPostPostTypeInvalid => "Post type must be a valid value (TextPost, ImageGallery, EventAnnouncement)";
 }

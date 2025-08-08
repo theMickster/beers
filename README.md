@@ -64,6 +64,22 @@ The loader now also seeds rich Brewer Review demo data into `Beers` using
 `tools/dataLoader/Data/BrewerReviews.json` (generated from `Brewers.json` with
 deterministic shape and random review IDs).
 
+## Cosmos Shared-Container Document Types
+
+`Beers.Application` keeps beer-scoped operational documents in the shared
+Cosmos `MainContainer` using the hierarchical partition key
+`/BrewerId` + `/EntityType`.
+
+Current discriminator-backed document types in that container include:
+
+- `Beer`
+- `Brewer`
+- `BrewerReview`
+- `NewsBlogPost`
+
+`NewsBlogPost` documents store an embedded brewer author snapshot and continue
+to use the existing shared-container partitioning pattern for Feature #517.
+
 ## Cosmos Bicep Deployments (Container-Only Safety)
 
 Container IaC operations now live under `infra/bicep/cosmos/` and are **safety-constrained**.

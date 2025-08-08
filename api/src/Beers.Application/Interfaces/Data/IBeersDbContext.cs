@@ -10,4 +10,6 @@ public interface IBeersDbContext
     DbSet<BeerEntity> BeerEntities { get; set; }
 
     DbSet<BrewerReviewEntity> BrewerReviewEntities { get; set; }
+
+    DbSet<NewsBlogPostEntity> NewsBlogPostEntities { get; set; }
 }

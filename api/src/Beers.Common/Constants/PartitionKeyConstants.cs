@@ -32,4 +32,6 @@ public static class PartitionKeyConstants
 
     public static readonly string BrewerReview = "BrewerReview";
 
+    public static readonly string NewsBlogPost = "NewsBlogPost";
+
 }

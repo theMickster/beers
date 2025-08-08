@@ -2,7 +2,8 @@
 
 public sealed class BrewerSlimEntity
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    /// <summary>Defaults to <see cref="Guid.Empty"/> as the unhydrated sentinel. Must be explicitly set to a valid brewer Id before persistence.</summary>
+    public Guid Id { get; set; } = Guid.Empty;
 
     public string Name { get; set; } = string.Empty;
     
