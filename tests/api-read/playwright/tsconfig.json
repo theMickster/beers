@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
-    "types": ["node", "@playwright/test"]
+    "types": ["node"],
+    "noEmit": true,
+    "skipLibCheck": true
   },
   "include": ["**/*.ts"]
 }

@@ -47,10 +47,21 @@ Swagger is available at `/swagger` when running locally.
 
 ## Seed Cosmos Data
 
-The data loader expects these environment variables:
+The data loader supports two configuration modes:
 
-- `BeersCosmosEndpoint`
-- `BeersCosmosKey`
+1. Direct environment variables:
+
+- `BeersCosmosEndpoint` (required)
+- `BeersCosmosKey` (required)
+- `BeersCosmosDatabaseName` (optional, defaults to `PlatformDatabases`)
+
+2. Key Vault parity mode:
+
+- `KeyVault:VaultUri` (or env var `KeyVault__VaultUri`)
+- Key Vault secrets:
+  - `AzureCosmosDbAccountUri`
+  - `AzureCosmosDbSecurityKey`
+  - `AzureCosmosDbDatabaseName`
 
 Run:
 
@@ -124,7 +135,7 @@ The API read scope is intentionally read endpoints only in this phase (no create
 - Docker env template: `.docker/env/.env.api-read.example`
 - Optional docker wrappers: `.docker/scripts/`
 - Local test scripts: `tests/api-read/scripts/`
-- Playwright tests: `tests/api-read/playwright/tests/api-read.spec.ts`
+- Playwright tests: `tests/api-read/playwright/src/api-read.spec.ts`
 - k6 TypeScript source: `tests/api-read/k6/src/api-read.ts`
 - k6 compiled runtime artifact: `tests/api-read/k6/dist/api-read.js`
 - GitHub Actions workflow: `.github/workflows/quality-gates.yml`

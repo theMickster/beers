@@ -120,4 +120,23 @@ public sealed class NewsBlogPostProfileTests
             model.IsDeletable.Should().Be(entity.IsDeletable);
         }
     }
+
+    [Fact]
+    public void CreateMap_ShouldThrowArgumentException_WhenPostTypeIsInvalid()
+    {
+        var model = new CreateNewsBlogPostModel
+        {
+            BrewerId = Guid.NewGuid(),
+            Title = "Invalid post type test",
+            Body = "Invalid post type test body",
+            PostType = "definitely-not-valid"
+        };
+
+        Action action = () => mapper.Map<NewsBlogPostEntity>(model);
+
+        var mappingException = action.Should().Throw<AutoMapperMappingException>().Which;
+        var argumentException = mappingException.InnerException.Should().BeOfType<ArgumentException>().Which;
+        argumentException.ParamName.Should().Be("postType");
+        argumentException.Message.Should().Contain("Invalid post type: 'definitely-not-valid'.");
+    }
 }

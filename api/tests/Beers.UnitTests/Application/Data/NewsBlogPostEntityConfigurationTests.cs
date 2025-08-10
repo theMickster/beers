@@ -4,6 +4,7 @@ using Beers.Common.Constants;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Cosmos.Metadata.Internal;
 
 namespace Beers.UnitTests.Application.Data;
 
@@ -30,6 +31,47 @@ public sealed class NewsBlogPostEntityConfigurationTests
             entityType.GetDiscriminatorValue().Should().Be(PartitionKeyConstants.NewsBlogPost);
             entityType.GetPartitionKeyPropertyNames().Should()
                 .ContainInOrder(nameof(BaseBeerEntity.BrewerId), nameof(BaseBeerEntity.EntityType));
+        }
+    }
+
+    [Fact]
+    public void ModelConfiguration_ShouldStorePostTypeAsString()
+    {
+        using var context = CreateContext();
+        var entityType = context.Model.FindEntityType(typeof(NewsBlogPostEntity));
+        var postTypeProperty = entityType?.FindProperty(nameof(NewsBlogPostEntity.PostType));
+
+        using (new AssertionScope())
+        {
+            postTypeProperty.Should().NotBeNull();
+            postTypeProperty?.GetTypeMapping().Converter.Should().NotBeNull();
+            postTypeProperty?.GetTypeMapping().Converter?.ProviderClrType.Should().Be(typeof(string));
+        }
+    }
+
+    [Fact]
+    public void ModelConfiguration_ShouldMapAuthorOwnedTypeToExpectedJsonProperties()
+    {
+        using var context = CreateContext();
+        var entityType = context.Model.FindEntityType(typeof(NewsBlogPostEntity));
+        var authorNavigation = entityType?.FindNavigation(nameof(NewsBlogPostEntity.Author));
+        var authorEntityType = authorNavigation?.TargetEntityType;
+        var idProperty = authorEntityType?.FindProperty(nameof(BrewerSlimEntity.Id));
+        var nameProperty = authorEntityType?.FindProperty(nameof(BrewerSlimEntity.Name));
+        var websiteProperty = authorEntityType?.FindProperty(nameof(BrewerSlimEntity.Website));
+
+        using (new AssertionScope())
+        {
+            authorNavigation.Should().NotBeNull();
+            authorEntityType.Should().NotBeNull();
+            authorEntityType!.IsOwned().Should().BeTrue();
+            authorEntityType.GetContainingPropertyName().Should().Be("Author");
+            idProperty.Should().NotBeNull("Author Id property should be configured");
+            nameProperty.Should().NotBeNull("Author Name property should be configured");
+            websiteProperty.Should().NotBeNull("Author Website property should be configured");
+            idProperty?.FindAnnotation(CosmosAnnotationNames.PropertyName)?.Value.Should().Be("id");
+            nameProperty?.FindAnnotation(CosmosAnnotationNames.PropertyName)?.Value.Should().Be("name");
+            websiteProperty?.FindAnnotation(CosmosAnnotationNames.PropertyName)?.Value.Should().Be("website");
         }
     }
 

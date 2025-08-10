@@ -14,6 +14,7 @@
     "src": "src",
     "tests": "test",
     "test": "test",
+    "api-read": "test",
     "tools": "tools",
     "dataLoader": "tools",
     "domain": "class",
@@ -24,24 +25,18 @@
     "validators": "rules",
     "profiles": "mappings",
     "entities": "class",
-    "models": "models",
+    "models": "core",
+    "Models": "core",
     ".github": "github",
     ".vscode": "vscode",
     "Properties": "config",
     "Entities": "element",
     "obj": "trash",
-    ".vs": "vscode"
+    ".vs": "vscode",
+    "dataLoader": "database",
+    "Services": "molecule"
   },
   "material-icon-theme.files.associations": {
-    "README.md": "readme",
-    "*.sln": "sln",
-    "*.csproj": "csproj",
-    "launchSettings.json": "settings",
-    "appsettings.json": "settings",
-    "appsettings.Development.json": "settings",
-    "tasks.json": "tools",
-    "launch.json": "debug",
-    "extensions.json": "plugins",
     "copilot-instructions.md": "github",
     ".dockerignore": "docker",
     "Dockerfile": "docker",
@@ -50,24 +45,40 @@
   },
   "material-icon-theme.folders.customClones": [
     {
-      "name": "beers-api",
-      "base": "api",
-      "color": "blue"
+      "name": "teal-core", // Give your custom clone a name
+      "base": "core", // The existing icon you want to clone
+      "color": "teal-500", // The material palette color you want (e.g., purple-400, purple-500, #A259FF)
+      "folderNames": ["Beers.Test.Common", "Beers.Common", "Beers.Domain"] // The folder(s) that should use this new icon
     },
     {
-      "name": "beers-domain",
-      "base": "class",
-      "color": "green"
+      "name": "orange-application", // Give your custom clone a name
+      "base": "container", // The existing icon you want to clone
+      "color": "orange-500", // The material palette color you want (e.g., purple-400, purple-500, #A259FF)
+      "folderNames": ["Beers.Application"] // The folder(s) that should use this new icon
     },
     {
-      "name": "beers-tests",
+      "name": "blue-api", // Give your custom clone a name
+      "base": "api", // The existing icon you want to clone
+      "color": "blue-500", // The material palette color you want (e.g., purple-400, purple-500, #A259FF)
+      "folderNames": ["Beers.API"] // The folder(s) that should use this new icon
+    },
+    {
+      "name": "purple-test", // Give your custom clone a name
+      "base": "test", // The existing icon you want to clone
+      "color": "purple-500", // The material palette color you want (e.g., purple-400, purple-500, #A259FF)
+      "folderNames": ["Beers.UnitTests"] // The folder(s) that should use this new icon
+    },
+    {
+      "name": "playwright",
       "base": "test",
-      "color": "purple"
+      "color": "green",
+      "folderNames": ["playwright"]
     },
     {
-      "name": "beers-tools",
-      "base": "tools",
-      "color": "orange"
+      "name": "k6",
+      "base": "test",
+      "color": "red",
+      "folderNames": ["k6"]
     }
   ]
 }
