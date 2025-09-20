@@ -47,6 +47,17 @@ public sealed class CreateNewsBlogPostValidatorTests
         var model = CreateValidModel();
         model.PostType = postType;
 
+        if (string.Equals(postType, "EventAnnouncement", StringComparison.OrdinalIgnoreCase))
+        {
+            model.EventDate = DateTime.UtcNow.AddDays(1);
+            model.EventLocation = "Test Location";
+        }
+
+        if (string.Equals(postType, "ImageGallery", StringComparison.OrdinalIgnoreCase))
+        {
+            model.ImageUrls = new List<string> { "https://cdn.example.com/1.jpg" };
+        }
+
         var result = await _sut.ValidateAsync(model);
         result.IsValid.Should().BeTrue();
     }
@@ -151,6 +162,7 @@ public sealed class CreateNewsBlogPostValidatorTests
     public async Task Validator_fails_when_body_is_empty(string body)
     {
         var model = CreateValidModel();
+        model.PostType = "TextPost";
         model.Body = body;
 
         var result = await _sut.ValidateAsync(model);
@@ -159,6 +171,29 @@ public sealed class CreateNewsBlogPostValidatorTests
             result.IsValid.Should().BeFalse();
             result.Errors.Count(x => x.PropertyName == "Body").Should().BeGreaterThanOrEqualTo(1);
         }
+    }
+
+    [Fact]
+    public async Task Validator_allows_empty_body_for_imagegallery_and_eventannouncement()
+    {
+        // ImageGallery with images should pass even when Body is empty
+        var imageModel = CreateValidModel();
+        imageModel.PostType = "ImageGallery";
+        imageModel.Body = null;
+        imageModel.ImageUrls = new List<string> { "https://cdn.example.com/1.jpg" };
+
+        var imageResult = await _sut.ValidateAsync(imageModel);
+        imageResult.IsValid.Should().BeTrue();
+
+        // EventAnnouncement with required fields should pass even when Body is empty
+        var eventModel = CreateValidModel();
+        eventModel.PostType = "EventAnnouncement";
+        eventModel.Body = null;
+        eventModel.EventDate = DateTime.UtcNow.AddDays(1);
+        eventModel.EventLocation = "Test Location";
+
+        var eventResult = await _sut.ValidateAsync(eventModel);
+        eventResult.IsValid.Should().BeTrue();
     }
 
     [Fact]
@@ -212,4 +247,36 @@ public sealed class CreateNewsBlogPostValidatorTests
         Body = "We are thrilled to announce our newest seasonal IPA.",
         PostType = "TextPost"
     };
+
+    [Fact]
+    public async Task Validator_fails_for_eventannouncement_missing_required_fields()
+    {
+        var model = CreateValidModel();
+        model.PostType = "EventAnnouncement";
+        model.EventDate = null;
+        model.EventLocation = null;
+
+        var result = await _sut.ValidateAsync(model);
+        using (new AssertionScope())
+        {
+            result.IsValid.Should().BeFalse();
+            result.Errors.Any(x => x.PropertyName == "EventDate").Should().BeTrue();
+            result.Errors.Any(x => x.PropertyName == "EventLocation").Should().BeTrue();
+        }
+    }
+
+    [Fact]
+    public async Task Validator_fails_for_imagegallery_with_no_images()
+    {
+        var model = CreateValidModel();
+        model.PostType = "ImageGallery";
+        model.ImageUrls = new List<string>();
+
+        var result = await _sut.ValidateAsync(model);
+        using (new AssertionScope())
+        {
+            result.IsValid.Should().BeFalse();
+            result.Errors.Any(x => x.PropertyName == "ImageUrls").Should().BeTrue();
+        }
+    }
 }

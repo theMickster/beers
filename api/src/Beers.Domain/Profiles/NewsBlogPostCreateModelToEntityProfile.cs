@@ -3,12 +3,25 @@ using Beers.Domain.Entities;
 using Beers.Domain.Enums;
 using Beers.Domain.Models.NewsBlogPost;
 
+using System;
+using System.Linq;
+using AutoMapper;
+using Beers.Domain.Entities;
+using Beers.Domain.Enums;
+using Beers.Domain.Models.NewsBlogPost;
+
 namespace Beers.Domain.Profiles;
 
+/// <summary>
+/// DEPRECATED: Mapping direct create-model to entity is unsafe. Prefer using the NewsBlogPostHydrationService to build
+/// NewsBlogPostEntity instances. This profile is retained for compatibility but is marked obsolete to discourage use.
+/// </summary>
+[Obsolete("NewsBlogPostCreateModelToEntityProfile is deprecated. Use INewsBlogPostHydrationService.HydrateEntity instead.")]
 public sealed class NewsBlogPostCreateModelToEntityProfile : Profile
 {
     public NewsBlogPostCreateModelToEntityProfile()
     {
+        // Retain mapping to avoid breaking existing code/tests while signaling deprecation.
         CreateMap<CreateNewsBlogPostModel, NewsBlogPostEntity>()
             .ForMember(x => x.Id,
                 o => o.Ignore())
@@ -32,7 +45,7 @@ public sealed class NewsBlogPostCreateModelToEntityProfile : Profile
                 o => o.MapFrom(y => y.EventLocation))
             .ForPath(x => x.PublishedDate,
                 o => o.MapFrom(y => y.PublishedDate))
-            // TODO: Author must be populated by a future NewsBlogPostHydrationService (mirrors BeerHydrationService pattern).
+            // NOTE: Author must be populated by NewsBlogPostHydrationService; do not map Author from client input.
             .ForMember(x => x.Author,
                 o => o.Ignore())
             .ForMember(x => x.IsDeletable,

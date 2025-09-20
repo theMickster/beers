@@ -79,4 +79,10 @@ public static class ValidatorConstants
     public static string NewsBlogPostPostTypeEmpty => "Post type cannot be null, empty, or whitespace";
 
     public static string NewsBlogPostPostTypeInvalid => "Post type must be a valid value (TextPost, ImageGallery, EventAnnouncement)";
+
+    public static string NewsBlogPostEventDateEmpty => "Event date is required for EventAnnouncement posts";
+
+    public static string NewsBlogPostEventLocationEmpty => "Event location is required for EventAnnouncement posts";
+
+    public static string NewsBlogPostImageUrlsEmpty => "ImageUrls must contain at least one url for ImageGallery posts";
 }
