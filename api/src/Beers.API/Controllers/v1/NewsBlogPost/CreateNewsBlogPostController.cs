@@ -6,6 +6,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Beers.API.Controllers.v1.NewsBlogPost;
 
+/// <summary>
+/// Handles creation of news/blog posts for a brewer.
+/// </summary>
+/// <param name="logger">Logger for request diagnostics.</param>
+/// <param name="createNewsBlogPostService">Application service that creates the post.</param>
 [ApiController]
 [ApiVersion("1.0")]
 [ApiExplorerSettings(GroupName = "NewsBlogPost")]

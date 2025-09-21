@@ -5,10 +5,6 @@ using Beers.Domain.Models.NewsBlogPost;
 
 using System;
 using System.Linq;
-using AutoMapper;
-using Beers.Domain.Entities;
-using Beers.Domain.Enums;
-using Beers.Domain.Models.NewsBlogPost;
 
 namespace Beers.Domain.Profiles;
 

@@ -44,9 +44,9 @@ internal static class AzureKeyVaultDataHelper
                 MaxRetries = maxRetryCount
             }
         };
-        
+
         var akvUri = new Uri(akvUriValue);
-        
+
         return new SecretClient(akvUri, new DefaultAzureCredential(), akvSecretOptions);
     }
 }
