@@ -57,8 +57,15 @@ public sealed class CreateNewsBlogPostServiceTests
         var (resultModel, errors) = await sut.CreateAsync(model);
 
         // assert
-        errors.Count.Should().Be(0);
-        resultModel.NewsBlogPostId.Should().NotBe(Guid.Empty);
+        using (new AssertionScope())
+        {
+            errors.Count.Should().Be(0);
+            resultModel.NewsBlogPostId.Should().NotBe(Guid.Empty);
+            entity.CreatedBy.Should().Be("the.system");
+            entity.ModifiedBy.Should().Be("the.system");
+            entity.CreatedDate.Should().NotBe(DateTime.MinValue);
+            entity.ModifiedDate.Should().Be(entity.CreatedDate);
+        }
     }
 
     [Fact]

@@ -45,6 +45,14 @@ public sealed class NewsBlogPostCreateModelToEntityProfile : Profile
             .ForMember(x => x.Author,
                 o => o.Ignore())
             .ForMember(x => x.IsDeletable,
+                o => o.Ignore())
+            .ForMember(x => x.CreatedBy,
+                o => o.Ignore())
+            .ForMember(x => x.ModifiedBy,
+                o => o.Ignore())
+            .ForMember(x => x.CreatedDate,
+                o => o.Ignore())
+            .ForMember(x => x.ModifiedDate,
                 o => o.Ignore());
     }
 

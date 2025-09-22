@@ -7,6 +7,8 @@ internal static class BeerFixtures
     internal static Guid BrewerBootstrap = new("81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240");
     internal static Guid BrewerFounders = new("fa25893a-5993-491b-bd22-a9ce1e61dbd0");
     internal static Guid BrewerNewBelgium = new ("13bf3bf9-91d6-482b-90bc-4d0bb8b57838");
+    
+    internal static Guid NewsBlogPostId1 = new("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
 
     internal static List<ReadBrewerModel> GetBrewerModels() =>
     [

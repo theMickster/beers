@@ -54,6 +54,35 @@ public abstract class BaseNewsBlogPostValidator<T>(IReadBrewerService readBrewer
             .WithMessage(ValidatorConstants.NewsBlogPostPostTypeInvalid);
     }
 
+    protected void ValidateConditionalFields()
+    {
+        RuleFor(x => x.EventDate)
+            .NotNull()
+            .WithMessage(ValidatorConstants.NewsBlogPostEventDateEmpty)
+            .When(x => !string.IsNullOrWhiteSpace(x.PostType) &&
+                       Enum.TryParse<NewsBlogPostType>(x.PostType, true, out var pt) && pt == NewsBlogPostType.EventAnnouncement);
+
+        RuleFor(x => x.EventLocation)
+            .NotEmpty()
+            .WithMessage(ValidatorConstants.NewsBlogPostEventLocationEmpty)
+            .When(x => !string.IsNullOrWhiteSpace(x.PostType) &&
+                       Enum.TryParse<NewsBlogPostType>(x.PostType, true, out var pt) && pt == NewsBlogPostType.EventAnnouncement);
+
+        RuleFor(x => x.Body)
+            .NotEmpty()
+            .WithMessage(ValidatorConstants.NewsBlogPostBodyEmpty)
+            .MaximumLength(4000)
+            .WithMessage(ValidatorConstants.NewsBlogPostBodyLength)
+            .When(x => !string.IsNullOrWhiteSpace(x.PostType) &&
+                       Enum.TryParse<NewsBlogPostType>(x.PostType, true, out var pt) && pt == NewsBlogPostType.TextPost);
+
+        RuleFor(x => x.ImageUrls)
+            .NotEmpty()
+            .WithMessage(ValidatorConstants.NewsBlogPostImageUrlsEmpty)
+            .When(x => !string.IsNullOrWhiteSpace(x.PostType) &&
+                       Enum.TryParse<NewsBlogPostType>(x.PostType, true, out var pt) && pt == NewsBlogPostType.ImageGallery);
+    }
+
     private async Task<bool> BrewerExistsAsync(Guid brewerId)
     {
         var result = await ReadBrewerService.GetByIdAsync(brewerId);

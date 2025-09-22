@@ -47,33 +47,7 @@ Swagger is available at `/swagger` when running locally.
 
 ## Seed Cosmos Data
 
-The data loader supports two configuration modes:
-
-1. Direct environment variables:
-
-- `BeersCosmosEndpoint` (required)
-- `BeersCosmosKey` (required)
-- `BeersCosmosDatabaseName` (optional, defaults to `PlatformDatabases`)
-
-2. Key Vault parity mode:
-
-- `KeyVault:VaultUri` (or env var `KeyVault__VaultUri`)
-- Key Vault secrets:
-  - `AzureCosmosDbAccountUri`
-  - `AzureCosmosDbSecurityKey`
-  - `AzureCosmosDbDatabaseName`
-
-Run:
-
-```bash
-cd tools/dataLoader
-dotnet restore
-dotnet run
-```
-
-The loader now also seeds rich Brewer Review demo data into `Beers` using
-`tools/dataLoader/Data/BrewerReviews.json` (generated from `Brewers.json` with
-deterministic shape and random review IDs).
+Loader setup and run instructions now live in [tools/dataLoader/README.md](tools/dataLoader/README.md).
 
 ## Cosmos Shared-Container Document Types
 
@@ -241,6 +215,7 @@ npm run api-read:k6:build
 - `GET /api/v1/brewers/{brewerId}/posts/{postId}`
 - `POST /api/v1/brewers/{brewerId}/reviews/search`
 - `POST /api/v1/brewers/{brewerId}/posts`
+- `PUT /api/v1/brewers/{brewerId}/posts/{postId}`
 - `GET /api/v1/beerTypes`
 - `GET /api/v1/beerStyles`
 - `GET /api/v1/beerCategories`

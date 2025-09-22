@@ -39,6 +39,10 @@ public sealed class CreateNewsBlogPostService(
         var inputEntity = await _newsBlogPostHydrationService.HydrateEntity(inputModel).ConfigureAwait(false);
         inputEntity.EntityType = PartitionKeyConstants.NewsBlogPost;
         inputEntity.Id = Guid.NewGuid();
+        inputEntity.CreatedBy = "the.system";
+        inputEntity.ModifiedBy = "the.system";
+        inputEntity.CreatedDate = DateTime.UtcNow;
+        inputEntity.ModifiedDate = inputEntity.CreatedDate;
         inputEntity.IsDeletable = true;
 
         await using var context = await _dbContextFactory.CreateDbContextAsync().ConfigureAwait(false);

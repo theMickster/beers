@@ -25,4 +25,12 @@ public sealed class NewsBlogPostEntity : BaseBeerEntity
     public DateTime? PublishedDate { get; set; }
 
     public BrewerSlimEntity Author { get; set; } = new();
+
+    public string CreatedBy { get; set; } = string.Empty;
+
+    public string ModifiedBy { get; set; } = string.Empty;
+
+    public DateTime CreatedDate { get; set; } = DateTime.MinValue;
+
+    public DateTime ModifiedDate { get; set; } = DateTime.MinValue;
 }

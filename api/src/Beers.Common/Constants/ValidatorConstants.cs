@@ -85,4 +85,8 @@ public static class ValidatorConstants
     public static string NewsBlogPostEventLocationEmpty => "Event location is required for EventAnnouncement posts";
 
     public static string NewsBlogPostImageUrlsEmpty => "ImageUrls must contain at least one url for ImageGallery posts";
+
+    public static string NewsBlogPostIdIsNull => "NewsBlogPost Id is required";
+
+    public static string NewsBlogPostMustExist => "NewsBlogPost does not exist for the supplied BrewerId and NewsBlogPostId";
 }

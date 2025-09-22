@@ -3,7 +3,7 @@ using Beers.Application.Interfaces.Services.Hydration;
 using Beers.Common.Attributes;
 using Beers.Domain.Entities;
 using Beers.Domain.Entities.Base;
-using Beers.Domain.Models.NewsBlogPost;
+using Beers.Domain.Models.Base;
 
 namespace Beers.Application.Services.Hydration;
 
@@ -13,7 +13,12 @@ public sealed class NewsBlogPostHydrationService(
 {
     private readonly IReadBrewerService _readBrewerService = readBrewerService ?? throw new ArgumentNullException(nameof(readBrewerService));
 
-    public async Task<NewsBlogPostEntity> HydrateEntity(CreateNewsBlogPostModel model)
+    /// <summary>
+    /// Hydrate a NewsBlogPostEntity from a base model.
+    /// This single method handles both Create and Update workflows since both models
+    /// inherit from BaseNewsBlogPostModel and share identical properties.
+    /// </summary>
+    public async Task<NewsBlogPostEntity> HydrateEntity(BaseNewsBlogPostModel model)
     {
         ArgumentNullException.ThrowIfNull(model);
 
