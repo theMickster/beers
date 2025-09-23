@@ -5,17 +5,13 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>0fb55dcc-af9e-406a-9123-9d34eab08e6d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
-    <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.11.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.60.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Cosmos" Version="10.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.8" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 

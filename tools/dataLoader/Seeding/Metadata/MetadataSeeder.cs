@@ -6,9 +6,9 @@ using Microsoft.Azure.Cosmos;
 
 namespace BeersDataLoader.Seeding.Metadata;
 
-internal sealed class MetadataSeeder
+internal static class MetadataSeeder
 {
-    internal async Task<SeedResult> SeedAsync<T>(Container container, string metadataFilePath) where T : BaseMetadataEntity
+    internal static async Task<SeedResult> SeedAsync<T>(Container container, string metadataFilePath) where T : BaseMetadataEntity
     {
         if (!File.Exists(metadataFilePath))
         {

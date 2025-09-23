@@ -3,12 +3,9 @@ using Microsoft.Azure.Cosmos;
 
 namespace BeersDataLoader.Infrastructure;
 
-internal sealed class CosmosProvisioner
+internal static class CosmosProvisioner
 {
-    private const string MetadataContainerName = "Metadata";
-    private const string BeersContainerName = "Beers";
-
-    internal async Task<Database> EnsureDatabaseAsync(CosmosClient client, string databaseName)
+    internal static async Task<Database> EnsureDatabaseAsync(CosmosClient client, string databaseName)
     {
         var databaseResponse = await client.CreateDatabaseIfNotExistsAsync(databaseName, 1000);
         switch (databaseResponse.StatusCode)
@@ -28,43 +25,43 @@ internal sealed class CosmosProvisioner
         return databaseResponse.Database;
     }
 
-    internal async Task<Container> EnsureMetadataContainerAsync(Database db, string databaseName)
+    internal static async Task<Container> EnsureMetadataContainerAsync(Database db, string databaseName, string containerName)
     {
         List<string> metadataPartitionKeys = ["/ApplicationName", "/TypeId"];
-        var metadataContainerProperties = new ContainerProperties(MetadataContainerName, partitionKeyPaths: metadataPartitionKeys);
+        var metadataContainerProperties = new ContainerProperties(containerName, partitionKeyPaths: metadataPartitionKeys);
 
         var container = await db.CreateContainerIfNotExistsAsync(metadataContainerProperties, 400);
         switch (container.StatusCode)
         {
             case HttpStatusCode.Created:
-                Console.WriteLine($"A new Cosmos Container named '{MetadataContainerName}' was successfully created for the Cosmos Db: '{databaseName}'.");
+                Console.WriteLine($"A new Cosmos Container named '{containerName}' was successfully created for the Cosmos Db: '{databaseName}'.");
                 break;
             case HttpStatusCode.OK:
-                Console.WriteLine($"A Cosmos Container named '{MetadataContainerName}' already exists for the Cosmos Db: '{databaseName}'.");
+                Console.WriteLine($"A Cosmos Container named '{containerName}' already exists for the Cosmos Db: '{databaseName}'.");
                 break;
             default:
-                throw new InvalidOperationException($"Unable to create or locate a Cosmos Container named '{MetadataContainerName}'. Status Code: {container.StatusCode}");
+                throw new InvalidOperationException($"Unable to create or locate a Cosmos Container named '{containerName}'. Status Code: {container.StatusCode}");
         }
 
         return container;
     }
 
-    internal async Task<Container> EnsureBeersContainerAsync(Database db, string databaseName)
+    internal static async Task<Container> EnsureBeersContainerAsync(Database db, string databaseName, string containerName)
     {
         List<string> beersPartitionKeys = ["/BrewerId", "/EntityType"];
-        var beerContainerProperties = new ContainerProperties(BeersContainerName, partitionKeyPaths: beersPartitionKeys);
+        var beerContainerProperties = new ContainerProperties(containerName, partitionKeyPaths: beersPartitionKeys);
 
         var beerContainer = await db.CreateContainerIfNotExistsAsync(beerContainerProperties, 400);
         switch (beerContainer.StatusCode)
         {
             case HttpStatusCode.Created:
-                Console.WriteLine($"A new Cosmos Container named '{BeersContainerName}' was successfully created for the Cosmos Db: '{databaseName}'.");
+                Console.WriteLine($"A new Cosmos Container named '{containerName}' was successfully created for the Cosmos Db: '{databaseName}'.");
                 break;
             case HttpStatusCode.OK:
-                Console.WriteLine($"A Cosmos Container named '{BeersContainerName}' already exists for the Cosmos Db: '{databaseName}'.");
+                Console.WriteLine($"A Cosmos Container named '{containerName}' already exists for the Cosmos Db: '{databaseName}'.");
                 break;
             default:
-                throw new InvalidOperationException($"Unable to create or locate a Cosmos Container named '{BeersContainerName}'. Status Code: {beerContainer.StatusCode}");
+                throw new InvalidOperationException($"Unable to create or locate a Cosmos Container named '{containerName}'. Status Code: {beerContainer.StatusCode}");
         }
 
         return beerContainer;
