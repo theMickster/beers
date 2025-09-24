@@ -41,7 +41,18 @@ jobs:
       - name: Unit baseline
         run: dotnet test api/Beers.API.sln --nologo
 
+      - name: Data loader build baseline
+        run: dotnet build tools/dataLoader/BeersDataLoader.sln --configuration Release --nologo
+
+      - name: API read static baseline
+        working-directory: tests/api-read
+        run: |
+          npm ci
+          npm run api-read:k6:typecheck
+          npm run api-read:k6:build
+
       - name: Run API read test suite
+        if: ${{ secrets.KEYVAULT_VAULTURI != '' && secrets.AUTOMAPPER_LICENSE_KEY != '' && secrets.AZURE_TENANT_ID != '' && secrets.AZURE_CLIENT_ID != '' && secrets.AZURE_CLIENT_SECRET != '' }}
         run: |
           chmod +x tests/api-read/scripts/*.sh
           cat > "$DOCKER_ENV_FILE" <<EOF
@@ -53,3 +64,8 @@ jobs:
           TEST_MODE=${TEST_MODE}
           EOF
           tests/api-read/scripts/run-api-read-suite.sh
+
+      - name: Skip API read integration suite
+        if: ${{ !(secrets.KEYVAULT_VAULTURI != '' && secrets.AUTOMAPPER_LICENSE_KEY != '' && secrets.AZURE_TENANT_ID != '' && secrets.AZURE_CLIENT_ID != '' && secrets.AZURE_CLIENT_SECRET != '') }}
+        run: |
+          echo "::notice title=API read integration skipped::Required repository secrets are not configured. Unit/build/static quality gates still executed."

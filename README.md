@@ -195,12 +195,17 @@ npm run api-read:k6:build
 ## CI/CD API Read Test Entry Points
 
 - GitHub Actions: `.github/workflows/quality-gates.yml`
+  - Always runs:
+    - API unit baseline: `dotnet test api/Beers.API.sln --nologo`
+    - Data loader build baseline: `dotnet build tools/dataLoader/BeersDataLoader.sln --configuration Release --nologo`
+    - API read static baseline: `npm ci`, `npm run api-read:k6:typecheck`, `npm run api-read:k6:build`
   - Uses repository secrets:
     - `KEYVAULT_VAULTURI`
     - `AUTOMAPPER_LICENSE_KEY`
     - `AZURE_TENANT_ID`
     - `AZURE_CLIENT_ID`
     - `AZURE_CLIENT_SECRET`
+  - Runs containerized API read integration suite only when all required secrets are configured; otherwise that integration step is skipped with a workflow notice.
   - Supports `workflow_dispatch` input `test_mode`.
   - Workflow writes a temporary compose env file and runs `.docker/compose/quality-gates.yml`.
 
