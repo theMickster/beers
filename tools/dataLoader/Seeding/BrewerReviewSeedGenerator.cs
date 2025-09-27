@@ -4,9 +4,9 @@ using BeersDataLoader.Infrastructure;
 
 namespace BeersDataLoader.Seeding;
 
-internal sealed class BrewerReviewSeedGenerator
+internal static class BrewerReviewSeedGenerator
 {
-    internal async Task<bool> EnsureDataFileAsync(string brewersPath, string reviewsPath)
+    internal static async Task<bool> EnsureDataFileAsync(string brewersPath, string reviewsPath)
     {
         if (!File.Exists(brewersPath))
         {

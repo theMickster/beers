@@ -4,7 +4,7 @@ using BeersDataLoader.Infrastructure;
 using BeersDataLoader.Models;
 using Microsoft.Azure.Cosmos;
 
-namespace BeersDataLoader.Seeding.Metadata;
+namespace BeersDataLoader.Seeding;
 
 internal static class MetadataSeeder
 {
@@ -12,6 +12,7 @@ internal static class MetadataSeeder
     {
         if (!File.Exists(metadataFilePath))
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Invalid path to {typeof(T)} metadata: {metadataFilePath}");
             return SeedResult.Invalid;
         }
@@ -47,6 +48,7 @@ internal static class MetadataSeeder
             var createResponse = await container.CreateItemAsync(item, partitionKey);
             if (createResponse.StatusCode != HttpStatusCode.Created)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Failed to create {typeof(T)} : {item.Name}");
             }
             else

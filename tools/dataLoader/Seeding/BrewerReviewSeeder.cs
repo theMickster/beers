@@ -2,12 +2,13 @@ using System.Net;
 using BeersDataLoader.Infrastructure;
 using BeersDataLoader.Models;
 using Microsoft.Azure.Cosmos;
+using Newtonsoft.Json.Linq;
 
 namespace BeersDataLoader.Seeding;
 
-internal sealed class BrewerReviewSeeder
+internal static class BrewerReviewSeeder
 {
-    internal async Task<SeedResult> SeedAsync(Container container, string dataFilePath)
+    internal static async Task<SeedResult> SeedAsync(Container container, string dataFilePath)
     {
         if (!File.Exists(dataFilePath))
         {
@@ -15,24 +16,35 @@ internal sealed class BrewerReviewSeeder
             return SeedResult.Invalid;
         }
 
-        var items = await JsonFileStore.ReadListAsync<dynamic>(dataFilePath);
+        var items = await JsonFileStore.ReadListAsync<JObject>(dataFilePath);
         var createdItems = 0;
         var skippedItems = 0;
 
         foreach (var item in items)
         {
-            var createItem = false;
-            var id = ((string)item.id).ToLowerInvariant();
-            var brewerId = ((string)item.BrewerId).ToLowerInvariant();
-            var entityType = ((string)item.EntityType);
+            var id = NormalizeId(item, "id");
+            var brewerId = NormalizeId(item, "BrewerId");
+
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(brewerId))
+            {
+                skippedItems++;
+                continue;
+            }
+
+            item["id"] = id;
+            item["BrewerId"] = brewerId;
+            item["EntityType"] = PartitionKeyConstants.BrewerReview;
+
             var partitionKey = new PartitionKeyBuilder()
                 .Add(brewerId)
-                .Add(entityType)
+                .Add(PartitionKeyConstants.BrewerReview)
                 .Build();
+
+            var createItem = false;
 
             try
             {
-                await container.ReadItemAsync<dynamic>(id, partitionKey);
+                await container.ReadItemAsync<JObject>(id, partitionKey);
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
             {
@@ -64,5 +76,10 @@ internal sealed class BrewerReviewSeeder
         }
 
         return new SeedResult(items.Count, createdItems, skippedItems);
+    }
+
+    private static string NormalizeId(JObject item, string propertyName)
+    {
+        return ((string?)item[propertyName])?.Trim().ToLowerInvariant() ?? string.Empty;
     }
 }

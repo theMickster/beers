@@ -7,6 +7,8 @@ This console app seeds Cosmos DB demo data for the Beers project.
 - Ensures a Cosmos database exists.
 - Ensures the configured `Metadata` and `Beers` containers exist.
 - Seeds lookup metadata from the JSON files under `Data/`.
+- Seeds brewers into the shared `Beers` container from `Data/Brewers.json`.
+- Generates and seeds brewer reviews into the shared `Beers` container from `Data/BrewerReviews.json`.
 
 The loader is idempotent for existing items: it checks for each document first and skips records that already exist.
 
@@ -47,13 +49,13 @@ export COSMOS_CONTAINER_METADATA_LOADER="Metadata"
 az login
 ```
 
-2. Confirm you are on the intended subscription.
+1. Confirm you are on the intended subscription.
 
 ```bash
 az account show --query "{name:name,id:id}" -o table
 ```
 
-3. Verify the Cosmos account endpoint from Azure CLI.
+1. Verify the Cosmos account endpoint from Azure CLI.
 
 ```bash
 az cosmosdb show \
@@ -62,7 +64,7 @@ az cosmosdb show \
   --query documentEndpoint -o tsv
 ```
 
-4. Export the four loader environment variables.
+1. Export the four loader environment variables.
 
 ```bash
 export COSMOS_ENDPOINT_BEERS_LOADER="https://<account-name>.documents.azure.com:443/"
@@ -71,7 +73,7 @@ export COSMOS_CONTAINER_BEERS_LOADER="<beer-container-name>"
 export COSMOS_CONTAINER_METADATA_LOADER="<metadata-container-name>"
 ```
 
-5. Run the loader.
+1. Run the loader.
 
 ```bash
 cd tools/dataLoader
@@ -79,7 +81,7 @@ dotnet restore
 dotnet run
 ```
 
-6. When prompted, press `Y` to continue.
+1. When prompted, press `Y` to continue.
 
 ## Safety Notes
 
