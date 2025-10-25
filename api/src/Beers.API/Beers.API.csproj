@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
-		<UserSecretsId>aspnet-Beers.API-b08a6151-fd95-4128-b386-0f68369603df</UserSecretsId>
+		<UserSecretsId>Beers.API</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..</DockerfileContext>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
