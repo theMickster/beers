@@ -1,0 +1,342 @@
+{
+  "info": {
+    "_postman_id": "beers-api-collection-v1",
+    "name": "Beers.API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://localhost:44379" },
+    { "key": "brewerId", "value": "" },
+    { "key": "postId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "NewsBlogPost",
+      "item": [
+        {
+          "name": "Get List",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/brewers/{{brewerId}}/posts",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "brewers", "{{brewerId}}", "posts"]
+            }
+          }
+        },
+        {
+          "name": "Get By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/brewers/{{brewerId}}/posts/{{postId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "brewers", "{{brewerId}}", "posts", "{{postId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Post",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201\", function () {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has newsBlogPostId and sets postId variable\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"newsBlogPostId\");",
+                  "    pm.collectionVariables.set(\"postId\", jsonData.newsBlogPostId);",
+                  "    console.log(\"postId set to: \" + jsonData.newsBlogPostId);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has required fields\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"title\");",
+                  "    pm.expect(jsonData).to.have.property(\"brewerId\");",
+                  "    pm.expect(String(jsonData.brewerId)).to.not.be.empty;",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/brewers/{{brewerId}}/posts",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "brewers", "{{brewerId}}", "posts"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brewerId\": \"{{brewerId}}\",\n  \"title\": \"New Post\",\n  \"body\": \"Post body content.\",\n  \"postType\": \"TextPost\",\n  \"tags\": [],\n  \"imageUrls\": [],\n  \"publishedDate\": \"2024-06-01T00:00:00Z\"\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "400 - Brewer Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/brewers/00000000-0000-0000-0000-000000000000/posts",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "brewers", "00000000-0000-0000-0000-000000000000", "posts"]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": \"00000000-0000-0000-0000-000000000000\",\n  \"title\": \"New Post\",\n  \"body\": \"Post body content.\",\n  \"postType\": \"TextPost\",\n  \"tags\": [],\n  \"imageUrls\": [],\n  \"publishedDate\": \"2024-06-01T00:00:00Z\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "body": "[{\"propertyName\":\"BrewerId\",\"errorMessage\":\"Brewer does not exist for the supplied BrewerId.\"}]"
+            }
+          ]
+        },
+        {
+          "name": "Update Post",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/brewers/{{brewerId}}/posts/{{postId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "brewers", "{{brewerId}}", "posts", "{{postId}}"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"newsBlogPostId\": \"{{postId}}\",\n  \"brewerId\": \"{{brewerId}}\",\n  \"title\": \"Updated Post\",\n  \"body\": \"Updated body content.\",\n  \"postType\": \"TextPost\",\n  \"tags\": [],\n  \"imageUrls\": [],\n  \"publishedDate\": \"2024-06-01T00:00:00Z\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/brewers/{{brewerId}}/posts/{{postId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "brewers", "{{brewerId}}", "posts", "{{postId}}"]
+            }
+          }
+        },
+        {
+          "name": "Search Posts",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "posts", "search"],
+              "query": [
+                { "key": "pageNumber", "value": "1" },
+                { "key": "pageSize", "value": "10" },
+                { "key": "sortOrder", "value": "ascending" },
+                { "key": "orderBy", "value": "publishedDate" }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"\",\n  \"tag\": \"\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": false\n}"
+            }
+          },
+          "response": [
+            {
+              "name": "No Filter",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "1" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"\",\n  \"tag\": \"\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 1,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            },
+            {
+              "name": "By Brewer",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "1" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": \"{{brewerId}}\",\n  \"postType\": \"\",\n  \"tag\": \"\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 1,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            },
+            {
+              "name": "By PostType",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "1" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"TextPost\",\n  \"tag\": \"\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 1,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            },
+            {
+              "name": "By Tag",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "1" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"\",\n  \"tag\": \"craft\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 1,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            },
+            {
+              "name": "Date Range",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "1" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"\",\n  \"tag\": \"\",\n  \"dateRangeStart\": \"2024-01-01T00:00:00Z\",\n  \"dateRangeEnd\": \"2024-06-30T00:00:00Z\",\n  \"includeDrafts\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 1,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            },
+            {
+              "name": "Include Drafts",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=1&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "1" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"\",\n  \"tag\": \"\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": true\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 1,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            },
+            {
+              "name": "Paginated Page 2",
+              "originalRequest": {
+                "method": "POST",
+                "header": [{ "key": "Content-Type", "value": "application/json" }],
+                "url": {
+                  "raw": "{{baseUrl}}/api/v1/posts/search?pageNumber=2&pageSize=10&sortOrder=ascending&orderBy=publishedDate",
+                  "host": ["{{baseUrl}}"],
+                  "path": ["api", "v1", "posts", "search"],
+                  "query": [
+                    { "key": "pageNumber", "value": "2" },
+                    { "key": "pageSize", "value": "10" },
+                    { "key": "sortOrder", "value": "ascending" },
+                    { "key": "orderBy", "value": "publishedDate" }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"brewerId\": null,\n  \"postType\": \"\",\n  \"tag\": \"\",\n  \"dateRangeStart\": null,\n  \"dateRangeEnd\": null,\n  \"includeDrafts\": false\n}"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\n  \"pageNumber\": 2,\n  \"pageSize\": 10,\n  \"totalRecords\": 0,\n  \"results\": []\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

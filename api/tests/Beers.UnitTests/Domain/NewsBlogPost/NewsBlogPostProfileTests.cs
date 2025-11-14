@@ -17,7 +17,9 @@ public sealed class NewsBlogPostProfileTests
     {
         var configuration = new MapperConfiguration(cfg =>
             {
+#pragma warning disable CS0618
                 cfg.AddProfile<NewsBlogPostCreateModelToEntityProfile>();
+#pragma warning restore CS0618
                 cfg.AddProfile<NewsBlogPostEntityToModelProfile>();
             },
             NullLoggerFactory.Instance);

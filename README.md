@@ -217,6 +217,7 @@ npm run api-read:k6:build
 - `POST /api/v1/brewers/{brewerId}/posts`
 - `PUT /api/v1/brewers/{brewerId}/posts/{postId}`
 - `DELETE /api/v1/brewers/{brewerId}/posts/{postId}`
+- `POST /api/v1/posts/search`
 - `GET /api/v1/beerTypes`
 - `GET /api/v1/beerStyles`
 - `GET /api/v1/beerCategories`

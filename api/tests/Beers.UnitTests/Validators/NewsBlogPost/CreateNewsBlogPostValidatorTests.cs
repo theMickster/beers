@@ -179,7 +179,7 @@ public sealed class CreateNewsBlogPostValidatorTests
         // ImageGallery with images should pass even when Body is empty
         var imageModel = CreateValidModel();
         imageModel.PostType = "ImageGallery";
-        imageModel.Body = null;
+        imageModel.Body = null!;
         imageModel.ImageUrls = new List<string> { "https://cdn.example.com/1.jpg" };
 
         var imageResult = await _sut.ValidateAsync(imageModel);
@@ -188,7 +188,7 @@ public sealed class CreateNewsBlogPostValidatorTests
         // EventAnnouncement with required fields should pass even when Body is empty
         var eventModel = CreateValidModel();
         eventModel.PostType = "EventAnnouncement";
-        eventModel.Body = null;
+        eventModel.Body = null!;
         eventModel.EventDate = DateTime.UtcNow.AddDays(1);
         eventModel.EventLocation = "Test Location";
 

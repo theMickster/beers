@@ -1,3 +1,4 @@
+using Beers.Common.Filtering.NewsBlogPost;
 using Beers.Domain.Models.NewsBlogPost;
 
 namespace Beers.Application.Interfaces.Services.NewsBlogPost;
@@ -21,4 +22,12 @@ public interface IReadNewsBlogPostService
     /// <param name="postId">The post identifier.</param>
     /// <returns>The post when found; otherwise null.</returns>
     Task<ReadNewsBlogPostModel?> GetByIdAsync(Guid brewerId, Guid postId);
+
+    /// <summary>
+    /// Search news/blog posts with filtering.
+    /// </summary>
+    /// <param name="parameters">Paging and sort parameters.</param>
+    /// <param name="searchModel">Filter criteria.</param>
+    /// <returns>A paged search result.</returns>
+    Task<SearchResultNewsBlogPostModel> SearchAsync(SearchNewsBlogPostParameter parameters, SearchInputNewsBlogPostModel searchModel);
 }

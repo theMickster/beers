@@ -69,9 +69,11 @@ public sealed class NewsBlogPostEntityConfigurationTests
             idProperty.Should().NotBeNull("Author Id property should be configured");
             nameProperty.Should().NotBeNull("Author Name property should be configured");
             websiteProperty.Should().NotBeNull("Author Website property should be configured");
+#pragma warning disable EF1001
             idProperty?.FindAnnotation(CosmosAnnotationNames.PropertyName)?.Value.Should().Be("id");
             nameProperty?.FindAnnotation(CosmosAnnotationNames.PropertyName)?.Value.Should().Be("name");
             websiteProperty?.FindAnnotation(CosmosAnnotationNames.PropertyName)?.Value.Should().Be("website");
+#pragma warning restore EF1001
         }
     }
 

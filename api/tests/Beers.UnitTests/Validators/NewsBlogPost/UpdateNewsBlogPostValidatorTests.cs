@@ -201,7 +201,7 @@ public sealed class UpdateNewsBlogPostValidatorTests
     {
         var model = CreateValidModel();
         model.PostType = "ImageGallery";
-        model.Body = null;
+        model.Body = null!;
         model.ImageUrls = new List<string> { "https://cdn.example.com/1.jpg" };
 
         var result = await _sut.ValidateAsync(model);
@@ -213,7 +213,7 @@ public sealed class UpdateNewsBlogPostValidatorTests
     {
         var model = CreateValidModel();
         model.PostType = "EventAnnouncement";
-        model.Body = null;
+        model.Body = null!;
         model.EventDate = DateTime.UtcNow.AddDays(1);
         model.EventLocation = "Brewery Tap Room";
 

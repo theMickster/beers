@@ -10,5 +10,11 @@ public static class SortedResultConstants
 
     public static readonly string BeerId = "BeerId";
 
+    public static readonly string PostId = "PostId";
+
     public static readonly string Name = "Name";
+
+    public static readonly string Title = "Title";
+
+    public static readonly string PublishedDate = "PublishedDate";
 }
