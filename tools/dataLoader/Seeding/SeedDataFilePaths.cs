@@ -8,7 +8,8 @@ internal sealed record SeedDataFilePaths(
     string BeerTypeMetadataFile,
     string BreweryTypeMetadataFile,
     string BrewersDataFile,
-    string BrewerReviewsDataFile
+    string BrewerReviewsDataFile,
+    string BeersDataFile
 )
 {
     internal static SeedDataFilePaths CreateFromAssemblyLocation()
@@ -22,6 +23,7 @@ internal sealed record SeedDataFilePaths(
             BeerTypeMetadataFile: Path.Combine(basePath, "Data", "BeerType.json"),
             BreweryTypeMetadataFile: Path.Combine(basePath, "Data", "BreweryType.json"),
             BrewersDataFile: Path.Combine(basePath, "Data", "Brewers.json"),
-            BrewerReviewsDataFile: Path.Combine(basePath, "Data", "BrewerReviews.json"));
+            BrewerReviewsDataFile: Path.Combine(basePath, "Data", "BrewerReviews.json"),
+            BeersDataFile: Path.Combine(basePath, "Data", "Beers.json"));
     }
 }
