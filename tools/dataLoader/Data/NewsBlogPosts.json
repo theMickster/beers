@@ -1,0 +1,211 @@
+[
+  {
+    "id": "3a7f1c2e-84b6-4d09-a531-e76c920b4f58",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": ["brewery"],
+    "Title": "USA Today Top 10 Brewery Tour",
+    "Body": "Our recent top 10 finish in the USA Today 10Best brewery tour awards is an honor and testament to the hard work from our tour team and their ability to connect with our guests. We get to show off our world class facility and we constantly have guests comment on how “this is the cleanest brewery I’ve ever been in!” The production team’s attention to detail doesn’t go unnoticed and our entertaining guides are often mentioned in our tour feedback. In fact, our tour guide’s geniality and humor have consistently been commented upon in our reviews. This truly is a team effort!",
+    "ImageUrls": [
+      "https://foundersbrewing.com/wp-content/uploads/2026/03/best_brwery_tour_landscape_2.jpg"
+    ],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "fa25893a-5993-491b-bd22-a9ce1e61dbd0",
+      "name": "Founders Brewing Company",
+      "website": "https://foundersbrewing.com/latest-news"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "d8e14f93-7b63-4c3e-9fa2-1c4d730a5e48",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": ["beer"],
+    "Title": "Best Summer Beers: Our Top IPAs, Ales, and Lagers for Hot Weather",
+    "Body": "Pull off the grill cover, put on a tank, and rejoice over summer’s return. The sun hangs high and lazy, its toasty rays full of promise: music festivals, rooftop parties, and coolers loaded with summer craft beers whose refreshing flavors are prime for the season. Sometimes light and refreshing summer beers are the ticket, and traditional lagers are champions of crisp. Lush fruit is also a summer staple, and Hazy IPAs often taste like a juicy harvest. And hops are so versatile, the wide world of India Pale Ale can always tame hot temps. So keep an open mind: both a low-ABV session beer and a bold Torpedo could be the summer beer styles you’re after.",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+      "name": "Sierra Nevada Brewing Company",
+      "website": "https://sierranevada.com/blog"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "e1f25a04-8c52-4d4f-a0b3-2d5e841b6f59",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+    "IsDeletable": true,
+    "PostType": "ImageGallery",
+    "Tags": ["gift"],
+    "Title": "Father’s Day Gifts for Beer Lovers",
+    "Body": "Father’s Day is almost here, and if the dad in your life loves great beer, you’re in the right place. Maybe he’s happy with a fresh six-pack, or maybe he’s the kind of beer drinker who loves discovering new flavors and gear. Either way, this guide is packed with beer gift ideas for men to help you find something thoughtful, fun, and ready to raise a glass to Dad. To start, you can never go wrong with the classics: merchandise and apparel that embraces their passion for craft beer. Sierra Nevada drinkers know that beer culture embodies more than just the beer you drink – it’s an entire lifestyle.",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "dfe32009-b879-4fd4-a4b1-40f2c5147148",
+      "name": "Sierra Nevada Brewing Company",
+      "website": "https://sierranevada.com/blog"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "a3147c26-0e30-4f61-c2d5-4f7a063d8b71",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": ["growth", "hard seltzer"],
+    "Title": "Maintaining the Momentum: How Topo Chico Hard Has Evolved – and Sparked Growth",
+    "Body": "Since 2021, Molson Coors has leaned into the authentic cool-factor and unique brand roots Topo Chico Hard brings to the table – making it a top-three hard seltzer player in the space in dollar sales according to IRI for the last 52 weeks ending May 10.  And by homing in on what’s working and prioritizing consumers’ evolving tastes, both flavor innovation and the brand’s iconic glass bottles have been gamechangers as of late. Just last year, Topo Chico Hard entered the world of flavored alcohol beverages (FABs), which tend to be less effervescent and more flavor-forward than hard seltzers. It also leaned into a key differentiator in a world of slim cans: glass bottles.  The result? Year-to-date, Topo Chico Hard is up over 9% in dollars, according to the latest data from Circana for the weeks ending May 10. And since the 2025 launch of Topo Chico Hard Max and Hard Margarita flavor Variety Pack, these innovations have broadened the brand’s consumer base, with over 16% of total Topo Chico Hard portfolio buyers being exclusive to these new items within the franchise (Circana Receipt Panel L52W 3.22.26). ",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "cdfea299-5bf6-4ca1-a19d-4fa86322e57d",
+      "name": "Molson Coors Beverage Company",
+      "website": "https://www.molsoncoorsblog.com/"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "b4258d37-1f21-4072-d3e6-5a8b174e9c82",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "101d3c16-978e-4e81-a129-b8c225da0f15",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": ["tunes", "music", "tap-room"],
+    "Title": "Record Store Day 2026",
+    "Body": "Here at Dogfish Head, we’ve always been beer geeks with a music problem ... which is why it feels so natural to team up with the fine folks of Record Store Day year after year. Now rolling into our 11th year as the Official Beer of Record Store Day, we’re once again bringing together independent beer and independent record stores ... with an off-centered twist! For 2026, we’re turning up the volume with a full lineup of musically inspired goodness from a brand‑new official Record Store Day poster, to yet another volume of On A Back Porch, the continuation of our beer collaborations with the Grateful Dead, and so much more! Dogfish Head × Grateful Dead: A collaboration that keeps spinning Our collaboration with the Grateful Dead stretches back more than a decade. The journey began in 2013 with the release of American Beauty and has continued through re‑releases, evolutions, and all kinds of creative experiments along the way. Together, we’ve brewed beers inspired by the band’s spirit, pressed records that capture the warmth of live Grateful Dead performances and created artwork that nods to their iconic visual universe. This year, that story keeps unfolding with not one, but TWO collaborative brews to sip on while you’re drinking in your favorite music. Grateful Dead Juicy Pale Ale, a bright, citrus-forward pale ale built for easygoing moments, made its debut last year and continues to be a hit for jam sessions, porch hangs, and moments where time stretches out. NEW for 2026 is our Grateful Dead Citrus Daydream Lager: a crisp, clean, super‑sessionable lager kissed with citrus that’s brewed for sunshine, good vibes, and days that feel like a daydream. You can track down both beers at your favorite local retailer or use our Fish Finder to locate them near you. Crack a can, take a sip, and let your mind wander a little.",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "101d3c16-978e-4e81-a129-b8c225da0f15",
+      "name": "Dogfish Head Brewery",
+      "website": "https://www.dogfish.com/blogfish"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "c5369e48-2a12-4183-e4f7-6b9c285fad93",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": ["cold brew"],
+    "Title": "What Exactly Is Bootstrap Cold Brew?",
+    "Body": "No doubt about it, cold brew coffee is here to stay, and its hotter than ever. What was once a small curiosity has expanded throughout the country and worldwide, and we see cold brew from the likes of homebrewers, independent hipster cafes, to mega commercial coffee chains. It’s got mass appeal,  an indie credibility, and shows no signs of stopping. So, what is cold brew exactly? It all boils down to its preparation. Instead of using hot water to draw out the flavour and caffeine from coffee beans like a regular cup of coffee, cold brew is unhurried. You steep coffee grounds in room temperature or cold water for 12 to 24 hours, to make a concentrate that can be diluted with water and served over ice. But its more than just a slowed-down version of hot coffee, its a different product altogether. Though hot water brings out the acids in coffee, cold water does not, and instead is able to capture the beans’ full range of flavours that is mellow and full-bodied. That means you’ll be able to get the subtle nuances of the coffee beans’ flavour, where undertones of chocolate, fruit, and nuts are able to jump to the forefront. There’s no wonder coffee enthusiasts are so enamoured by cold brew coffee! Hot coffee causes coffee grounds to release oils that are full of acidic compounds that give coffee its famous bitter bite. When hot coffee cools, even more acids are formed, which makes them unpleasantly harsh to the taste. On the other hand, cold brew coffee is relatively stable, and does not change in flavour at different temperatures, so the flavours are locked in. Its also 67 percent less acidic than hot-brewed, which makes it healthier on your stomach and teeth. You get all the notes of coffee, without any of that acidity.",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "81ca37aa-e46f-4d0b-8b62-6eb7b5d6d240",
+      "name": "Bootstrap Brewing",
+      "website": "https://bootstrapbeverages.com/pages/blog"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "e7581a60-4c14-4305-a6b9-8dbe4a7bcf15",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": ["lager"],
+    "Title": "Introducing Year-Round Colorado Lager",
+    "Body": "Odell Brewing has announced their latest year-round offering, Colorado Lager. Available only in the brewery’s home state of Colorado, this beer will be released in 16 ounce 6-pack cans starting April 4th, with a 12 ounce 15-pack joining the portfolio later this May.",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "02c751e8-c565-4698-8f57-2cde3e2f8f61",
+      "name": "Odell Brewing Company",
+      "website": "https://www.odellbrewing.com/odell-blog/"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "f8692b71-5d25-4416-b7ca-9ecf5b8cd026",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": [""],
+    "Title": "The Story",
+    "Body": "In 1997 Oskar Blues opened its doors at 303 Main Street in Lyons Colorado. The mission wasn’t brewing beer, but imparting a slice of southern hospitality into the foothills of the Rocky Mountains. Offering homemade cajun style cooking and a relentless line-up of world class blues musicians that would keep the parties going into the early hours. The bar had a unique style that drew people in from all around. With a background in homebrewing, Dale figured this special place deserved its its own signature drink, something as bold and captivating as the music and food that everyone loved.",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "caeea73c-0bdd-409c-ab17-ad06555ae7c5",
+      "name": "Oskar Blues",
+      "website": "https://oskarblues.com/the-story/"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "a97a3c82-6e36-4527-c8db-afd06c9de137",
+    "EntityType": "NewsBlogPost",
+    "BrewerId": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+    "IsDeletable": true,
+    "PostType": "TextPost",
+    "Tags": [""],
+    "Title": "Voodoo Ranger Revs Up to Announce Sweet Ride Juicy IPA",
+    "Body": "Today, Voodoo Ranger, America’s #1 IPA, introduced Sweet Ride Juicy IPA, an endlessly crushable, flavor-packed beer crafted to be the perfect easier-drinking IPA. Layered with bright tropical aromas and bright, juicy flavors, Sweet Ride cruises in at 6.5% ABV, keeping pace with any occasion without compromising on taste. ",
+    "ImageUrls": [],
+    "EventDate": null,
+    "EventLocation": null,
+    "PublishedDate": "2026-01-15T10:00:00Z",
+    "Author": {
+      "id": "13bf3bf9-91d6-482b-90bc-4d0bb8b57838",
+      "name": "New Belgium",
+      "website": "https://www.newbelgium.com/press/"
+    },
+    "CreatedBy": "stanley.hudson.AdventureWorks@mickletofsky.com",
+    "ModifiedBy": "jim.halpert.AdventureWorks@mickletofsky.com",
+    "CreatedDate": "2026-01-01T00:00:00Z",
+    "ModifiedDate": "2026-01-01T00:00:00Z"
+  }
+]

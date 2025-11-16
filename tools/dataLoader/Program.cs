@@ -49,6 +49,7 @@ await SeedBeerType(seedDataFilePaths, metadataContainer);
 await SeedBreweryType(seedDataFilePaths, metadataContainer);
 await SeedBrewer(seedDataFilePaths, beersContainer);
 await SeedBeer(seedDataFilePaths, beersContainer);
+await SeedNewsBlogPost(seedDataFilePaths, beersContainer);
 
 Console.ReadLine();
 
@@ -104,4 +105,13 @@ static async Task SeedBeer(SeedDataFilePaths seedDataFilePaths, Container beersC
     var result = await BeerSeeder.SeedAsync(beersContainer, seedDataFilePaths.BeersDataFile);
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine($"Beer Import Total = {result.TotalItems} Created Total = {result.CreatedItems} Skipped Total {result.SkippedItems}");
+}
+
+static async Task SeedNewsBlogPost(SeedDataFilePaths seedDataFilePaths, Container beersContainer)
+{
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.WriteLine("News Blog Post Import Starting...");
+    var result = await NewsBlogPostSeeder.SeedAsync(beersContainer, seedDataFilePaths.NewsBlogPostsDataFile);
+    Console.ForegroundColor = ConsoleColor.Green;
+    Console.WriteLine($"News Blog Post Import Total = {result.TotalItems} Created Total = {result.CreatedItems} Skipped Total {result.SkippedItems}");
 }

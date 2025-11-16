@@ -6,8 +6,8 @@
   },
   "variable": [
     { "key": "baseUrl", "value": "https://localhost:44379" },
-    { "key": "brewerId", "value": "" },
-    { "key": "postId", "value": "" }
+    { "key": "brewerId", "value": "fa25893a-5993-491b-bd22-a9ce1e61dbd0" },
+    { "key": "postId", "value": "3a7f1c2e-84b6-4d09-a531-e76c920b4f58" }
   ],
   "item": [
     {

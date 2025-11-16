@@ -49,6 +49,7 @@ This project is a capstone learning platform that demonstrates modern Azure Cosm
   - Support multiple post shapes (text, gallery, event announcement) with clear schema/version markers.
   - Add filtering by brewer, tag, and published date.
   - Keep contracts forward-compatible for future post variants.
+  - Seeding infrastructure is implemented: `NewsBlogPostSeeder` + `Data/NewsBlogPosts.json` (14 entries). Founders and Sierra Nevada have all three post types seeded (TextPost, ImageGallery, EventAnnouncement); remaining 8 brewers have one TextPost each. Run `dotnet run` from `tools/dataLoader/` to populate.
 - Beer Flight Builder:
   - Model as lightweight user state with efficient read/write paths.
   - Optimize for cross-partition read patterns used in curation flows.

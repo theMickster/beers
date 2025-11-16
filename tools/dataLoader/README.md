@@ -8,7 +8,8 @@ This console app seeds Cosmos DB demo data for the Beers project.
 - Ensures the configured `Metadata` and `Beers` containers exist.
 - Seeds lookup metadata from the JSON files under `Data/`.
 - Seeds brewers into the shared `Beers` container from `Data/Brewers.json`.
-- Generates and seeds brewer reviews into the shared `Beers` container from `Data/BrewerReviews.json`.
+- Seeds brewer reviews into the shared `Beers` container from `Data/BrewerReviews.json`.
+- Seeds news/blog posts into the shared `Beers` container from `Data/NewsBlogPosts.json` (14 entries: TextPost, ImageGallery, and EventAnnouncement variants).
 
 The loader is idempotent for existing items: it checks for each document first and skips records that already exist.
 
