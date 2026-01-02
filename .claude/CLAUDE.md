@@ -23,10 +23,12 @@ beers/
 **Layered:** API → Application → Domain/Common. No shortcuts -- controllers call services, services use EF Core contexts.
 
 **Cosmos DB containers:**
+
 - `Beers` container: Beer, Brewer entities. Hierarchical partition key: `/BrewerId` + `/EntityType`.
 - `Metadata` container: BeerType, BeerStyle, BeerCategory, BreweryType. Hierarchical partition key: `/ApplicationName` + `/TypeId`. Discriminator-based TPH.
 
 **Key patterns:**
+
 - Owned/embedded types via EF Core `OwnsOne`/`OwnsMany` for pricing, ratings, slim references
 - Slim entities for denormalized references (BrewerSlimEntity, BeerTypeSlimEntity, etc.)
 - Reflection-based DI registration via `[ServiceLifetimeScoped]`, `[ServiceLifetimeTransient]`, `[ServiceLifetimeSingleton]` attributes
