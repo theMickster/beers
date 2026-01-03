@@ -6,7 +6,8 @@
     "start": "nx serve beers-web",
     "build": "nx build beers-web",
     "lint": "nx run-many -t lint",
-    "test": "nx run-many -t test"
+    "test": "nx run-many -t test",
+    "e2e": "nx e2e beers-web-e2e --reporter=line"
   },
   "private": true,
   "dependencies": {
