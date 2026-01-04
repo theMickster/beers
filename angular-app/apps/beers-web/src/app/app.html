@@ -5,7 +5,10 @@
         <img class="h-12 w-12" src="/logos/beers-logo-badge.png" alt="" />
         <span class="text-xl font-bold tracking-tight">Beers</span>
       </a>
-      <nav class="ml-auto hidden items-center gap-6 sm:flex" aria-label="Main navigation">
+      <nav
+        class="ml-auto hidden items-center gap-6 sm:flex"
+        aria-label="Main navigation"
+      >
         <a class="link link-hover" href="#discover">Discover</a>
         <a class="link link-hover" href="#community">Community</a>
       </nav>
@@ -16,54 +19,26 @@
         [attr.aria-label]="theme.current() === 'fourteener-pale' ? 'Switch to stout theme' : 'Switch to pale theme'"
         title="Change color theme"
       >
-        <i class="fa-solid" [class.fa-moon]="theme.current() === 'fourteener-pale'" [class.fa-sun]="theme.current() === 'fourteener-stout'" aria-hidden="true"></i>
+        <i
+          class="fa-solid"
+          [class.fa-moon]="theme.current() === 'fourteener-pale'"
+          [class.fa-sun]="theme.current() === 'fourteener-stout'"
+          aria-hidden="true"
+        ></i>
       </button>
     </div>
   </header>
 
   <main>
-    <section class="hero min-h-[34rem] bg-base-200" id="discover">
-      <div class="hero-content w-full max-w-7xl flex-col gap-10 px-4 py-12 lg:flex-row-reverse lg:justify-between lg:px-8">
-        <img
-          class="w-full max-w-2xl rounded-3xl object-cover shadow-2xl lg:w-3/5"
-          src="/beers-banner-hero.jpeg"
-          alt="A flight of craft beers with the Colorado Rocky Mountains in the background"
-        />
-        <div class="max-w-xl">
-          <p class="mb-4 font-semibold uppercase tracking-[0.2em] text-secondary">Colorado craft, poured your way</p>
-          <h1 class="text-4xl font-extrabold leading-tight sm:text-5xl">Find your next favorite beer.</h1>
-          <p class="py-6 text-lg opacity-80">A home for the breweries, beers, and people that make Colorado's craft scene worth exploring.</p>
-          <a class="btn btn-primary" href="#community">
-            <i class="fa-solid fa-beer-mug-empty" aria-hidden="true"></i>
-            Explore the community
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8" id="community">
-      <div class="mb-8 max-w-2xl">
-        <p class="font-semibold uppercase tracking-[0.2em] text-secondary">Built for curious drinkers</p>
-        <h2 class="mt-2 text-3xl font-bold">Your guide to good beer.</h2>
-        <p class="mt-3 opacity-75">The Beers explorer is taking shape. Soon you can browse Colorado beers and breweries, save discoveries, and compare tasting notes.</p>
-      </div>
-      <div class="grid gap-5 md:grid-cols-3">
-        <article class="card border border-base-300 bg-base-100 shadow-sm">
-          <div class="card-body"><i class="fa-solid fa-magnifying-glass text-2xl text-primary" aria-hidden="true"></i><h3 class="card-title">Discover</h3><p>Find styles and breweries that fit your taste.</p></div>
-        </article>
-        <article class="card border border-base-300 bg-base-100 shadow-sm">
-          <div class="card-body"><i class="fa-solid fa-industry text-2xl text-secondary" aria-hidden="true"></i><h3 class="card-title">Meet breweries</h3><p>Get to know the makers behind each pour.</p></div>
-        </article>
-        <article class="card border border-base-300 bg-base-100 shadow-sm">
-          <div class="card-body"><i class="fa-solid fa-star text-2xl text-accent" aria-hidden="true"></i><h3 class="card-title">Share notes</h3><p>Keep track of the beers you want to remember.</p></div>
-        </article>
-      </div>
-    </section>
+    <router-outlet />
   </main>
 
   <footer class="border-t border-base-300 bg-base-200">
-    <div class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-8 text-sm opacity-75 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
-      <span>Made for Colorado beer people.</span><span>Beers · Discover responsibly</span>
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-8 text-sm opacity-75 sm:flex-row sm:justify-between sm:px-6 lg:px-8"
+    >
+      <span>Made for Colorado beer people.</span
+      ><span>Beers · Discover responsibly</span>
     </div>
   </footer>
 </div>

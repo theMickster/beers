@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { ThemeService } from '@beers/shared/util';
 
 @Component({
-  imports: [],
+  imports: [RouterOutlet],
   selector: 'bw-root',
   templateUrl: './app.html',
   styleUrl: './app.css',

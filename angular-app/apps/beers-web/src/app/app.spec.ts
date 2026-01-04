@@ -20,21 +20,26 @@ describe('App', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders the Beers landing shell', () => {
+  it('renders the Beers shell', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Find your next favorite beer');
-    expect(compiled.querySelector('img[src="/logos/beers-logo-badge.png"]')).toBeTruthy();
-    expect(compiled.querySelector('img[src="/beers-banner-hero.jpeg"]')).toBeTruthy();
+    expect(
+      compiled.querySelector('img[src="/logos/beers-logo-badge.png"]'),
+    ).toBeTruthy();
+    expect(compiled.querySelector('main router-outlet')).toBeTruthy();
   });
 
   it('persists the selected theme when toggled', () => {
     fixture.nativeElement.querySelector('button').click();
-    expect(TestBed.inject(DOCUMENT).documentElement.getAttribute('data-theme')).toBe('fourteener-stout');
+    expect(
+      TestBed.inject(DOCUMENT).documentElement.getAttribute('data-theme'),
+    ).toBe('fourteener-stout');
     expect(window.localStorage.getItem('beers-theme')).toBe('fourteener-stout');
   });
 
   it('should apply change detection strategy OnPush', () => {
-    const metadata = (AppComponent as unknown as { ɵcmp: { onPush: boolean } })['ɵcmp'];
+    const metadata = (AppComponent as unknown as { ɵcmp: { onPush: boolean } })[
+      'ɵcmp'
+    ];
     expect(metadata.onPush).toBeTruthy();
   });
 });
