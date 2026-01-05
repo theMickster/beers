@@ -1,5 +1,18 @@
 import { Route } from '@angular/router';
 
+const samplesRoutes: Route[] =
+  typeof ENABLE_SAMPLES !== 'undefined' && ENABLE_SAMPLES
+    ? [
+        {
+          path: 'samples',
+          loadComponent: () =>
+            import('@beers/shared/ui-daisy-demo').then(
+              (m) => m.SamplesComponent,
+            ),
+        },
+      ]
+    : [];
+
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -14,4 +27,5 @@ export const appRoutes: Route[] = [
         (m) => m.ThemeHarnessComponent,
       ),
   },
+  ...samplesRoutes,
 ];

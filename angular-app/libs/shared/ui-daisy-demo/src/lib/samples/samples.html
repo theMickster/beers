@@ -1,0 +1,208 @@
+<div class="mx-auto max-w-7xl space-y-12 px-4 py-8 sm:px-6 lg:px-8">
+  <header>
+    <h1 class="text-3xl font-bold">DaisyUI component samples</h1>
+    <p class="mt-2 opacity-75">
+      Every DaisyUI component the app uses, following the global theme. Use the
+      header toggle to switch between pale and stout.
+    </p>
+  </header>
+
+  <section aria-labelledby="samples-buttons" class="space-y-4">
+    <h2 id="samples-buttons" class="text-2xl font-semibold">Buttons</h2>
+    <div class="flex flex-wrap items-center gap-3">
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
+      <button type="button" class="btn btn-accent">Accent</button>
+      <button type="button" class="btn btn-neutral">Neutral</button>
+      <button type="button" class="btn btn-outline">Outline</button>
+      <button type="button" class="btn btn-ghost">Ghost</button>
+      <button type="button" class="btn btn-primary" disabled>Disabled</button>
+    </div>
+    <div class="flex flex-wrap items-center gap-3">
+      <button type="button" class="btn btn-primary btn-xs">Extra small</button>
+      <button type="button" class="btn btn-primary btn-sm">Small</button>
+      <button type="button" class="btn btn-primary btn-md">Medium</button>
+      <button type="button" class="btn btn-primary btn-lg">Large</button>
+    </div>
+  </section>
+
+  <section aria-labelledby="samples-cards" class="space-y-4">
+    <h2 id="samples-cards" class="text-2xl font-semibold">Cards</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      <article class="card card-border bg-base-100">
+        <div class="card-body">
+          <h3 class="card-title">Summit Pale Ale</h3>
+          <p>A bright, citrus-forward pale ale brewed for long trail days.</p>
+          <div class="card-actions justify-end">
+            <button type="button" class="btn btn-primary btn-sm">
+              Details
+            </button>
+          </div>
+        </div>
+      </article>
+      <article class="card bg-base-200 shadow-sm">
+        <div class="card-body">
+          <h3 class="card-title">Switchback Stout</h3>
+          <p>Roasted malt, dark chocolate, and a smooth finish.</p>
+          <div class="card-actions justify-end">
+            <button type="button" class="btn btn-outline btn-sm">
+              Details
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="samples-badges" class="space-y-4">
+    <h2 id="samples-badges" class="text-2xl font-semibold">Badges</h2>
+    <!--
+      The info/info-content pairing in the pale theme is below 4.5:1 for body
+      text (4.27:1, see docs/spikes/834-color-scheme-app-icons.md) but clears
+      the 3:1 UI-component threshold. It is for UI components such as this
+      badge and the info alert only, and is NOT used for body copy.
+    -->
+    <div class="flex flex-wrap items-center gap-3">
+      <span class="badge badge-primary">Primary</span>
+      <span class="badge badge-secondary">Secondary</span>
+      <span class="badge badge-accent">Accent</span>
+      <span class="badge badge-neutral">Neutral</span>
+      <span class="badge badge-info">Info</span>
+      <span class="badge badge-success">Success</span>
+      <span class="badge badge-warning">Warning</span>
+      <span class="badge badge-error">Error</span>
+      <span class="badge badge-outline">Outline</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="samples-rating" class="space-y-4">
+    <h2 id="samples-rating" class="text-2xl font-semibold">Star rating</h2>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Rate this beer</legend>
+      <div class="rating">
+        @for (star of [1, 2, 3, 4, 5]; track star) {
+        <input
+          type="radio"
+          name="sample-rating"
+          class="mask mask-star-2 bg-warning"
+          [attr.aria-label]="star + (star === 1 ? ' star' : ' stars')"
+          [checked]="rating() === star"
+          (change)="rating.set(star)"
+        />
+        }
+      </div>
+    </fieldset>
+    <p aria-live="polite">Your rating: {{ rating() }} of 5</p>
+  </section>
+
+  <section aria-labelledby="samples-modal" class="space-y-4">
+    <h2 id="samples-modal" class="text-2xl font-semibold">Modal</h2>
+    <button type="button" class="btn btn-primary" (click)="openModal()">
+      Open modal
+    </button>
+    <dialog #sampleDialog class="modal" aria-labelledby="samples-modal-title">
+      <div class="modal-box">
+        <h3 id="samples-modal-title" class="text-lg font-bold">Sample modal</h3>
+        <p class="py-4">
+          Press Escape, use the close button, or click outside to dismiss.
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button aria-label="Close modal" tabindex="-1">close</button>
+      </form>
+    </dialog>
+  </section>
+
+  <section aria-labelledby="samples-tabs" class="space-y-4">
+    <h2 id="samples-tabs" class="text-2xl font-semibold">Tabs</h2>
+    <div role="tablist" aria-label="Beer details" class="tabs tabs-border">
+      @for (tab of tabs; track tab.id; let i = $index) {
+      <button
+        type="button"
+        role="tab"
+        class="tab"
+        [class.tab-active]="selectedTabId() === tab.id"
+        [id]="'samples-tab-' + tab.id"
+        [attr.aria-selected]="selectedTabId() === tab.id"
+        [attr.aria-controls]="'samples-panel-' + tab.id"
+        [attr.tabindex]="selectedTabId() === tab.id ? 0 : -1"
+        (click)="selectTab(tab.id)"
+        (keydown)="onTabKeydown($event, i)"
+      >
+        {{ tab.label }}
+      </button>
+      }
+    </div>
+    @for (tab of tabs; track tab.id) {
+    <div
+      role="tabpanel"
+      tabindex="0"
+      class="p-4"
+      [id]="'samples-panel-' + tab.id"
+      [attr.aria-labelledby]="'samples-tab-' + tab.id"
+      [hidden]="selectedTabId() !== tab.id"
+    >
+      {{ tab.body }}
+    </div>
+    }
+  </section>
+
+  <section aria-labelledby="samples-forms" class="space-y-4">
+    <h2 id="samples-forms" class="text-2xl font-semibold">Form inputs</h2>
+    <form class="grid max-w-md gap-4" (submit)="$event.preventDefault()">
+      <div class="grid gap-1">
+        <label class="label" for="samples-input">Beer name</label>
+        <input
+          id="samples-input"
+          type="text"
+          class="input w-full"
+          placeholder="Summit Pale Ale"
+        />
+      </div>
+      <div class="grid gap-1">
+        <label class="label" for="samples-select">Style</label>
+        <select id="samples-select" class="select w-full">
+          <option>Pale ale</option>
+          <option>Stout</option>
+          <option>IPA</option>
+          <option>Lager</option>
+        </select>
+      </div>
+      <div class="grid gap-1">
+        <label class="label" for="samples-textarea">Tasting notes</label>
+        <textarea
+          id="samples-textarea"
+          class="textarea w-full"
+          rows="3"
+          placeholder="What did you taste?"
+        ></textarea>
+      </div>
+      <label class="label cursor-pointer gap-3 text-base-content">
+        <input type="checkbox" class="toggle toggle-primary" />
+        Notify me about new releases
+      </label>
+    </form>
+  </section>
+
+  <section aria-labelledby="samples-alerts" class="space-y-4">
+    <h2 id="samples-alerts" class="text-2xl font-semibold">Alerts</h2>
+    <!-- The info alert shares the info/info-content pairing; see the badge note above. UI component only, NOT body copy. -->
+    <div role="status" class="alert alert-info">
+      <span>Heads up: new beers are added every Friday.</span>
+    </div>
+    <div role="status" class="alert alert-success">
+      <span>Your review was saved.</span>
+    </div>
+    <div role="alert" class="alert alert-warning">
+      <span>This beer contains allergens.</span>
+    </div>
+    <div role="alert" class="alert alert-error">
+      <span>We could not load your favorites.</span>
+    </div>
+  </section>
+</div>

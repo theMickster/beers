@@ -44,12 +44,18 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "define": {
+            "ENABLE_SAMPLES": "false"
+          }
         },
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "define": {
+            "ENABLE_SAMPLES": "true"
+          }
         }
       }
     },

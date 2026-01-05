@@ -27,6 +27,9 @@
       ],
       "@beers/shared/ui": [
         "libs/shared/ui/src/index.ts"
+      ],
+      "@beers/shared/ui-daisy-demo": [
+        "libs/shared/ui-daisy-demo/src/index.ts"
       ]
     }
   },
