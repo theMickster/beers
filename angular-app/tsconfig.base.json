@@ -12,29 +12,15 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@beers/shared/util": [
-        "libs/shared/util/src/index.ts"
-      ],
-      "@beers/shared/data-access": [
-        "libs/shared/data-access/src/index.ts"
-      ],
-      "@beers/shared/ui": [
-        "libs/shared/ui/src/index.ts"
-      ],
-      "@beers/shared/ui-daisy-demo": [
-        "libs/shared/ui-daisy-demo/src/index.ts"
-      ]
+      "@beers/shared/util": ["libs/shared/util/src/index.ts"],
+      "@beers/shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@beers/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@beers/shared/ui-daisy-demo": ["libs/shared/ui-daisy-demo/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

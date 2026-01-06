@@ -20,7 +20,10 @@
             "input": "apps/beers-web/public"
           }
         ],
-        "styles": ["node_modules/@fortawesome/fontawesome-free/css/all.css", "apps/beers-web/src/styles.css"],
+        "styles": [
+          "node_modules/@fortawesome/fontawesome-free/css/all.css",
+          "apps/beers-web/src/styles.css"
+        ],
         "server": "apps/beers-web/src/main.server.ts",
         "ssr": {
           "entry": "apps/beers-web/src/server.ts"
@@ -53,6 +56,12 @@
           "optimization": false,
           "extractLicenses": false,
           "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/beers-web/src/environments/environment.ts",
+              "with": "apps/beers-web/src/environments/environment.development.ts"
+            }
+          ],
           "define": {
             "ENABLE_SAMPLES": "true"
           }
