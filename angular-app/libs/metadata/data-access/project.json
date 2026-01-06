@@ -1,0 +1,17 @@
+{
+  "name": "metadata-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/metadata/data-access/src",
+  "tags": ["type:data-access", "scope:beers"],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "buildTarget": "beers-web:build:development",
+        "tsConfig": "libs/metadata/data-access/tsconfig.spec.json",
+        "watch": false
+      }
+    }
+  }
+}
