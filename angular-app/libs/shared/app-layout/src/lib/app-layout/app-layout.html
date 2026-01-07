@@ -1,0 +1,99 @@
+<div class="drawer min-h-screen bg-base-100 text-base-content">
+  <input
+    id="bw-nav-drawer"
+    class="drawer-toggle lg:hidden"
+    type="checkbox"
+    aria-label="Toggle navigation menu"
+    [checked]="menuOpen()"
+    (change)="setMenuOpen($any($event.target).checked)"
+  />
+
+  <div
+    class="drawer-content flex min-h-screen flex-col"
+    [attr.inert]="menuOpen() ? '' : null"
+  >
+    <header class="border-b border-base-300 bg-base-100">
+      <div class="navbar mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <a
+          class="flex items-center gap-3"
+          routerLink="/"
+          aria-label="Beers home"
+        >
+          <img class="h-12 w-12" src="/logos/beers-logo-badge.png" alt="" />
+          <span class="text-xl font-bold tracking-tight">Beers</span>
+        </a>
+        <nav
+          class="ml-auto hidden items-center gap-6 lg:flex"
+          aria-label="Main navigation"
+        >
+          @for (item of navItems; track item.path) {
+          <a
+            class="link link-hover"
+            [routerLink]="item.path"
+            routerLinkActive="link-primary"
+            ariaCurrentWhenActive="page"
+            >{{ item.label }}</a
+          >
+          }
+        </nav>
+        <button
+          class="btn btn-ghost btn-circle ml-auto lg:ml-3"
+          type="button"
+          (click)="toggleTheme()"
+          [attr.aria-label]="theme.current() === 'fourteener-pale' ? 'Switch to stout theme' : 'Switch to pale theme'"
+          title="Change color theme"
+        >
+          <i
+            class="fa-solid"
+            [class.fa-moon]="theme.current() === 'fourteener-pale'"
+            [class.fa-sun]="theme.current() === 'fourteener-stout'"
+            aria-hidden="true"
+          ></i>
+        </button>
+        <label
+          class="btn btn-ghost btn-circle drawer-button lg:hidden"
+          for="bw-nav-drawer"
+          aria-hidden="true"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </label>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <router-outlet />
+    </main>
+
+    <footer class="border-t border-base-300 bg-base-200">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-8 text-sm opacity-75 sm:flex-row sm:justify-between sm:px-6 lg:px-8"
+      >
+        <span>Made for Colorado beer people.</span
+        ><span>Beers · Discover responsibly</span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="drawer-side z-10">
+    <label
+      class="drawer-overlay"
+      for="bw-nav-drawer"
+      aria-hidden="true"
+    ></label>
+    <nav class="min-h-full w-72 bg-base-200 p-4" aria-label="Mobile navigation">
+      <ul class="menu w-full">
+        @for (item of navItems; track item.path) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="menu-active"
+            ariaCurrentWhenActive="page"
+            (click)="setMenuOpen(false)"
+            >{{ item.label }}</a
+          >
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</div>

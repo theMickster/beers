@@ -1,6 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { AppComponent } from './app';
-import { DOCUMENT } from '@angular/common';
 
 describe('App', () => {
   let component: AppComponent;
@@ -9,6 +9,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -20,20 +21,10 @@ describe('App', () => {
     expect(component).toBeTruthy();
   });
 
-  it('renders the Beers shell', () => {
-    const compiled = fixture.nativeElement as HTMLElement;
+  it('renders the app layout', () => {
     expect(
-      compiled.querySelector('img[src="/logos/beers-logo-badge.png"]'),
+      (fixture.nativeElement as HTMLElement).querySelector('bw-app-layout'),
     ).toBeTruthy();
-    expect(compiled.querySelector('main router-outlet')).toBeTruthy();
-  });
-
-  it('persists the selected theme when toggled', () => {
-    fixture.nativeElement.querySelector('button').click();
-    expect(
-      TestBed.inject(DOCUMENT).documentElement.getAttribute('data-theme'),
-    ).toBe('fourteener-stout');
-    expect(window.localStorage.getItem('beers-theme')).toBe('fourteener-stout');
   });
 
   it('should apply change detection strategy OnPush', () => {

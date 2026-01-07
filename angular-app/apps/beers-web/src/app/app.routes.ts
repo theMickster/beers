@@ -13,6 +13,14 @@ const samplesRoutes: Route[] =
       ]
     : [];
 
+const comingSoon = (path: string, title: string): Route => ({
+  path,
+  title,
+  data: { title },
+  loadComponent: () =>
+    import('./coming-soon/coming-soon').then((m) => m.ComingSoonComponent),
+});
+
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -27,5 +35,10 @@ export const appRoutes: Route[] = [
         (m) => m.ThemeHarnessComponent,
       ),
   },
+  comingSoon('explorer', 'Explorer'),
+  comingSoon('brewers', 'Brewers'),
+  comingSoon('blog', 'Blog'),
+  comingSoon('dashboard', 'Dashboard'),
+  comingSoon('compare', 'Compare'),
   ...samplesRoutes,
 ];

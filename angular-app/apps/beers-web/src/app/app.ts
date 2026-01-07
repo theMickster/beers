@@ -1,18 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ThemeService } from '@beers/shared/util';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AppLayoutComponent } from '@beers/shared/app-layout';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [AppLayoutComponent],
   selector: 'bw-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  protected readonly theme = inject(ThemeService);
-
-  protected toggleTheme(): void {
-    this.theme.toggle();
-  }
-}
+export class AppComponent {}
