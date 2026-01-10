@@ -19,6 +19,7 @@
       "@beers/shared/util": ["libs/shared/util/src/index.ts"],
       "@beers/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@beers/metadata/data-access": ["libs/metadata/data-access/src/index.ts"],
+      "@beers/beer/data-access": ["libs/beer/data-access/src/index.ts"],
       "@beers/shared/ui": ["libs/shared/ui/src/index.ts"],
       "@beers/shared/ui-daisy-demo": ["libs/shared/ui-daisy-demo/src/index.ts"],
       "@beers/shared/app-layout": ["libs/shared/app-layout/src/index.ts"]
