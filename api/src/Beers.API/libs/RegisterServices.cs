@@ -37,15 +37,16 @@ internal static class RegisterServices
             .AddXmlDataContractSerializerFormatters();
 
         builder.Services.AddApiVersioning(options =>
-        {
-            options.ReportApiVersions = true;
-            options.DefaultApiVersion = new ApiVersion(1, 0);
-            options.AssumeDefaultVersionWhenUnspecified = true;
-            options.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
-                new QueryStringApiVersionReader("api-version"),
-                new HeaderApiVersionReader("x-api-version"),
-                new MediaTypeApiVersionReader("x-api-version"));
-        });
+            {
+                options.ReportApiVersions = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
+                    new QueryStringApiVersionReader("api-version"),
+                    new HeaderApiVersionReader("x-api-version"),
+                    new MediaTypeApiVersionReader("x-api-version"));
+            })
+            .AddMvc();
 
         builder.Services.AddSwaggerGen(options =>
         {

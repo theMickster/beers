@@ -19,7 +19,7 @@ internal static class MockLoggerExtensions
     {
         times ??= Times.Once();
 
-        Func<object, Type, bool> state = (v, t) => string.Compare(v.ToString()!, expectedMessage, StringComparison.InvariantCultureIgnoreCase) == 0;
+        Func<object?, Type, bool> state = (v, t) => string.Equals(v?.ToString(), expectedMessage, StringComparison.InvariantCultureIgnoreCase);
 
         logger.Verify(
             x => x.Log(
@@ -47,7 +47,7 @@ internal static class MockLoggerExtensions
     {
         times ??= Times.Once();
 
-        Func<object, Type, bool> state = (v, t) => v.ToString()!.EndsWith(expectedMessage);
+        Func<object?, Type, bool> state = (v, t) => v?.ToString()?.EndsWith(expectedMessage) == true;
 
         logger.Verify(
             x => x.Log(
@@ -74,7 +74,7 @@ internal static class MockLoggerExtensions
     {
         times ??= Times.Once();
 
-        Func<object, Type, bool> state = (v, t) => v.ToString()!.StartsWith(expectedMessage);
+        Func<object?, Type, bool> state = (v, t) => v?.ToString()?.StartsWith(expectedMessage) == true;
 
         logger.Verify(
             x => x.Log(
@@ -101,7 +101,7 @@ internal static class MockLoggerExtensions
     {
         times ??= Times.Once();
 
-        Func<object, Type, bool> state = (v, t) => v.ToString()!.Contains(expectedMessage);
+        Func<object?, Type, bool> state = (v, t) => v?.ToString()?.Contains(expectedMessage) == true;
 
         logger.Verify(
             x => x.Log(
