@@ -46,8 +46,7 @@ public class BeersMetadataDbContext : DbContext, IBeersMetadataDbContext
     {
         entityTypeBuilder.Property(x => x.Id).ToJsonProperty("id");
         entityTypeBuilder.ToContainer(CosmosContainerConstants.MetadataContainer);
-        entityTypeBuilder.HasPartitionKey(x => x.ApplicationName);
-        entityTypeBuilder.HasPartitionKey(x => x.TypeId);
+        entityTypeBuilder.HasPartitionKey(x => new { x.ApplicationName, x.TypeId });
         entityTypeBuilder.HasKey(x => x.Id);
     }
 
