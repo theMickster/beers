@@ -16,6 +16,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<InternalsVisibleTo Include="Beers.UnitTests" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Beers.Common\Beers.Common.csproj" />
 		<ProjectReference Include="..\Beers.Domain\Beers.Domain.csproj" />
 	</ItemGroup>

@@ -102,7 +102,7 @@ Run in Data Explorer against the `Beers` container. Every query matched the expe
 
 **Decision for #863:** use `EXISTS` for every array-facet filter. `EXISTS` and `ARRAY_CONTAINS` cost about the same, so the fallback isn't needed.
 
-- **Zero counts:** Lagunitas and Molson Coors are absent from Q3, so GROUP BY returns no row for a facet value with no matching beers. The service has to add zero-count rows itself for any facet value it wants to show.
+- **Zero counts:** Lagunitas and Molson Coors are absent from Q3, so GROUP BY returns no row for a facet value with no matching beers. The #863 Zero Counts scenario says to omit those values, so the service adds no zero-count rows.
 - **Q4 routing:** 3.09 vs 3.19 RU is within noise. At 70 beers the routed and multi-brewer queries can't be told apart, so the risk is closed as "can't be observed at this data size".
 - **Scale:** every query costs single-digit RUs at this size, which says nothing about cost at scale. Re-measure on a larger dataset if volume grows.
 
