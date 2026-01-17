@@ -2,6 +2,7 @@
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -12,10 +13,11 @@ public sealed class ReadBeerControllerTests
     private readonly ReadBeerController _sut;
     private readonly Mock<ILogger<ReadBeerController>> _logger = new();
     private readonly Mock<IReadBeerService> _mockReadBeerService = new();
+    private readonly Mock<IDiscoverBeerService> _mockDiscoverBeerService = new();
 
     public ReadBeerControllerTests()
     {
-        _sut = new ReadBeerController(_logger.Object, _mockReadBeerService.Object);
+        _sut = new ReadBeerController(_logger.Object, _mockReadBeerService.Object, _mockDiscoverBeerService.Object);
     }
 
     [Fact]
@@ -116,6 +118,62 @@ public sealed class ReadBeerControllerTests
             objectResult.Should().NotBeNull();
             objectResult.Should().BeOfType<OkObjectResult>();
             objectResult!.StatusCode.Should().Be((int)HttpStatusCode.OK);
+        }
+    }
+
+    [Fact]
+    public async Task DiscoverAsync_bad_request_when_model_state_is_invalid()
+    {
+        _sut.ModelState.AddModelError("MinRating", "Something went wrong");
+
+        var result = await _sut.DiscoverAsync(new DiscoverBeerParameter(), new FacetedSearchInputModel());
+        var objectResult = result.Result as BadRequestObjectResult;
+
+        using (new AssertionScope())
+        {
+            objectResult.Should().NotBeNull();
+            objectResult!.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+            objectResult.Value.Should().Be("Unable to discover beers because of an invalid input model.");
+        }
+
+        _mockDiscoverBeerService.Verify(
+            x => x.DiscoverAsync(It.IsAny<DiscoverBeerParameter>(), It.IsAny<FacetedSearchInputModel>()), Times.Never);
+    }
+
+    [Fact]
+    public async Task DiscoverAsync_bad_request_with_the_validation_errors()
+    {
+        _mockDiscoverBeerService
+            .Setup(x => x.DiscoverAsync(It.IsAny<DiscoverBeerParameter>(), It.IsAny<FacetedSearchInputModel>()))
+            .ReturnsAsync((new FacetedSearchResultModel { Results = [] }, [new ValidationFailure("MaxRating", "bad range")]));
+
+        var result = await _sut.DiscoverAsync(new DiscoverBeerParameter(), new FacetedSearchInputModel());
+        var objectResult = result.Result as BadRequestObjectResult;
+
+        using (new AssertionScope())
+        {
+            objectResult.Should().NotBeNull();
+            objectResult!.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+            (objectResult.Value as IEnumerable<string>).Should().Equal("bad range");
+        }
+    }
+
+    [Fact]
+    public async Task DiscoverAsync_succeeds()
+    {
+        var model = new FacetedSearchResultModel { Results = [], TotalRecords = 7 };
+        _mockDiscoverBeerService
+            .Setup(x => x.DiscoverAsync(It.IsAny<DiscoverBeerParameter>(), It.IsAny<FacetedSearchInputModel>()))
+            .ReturnsAsync((model, []));
+
+        var result = await _sut.DiscoverAsync(new DiscoverBeerParameter(), new FacetedSearchInputModel());
+        var objectResult = result.Result as OkObjectResult;
+
+        using (new AssertionScope())
+        {
+            objectResult.Should().NotBeNull();
+            objectResult!.StatusCode.Should().Be((int)HttpStatusCode.OK);
+            objectResult.Value.Should().BeSameAs(model);
         }
     }
 }
