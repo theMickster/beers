@@ -63,3 +63,48 @@ test('crawl search endpoints with read-only payloads', async ({ request }) => {
 
   expect([200, 400]).toContain(reviewSearch.status());
 });
+
+type FacetItem = { id: string; name: string; count: number };
+
+const isOrderedByCountThenName = (items: FacetItem[]) =>
+  items.every((item, index) => {
+    if (index === 0) {
+      return true;
+    }
+    const previous = items[index - 1];
+    return (
+      previous.count > item.count ||
+      (previous.count === item.count && previous.name.toLowerCase() <= item.name.toLowerCase())
+    );
+  });
+
+const sumOfCounts = (items: FacetItem[]) => items.reduce((total, item) => total + item.count, 0);
+
+test('discover beers returns ordered facets that agree with the total', async ({ request }) => {
+  const response = await request.post('/api/v1/beers/discover?PageNumber=1&PageSize=10&SortOrder=Ascending&OrderBy=Name', {
+    data: {}
+  });
+
+  expect(response.status()).toBe(200);
+
+  const body = await response.json();
+  expect(Array.isArray(body.results)).toBe(true);
+
+  const facets = body.facets as Record<string, FacetItem[]>;
+  for (const name of ['styleFacets', 'categoryFacets', 'brewerFacets', 'beerTypeFacets']) {
+    expect(Array.isArray(facets[name])).toBe(true);
+    expect(isOrderedByCountThenName(facets[name])).toBe(true);
+  }
+
+  // With no filters every beer has exactly one brewer and one beer type, so those counts sum to the total.
+  expect(sumOfCounts(facets.brewerFacets)).toBe(body.totalRecords);
+  expect(sumOfCounts(facets.beerTypeFacets)).toBe(body.totalRecords);
+});
+
+test('discover beers rejects an invalid rating range', async ({ request }) => {
+  const response = await request.post('/api/v1/beers/discover', {
+    data: { minRating: 5, maxRating: 1 }
+  });
+
+  expect(response.status()).toBe(400);
+});

@@ -337,6 +337,190 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Beers",
+      "item": [
+        {
+          "name": "Discover - No Filters",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has results and the four facet lists\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"results\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData).to.have.property(\"totalRecords\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"styleFacets\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"categoryFacets\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"brewerFacets\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"beerTypeFacets\").that.is.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test(\"Facets are ordered by count descending\", function () {",
+                  "    var facets = pm.response.json().facets;",
+                  "    Object.keys(facets).forEach(function (key) {",
+                  "        for (var i = 1; i < facets[key].length; i++) {",
+                  "            pm.expect(facets[key][i - 1].count).to.be.at.least(facets[key][i].count);",
+                  "        }",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test(\"Brewer and beer type counts sum to totalRecords\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    var sum = function (items) { return items.reduce(function (total, item) { return total + item.count; }, 0); };",
+                  "    pm.expect(sum(jsonData.facets.brewerFacets)).to.eql(jsonData.totalRecords);",
+                  "    pm.expect(sum(jsonData.facets.beerTypeFacets)).to.eql(jsonData.totalRecords);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/beers/discover?PageNumber=1&PageSize=10&SortOrder=Ascending&OrderBy=Name",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "beers", "discover"],
+              "query": [
+                {
+                  "key": "PageNumber",
+                  "value": "1"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "SortOrder",
+                  "value": "Ascending"
+                },
+                {
+                  "key": "OrderBy",
+                  "value": "Name"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          }
+        },
+        {
+          "name": "Discover - Style And MinRating, Most Reviewed First",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has results and the four facet lists\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property(\"results\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData).to.have.property(\"totalRecords\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"styleFacets\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"categoryFacets\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"brewerFacets\").that.is.an(\"array\");",
+                  "    pm.expect(jsonData.facets).to.have.property(\"beerTypeFacets\").that.is.an(\"array\");",
+                  "});",
+                  "",
+                  "pm.test(\"Facets are ordered by count descending\", function () {",
+                  "    var facets = pm.response.json().facets;",
+                  "    Object.keys(facets).forEach(function (key) {",
+                  "        for (var i = 1; i < facets[key].length; i++) {",
+                  "            pm.expect(facets[key][i - 1].count).to.be.at.least(facets[key][i].count);",
+                  "        }",
+                  "    });",
+                  "});",
+                  "",
+                  "pm.test(\"Results are sorted by review count descending\", function () {",
+                  "    var results = pm.response.json().results;",
+                  "    for (var i = 1; i < results.length; i++) {",
+                  "        pm.expect(results[i - 1].rating.reviewCount).to.be.at.least(results[i].rating.reviewCount);",
+                  "    }",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/beers/discover?PageNumber=1&PageSize=10&SortOrder=Descending&OrderBy=reviewCount",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "beers", "discover"],
+              "query": [
+                {
+                  "key": "PageNumber",
+                  "value": "1"
+                },
+                {
+                  "key": "PageSize",
+                  "value": "10"
+                },
+                {
+                  "key": "SortOrder",
+                  "value": "Descending"
+                },
+                {
+                  "key": "OrderBy",
+                  "value": "reviewCount"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"beerStyleIds\": [\n    \"46c48c77-b143-4dc9-ad57-a797e0dc8997\",\n    \"1e65b3a8-6049-4d96-9f54-46a24e367182\"\n  ],\n  \"minRating\": 4.0\n}"
+            }
+          }
+        },
+        {
+          "name": "Discover - Invalid Rating Range",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 400\", function () {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Response explains the rating range\", function () {",
+                  "    pm.expect(pm.response.text()).to.include(\"MaxRating must be greater than or equal to MinRating\");",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/beers/discover",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "beers", "discover"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"minRating\": 5,\n  \"maxRating\": 1\n}"
+            }
+          }
+        }
+      ]
     }
   ]
 }

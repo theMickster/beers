@@ -77,6 +77,7 @@ export default function runApiReadScenario(): void {
       brewerId: null,
       brewerName: ''
     }),
+    post('/api/v1/beers/discover?PageNumber=1&PageSize=10&SortOrder=Ascending&OrderBy=Name', {}),
     post(`/api/v1/brewers/${brewerId}/reviews/search?PageNumber=1&PageSize=10&SortOrder=Ascending&OrderBy=reviewId`, {
       id: null,
       name: '',
