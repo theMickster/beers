@@ -17,4 +17,8 @@ public static class SortedResultConstants
     public static readonly string Title = "Title";
 
     public static readonly string PublishedDate = "PublishedDate";
+
+    public static readonly string ReviewCount = "ReviewCount";
+
+    public static readonly string CreatedDate = "CreatedDate";
 }
