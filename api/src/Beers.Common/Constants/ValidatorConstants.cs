@@ -89,4 +89,12 @@ public static class ValidatorConstants
     public static string NewsBlogPostIdIsNull => "NewsBlogPost Id is required";
 
     public static string NewsBlogPostMustExist => "NewsBlogPost does not exist for the supplied BrewerId and NewsBlogPostId";
+
+    public static string FacetedSearchRatingRangeInvalid => "MaxRating must be greater than or equal to MinRating";
+
+    public static string FacetedSearchRatingOutOfRange => "Rating bounds must be between 0 and 5";
+
+    public static string FacetedSearchTooManyIds => "Each filter list cannot contain more than 25 items";
+
+    public static string FacetedSearchNameLength => "Name cannot be longer than 100 characters";
 }
