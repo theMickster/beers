@@ -9,7 +9,11 @@ import {
   withEntities,
 } from '@ngrx/signals/entities';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { ApiError, withRequestStatus } from '@beers/shared/data-access';
+import {
+  ApiError,
+  normalizeId,
+  withRequestStatus,
+} from '@beers/shared/data-access';
 import {
   catchError,
   defer,
@@ -26,7 +30,6 @@ import type {
   CreateBrewer,
   UpdateBrewer,
 } from './brewer.models';
-import { normalizeId } from './validation';
 
 const brewerConfig = entityConfig({
   entity: type<Brewer>(),

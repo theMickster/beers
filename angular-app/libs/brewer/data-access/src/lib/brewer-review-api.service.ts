@@ -1,10 +1,11 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpParams,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { API_BASE_URL, type PagedResult } from '@beers/shared/data-access';
+import {
+  API_BASE_URL,
+  toPageParams,
+  whenValid,
+  type PagedResult,
+} from '@beers/shared/data-access';
 import { catchError, of, throwError, type Observable } from 'rxjs';
 import type {
   BrewerReview,
@@ -18,7 +19,6 @@ import {
   validateReviewSearch,
 } from './brewer-review.validators';
 import { validateBrewerId } from './brewer.validators';
-import { isObject, MAX_PAGE_SIZE, whenValid } from './validation';
 
 const TEXT_FILTER_KEYS = ['id', 'name', 'reviewerName'] as const;
 const RATING_FILTER_KEYS = ['minimumRating', 'maximumRating'] as const;
@@ -112,30 +112,6 @@ export class BrewerReviewApiService {
   private reviewUrl(brewerId: string, reviewId: string): string {
     return `${this.reviewsUrl(brewerId)}/${encodeURIComponent(reviewId)}`;
   }
-}
-
-/** Non-finite numbers and a missing `page` are omitted; the server defaults apply. */
-function toPageParams(page: BrewerReviewPageQuery): HttpParams {
-  let params = new HttpParams();
-  if (!isObject(page)) return params;
-  if (page.pageNumber !== undefined && Number.isFinite(page.pageNumber)) {
-    params = params.set('PageNumber', Math.max(1, Math.trunc(page.pageNumber)));
-  }
-  if (page.pageSize !== undefined && Number.isFinite(page.pageSize)) {
-    params = params.set('PageSize', clampPageSize(page.pageSize));
-  }
-  if (page.sortOrder !== undefined) {
-    params = params.set('SortOrder', page.sortOrder);
-  }
-  if (page.orderBy !== undefined) {
-    params = params.set('OrderBy', page.orderBy);
-  }
-  return params;
-}
-
-/** The server caps at 50 and has no lower bound (zero or less likely fails), so clamp to 1..50. */
-function clampPageSize(pageSize: number): number {
-  return Math.min(MAX_PAGE_SIZE, Math.max(1, Math.trunc(pageSize)));
 }
 
 /** The API requires a body, so an empty filter set still sends `{}`. */

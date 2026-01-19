@@ -1,18 +1,20 @@
+import {
+  isBlank,
+  isGuid,
+  isObject,
+  REQUEST_BODY_REQUIRED,
+} from '@beers/shared/data-access';
 import type {
   BrewerReviewSearchFilters,
   CreateBrewerReview,
 } from './brewer-review.models';
 import {
-  isBlank,
-  isGuid,
-  isObject,
   isRating,
   MAX_RATING,
   MAX_REVIEW_COMMENTS_LENGTH,
   MAX_REVIEW_TITLE_LENGTH,
   MAX_REVIEWER_NAME_LENGTH,
   MIN_RATING,
-  REQUEST_BODY_REQUIRED,
 } from './validation';
 
 /*

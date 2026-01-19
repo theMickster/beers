@@ -4,7 +4,7 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { API_BASE_URL } from '@beers/shared/data-access';
+import { API_BASE_URL, whenValid } from '@beers/shared/data-access';
 import { catchError, of, throwError, type Observable } from 'rxjs';
 import {
   type Brewer,
@@ -19,7 +19,6 @@ import {
   validateCreateBrewer,
   validateUpdateBrewer,
 } from './brewer.validators';
-import { whenValid } from './validation';
 
 const JSON_PATCH_HEADERS = new HttpHeaders({
   'Content-Type': 'application/json-patch+json',

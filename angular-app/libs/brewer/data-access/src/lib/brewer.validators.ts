@@ -1,20 +1,22 @@
 import type { BreweryType } from '@beers/metadata/data-access';
 import {
+  isBlank,
+  isEmptyGuid,
+  isGuid,
+  isObject,
+  REQUEST_BODY_REQUIRED,
+} from '@beers/shared/data-access';
+import {
   BREWER_PATCH_FIELDS,
   type BrewerPatch,
   type CreateBrewer,
   type UpdateBrewer,
 } from './brewer.models';
 import {
-  isBlank,
-  isEmptyGuid,
-  isGuid,
-  isObject,
   MAX_HEADQUARTERS_LENGTH,
   MAX_NAME_LENGTH,
   MAX_WEBSITE_LENGTH,
   MIN_FOUNDED_IN,
-  REQUEST_BODY_REQUIRED,
 } from './validation';
 
 /*

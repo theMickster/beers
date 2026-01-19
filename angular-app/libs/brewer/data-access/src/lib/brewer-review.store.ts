@@ -19,6 +19,7 @@ import {
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import {
   ApiError,
+  normalizeId,
   withPagination,
   withRequestStatus,
   type PaginationState,
@@ -39,7 +40,6 @@ import type {
   BrewerReviewSearchFilters,
   CreateBrewerReview,
 } from './brewer-review.models';
-import { normalizeId } from './validation';
 
 const reviewConfig = entityConfig({
   entity: type<BrewerReview>(),

@@ -65,7 +65,8 @@ beers/
 
 ## Do NOT
 
-- Create new Cosmos DB containers without discussion -- extend existing containers with new `EntityType` discriminators
-- Change the partition key strategy without discussion
-- Add RxJS Subjects for state management in the Angular frontend -- use signals
-- Add packages without verifying they exist and are necessary
+- Do not create new Cosmos DB containers without discussion -- extend existing containers with new `EntityType` discriminators
+- Do not change the partition key strategy without discussion
+- Do not add RxJS Subjects for state management in the Angular frontend -- use signals
+- Do not add packages without verifying they exist and are necessary
+- Do not use git branches nor worktrees unless the human CLEARLY states that is requested.
