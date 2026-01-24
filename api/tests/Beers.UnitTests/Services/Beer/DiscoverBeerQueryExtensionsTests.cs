@@ -178,4 +178,54 @@ public sealed class DiscoverBeerQueryExtensionsTests
         sql.Should().Contain("ORDER BY c[\"Rating\"][\"reviews\"] DESC, c[\"Name\"] DESC");
         sql.Should().Contain("OFFSET").And.Contain("LIMIT");
     }
+
+    private static List<string> PriceNames(decimal? min, decimal? max, params (string Name, decimal[] Prices)[] beers) =>
+        beers.Select(b => new BeerEntity { Name = b.Name, Pricing = b.Prices.Select(p => new PriceEntity { Price = p }).ToList() })
+            .AsQueryable().ApplyPriceFilter(min, max).Select(x => x.Name).OrderBy(x => x).ToList();
+
+    private static readonly (string, decimal[])[] PricedBeers =
+    [
+        ("Cheap", [3m]),
+        ("Mid", [8m, 20m]),
+        ("Pricey", [30m]),
+        ("Unpriced", [])
+    ];
+
+    [Fact]
+    public void ApplyPriceFilter_with_no_bounds_returns_everything()
+    {
+        PriceNames(null, null, PricedBeers).Should().Equal("Cheap", "Mid", "Pricey", "Unpriced");
+    }
+
+    [Fact]
+    public void ApplyPriceFilter_min_only_keeps_beers_with_a_tier_at_or_above_it()
+    {
+        PriceNames(20m, null, PricedBeers).Should().Equal("Mid", "Pricey");
+    }
+
+    [Fact]
+    public void ApplyPriceFilter_max_only_keeps_beers_with_a_tier_at_or_below_it()
+    {
+        PriceNames(null, 8m, PricedBeers).Should().Equal("Cheap", "Mid");
+    }
+
+    [Fact]
+    public void ApplyPriceFilter_both_bounds_require_one_tier_inside_the_range()
+    {
+        // Mid has tiers either side of 10-15 but none inside, so it is excluded.
+        PriceNames(10m, 15m, PricedBeers).Should().BeEmpty();
+        PriceNames(5m, 10m, PricedBeers).Should().Equal("Mid");
+    }
+
+    [Fact]
+    public void ApplyPriceFilter_bounds_are_inclusive()
+    {
+        PriceNames(3m, 3m, PricedBeers).Should().Equal("Cheap");
+    }
+
+    [Fact]
+    public void ApplyPriceFilter_excludes_beers_without_pricing_when_a_bound_is_set()
+    {
+        PriceNames(0m, null, PricedBeers).Should().NotContain("Unpriced");
+    }
 }

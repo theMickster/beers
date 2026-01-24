@@ -78,7 +78,16 @@ public sealed class ReadBeerService(IMapper mapper, IDbContextFactory<BeersDbCon
         {
             query = query.Where(x => x.Brewer.Name.Contains(searchModel.BrewerName));
         }
-        
+
+        // Name is deliberately not passed: ApplyFilters matches it case-insensitively and this search does not.
+        query = query.ApplyFilters(new FacetedSearchInputModel
+        {
+            BeerStyleIds = searchModel.BeerStyleIds ?? [],
+            BeerCategoryIds = searchModel.BeerCategoryIds ?? [],
+            BeerTypeIds = searchModel.BeerTypeIds ?? []
+        });
+        query = query.ApplyPriceFilter(searchModel.MinPrice, searchModel.MaxPrice);
+
         var totalRecords = await query.CountAsync();
         query = query.OrderBy(x => x.Name);
         if (parameters.SortOrder == SortedResultConstants.Descending)

@@ -1,0 +1,221 @@
+<section class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+  <header class="mb-8">
+    <h1 class="text-4xl font-extrabold">Explorer</h1>
+    <p class="mt-2 opacity-75">
+      Browse Colorado craft beers by style, category, type and price.
+    </p>
+  </header>
+
+  <div class="grid gap-8 lg:grid-cols-[16rem_1fr]">
+    <aside aria-label="Filters" class="space-y-6">
+      @if (metadataFailed()) {
+      <div role="alert" class="alert alert-warning text-sm">
+        Filter options could not be loaded.
+      </div>
+      } @for (facet of facets(); track facet.key) {
+      <fieldset>
+        <legend class="mb-2 font-semibold">{{ facet.label }}</legend>
+        <div class="max-h-56 space-y-1 overflow-y-auto pr-1">
+          @for (option of facet.options; track option.id) {
+          <label class="flex cursor-pointer items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              class="checkbox checkbox-sm"
+              [checked]="facet.selected.includes(option.id)"
+              (change)="toggleFacet(facet.key, option.id)"
+            />
+            {{ option.name }}
+          </label>
+          }
+        </div>
+      </fieldset>
+      }
+
+      <form novalidate (submit)="applyPrice($event)">
+        <fieldset>
+          <legend class="mb-2 font-semibold">Price</legend>
+          <div class="flex items-center gap-2">
+            <label class="sr-only" for="explorer-min-price"
+              >Minimum price</label
+            >
+            <input
+              #minPriceField
+              id="explorer-min-price"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Min"
+              class="input input-sm w-full"
+              [class.input-error]="priceError()"
+              [attr.aria-invalid]="priceError() ? 'true' : null"
+              [attr.aria-describedby]="priceError() ? 'explorer-price-error' : null"
+              [value]="minPriceInput()"
+              (input)="minPriceInput.set(minPriceField.value)"
+            />
+            <span aria-hidden="true">–</span>
+            <label class="sr-only" for="explorer-max-price"
+              >Maximum price</label
+            >
+            <input
+              #maxPriceField
+              id="explorer-max-price"
+              type="number"
+              min="0"
+              step="0.01"
+              placeholder="Max"
+              class="input input-sm w-full"
+              [class.input-error]="priceError()"
+              [attr.aria-invalid]="priceError() ? 'true' : null"
+              [attr.aria-describedby]="priceError() ? 'explorer-price-error' : null"
+              [value]="maxPriceInput()"
+              (input)="maxPriceInput.set(maxPriceField.value)"
+            />
+          </div>
+          @if (priceError(); as message) {
+          <p
+            id="explorer-price-error"
+            role="alert"
+            class="mt-2 text-sm text-error"
+          >
+            {{ message }}
+          </p>
+          }
+          <button
+            type="submit"
+            class="btn btn-sm btn-primary mt-3"
+            [disabled]="priceError() !== null"
+          >
+            Apply price
+          </button>
+        </fieldset>
+      </form>
+
+      @if (hasFilters()) {
+      <button
+        type="button"
+        class="btn btn-sm btn-ghost"
+        (click)="clearFilters()"
+      >
+        Clear filters
+      </button>
+      }
+    </aside>
+
+    <div>
+      <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p
+          class="text-sm opacity-75"
+          aria-live="polite"
+          data-testid="result-count"
+        >
+          @if (store.isFulfilled()) { {{ store.totalRecords() }} {{
+          store.totalRecords() === 1 ? 'beer' : 'beers' }} }
+        </p>
+        <label class="flex items-center gap-2 text-sm">
+          Per page
+          <select
+            #pageSizeSelect
+            class="select select-sm w-20"
+            (change)="setPageSize(+pageSizeSelect.value)"
+          >
+            @for (size of pageSizeOptions; track size) {
+            <option [value]="size" [selected]="size === state().pageSize">
+              {{ size }}
+            </option>
+            }
+          </select>
+        </label>
+      </div>
+
+      @if (store.error(); as error) {
+      <div role="alert" class="alert alert-error">
+        <span>{{ error.message }}</span>
+        <button type="button" class="btn btn-sm" (click)="retry()">
+          Try again
+        </button>
+      </div>
+      } @else if (showSkeleton()) {
+      <div
+        class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3"
+        role="status"
+        aria-busy="true"
+        data-testid="loading"
+      >
+        <span class="sr-only">Loading beers…</span>
+        @for (_ of skeletons; track $index) {
+        <div class="skeleton h-80 w-full"></div>
+        }
+      </div>
+      } @else if (store.results().length === 0) {
+      <bw-empty-state
+        heading="No beers match"
+        message="Try removing a filter or widening the price range."
+      >
+        @if (hasFilters() || state().page > 1) {
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          (click)="clearFilters()"
+        >
+          Clear filters
+        </button>
+        }
+      </bw-empty-state>
+      } @else {
+      <ul
+        class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3"
+        [class.opacity-60]="store.isPending()"
+        data-testid="beer-grid"
+      >
+        @for (beer of store.results(); track beer.beerId) {
+        <li><bw-beer-card [beer]="beer" /></li>
+        }
+      </ul>
+
+      @if (store.totalPages() > 1) {
+      <nav aria-label="Pagination" class="mt-8 flex justify-center">
+        <ul class="join">
+          <li>
+            <button
+              type="button"
+              class="btn join-item"
+              [disabled]="!store.hasPreviousPage()"
+              (click)="goToPage(store.pageNumber() - 1)"
+            >
+              Previous
+            </button>
+          </li>
+          @for (page of pages(); track $index) {
+          <li>
+            @if (page === null) {
+            <span class="btn join-item btn-disabled" aria-hidden="true">…</span>
+            } @else {
+            <button
+              type="button"
+              class="btn join-item"
+              [class.btn-active]="page === store.pageNumber()"
+              [attr.aria-current]="page === store.pageNumber() ? 'page' : null"
+              [attr.aria-label]="'Page ' + page"
+              (click)="goToPage(page)"
+            >
+              {{ page }}
+            </button>
+            }
+          </li>
+          }
+          <li>
+            <button
+              type="button"
+              class="btn join-item"
+              [disabled]="!store.hasNextPage()"
+              (click)="goToPage(store.pageNumber() + 1)"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
+      </nav>
+      } }
+    </div>
+  </div>
+</section>

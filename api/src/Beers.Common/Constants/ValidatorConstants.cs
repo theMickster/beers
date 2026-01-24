@@ -96,5 +96,9 @@ public static class ValidatorConstants
 
     public static string FacetedSearchTooManyIds => "Each filter list cannot contain more than 25 items";
 
+    public static string SearchBeerPriceRangeInvalid => "MaxPrice must be greater than or equal to MinPrice";
+
+    public static string SearchBeerPriceNegative => "Price bounds cannot be negative";
+
     public static string FacetedSearchNameLength => "Name cannot be longer than 100 characters";
 }

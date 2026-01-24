@@ -35,7 +35,13 @@ export const appRoutes: Route[] = [
         (m) => m.ThemeHarnessComponent,
       ),
   },
-  comingSoon('explorer', 'Explorer'),
+  {
+    path: 'explorer',
+    title: 'Explorer',
+    data: { title: 'Explorer' },
+    loadComponent: () =>
+      import('@beers/beer/feature-explorer').then((m) => m.ExplorerComponent),
+  },
   comingSoon('brewers', 'Brewers'),
   comingSoon('blog', 'Blog'),
   comingSoon('dashboard', 'Dashboard'),

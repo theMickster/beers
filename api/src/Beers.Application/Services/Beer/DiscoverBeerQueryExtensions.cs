@@ -63,6 +63,33 @@ internal static class DiscoverBeerQueryExtensions
         return query;
     }
 
+    /// <summary>
+    /// Keeps beers with at least one pricing tier inside the range. Either bound may be omitted.
+    /// </summary>
+    public static IQueryable<BeerEntity> ApplyPriceFilter(this IQueryable<BeerEntity> query, decimal? minPrice, decimal? maxPrice)
+    {
+        if (minPrice.HasValue && maxPrice.HasValue)
+        {
+            var min = minPrice.Value;
+            var max = maxPrice.Value;
+            return query.Where(x => x.Pricing.Any(p => p.Price >= min && p.Price <= max));
+        }
+
+        if (minPrice.HasValue)
+        {
+            var min = minPrice.Value;
+            return query.Where(x => x.Pricing.Any(p => p.Price >= min));
+        }
+
+        if (maxPrice.HasValue)
+        {
+            var max = maxPrice.Value;
+            return query.Where(x => x.Pricing.Any(p => p.Price <= max));
+        }
+
+        return query;
+    }
+
     public static IQueryable<BeerEntity> ApplySort(this IQueryable<BeerEntity> query, DiscoverBeerParameter parameters)
     {
         ArgumentNullException.ThrowIfNull(parameters);

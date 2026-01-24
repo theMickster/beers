@@ -14,7 +14,13 @@ import type {
   UpdateBeer,
 } from './models';
 
-const FILTER_KEYS = ['id', 'name', 'brewerId', 'brewerName'] as const;
+const STRING_FILTER_KEYS = ['id', 'name', 'brewerId', 'brewerName'] as const;
+const ID_LIST_FILTER_KEYS = [
+  'beerStyleIds',
+  'beerCategoryIds',
+  'beerTypeIds',
+] as const;
+const NUMBER_FILTER_KEYS = ['minPrice', 'maxPrice'] as const;
 
 /** Thin HTTP wrapper over the beers endpoints. No state, no error mapping. */
 @Injectable({ providedIn: 'root' })
@@ -81,12 +87,27 @@ function toPageParams(page: BeerPageQuery): HttpParams {
   return params;
 }
 
-/** The API requires a body, so an empty filter set still sends `{}`. */
-function toSearchBody(filters: BeerSearchFilters): BeerSearchFilters {
-  const body: Record<string, string> = {};
-  for (const key of FILTER_KEYS) {
+/**
+ * The API requires a body, so an empty filter set still sends `{}`. Blank strings, empty id
+ * lists and undefined numbers are omitted.
+ */
+function toSearchBody(filters: BeerSearchFilters): Record<string, unknown> {
+  const body: Record<string, unknown> = {};
+  for (const key of STRING_FILTER_KEYS) {
     const value = filters[key];
     if (value !== undefined && value.trim() !== '') {
+      body[key] = value;
+    }
+  }
+  for (const key of ID_LIST_FILTER_KEYS) {
+    const ids = filters[key];
+    if (ids !== undefined && ids.length > 0) {
+      body[key] = [...ids];
+    }
+  }
+  for (const key of NUMBER_FILTER_KEYS) {
+    const value = filters[key];
+    if (value !== undefined) {
       body[key] = value;
     }
   }

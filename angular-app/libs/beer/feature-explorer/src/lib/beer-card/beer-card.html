@@ -1,0 +1,48 @@
+<article
+  class="card h-full border border-base-300 bg-base-100 shadow-sm transition hover:shadow-md"
+>
+  <figure class="flex h-48 items-center justify-center bg-base-200">
+    @if (beer().image) {
+    <img
+      class="h-full w-full object-contain p-2"
+      [src]="beer().image"
+      [alt]="beer().name"
+      loading="lazy"
+    />
+    } @else {
+    <i
+      class="fa-solid fa-beer-mug-empty text-5xl opacity-30"
+      aria-hidden="true"
+    ></i>
+    }
+  </figure>
+  <div class="card-body gap-1 p-4">
+    <h3 class="card-title text-lg leading-snug">
+      <a
+        class="link-hover after:absolute after:inset-0"
+        [routerLink]="['/beers', beer().beerId]"
+        >{{ beer().name }}</a
+      >
+    </h3>
+    <p class="text-sm opacity-75">{{ beer().brewer.name }}</p>
+    <p class="text-sm" data-testid="beer-rating">
+      @if (rating(); as rating) {
+      <i class="fa-solid fa-star text-warning" aria-hidden="true"></i>
+      <span class="font-semibold">{{ rating.average | number: '1.1-1' }}</span>
+      <span class="opacity-70">
+        ({{ rating.reviewCount }} {{ rating.reviewCount === 1 ? 'review' :
+        'reviews' }})
+      </span>
+      } @else {
+      <span class="opacity-60">No reviews yet</span>
+      }
+    </p>
+    <p class="mt-auto pt-2 font-semibold" data-testid="beer-price">
+      @if (priceRange(); as range) { @if (range.min === range.max) { {{
+      range.min | currency }} } @else { {{ range.min | currency }} – {{
+      range.max | currency }} } } @else {
+      <span class="font-normal opacity-60">Price unavailable</span>
+      }
+    </p>
+  </div>
+</article>

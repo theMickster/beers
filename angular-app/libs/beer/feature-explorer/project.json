@@ -1,0 +1,17 @@
+{
+  "name": "beer-feature-explorer",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/beer/feature-explorer/src",
+  "tags": ["type:feature", "scope:beers"],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "buildTarget": "beers-web:build:development",
+        "tsConfig": "libs/beer/feature-explorer/tsconfig.spec.json",
+        "watch": false
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 ﻿using Beers.API.Controllers.v1.Beer;
 using Beers.Application.Interfaces.Services.Beer;
+using Beers.Application.Validators.Beer;
 using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;
 using FluentValidation.Results;
@@ -17,7 +18,8 @@ public sealed class ReadBeerControllerTests
 
     public ReadBeerControllerTests()
     {
-        _sut = new ReadBeerController(_logger.Object, _mockReadBeerService.Object, _mockDiscoverBeerService.Object);
+        _sut = new ReadBeerController(_logger.Object, _mockReadBeerService.Object, _mockDiscoverBeerService.Object,
+            new SearchInputBeerModelValidator());
     }
 
     [Fact]
@@ -101,6 +103,23 @@ public sealed class ReadBeerControllerTests
             output!.Should().NotBeNullOrEmpty();
             output!.Should().Be("Unable to search for beers because of an invalid input model.");
         }
+    }
+
+    [Fact]
+    public async Task SearchAsync_bad_request_with_the_validation_errors_when_the_price_range_is_invalid()
+    {
+        var result = await _sut.SearchAsync(new SearchBeerParameter(), new SearchInputBeerModel { MinPrice = 10m, MaxPrice = 5m });
+        var objectResult = result.Result as BadRequestObjectResult;
+
+        using (new AssertionScope())
+        {
+            objectResult.Should().NotBeNull();
+            objectResult!.StatusCode.Should().Be((int)HttpStatusCode.BadRequest);
+            (objectResult.Value as IEnumerable<string>).Should().Equal("MaxPrice must be greater than or equal to MinPrice");
+        }
+
+        _mockReadBeerService.Verify(
+            x => x.SearchAsync(It.IsAny<SearchBeerParameter>(), It.IsAny<SearchInputBeerModel>()), Times.Never);
     }
 
     [Fact]

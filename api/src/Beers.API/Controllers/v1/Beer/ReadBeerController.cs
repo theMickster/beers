@@ -2,6 +2,7 @@
 using Beers.Application.Interfaces.Services.Beer;
 using Beers.Common.Filtering.Beer;
 using Beers.Domain.Models.Beer;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
@@ -21,12 +22,14 @@ namespace Beers.API.Controllers.v1.Beer;
 public sealed class ReadBeerController(
     ILogger<ReadBeerController> logger,
     IReadBeerService readBeerService,
-    IDiscoverBeerService discoverBeerService)
+    IDiscoverBeerService discoverBeerService,
+    IValidator<SearchInputBeerModel> searchInputValidator)
     : ControllerBase
 {
     private readonly ILogger<ReadBeerController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     private readonly IReadBeerService _readBeerService = readBeerService ?? throw new ArgumentNullException(nameof(readBeerService));
     private readonly IDiscoverBeerService _discoverBeerService = discoverBeerService ?? throw new ArgumentNullException(nameof(discoverBeerService));
+    private readonly IValidator<SearchInputBeerModel> _searchInputValidator = searchInputValidator ?? throw new ArgumentNullException(nameof(searchInputValidator));
 
     /// <summary>
     /// Retrieve the list of beers
@@ -57,11 +60,13 @@ public sealed class ReadBeerController(
     /// </summary>
     /// <returns>A list of beers</returns>
     /// <response code="200">Returns the list of beers</response>
+    /// <response code="400">If the search input is invalid</response>
     /// <response code="404">If the list of beers cannot be found</response>
     [HttpPost]
     [Route("search", Name = "SearchBeersAsync")]
     [Produces(typeof(SearchResultBeerModel))]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<SearchResultBeerModel>> SearchAsync(
         [FromQuery] SearchBeerParameter parameters,
@@ -74,6 +79,12 @@ public sealed class ReadBeerController(
             return BadRequest(message);
         }
         
+        var validation = await _searchInputValidator.ValidateAsync(searchModel);
+        if (!validation.IsValid)
+        {
+            return BadRequest(validation.Errors.Select(x => x.ErrorMessage));
+        }
+
         var result = await _readBeerService.SearchAsync(parameters, searchModel);
         
         return Ok(result);

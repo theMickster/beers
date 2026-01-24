@@ -53,6 +53,13 @@ export interface BeerSearchFilters {
   readonly name?: string;
   readonly brewerId?: string;
   readonly brewerName?: string;
+  /** Ids within one list are OR'd; different filters are AND'd. */
+  readonly beerStyleIds?: readonly string[];
+  readonly beerCategoryIds?: readonly string[];
+  readonly beerTypeIds?: readonly string[];
+  /** Keeps beers with at least one price tier inside the range; either bound may be omitted. */
+  readonly minPrice?: number;
+  readonly maxPrice?: number;
 }
 
 export interface CreateBeer {

@@ -95,6 +95,67 @@ describe('BeerApiService', () => {
     });
   });
 
+  describe('search facet filters', () => {
+    it('sends id lists and prices under the API property names', () => {
+      api
+        .search(
+          {},
+          {
+            beerStyleIds: ['s1', 's2'],
+            beerCategoryIds: ['c1'],
+            beerTypeIds: ['t1'],
+            minPrice: 5,
+            maxPrice: 20,
+          },
+        )
+        .subscribe();
+
+      const request = httpMock.expectOne(`${BASE_URL}/beers/search`);
+      expect(request.request.body).toEqual({
+        beerStyleIds: ['s1', 's2'],
+        beerCategoryIds: ['c1'],
+        beerTypeIds: ['t1'],
+        minPrice: 5,
+        maxPrice: 20,
+      });
+      request.flush({});
+    });
+
+    it('omits empty id lists and undefined prices', () => {
+      api
+        .search(
+          {},
+          {
+            beerStyleIds: [],
+            beerCategoryIds: undefined,
+            beerTypeIds: [],
+            minPrice: undefined,
+          },
+        )
+        .subscribe();
+
+      const request = httpMock.expectOne(`${BASE_URL}/beers/search`);
+      expect(request.request.body).toEqual({});
+      request.flush({});
+    });
+
+    it('keeps a price of zero', () => {
+      api.search({}, { minPrice: 0, maxPrice: 0 }).subscribe();
+
+      const request = httpMock.expectOne(`${BASE_URL}/beers/search`);
+      expect(request.request.body).toEqual({ minPrice: 0, maxPrice: 0 });
+      request.flush({});
+    });
+
+    it('still trims out blank strings alongside the new filters', () => {
+      api.search({}, { name: '  ', beerTypeIds: ['t1'] }).subscribe();
+
+      const request = httpMock.expectOne(`${BASE_URL}/beers/search`);
+      expect(request.request.body).toEqual({ beerTypeIds: ['t1'] });
+      request.flush({});
+    });
+  });
+
   describe('list', () => {
     it('GETs /beers', async () => {
       const result = firstValueFrom(api.list());
