@@ -1,5 +1,10 @@
 export { BeerApiService } from './lib/beer-api.service';
 export { BeerStore } from './lib/beer.store';
+export { BeerDetailStore } from './lib/beer-detail.store';
+export {
+  CompareSelectionStore,
+  MAX_COMPARE_BEERS,
+} from './lib/compare-selection.store';
 export type {
   Beer,
   BeerPageQuery,

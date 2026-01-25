@@ -42,6 +42,13 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('@beers/beer/feature-explorer').then((m) => m.ExplorerComponent),
   },
+  {
+    path: 'beers/:beerId',
+    title: 'Beer',
+    data: { title: 'Beer' },
+    loadComponent: () =>
+      import('@beers/beer/feature-detail').then((m) => m.BeerDetailComponent),
+  },
   comingSoon('brewers', 'Brewers'),
   comingSoon('blog', 'Blog'),
   comingSoon('dashboard', 'Dashboard'),

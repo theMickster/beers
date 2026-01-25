@@ -20,7 +20,10 @@
       "@beers/shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@beers/metadata/data-access": ["libs/metadata/data-access/src/index.ts"],
       "@beers/beer/data-access": ["libs/beer/data-access/src/index.ts"],
-      "@beers/beer/feature-explorer": ["libs/beer/feature-explorer/src/index.ts"],
+      "@beers/beer/feature-explorer": [
+        "libs/beer/feature-explorer/src/index.ts"
+      ],
+      "@beers/beer/feature-detail": ["libs/beer/feature-detail/src/index.ts"],
       "@beers/brewer/data-access": ["libs/brewer/data-access/src/index.ts"],
       "@beers/blog/data-access": ["libs/blog/data-access/src/index.ts"],
       "@beers/shared/ui": ["libs/shared/ui/src/index.ts"],
