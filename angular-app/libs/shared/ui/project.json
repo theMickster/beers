@@ -3,5 +3,15 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/shared/ui/src",
-  "tags": ["type:ui", "scope:shared"]
+  "tags": ["type:ui", "scope:shared"],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "buildTarget": "beers-web:build:development",
+        "tsConfig": "libs/shared/ui/tsconfig.spec.json",
+        "watch": false
+      }
+    }
+  }
 }
