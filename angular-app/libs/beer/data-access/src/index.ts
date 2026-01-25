@@ -1,5 +1,7 @@
 export { BeerApiService } from './lib/beer-api.service';
 export { BeerStore } from './lib/beer.store';
+export { BeerCompareStore } from './lib/beer-compare.store';
+export type { CompareColumn } from './lib/beer-compare.store';
 export { BeerDetailStore } from './lib/beer-detail.store';
 export {
   CompareSelectionStore,

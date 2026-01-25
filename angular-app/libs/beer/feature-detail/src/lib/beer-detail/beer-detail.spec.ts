@@ -299,7 +299,7 @@ describe('BeerDetailComponent', () => {
         const helpId = toggle?.getAttribute('aria-describedby');
         expect(helpId).toBeTruthy();
         expect(document.getElementById(helpId ?? '')?.textContent).toContain(
-          `up to ${MAX_COMPARE_BEERS} beers`,
+          `capped at ${MAX_COMPARE_BEERS} beers`,
         );
       });
 

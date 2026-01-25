@@ -1,0 +1,131 @@
+<section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+  <h1 class="mb-6 text-4xl font-extrabold">Compare</h1>
+
+  @if (!canCompare()) {
+  <bw-empty-state
+    data-testid="compare-empty"
+    heading="Pick at least 2 different beers to compare"
+  >
+    <a routerLink="/explorer" class="btn btn-primary btn-sm">Browse beers</a>
+  </bw-empty-state>
+  } @else { @if (state().overCap) {
+  <div role="status" class="alert alert-info mb-6" data-testid="compare-capped">
+    <span
+      >Comparisons are capped at {{ maxCompareBeers }} beers. Showing the first
+      {{ maxCompareBeers }}.</span
+    >
+  </div>
+  } @if (columns(); as columns) {
+
+  <div class="overflow-x-auto">
+    <table class="table" data-testid="compare-table">
+      <caption class="sr-only">
+        Side-by-side comparison of {{ columns.length }} beers
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col"><span class="sr-only">Attribute</span></th>
+          @for (column of columns; track column.beerId) {
+          <th scope="col" class="align-top" data-testid="compare-name">
+            @if (column.beer; as beer) {
+            <a class="link text-lg" [routerLink]="['/beers', beer.beerId]"
+              >{{ beer.name }}</a
+            >
+            } @else {
+            <span class="font-normal opacity-75">{{ column.unavailable }}</span>
+            }
+          </th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Image</th>
+          @for (column of columns; track column.beerId) {
+          <td>
+            @if (column.beer; as beer) {
+            <figure
+              class="flex h-32 w-32 items-center justify-center rounded-box bg-base-200"
+            >
+              @if (beer.image) {
+              <img
+                class="h-full w-full object-contain p-2"
+                [src]="beer.image"
+                [alt]="beer.name"
+              />
+              } @else {
+              <i
+                class="fa-solid fa-beer-mug-empty text-5xl opacity-30"
+                aria-hidden="true"
+              ></i>
+              }
+            </figure>
+            } @else {
+            <span aria-hidden="true">—</span
+            ><span class="sr-only">Not available</span>
+            }
+          </td>
+          }
+        </tr>
+        <tr>
+          <th scope="row">Price</th>
+          @for (column of columns; track column.beerId) {
+          <td data-testid="compare-price">
+            @if (!column.beer) {
+            <span aria-hidden="true">—</span
+            ><span class="sr-only">Not available</span>
+            } @else if (column.priceRange; as range) { @if (range.min ===
+            range.max) {
+            <span class="font-semibold">{{ range.min | currency }}</span>
+            } @else {
+            <span class="font-semibold"
+              >{{ range.min | currency }} – {{ range.max | currency }}</span
+            >
+            } } @else {
+            <span class="opacity-60">Price unavailable</span>
+            }
+          </td>
+          }
+        </tr>
+        <tr>
+          <th scope="row">Rating</th>
+          @for (column of columns; track column.beerId) {
+          <td data-testid="compare-rating">
+            @if (column.beer; as beer) {
+            <bw-rating [rating]="beer.rating" />
+            } @else {
+            <span aria-hidden="true">—</span
+            ><span class="sr-only">Not available</span>
+            }
+          </td>
+          }
+        </tr>
+        <tr>
+          <th scope="row">Styles</th>
+          @for (column of columns; track column.beerId) {
+          <td data-testid="compare-styles">
+            @if (column.styles) { {{ column.styles }} } @else {
+            <span aria-hidden="true">—</span
+            ><span class="sr-only">Not available</span>
+            }
+          </td>
+          }
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  } @else {
+  <div
+    class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+    role="status"
+    aria-busy="true"
+    data-testid="loading"
+  >
+    <span class="sr-only">Loading comparison…</span>
+    <div class="skeleton h-64 w-full"></div>
+    <div class="skeleton h-64 w-full"></div>
+    <div class="skeleton hidden h-64 w-full sm:block"></div>
+    <div class="skeleton hidden h-64 w-full lg:block"></div>
+  </div>
+  } }
+</section>

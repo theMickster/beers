@@ -5,7 +5,7 @@ export const STYLE_STOUT = '3f2504e0-4f89-11d3-9a0c-0305e82c3302';
 export const CATEGORY_DOMESTIC = '3f2504e0-4f89-11d3-9a0c-0305e82c3303';
 export const TYPE_ALE = '3f2504e0-4f89-11d3-9a0c-0305e82c3304';
 
-interface MockBeer {
+export interface MockBeer {
   beerId: string;
   name: string;
   styleId: string;
@@ -89,7 +89,9 @@ export class ExplorerPage {
   }
 
   /** Mocks the metadata lists and a server-like `/beers/search`. Call before `goto`. */
-  async mockApi(options: { searchStatus?: number } = {}): Promise<void> {
+  async mockApi(
+    options: { searchStatus?: number; beers?: readonly MockBeer[] } = {},
+  ): Promise<void> {
     await this.page.route('**/api/v1/beerStyles', (route) =>
       route.fulfill({
         json: [
@@ -108,11 +110,15 @@ export class ExplorerPage {
       route.fulfill({ json: [] }),
     );
     await this.page.route('**/api/v1/beers/search**', (route) =>
-      this.fulfillSearch(route, options.searchStatus),
+      this.fulfillSearch(route, options.searchStatus, options.beers ?? BEERS),
     );
   }
 
-  private async fulfillSearch(route: Route, status?: number): Promise<void> {
+  private async fulfillSearch(
+    route: Route,
+    status: number | undefined,
+    beers: readonly MockBeer[],
+  ): Promise<void> {
     const url = new URL(route.request().url());
     const body = (route.request().postDataJSON() ?? {}) as Record<
       string,
@@ -130,7 +136,7 @@ export class ExplorerPage {
     const styles = (body['beerStyleIds'] as string[] | undefined) ?? [];
     const min = body['minPrice'] as number | undefined;
     const max = body['maxPrice'] as number | undefined;
-    const matches = BEERS.filter(
+    const matches = beers.filter(
       (beer) =>
         (styles.length === 0 || styles.includes(beer.styleId)) &&
         (min === undefined || beer.price >= min) &&

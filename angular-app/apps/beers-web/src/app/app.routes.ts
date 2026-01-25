@@ -52,6 +52,12 @@ export const appRoutes: Route[] = [
   comingSoon('brewers', 'Brewers'),
   comingSoon('blog', 'Blog'),
   comingSoon('dashboard', 'Dashboard'),
-  comingSoon('compare', 'Compare'),
+  {
+    path: 'compare',
+    title: 'Compare',
+    data: { title: 'Compare' },
+    loadComponent: () =>
+      import('@beers/beer/feature-compare').then((m) => m.BeerCompareComponent),
+  },
   ...samplesRoutes,
 ];

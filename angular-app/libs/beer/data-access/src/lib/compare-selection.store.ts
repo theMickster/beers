@@ -8,7 +8,7 @@ import {
 } from '@ngrx/signals';
 import { normalizeId } from '@beers/shared/data-access';
 
-/** The story gives no limit, so 4 is an assumption. */
+/** The compare story caps a comparison at 4 beers. */
 export const MAX_COMPARE_BEERS = 4;
 
 /**
