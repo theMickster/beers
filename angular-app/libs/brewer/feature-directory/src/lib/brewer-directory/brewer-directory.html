@@ -1,0 +1,92 @@
+<section class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+  <h1 class="mb-6 text-4xl font-extrabold">Brewers</h1>
+
+  @if (browserReady() && store.error(); as error) {
+  <div role="alert" class="alert alert-error">
+    <span>{{ error.message }}</span>
+    <button type="button" class="btn btn-sm" (click)="retry()">
+      Try again
+    </button>
+  </div>
+  } @else if (browserReady() && store.isFulfilled()) { @let page = view(); @if
+  (store.entities().length === 0) {
+  <bw-empty-state
+    data-testid="directory-empty"
+    heading="No brewers found"
+    message="There are no brewers to show yet."
+  />
+  } @else {
+  <div class="mb-6 flex flex-wrap items-center gap-3">
+    <label for="brewery-type" class="font-semibold">Brewery type</label>
+    <select
+      id="brewery-type"
+      #typeSelect
+      class="select select-bordered"
+      (change)="setType(typeSelect.value)"
+    >
+      <option value="" [selected]="page.type === null">All types</option>
+      @for (type of page.types; track type.id) {
+      <option [value]="type.id" [selected]="type.id === page.type">
+        {{ type.name }}
+      </option>
+      }
+    </select>
+  </div>
+
+  <ul
+    class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+    data-testid="brewer-list"
+  >
+    @for (brewer of page.items; track brewer.brewerId) {
+    <li>
+      <article
+        class="card h-full border border-base-300 bg-base-100 shadow-sm"
+        data-testid="brewer-card"
+      >
+        <div class="card-body gap-1 p-4">
+          <h2 class="card-title text-lg leading-snug">
+            <a class="link-hover" [routerLink]="['/brewers', brewer.brewerId]"
+              >{{ brewer.name }}</a
+            >
+          </h2>
+          <p>
+            <span class="badge badge-outline" data-testid="brewer-type"
+              >{{ brewer.breweryType.name }}</span
+            >
+          </p>
+          <p class="text-sm" data-testid="brewer-founded">
+            Founded {{ brewer.foundedIn }}
+          </p>
+          <p class="text-sm opacity-75" data-testid="brewer-headquarters">
+            {{ brewer.headquarters }}
+          </p>
+          <p class="text-sm">
+            <bw-rating data-testid="brewer-rating" [rating]="brewer.rating" />
+          </p>
+        </div>
+      </article>
+    </li>
+    }
+  </ul>
+
+  <div class="mt-8">
+    <bw-pagination
+      [page]="page.page"
+      [totalPages]="page.totalPages"
+      (pageChange)="goToPage($event)"
+    />
+  </div>
+  } } @else {
+  <div
+    class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+    role="status"
+    aria-busy="true"
+    data-testid="loading"
+  >
+    <span class="sr-only">Loading brewers…</span>
+    @for (_ of skeletons; track $index) {
+    <div class="skeleton h-40 w-full"></div>
+    }
+  </div>
+  }
+</section>

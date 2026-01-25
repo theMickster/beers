@@ -3,6 +3,7 @@ export { BeerStore } from './lib/beer.store';
 export { BeerCompareStore } from './lib/beer-compare.store';
 export type { CompareColumn } from './lib/beer-compare.store';
 export { BeerDetailStore } from './lib/beer-detail.store';
+export { BeersByBrewerStore } from './lib/beers-by-brewer.store';
 export {
   CompareSelectionStore,
   MAX_COMPARE_BEERS,

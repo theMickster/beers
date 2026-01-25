@@ -26,6 +26,12 @@
       "@beers/beer/feature-detail": ["libs/beer/feature-detail/src/index.ts"],
       "@beers/beer/feature-compare": ["libs/beer/feature-compare/src/index.ts"],
       "@beers/brewer/data-access": ["libs/brewer/data-access/src/index.ts"],
+      "@beers/brewer/feature-directory": [
+        "libs/brewer/feature-directory/src/index.ts"
+      ],
+      "@beers/brewer/feature-detail": [
+        "libs/brewer/feature-detail/src/index.ts"
+      ],
       "@beers/blog/data-access": ["libs/blog/data-access/src/index.ts"],
       "@beers/shared/ui": ["libs/shared/ui/src/index.ts"],
       "@beers/shared/ui-daisy-demo": ["libs/shared/ui-daisy-demo/src/index.ts"],

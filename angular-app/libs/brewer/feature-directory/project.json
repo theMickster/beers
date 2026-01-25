@@ -1,0 +1,17 @@
+{
+  "name": "brewer-feature-directory",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/brewer/feature-directory/src",
+  "tags": ["type:feature", "scope:beers"],
+  "targets": {
+    "test": {
+      "executor": "@angular/build:unit-test",
+      "options": {
+        "buildTarget": "beers-web:build:development",
+        "tsConfig": "libs/brewer/feature-directory/tsconfig.spec.json",
+        "watch": false
+      }
+    }
+  }
+}

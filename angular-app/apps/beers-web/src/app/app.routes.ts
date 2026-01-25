@@ -49,7 +49,24 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('@beers/beer/feature-detail').then((m) => m.BeerDetailComponent),
   },
-  comingSoon('brewers', 'Brewers'),
+  {
+    path: 'brewers',
+    title: 'Brewers',
+    data: { title: 'Brewers' },
+    loadComponent: () =>
+      import('@beers/brewer/feature-directory').then(
+        (m) => m.BrewerDirectoryComponent,
+      ),
+  },
+  {
+    path: 'brewers/:brewerId',
+    title: 'Brewer',
+    data: { title: 'Brewer' },
+    loadComponent: () =>
+      import('@beers/brewer/feature-detail').then(
+        (m) => m.BrewerDetailComponent,
+      ),
+  },
   comingSoon('blog', 'Blog'),
   comingSoon('dashboard', 'Dashboard'),
   {
