@@ -80,6 +80,9 @@ test.describe('explorer', () => {
   }) => {
     await explorer.mockApi();
     await explorer.goto();
+    // Cards appear only after hydration. A submit before then is a native form submit that
+    // reloads the page, because the handler's preventDefault cannot run during event replay.
+    await expect(explorer.cards).toHaveCount(12);
 
     await explorer.minPrice.fill('10');
     await explorer.maxPrice.fill('14');
