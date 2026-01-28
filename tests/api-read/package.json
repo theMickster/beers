@@ -13,9 +13,9 @@
     "api-read:k6:stress": "./scripts/run-k6-api-read.sh stress"
   },
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "^1.65.0",
     "@types/k6": "^0.57.0",
-    "@types/node": "^25.9.1",
+    "@types/node": "^25.9.9",
     "esbuild": "^0.25.10",
     "typescript": "^5.9.2"
   }
