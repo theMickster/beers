@@ -2,11 +2,11 @@
 
 ## Project Intent
 
-This project is a capstone learning platform that demonstrates modern Azure Cosmos DB patterns and Angular 21 features through beer discovery scenarios.
+This project is a capstone learning platform that demonstrates modern Azure Cosmos DB patterns and Angular 22 features through beer discovery scenarios.
 
 ## Scope
 
-- Applies to `api/`, `tools/dataLoader/`, and planned frontend code.
+- Applies to `api/`, `tools/dataLoader/`, and `angular-app/`.
 - Prefer focused diffs that preserve existing layering and naming conventions.
 - Implement requested behavior end-to-end (API/contracts/tests/docs), not partial stubs.
 
@@ -77,7 +77,7 @@ This project is a capstone learning platform that demonstrates modern Azure Cosm
 - Return explicit validation/concurrency errors; do not silently swallow failures.
 - For ETag conflicts, return clear conflict responses with actionable messages.
 
-## Angular 21 Frontend Guidance
+## Angular 22 Frontend Guidance
 
 - Prefer standalone components and modern control flow (`@if`, `@for`, `@defer`).
 - Use signals and signal-based forms for local UI state.
@@ -98,6 +98,16 @@ This project is a capstone learning platform that demonstrates modern Azure Cosm
   - ETag concurrency handling,
   - patch update behavior,
   - change feed aggregation logic.
+
+## Dependency Security (Supply Chain)
+
+- **7-day cool-off:** never add, upgrade or pin a package version (npm, NuGet, dotnet tools, GitHub Actions, container images) published less than 7 days ago. Look up the publish date in the registry first (`npm view <pkg> time --json`; the nuget.org registration `published` field). If the latest release is too new, propose the newest release that is at least 7 days old and say why.
+- **Audit before changing dependencies:** run `npm audit` in `angular-app/` and `tests/api-read/`, and `dotnet list package --vulnerable --include-transitive`. Report the results.
+- **Never run `npm audit fix --force`.** It proposes major downgrades. Upgrade deliberately.
+- **No silent exceptions:** if a security fix exists only in a release younger than 7 days, stop and ask the human; do not bypass the cool-off.
+- **Scope:** applies to new changes. Pins already in the repo on 2026-11-15 are grandfathered.
+- Keep the Angular packages and the Nx packages in lockstep, commit lockfiles, install with `npm ci`.
+- Enforced by `.npmrc` (`min-release-age=7`) and `.github/dependabot.yml` (`cooldown`). NuGet has no native cool-off, so for .NET this rule is manual.
 
 ## Documentation Sync
 

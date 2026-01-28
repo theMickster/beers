@@ -1,0 +1,27 @@
+# Version updates honor the 7-day cool-off. Security updates bypass `cooldown` by design (GitHub docs).
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/angular-app"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "npm"
+    directory: "/tests/api-read"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "nuget"
+    directory: "/api"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "nuget"
+    directory: "/tools/dataLoader"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
