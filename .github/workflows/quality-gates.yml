@@ -12,6 +12,9 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   quality-gates:
     runs-on: ubuntu-latest
@@ -19,24 +22,38 @@ jobs:
       TEST_MODE: ${{ github.event.inputs.test_mode || vars.API_READ_TEST_MODE || 'smoke' }}
       DOCKER_COMPOSE_FILE: ${{ github.workspace }}/.docker/compose/quality-gates.yml
       DOCKER_ENV_FILE: /tmp/.env.api-read
-      KeyVault__VaultUri: ${{ secrets.KEYVAULT_VAULTURI }}
-      AutoMapperLicenseKey: ${{ secrets.AUTOMAPPER_LICENSE_KEY }}
-      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        # actions/checkout v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        # actions/setup-dotnet v6.1.0
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73
         with:
           dotnet-version: '10.0.x'
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        # actions/setup-node v7.0.0
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
         with:
-          node-version: '22'
+          node-version: 24
+
+      # API is not gated yet: 60 existing files fail `dotnet format whitespace` and there is no .editorconfig.
+      - name: Data loader format check
+        run: dotnet format whitespace tools/dataLoader/BeersDataLoader.sln --verify-no-changes
+
+      - name: .NET vulnerability audit
+        run: |
+          # `dotnet list package --vulnerable` always exits 0, so fail on its report text.
+          for sln in api/Beers.API.sln tools/dataLoader/BeersDataLoader.sln; do
+            out=$(dotnet list "$sln" package --vulnerable --include-transitive 2>&1)
+            echo "$out"
+            if echo "$out" | grep -q "has the following vulnerable packages"; then
+              echo "::error::Vulnerable NuGet packages found in $sln"
+              exit 1
+            fi
+          done
 
       - name: Unit baseline
         run: dotnet test api/Beers.API.sln --nologo
@@ -48,11 +65,18 @@ jobs:
         working-directory: tests/api-read
         run: |
           npm ci
+          npm audit --audit-level=high
           npm run api-read:k6:typecheck
           npm run api-read:k6:build
 
       - name: Run API read test suite
         if: ${{ false }}
+        env:
+          KeyVault__VaultUri: ${{ secrets.KEYVAULT_VAULTURI }}
+          AutoMapperLicenseKey: ${{ secrets.AUTOMAPPER_LICENSE_KEY }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
         run: |
           chmod +x tests/api-read/scripts/*.sh
           cat > "$DOCKER_ENV_FILE" <<EOF

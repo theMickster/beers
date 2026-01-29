@@ -170,9 +170,11 @@ npm run api-read:k6:build
 
 - GitHub Actions: `.github/workflows/quality-gates.yml`
   - Always runs:
+    - Data loader format check: `dotnet format whitespace tools/dataLoader/BeersDataLoader.sln --verify-no-changes`
+    - NuGet vulnerability audit: `dotnet list <sln> package --vulnerable --include-transitive` for the API and data loader solutions
     - API unit baseline: `dotnet test api/Beers.API.sln --nologo`
     - Data loader build baseline: `dotnet build tools/dataLoader/BeersDataLoader.sln --configuration Release --nologo`
-    - API read static baseline: `npm ci`, `npm run api-read:k6:typecheck`, `npm run api-read:k6:build`
+    - API read static baseline: `npm ci`, `npm audit --audit-level=high`, `npm run api-read:k6:typecheck`, `npm run api-read:k6:build`
   - Uses repository secrets:
     - `KEYVAULT_VAULTURI`
     - `AUTOMAPPER_LICENSE_KEY`
