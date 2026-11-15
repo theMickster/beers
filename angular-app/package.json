@@ -43,7 +43,7 @@
     "@nx/docker": "23.3.1",
     "@nx/esbuild": "23.3.1",
     "@nx/eslint": "23.3.1",
-    "@nx/eslint-plugin": "23.3.1",
+    "@nx/eslint-plugin": "24.0.5",
     "@nx/js": "23.3.1",
     "@nx/node": "23.3.1",
     "@nx/playwright": "23.3.1",
